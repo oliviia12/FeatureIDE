@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -41,7 +41,7 @@ import de.ovgu.featureide.fm.core.explanations.impl.ltms.Ltms;
 
 /**
  * Implementation of {@link RedundantConstraintExplanationCreator} using an {@link Ltms LTMS}.
- * 
+ *
  * @author Sofia Ananieva
  * @author Timo G&uuml;nther
  */
@@ -52,24 +52,26 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 	private Node cnfWithoutRedundantConstraint;
 	/** The amount of clauses added to the CNF that originate from a constraint. */
 	private int constraintClauseCount = 0;
-	
+
 	/**
 	 * Constructs a new instance of this class.
 	 */
 	public LtmsRedundantConstraintExplanationCreator() {
 		this(null);
 	}
-	
+
 	/**
 	 * Constructs a new instance of this class.
+	 *
 	 * @param fm the feature model context
 	 */
 	public LtmsRedundantConstraintExplanationCreator(IFeatureModel fm) {
 		this(fm, null);
 	}
-	
+
 	/**
 	 * Constructs a new instance of this class.
+	 *
 	 * @param fm the feature model context
 	 * @param redundantConstraint the redundant constraint in the feature model
 	 */
@@ -77,21 +79,21 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 		super(fm);
 		setRedundantConstraint(redundantConstraint);
 	}
-	
+
 	@Override
 	public IConstraint getRedundantConstraint() {
 		return redundantConstraint;
 	}
-	
+
 	@Override
 	public void setRedundantConstraint(IConstraint redundantConstraint) {
 		this.redundantConstraint = redundantConstraint;
 		setCnfWithoutRedundantConstraint();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * <p>
 	 * Does not include any of the constraints.
 	 * The constraints are only added later during explaining.
@@ -114,25 +116,25 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 		}
 		return cnf;
 	}
-	
+
 	protected Node getCnfWithoutRedundantConstraint() {
 		if (cnfWithoutRedundantConstraint == null) {
 			setCnfWithoutRedundantConstraint();
 		}
 		return cnfWithoutRedundantConstraint;
 	}
-	
+
 	protected void setCnfWithoutRedundantConstraint() {
 		final Node cnf;
-		if (redundantConstraint == null || (cnf = getCnf()) == null) {
-			this.cnfWithoutRedundantConstraint = null;
+		if ((redundantConstraint == null) || ((cnf = getCnf()) == null)) {
+			cnfWithoutRedundantConstraint = null;
 			setLtms(null);
 			return;
 		}
-		
+
 		getTraceModel().removeTraces(constraintClauseCount);
-		this.constraintClauseCount = 0;
-		
+		constraintClauseCount = 0;
+
 		final List<Node> clauses = new LinkedList<>();
 		Collections.addAll(clauses, cnf.getChildren());
 		final AdvancedNodeCreator nc = getNodeCreator();
@@ -145,19 +147,19 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 			constraintClauseCount += constraintClauses.length;
 			Collections.addAll(clauses, constraintClauses);
 		}
-		this.cnfWithoutRedundantConstraint = new And(clauses.toArray(new Node[clauses.size()]));
-		
+		cnfWithoutRedundantConstraint = new And(clauses.toArray(new Node[clauses.size()]));
+
 		setLtms(null);
 	}
-	
+
 	@Override
 	protected Ltms createLtms() {
 		return new Ltms(getCnfWithoutRedundantConstraint());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * <p>
 	 * Uses a representation of the feature model without the redundant constraint.
 	 * Sets several initial truth value assumptions that lead to a violation of the redundant constraint.
@@ -185,12 +187,12 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 		}
 		return cumulatedExplanation;
 	}
-	
+
 	@Override
 	protected RedundantConstraintExplanation getExplanation(Collection<Set<Integer>> clauseIndexes) {
 		return (RedundantConstraintExplanation) super.getExplanation(clauseIndexes);
 	}
-	
+
 	@Override
 	protected RedundantConstraintExplanation getConcreteExplanation() {
 		return new RedundantConstraintExplanation(getRedundantConstraint());

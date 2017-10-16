@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -37,7 +37,7 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
  * executed independent of each other.
  * </br>
  * It is possible to wait for a sequence to finish.
- * 
+ *
  * @author Sebastian Krieter
  */
 public final class JobSequence implements LongRunningMethod<Boolean> {
@@ -54,7 +54,7 @@ public final class JobSequence implements LongRunningMethod<Boolean> {
 
 	/**
 	 * Adds a new job to the sequence if it has not already finished
-	 * 
+	 *
 	 * @param newJob the job to add
 	 */
 	public void addJob(LongRunningMethod<?> newJob) {
@@ -70,9 +70,9 @@ public final class JobSequence implements LongRunningMethod<Boolean> {
 
 	public void insertJobs(LongRunningMethod<?> lastJob, Collection<LongRunningMethod<?>> newJobs) {
 		synchronized (jobs) {
-			for (ListIterator<LongRunningMethod<?>> it = jobs.listIterator(); it.hasNext();) {
+			for (final ListIterator<LongRunningMethod<?>> it = jobs.listIterator(); it.hasNext();) {
 				if (it.next().equals(lastJob)) {
-					for (LongRunningMethod<?> newJob : newJobs) {
+					for (final LongRunningMethod<?> newJob : newJobs) {
 						it.add(newJob);
 						sequenceMap.put(newJob, this);
 					}
@@ -84,7 +84,7 @@ public final class JobSequence implements LongRunningMethod<Boolean> {
 
 	/**
 	 * If a job in this sequence fails to do its work all subsequent jobs are canceled.
-	 * 
+	 *
 	 * @param ignorePreviousJobFail
 	 */
 	public void setIgnorePreviousJobFail(boolean ignorePreviousJobFail) {
@@ -93,8 +93,8 @@ public final class JobSequence implements LongRunningMethod<Boolean> {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("JobSequence:");
-		for (LongRunningMethod<?> job : jobs) {
+		final StringBuilder sb = new StringBuilder("JobSequence:");
+		for (final LongRunningMethod<?> job : jobs) {
 			sb.append("\n\t");
 			sb.append(job.toString());
 		}
@@ -119,7 +119,7 @@ public final class JobSequence implements LongRunningMethod<Boolean> {
 
 			sequenceMap.remove(curJob);
 
-			if (!ignorePreviousJobFail && thread.getStatus() != JobStatus.OK) {
+			if (!ignorePreviousJobFail && (thread.getStatus() != JobStatus.OK)) {
 				return false;
 			}
 		}

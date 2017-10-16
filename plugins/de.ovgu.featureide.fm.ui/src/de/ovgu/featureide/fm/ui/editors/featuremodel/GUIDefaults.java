@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -40,7 +40,7 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
 /**
  * Default colors, fonts, images and borders for the feature diagram.<br>
  * It is recommended to use {@link FMPropertyManager} for colors and borders instead of these values.
- * 
+ *
  * @author Thomas Thuem
  */
 public interface GUIDefaults {
@@ -113,7 +113,6 @@ public interface GUIDefaults {
 	public static final Color IMPLICIT_CONSTRAINT = GUIBasics.createColor(1.0, 0.0, 0.0);
 	public static final Border IMPLICIT_CONSTRAINT_BORDER = new LineBorder(IMPLICIT_CONSTRAINT, 2);
 
-
 	//false constraints
 
 	public static final Color WARNING_BACKGROUND = GUIBasics.createColor(1.0, 1.0, 0.6);
@@ -131,7 +130,7 @@ public interface GUIDefaults {
 	public static final int FEATURE_SPACE_X = 5;
 	public static final int FEATURE_SPACE_Y = 30 + 20;
 	public static final int CONSTRAINT_SPACE_Y = 5 + 20;
-	
+
 	//space between text and bounds for collapsed decorator
 	public static final int COLLAPSED_DECORATOR_X_SPACE = 3;
 	public static final int COLLAPSED_DECORATOR_Y_SPACE = 2;
@@ -165,7 +164,7 @@ public interface GUIDefaults {
 
 	public static final Image OPERATOR_SYMBOL = FMUIPlugin.getImage("operator_symbol.gif");
 	public static final Image FEATURE_SYMBOL = FMUIPlugin.getImage("FeatureIconSmall.ico");
-		
+
 	public static final Image IMG_OPTIONAL = FMUIPlugin.getImage("optional.gif");
 	public static final Image IMG_MANDATORY = FMUIPlugin.getImage("mandatory.gif");
 	public static final Image IMG_OR = FMUIPlugin.getImage("or.gif");

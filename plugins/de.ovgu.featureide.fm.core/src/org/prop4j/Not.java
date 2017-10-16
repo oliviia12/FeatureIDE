@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -27,12 +27,12 @@ import java.util.Map;
 
 /**
  * A constraint that is true iff the child node is false.
- * 
+ *
  * @author Thomas Thuem
  * @author Marcus Pinnecke (Feature Interface)
  */
 public class Not extends Node implements Cloneable {
-	
+
 	public Not(Object child) {
 		children = new Node[] { getNode(child) };
 	}
@@ -49,12 +49,12 @@ public class Not extends Node implements Cloneable {
 
 	@Override
 	protected Node eliminate(List<Class<? extends Node>> list) {
-		Node node = children[0];
+		final Node node = children[0];
 		if (!list.contains(getClass())) {
 			children[0] = node.eliminate(list);
 			return this;
 		}
-		
+
 		//reduce Not(Literal) to Literal
 		if (node instanceof Literal) {
 			((Literal) node).flip();

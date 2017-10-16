@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -35,7 +35,7 @@ import org.sat4j.specs.IConstr;
 
 /**
  * A mutable SAT solver using a Sat4J oracle.
- * 
+ *
  * @author Timo G&uuml;nther
  */
 public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatSolver {
@@ -47,29 +47,30 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 	private int scopeClauseCount = 0;
 	/** How often to pop until the scope containing the contradiction is reached. */
 	private int scopeContradictionDistance = 0;
-	
+
 	/**
 	 * Constructs a new instance of this class.
 	 */
-	protected Sat4jMutableSatSolver() {}
-	
+	protected Sat4jMutableSatSolver() {
+	}
+
 	@Override
 	public void addClause(Node clause) {
 		super.addClause(clause);
 		scopeClauseCount++;
 	}
-	
+
 	@Override
 	public void push() {
 		//Push the clauses.
 		previousScopeClauseCounts.push(scopeClauseCount);
 		scopeClauseCount = 0;
-		
+
 		//Push the contradiction distance.
 		if (isContradiction()) {
 			scopeContradictionDistance++;
 		}
-		
+
 		//Push the assumptions.
 		final Map<Object, Boolean> assumptions = super.getAssumptions();
 		previousScopeAssumptions.push(new LinkedHashMap<>(assumptions));
@@ -84,7 +85,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 			removedClauses.add(removeClause());
 		}
 		scopeClauseCount = previousScopeClauseCounts.pop();
-		
+
 		//Pop the contradiction distance.
 		if (isContradiction()) {
 			if (scopeContradictionDistance == 0) {
@@ -93,22 +94,23 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 				scopeContradictionDistance--;
 			}
 		}
-		
+
 		//Pop the assumptions.
 		final Map<Object, Boolean> assumptions = super.getAssumptions();
 		assumptions.clear();
 		assumptions.putAll(previousScopeAssumptions.pop());
-		
+
 		return removedClauses;
 	}
-	
+
 	/**
 	 * Removes the newest clause and returns it.
+	 *
 	 * @return the newest clause
 	 */
 	protected Node removeClause() {
 		scopeClauseCount--;
-		
+
 		/*
 		 * When a constraint is removed from a Sat4J oracle, its index is not freed up.
 		 * To still be able to keep track of the constraint indexes, do not remove the corresponding clause from the local list but just set it to null.
@@ -122,14 +124,14 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 				break;
 			}
 		}
-		
+
 		final IConstr constraint = clauseConstraints.remove(clause);
 		if (constraint != null) {
 			getOracle().removeConstr(constraint);
 		}
 		return clause;
 	}
-	
+
 	@Override
 	public List<Node> getClauses() {
 		/*
@@ -146,7 +148,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		}
 		return clausesWithoutNull;
 	}
-	
+
 	@Override
 	public Node getClause(int index) throws IndexOutOfBoundsException {
 		/*
@@ -154,13 +156,13 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		 */
 		int i = 0;
 		for (final Node clause : super.getClauses()) {
-			if (clause != null && i++ == index) {
+			if ((clause != null) && (i++ == index)) {
 				return clause;
 			}
 		}
 		throw new IndexOutOfBoundsException();
 	}
-	
+
 	@Override
 	public int getClauseCount() {
 		/*
@@ -172,7 +174,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		}
 		return total;
 	}
-	
+
 	@Override
 	public int getClauseIndexFromIndex(int index) {
 		index = super.getClauseIndexFromIndex(index);
@@ -186,7 +188,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		}
 		throw new IndexOutOfBoundsException();
 	}
-	
+
 	@Override
 	public Map<Object, Boolean> getAssumptions() {
 		/*
@@ -200,7 +202,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		assumptions.putAll(super.getAssumptions());
 		return assumptions;
 	}
-	
+
 	@Override
 	public Boolean getAssumption(Object variable) {
 		/*

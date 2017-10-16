@@ -15,14 +15,14 @@ public class FixedLiteralSelectionStrategy implements IPhaseSelectionStrategy {
 	public FixedLiteralSelectionStrategy(int[] model, boolean min) {
 		super();
 		this.model = model;
-		this.phase = new int[model.length + 1];
+		phase = new int[model.length + 1];
 		if (min) {
 			for (int i = 0; i < model.length; i++) {
-				this.phase[i + 1] = model[i] >= 0 ? negLit(i + 1) : posLit(i + 1);
+				phase[i + 1] = model[i] >= 0 ? negLit(i + 1) : posLit(i + 1);
 			}
 		} else {
 			for (int i = 0; i < model.length; i++) {
-				this.phase[i + 1] = model[i] > 0 ? negLit(i + 1) : posLit(i + 1);
+				phase[i + 1] = model[i] > 0 ? negLit(i + 1) : posLit(i + 1);
 			}
 		}
 	}
@@ -35,7 +35,7 @@ public class FixedLiteralSelectionStrategy implements IPhaseSelectionStrategy {
 	public void assignLiteral(int p) {
 		final int var = var(p);
 		if (model[var - 1] == 0) {
-			this.phase[var] = p;
+			phase[var] = p;
 		}
 	}
 
@@ -43,14 +43,17 @@ public class FixedLiteralSelectionStrategy implements IPhaseSelectionStrategy {
 	public void updateVarAtDecisionLevel(int q) {
 	}
 
+	@Override
 	public void init(int nlength) {
 	}
 
+	@Override
 	public void init(int var, int p) {
 	}
 
+	@Override
 	public int select(int var) {
-		return this.phase[var];
+		return phase[var];
 	}
 
 }

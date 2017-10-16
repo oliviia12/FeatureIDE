@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -32,9 +32,10 @@ import static de.ovgu.featureide.fm.core.localization.StringTable.SETS_THE_BORDE
 import static de.ovgu.featureide.fm.core.localization.StringTable.SPACES;
 import static de.ovgu.featureide.fm.core.localization.StringTable.SPACE_BETWEEN_THE_MODEL_AND_THE_FIRST_CONSTRAINT;
 import static de.ovgu.featureide.fm.core.localization.StringTable.VERTICALLY_SPACE_BETWEEN_TWO_FEATURES;
+
 /**
  * This interface provides all labels, tool tips and some values used at the {@link FMPropertyPage}
- * 
+ *
  * @author Jens Meinicke
  */
 public interface IFMPropertyPage {
@@ -73,7 +74,7 @@ public interface IFMPropertyPage {
 	static final String SPACES_TIP_CONSTRIANT = SPACE_BETWEEN_THE_MODEL_AND_THE_FIRST_CONSTRAINT;
 
 	/*
-	 *  with this values adjusting the shown spaces, 
+	 *  with this values adjusting the shown spaces,
 	 *  it is more logical for the user
 	 */
 	static final int SPECES_FEATURE_X_ADJUST = 20;

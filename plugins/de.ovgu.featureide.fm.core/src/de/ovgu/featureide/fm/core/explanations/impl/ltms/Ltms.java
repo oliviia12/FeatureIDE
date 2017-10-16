@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -44,7 +44,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.FeatureModelExplanationCreator
  * Uses BCP (boolean constraint propagation) for managing logical implications.
  * BCP expects two parameters: initial truth values (premises) and a propositional formula in CNF (conjunctive normal form).
  * </p>
- * 
+ *
  * @author Sofia Ananieva
  * @author Timo G&uuml;nther
  * @see {@link FeatureModelExplanationCreator} for using the LTMS with feature models
@@ -97,9 +97,10 @@ public class Ltms {
 	 * The literal whose truth value was derived during the most recent propagation.
 	 */
 	private Literal derivedLiteral;
-	
+
 	/**
 	 * Constructs a new instance of this class.
+	 *
 	 * @param cnf the conjunctive normal form of the feature model
 	 */
 	public Ltms(Node cnf) {
@@ -107,7 +108,7 @@ public class Ltms {
 		setClauseLiterals();
 		setVariableClauses();
 	}
-	
+
 	/**
 	 * Sets the map from CNF clauses to the literals they contain.
 	 */
@@ -116,7 +117,7 @@ public class Ltms {
 			clauseLiterals.put(cnfClause, cnfClause.getUniqueLiterals());
 		}
 	}
-	
+
 	/**
 	 * Sets the map from variables to the CNF clauses containing them.
 	 */
@@ -132,26 +133,28 @@ public class Ltms {
 			}
 		}
 	}
-	
+
 	/**
 	 * Sets the premises to the given ones.
+	 *
 	 * @param premises premises to set
 	 */
 	public void setPremises(Map<Object, Boolean> premises) {
 		clearPremises();
 		addPremises(premises);
 	}
-	
+
 	/**
 	 * Removes all premises.
 	 */
 	public void clearPremises() {
 		premises.clear();
 	}
-	
+
 	/**
 	 * Adds the given variable as a premise with the given truth value.
 	 * This premise is used later to arrive at the contradiction.
+	 *
 	 * @param variable variable to be added as a premise
 	 * @param value truth value of the variable
 	 */
@@ -161,17 +164,19 @@ public class Ltms {
 
 	/**
 	 * Adds all the given premises.
+	 *
 	 * @param premises premises to add
 	 */
 	public void addPremises(Map<Object, Boolean> premises) {
 		this.premises.putAll(premises);
 	}
-	
+
 	/**
 	 * Returns multiple explanations why the premises lead to a contradiction in the conjunctive normal form.
 	 * This is done by propagating the truth values until a contradiction is found.
 	 * Then, the proofs for the implications are recalled.
 	 * This is repeated several times to find multiple explanations, some of which might be shorter than others.
+	 *
 	 * @return multiple explanations why the premises lead to a contradiction in the conjunctive normal form
 	 */
 	public List<Set<Integer>> getExplanations() {
@@ -203,7 +208,7 @@ public class Ltms {
 		}
 		return explanations;
 	}
-	
+
 	/**
 	 * Clears the internal state for a new explanation.
 	 * Adds the premises to the variable values.
@@ -214,16 +219,17 @@ public class Ltms {
 		derivedLiteral = null;
 		variableValues.putAll(premises);
 	}
-	
+
 	/**
 	 * Pushes the unit-open clauses to stack.
 	 */
 	private void pushUnitOpenClauses() {
 		unitOpenClauses.addAll(getUnitOpenClauses());
 	}
-	
+
 	/**
 	 * Returns the unit-open clauses.
+	 *
 	 * @return the unit-open clauses
 	 */
 	private Set<Node> getUnitOpenClauses() {
@@ -236,21 +242,23 @@ public class Ltms {
 		}
 		return unitOpenClauses;
 	}
-	
+
 	/**
 	 * Returns true iff the given clause is unit-open.
 	 * A CNF clause is unit-open iff one of the contained literals evaluates to unknown and all others to false.
+	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return true iff the given clause is unit-open
 	 */
 	private boolean isUnitOpenClause(Node cnfClause) {
 		return getUnboundLiteral(cnfClause) != null;
 	}
-	
+
 	/**
 	 * Returns the unbound literal in the given clause or null if no such literal exists.
 	 * A literal is unbound iff it evaluates to unknown while all other literals in the same CNF clause evaluate to false.
 	 * Such a literal is critical for the satisfiability of the clause and as such the entire CNF.
+	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return the unbound literal in the given clause or null if no such literal exists
 	 */
@@ -260,7 +268,7 @@ public class Ltms {
 			if (!variableValues.containsKey(literal.var)) { //unknown value
 				if (unboundLiteral == null) {
 					unboundLiteral = literal;
-				} else { //more than one unknown literal found, thus actually a non-unit-open clause 
+				} else { //more than one unknown literal found, thus actually a non-unit-open clause
 					return null;
 				}
 			} else if (literal.getValue(variableValues)) { //true value
@@ -271,10 +279,11 @@ public class Ltms {
 		}
 		return unboundLiteral;
 	}
-	
+
 	/**
 	 * Returns true iff the conjunctive normal form evaluates to false.
 	 * A CNF evaluates to false iff any of its clauses evaluates to false.
+	 *
 	 * @return true iff the conjunctive normal form evaluates to false
 	 */
 	private boolean isContradicted() {
@@ -287,10 +296,11 @@ public class Ltms {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true iff the given CNF clause evaluates to false.
 	 * A CNF clause evaluates to false iff all of its literals evaluate to false.
+	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return true iff the given CNF clause evaluates to false
 	 */
@@ -306,7 +316,7 @@ public class Ltms {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Does one iteration of BCP.
 	 * Changes the assignment of a literal's variable from unknown to whatever makes it evaluate to true in the current clause.
@@ -316,30 +326,32 @@ public class Ltms {
 		deriveValue();
 		justify(derivedLiteral.var, derivedClause);
 	}
-	
+
 	/**
 	 * Satisfies the current unit-open clause by making its unbound literal true or negated false.
 	 */
 	private void deriveValue() {
 		variableValues.put(derivedLiteral.var, derivedLiteral.positive);
 	}
-	
+
 	/**
 	 * Sets a variable's reason and antecedents.
+	 *
 	 * @param variable variable to set
 	 * @param cnfClause clause containing the literal
 	 */
 	private void justify(Object variable, Node cnfClause) {
 		reasons.put(variable, cnfClause);
 	}
-	
+
 	/**
 	 * Returns an explanation why the premises lead to a contradiction.
+	 *
 	 * @return indexes of clauses that serve as an explanation
 	 */
 	private Set<Integer> getContradictionExplanation() {
 		final Set<Integer> explanation = new TreeSet<>();
-		
+
 		//Include literals from the violated clause so it shows up in the explanation.
 		explanation.add(getClauseIndex(violatedClause));
 
@@ -355,7 +367,7 @@ public class Ltms {
 				allAntecedents.put(e.getKey(), e.getValue());
 			}
 		}
-		
+
 		//Explain every antecedent and its reason.
 		for (final Entry<Literal, Node> e : allAntecedents.entrySet()) {
 			final Literal antecedentLiteral = e.getKey();
@@ -369,9 +381,10 @@ public class Ltms {
 		}
 		return explanation;
 	}
-	
+
 	/**
 	 * Returns all antecedents of the given variable recursively.
+	 *
 	 * @param literal literal with possible antecedents
 	 * @return all antecedents of the given variable recursively
 	 */
@@ -395,9 +408,10 @@ public class Ltms {
 		}
 		return allAntecedents;
 	}
-	
+
 	/**
 	 * Returns the index of the given CNF clause.
+	 *
 	 * @param cnfClause CNF clause to look up
 	 * @return the index of the given CNF clause
 	 * @throws IllegalStateException if the CNF clause is not contained in the CNF

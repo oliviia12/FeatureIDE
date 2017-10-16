@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -36,30 +36,32 @@ import de.ovgu.featureide.fm.core.explanations.fm.RedundantConstraintExplanation
 
 /**
  * Implementation of {@link RedundantConstraintExplanationCreator} using a {@link MusExtractor MUS extractor}.
- * 
+ *
  * @author Timo G&uuml;nther
  */
 public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExplanationCreator implements RedundantConstraintExplanationCreator {
 	/** The redundant constraint in the feature model. */
 	private IConstraint redundantConstraint;
-	
+
 	/**
 	 * Constructs a new instance of this class.
 	 */
 	public MusRedundantConstraintExplanationCreator() {
 		this(null);
 	}
-	
+
 	/**
 	 * Constructs a new instance of this class.
+	 *
 	 * @param fm the feature model context
 	 */
 	public MusRedundantConstraintExplanationCreator(IFeatureModel fm) {
 		this(fm, null);
 	}
-	
+
 	/**
 	 * Constructs a new instance of this class.
+	 *
 	 * @param fm the feature model context
 	 * @param redundantConstraint the redundant constraint in the feature model
 	 */
@@ -67,20 +69,20 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 		super(fm);
 		setRedundantConstraint(redundantConstraint);
 	}
-	
+
 	@Override
 	public IConstraint getRedundantConstraint() {
 		return redundantConstraint;
 	}
-	
+
 	@Override
 	public void setRedundantConstraint(IConstraint redundantConstraint) {
 		this.redundantConstraint = redundantConstraint;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * <p>
 	 * Does not include any of the constraints.
 	 * The constraints are only added later during explaining.
@@ -93,7 +95,7 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 		nc.setModelType(ModelType.OnlyStructure);
 		return nc;
 	}
-	
+
 	@Override
 	public RedundantConstraintExplanation getExplanation() throws IllegalStateException {
 		final RedundantConstraintExplanation cumulatedExplanation = getConcreteExplanation();
@@ -112,7 +114,7 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 				constraintClauseCount += constraintNode.getChildren().length;
 				oracle.addFormula(constraintNode);
 			}
-			
+
 			//Explain each contradicting assignment of the redundant constraint.
 			for (final Map<Object, Boolean> assignment : getRedundantConstraint().getNode().getContradictingAssignments()) {
 				oracle.push();
@@ -130,12 +132,12 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 		}
 		return cumulatedExplanation;
 	}
-	
+
 	@Override
 	protected RedundantConstraintExplanation getExplanation(Set<Integer> clauseIndexes) {
 		return (RedundantConstraintExplanation) super.getExplanation(clauseIndexes);
 	}
-	
+
 	@Override
 	protected RedundantConstraintExplanation getConcreteExplanation() {
 		return new RedundantConstraintExplanation(getRedundantConstraint());

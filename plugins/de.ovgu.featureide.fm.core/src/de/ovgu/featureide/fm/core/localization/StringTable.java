@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -92,7 +92,7 @@ public class StringTable {
 	public static final String ERROR_WHILE_CREATING_FEATURE_MODEL = "Error while creating feature model";
 	public static final String NO_RESOURCE_GIVEN_WHILE_GETTING_THE_PROJECT_DATA = "No resource given while getting the project data";
 	public static final String CONFIG = "config";
-	public static final String CONF = "conf";	
+	public static final String CONF = "conf";
 	public static final String EQUATION = "equation";
 	public static final String EXPRESSION = "expression";
 	public static final String ADD_PROJECT = "Add Project";
@@ -494,7 +494,7 @@ public class StringTable {
 	public static final String SET_FEATURE_ABSTRACT = "Set Feature Abstract";
 	public static final String SET_FEATURE_CONCRETE = "Set Feature Concrete";
 	public static final String DEFAULT_FEATURE_LAYER_CAPTION = "NewFeature";
-    public static final String SET_FEATURE_NOT_HIDDEN = "Set Feature Not-Hidden";
+	public static final String SET_FEATURE_NOT_HIDDEN = "Set Feature Not-Hidden";
 	public static final String SET_FEATURE_HIDDEN = "Set Feature Hidden";
 	public static final String SET_FEATURE_MANDATORY = "Set Feature Mandatory";
 	public static final String SET_FEATURE_OPTIONAL = "Set Feature Optional";
@@ -1039,8 +1039,8 @@ public class StringTable {
 	public static final String CALCULATE_DEAD_FEATURES = "Calculate Dead Features";
 	public static final String CURRENTLY_NO_COLOR_SCHEME_SELECTED = "No color scheme is selected";
 	public static final String CURRENTLY_NO_COLOR_SCHEME_SELECTED_DIALOG = "There is currently no color scheme selected. To color features please use the color scheme wizard and select a color scheme.";
-	
+
 	public static final String PUBLIC_CLASS = "public class";
 	public static final String PUBLIC_INTERFACE = "public interface";
-	
+
 }

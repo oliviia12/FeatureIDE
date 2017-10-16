@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -32,10 +32,10 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
  * respect to the models physical file. Each feature model is required to be assigned to
  * an unique identifier. This unique identifier is coupled to the model file, such that
  * the file path determines the feature models identifier.
- * 
+ *
  * @see IFeatureModel#setSourceFile(File)
  * @see FeatureModel#setSourceFile(File)
- * 
+ *
  * @author Sebastian Krieter
  * @author Marcus Pinnecke (Feature Interface)
  */
@@ -55,7 +55,7 @@ public class ModelFileIdMap {
 	 * identifier associated with <b>modelFile</b>, i.e., if there is already an identifier
 	 * associated with <b>modelFile</b> which is unequal to <b>featureModel</b>'s model
 	 * identifier, <b>modelFile</b>' identifier is returned.
-	 * 
+	 *
 	 * @param featureModel The feature model (might be <b>null</b>, if <b>modelFile</b> is associated to an identifier already)
 	 * @param modelFile The key value for association of feature model unique numeric identifiers. Is intended to point to the feature models underlying model
 	 *            (have to be <b>non-null</b>)
@@ -63,7 +63,7 @@ public class ModelFileIdMap {
 	 * @return The identifier associated with <b>modelFile</b> if there is already such an association. </b>featureModel</b>'s identifier otherwise.
 	 */
 	public static synchronized long getModelId(IFeatureModel featureModel, Path modelFile) {
-		String fileLocation = modelFile.toAbsolutePath().toString();
+		final String fileLocation = modelFile.toAbsolutePath().toString();
 		Long id = map.get(fileLocation);
 		if (id == null) {
 			id = featureModel.getId();

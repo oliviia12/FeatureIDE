@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -38,7 +38,7 @@ import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
  * <br/>
  * <br/>
  * For usage to fire <code>FeatureIDEEvent</code>s, see {@link FeatureModel#fireEvent(FeatureIDEEvent)}.
- * 
+ *
  * @author Sebastian Krieter
  * @author Marcus Pinnecke
  */
@@ -149,10 +149,10 @@ public class FeatureIDEEvent {
 		 * The model data was saved to file.
 		 */
 		MODEL_DATA_SAVED,
-//		/**
-//		 * The model data was loaded from file.
-//		 */
-//		MODEL_DATA_LOADED,
+		//		/**
+		//		 * The model data was loaded from file.
+		//		 */
+		//		MODEL_DATA_LOADED,
 		/**
 		 * The model data loaded from a file has overridden the internal model instance.
 		 */
@@ -164,7 +164,7 @@ public class FeatureIDEEvent {
 		/**
 		 * The refresh action command was triggered.
 		 */
-		REFRESH_ACTIONS, 
+		REFRESH_ACTIONS,
 		/**
 		 * The children of a feature changed.
 		 */
@@ -191,18 +191,18 @@ public class FeatureIDEEvent {
 		// TODO !!! implement feature order event
 		DEFAULT, FEATURE_ORDER_CHANGED,
 	}
-	
+
 	static FeatureIDEEvent[] defaultEvents = new FeatureIDEEvent[EventType.values().length];
 	static {
-		for (EventType e : EventType.values()) {
+		for (final EventType e : EventType.values()) {
 			defaultEvents[e.ordinal()] = new FeatureIDEEvent(e);
 		}
 	}
-	
+
 	public static FeatureIDEEvent getDefault(final EventType e) {
 		return defaultEvents[e.ordinal()];
 	}
-	
+
 	private final Object source;
 	private final EventType eventType;
 	private final Object oldValue;
@@ -211,7 +211,7 @@ public class FeatureIDEEvent {
 	private FeatureIDEEvent(EventType e) {
 		this(null, e);
 	}
-	
+
 	public FeatureIDEEvent(Object source, EventType eventType) {
 		this(source, eventType, null, null);
 	}
@@ -241,8 +241,7 @@ public class FeatureIDEEvent {
 
 	@Override
 	public String toString() {
-		return "FeatureIDEEvent [source=" + source + ", eventType=" + eventType + ", oldValue=" + oldValue
-				+ ", newValue=" + newValue + "]";
+		return "FeatureIDEEvent [source=" + source + ", eventType=" + eventType + ", oldValue=" + oldValue + ", newValue=" + newValue + "]";
 	}
-	
+
 }

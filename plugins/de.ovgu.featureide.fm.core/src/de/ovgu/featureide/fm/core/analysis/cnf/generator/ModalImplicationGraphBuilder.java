@@ -78,7 +78,7 @@ public class ModalImplicationGraphBuilder extends AbstractAnalysis<ModalImplicat
 
 	public ModalImplicationGraphBuilder(CNF cnf, boolean detectStrong) {
 		super(cnf);
-		this.emptyCNF = new CNF(cnf, false);
+		emptyCNF = new CNF(cnf, false);
 		this.detectStrong = detectStrong;
 		numberOfVariables = cnf.getVariables().size();
 		dfsMark = new byte[numberOfVariables];
@@ -568,8 +568,8 @@ public class ModalImplicationGraphBuilder extends AbstractAnalysis<ModalImplicat
 
 			inner1: for (int j = i + 1; j < xModel1.length; j++) {
 				final byte b = adjMatrix.edges[rowIndex + j];
-				if ((adjMatrix.core[j] == 0)
-						&& ((positive && ((b & IModalImplicationGraph.EDGE_WEAK_POSITIVE) != 0)) || (!positive && ((b & IModalImplicationGraph.EDGE_WEAK_NEGATIVE) != 0)))) {
+				if ((adjMatrix.core[j] == 0) && ((positive && ((b & IModalImplicationGraph.EDGE_WEAK_POSITIVE) != 0))
+						|| (!positive && ((b & IModalImplicationGraph.EDGE_WEAK_NEGATIVE) != 0)))) {
 
 					final int my1 = xModel1[j];
 					for (final int[] solution : solver.getSolutionList()) {

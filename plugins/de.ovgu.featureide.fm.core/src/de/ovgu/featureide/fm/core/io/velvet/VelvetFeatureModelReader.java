@@ -2,17 +2,17 @@
 // * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
 // *
 // * This file is part of FeatureIDE.
-// * 
+// *
 // * FeatureIDE is free software: you can redistribute it and/or modify
 // * it under the terms of the GNU Lesser General Public License as published by
 // * the Free Software Foundation, either version 3 of the License, or
 // * (at your option) any later version.
-// * 
+// *
 // * FeatureIDE is distributed in the hope that it will be useful,
 // * but WITHOUT ANY WARRANTY; without even the implied warranty of
 // * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // * GNU Lesser General Public License for more details.
-// * 
+// *
 // * You should have received a copy of the GNU Lesser General Public License
 // * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
 // *
@@ -86,52 +86,52 @@
 //
 ///**
 // * Parses a feature model in Velvet syntax.
-// * 
+// *
 // * @deprecated Use {@link VelvetFeatureModelFormat} and {@link FileHandler} instead.
-// * 
+// *
 // * @author Sebastian Krieter
 // * @author Matthias Strauss
 // * @author Marcus Pinnecke (Feature Interface)
 // */
 //@Deprecated
 //public class VelvetFeatureModelReader extends AbstractFeatureModelReader {
-//	
+//
 //	private static class ConstraintNode {
 //		private final Node computedNode;
 //		private final Tree rawNode;
-//		
+//
 //		public ConstraintNode(Node computedNode, Tree rawNode) {
 //			this.computedNode = computedNode;
 //			this.rawNode = rawNode;
 //		}
 //	}
-//	
+//
 //	private static final ExtendedFeatureModelFactory factory = ExtendedFeatureModelFactory.getInstance();
 //
-//	private static final int[] binaryOperators = { 
-//		VelvetParser.OP_OR, VelvetParser.OP_AND, 
+//	private static final int[] binaryOperators = {
+//		VelvetParser.OP_OR, VelvetParser.OP_AND,
 //		VelvetParser.OP_XOR, VelvetParser.OP_IMPLIES,
 //		VelvetParser.OP_EQUIVALENT
 //	};
-//	private static final String[] paths = { 
+//	private static final String[] paths = {
 //		"%s.velvet", "%s.xml", "MPL/%s.velvet"
 //	};
-//	
+//
 //	private final LinkedList<Tree> atrributeConstraintNodes = new LinkedList<Tree>();
 //	private final LinkedList<IFeature> parentStack = new LinkedList<IFeature>();
 //	private final LinkedList<ConstraintNode> constraintNodeList = new LinkedList<ConstraintNode>();
 //	private final HashSet<String> usedVariables = new HashSet<String>();
-//	
+//
 //	private final boolean velvetImport;
-//	
+//
 //	private ModelMarkerHandler<IResource> modelMarkerHandler;
 //	private ExtendedFeatureModel extFeatureModel;
 //	private String extFeatureModelName;
 //	private boolean localSearch = false;
-//	
+//
 //	/**
 //	 * Reads external model with the right FeatureModelReader.
-//	 * 
+//	 *
 //	 * @param file
 //	 *            file of feature model
 //	 * @return the feature model or null if error occurred
@@ -139,7 +139,7 @@
 //	private IFeatureModel readExternalModelFile(File file) {
 //		return FeatureModelManager.load(file.toPath()).getObject();
 //	}
-//	
+//
 //	private boolean checkExternalModelFile(Tree curNode) {
 //		if (localSearch) {
 //			if (localSearch(curNode.getText()) == null) {
@@ -154,7 +154,7 @@
 //		}
 //		return true;
 //	}
-//	
+//
 //	private boolean checkInterfaceModelFile(Tree curNode) {
 //		if (localSearch) {
 //			if (localSearch(curNode.getText()) == null) {
@@ -239,7 +239,7 @@
 //	public VelvetFeatureModelReader(final IFeatureModel featureModel) {
 //		this(featureModel, false);
 //	}
-//	
+//
 //	public VelvetFeatureModelReader(final IFeatureModel featureModel, boolean velvetImport) {
 //		extFeatureModel = (ExtendedFeatureModel) featureModel;
 //		setFeatureModel(extFeatureModel);
@@ -263,7 +263,7 @@
 //				throw new UnsupportedModelException("Error while parsing model!", 0);
 //			}
 //			init();
-//			
+//
 //			checkTree(root);
 //			parseModel(root);
 //			parseAttributeConstraints();
@@ -271,7 +271,7 @@
 //			Logger.logError(e);
 //			throw new UnsupportedModelException(e.getMessage(), e.line);
 //		}
-//		
+//
 //		// Update the FeatureModel in Editor
 //		extFeatureModel.handleModelDataLoaded();
 //	}
@@ -311,7 +311,7 @@
 //		}
 //		return null;
 //	}
-//	
+//
 //	private IFeatureModel getExternalFeatureModel(Tree curNode) {
 //		final File modelFile = getExternalModelFile(curNode.getText());
 //		if (modelFile == null) {
@@ -320,7 +320,7 @@
 //		}
 //		return readModel(modelFile, curNode);
 //	}
-//	
+//
 //	private IFeatureModel getExternalFeatureModel(String modelName, Tree curNode) {
 //		final File modelFile = getExternalModelFile(modelName);
 //		if (modelFile == null) {
@@ -328,7 +328,7 @@
 //		}
 //		return readModel(modelFile, curNode);
 //	}
-//	
+//
 //	private IFeatureModel getInterfaceFeatureModel(String modelName, Tree curNode) {
 //		final File modelFile = getInterfaceModelFile(modelName);
 //		if (modelFile == null) {
@@ -336,7 +336,7 @@
 //		}
 //		return readModel(modelFile, curNode);
 //	}
-//	
+//
 //	private IFeatureModel readModel(File modelFile, Tree curNode) {
 //		final IFeatureModel fm = readExternalModelFile(modelFile);
 //		if (fm == null) {
@@ -363,7 +363,7 @@
 //			return localSearch(name);
 //		}
 //		File returnFile = null;
-//		
+//
 //		// local search
 //		IProject project = getProject();
 //		if (project != null) {
@@ -379,7 +379,7 @@
 //				}
 //			}
 //		}
-//		
+//
 //		// external search
 //		if (returnFile == null) {
 //			// if could not get current project or could not find file in current
@@ -395,13 +395,13 @@
 //				Logger.logWarning(format("Project %s is not accessible.", name));
 //			}
 //		}
-//		
+//
 //		if (returnFile == null || !returnFile.exists() || !returnFile.canRead()) {
 //			return null;
 //		}
 //		return returnFile;
 //	}
-//	
+//
 //	private File getInterfaceModelFile(String name) {
 //		if (localSearch) {
 //			return localSearch(name);
@@ -416,14 +416,14 @@
 //		}
 //		return returnFile;
 //	}
-//	
+//
 //	private File localSearch(final String name) {
 //		final File searchDir = featureModelFile.getParentFile();
 //		if (searchDir != null) {
 //			File[] files = searchDir.listFiles(new FilenameFilter() {
 //				@Override
 //				public boolean accept(File dir, String fileName) {
-//					int index = fileName.lastIndexOf('.');					
+//					int index = fileName.lastIndexOf('.');
 //					return index > 0
 //						&& fileName.substring(0,index).equals(name)
 //						&& fileName.substring(index + 1).matches("xml|velvet");
@@ -439,7 +439,7 @@
 //	/**
 //	 * Returns the eclipse project of the file with the textual representation
 //	 * of the feature model
-//	 * 
+//	 *
 //	 * @return the project of the file or null if not known
 //	 */
 //	private IProject getProject() {
@@ -461,7 +461,7 @@
 //			return null;
 //		}
 //	}
-//	
+//
 //	/**
 //	 * Initializes all variables.
 //	 */
@@ -470,7 +470,7 @@
 //		parentStack.clear();
 //		constraintNodeList.clear();
 //		usedVariables.clear();
-//		
+//
 //		extFeatureModel.reset();
 //		//TODO Layout
 ////		extFeatureModel.getLayout().showHiddenFeatures(true);
@@ -482,10 +482,10 @@
 //
 //		extFeatureModelName = null;
 //		extFeatureModel.setInterface(false);
-//		
+//
 //		// TODO MPL: Hack for local search
 //		localSearch = featureModelFile != null
-//				&& featureModelFile.getParentFile() != null 
+//				&& featureModelFile.getParentFile() != null
 //				&& featureModelFile.getParentFile().getName().equals("velvet");
 //	}
 //
@@ -545,7 +545,7 @@
 //
 //					for (final FeatureAttribute<Integer> attr : attributes) {
 //						weightedTerms.add(createTerm(attr.getValue(),
-//								relationOperator != null, minus, 
+//								relationOperator != null, minus,
 //								new Reference(attr.getFeatureName(), ReferenceType.FEATURE, attributeName)));
 //					}
 //
@@ -628,7 +628,7 @@
 //				reportSyntaxError(curNode);
 //			}
 //		}
-//		
+//
 //		for (ConstraintNode constraintNode : constraintNodeList) {
 //			String nameError = checkNode(constraintNode.computedNode);
 //			if (nameError == null) {
@@ -777,11 +777,11 @@
 //		}
 //
 //	}
-//	
+//
 //	private void parseDescription(Tree root, IFeature parent) throws RecognitionException {
 //		final LinkedList<Tree> nodeList = getChildren(root);
 //		final Tree valueNode = nodeList.poll();
-//		
+//
 //		switch (valueNode.getType()) {
 //		case VelvetParser.STRING:
 //			final String valueNodeText = valueNode.getText();
@@ -809,7 +809,7 @@
 //		Tree childNode = null;
 //		while (!childList.isEmpty() && !moreDefinitions) {
 //			childNode = childList.poll();
-//			
+//
 //			switch (childNode.getType()) {
 //			case VelvetParser.MANDATORY:
 //				isMandatory = true;
@@ -865,7 +865,7 @@
 //			if (fm == null) {
 //				return;
 //			}
-//			
+//
 //			if (!extFeatureModel.addInheritance(parentModelName, parentModelName)) {
 //				reportWarning(curNode, THE_PARENT_MODEL + parentModelName + IS_ALREADY_USED_);
 //				return;
@@ -873,22 +873,22 @@
 //			addExternalFeatures(fm, parentModelName, extFeatureModel.getStructure().getRoot(), ExtendedFeature.TYPE_INHERITED);
 //		}
 //	}
-//	
+//
 //	private void addExternalFeatures(IFeatureModel sourceModel, String sourceModelName, IFeatureStructure targetParentFeature, int type) {
 //		if (sourceModel instanceof ExtendedFeatureModel) {
 //			for (UsedModel usedModel : ((ExtendedFeatureModel) sourceModel).getExternalModels().values()) {
 //				extFeatureModel.addExternalModel(new UsedModel(usedModel, sourceModelName));
 //			}
 //		}
-//		
+//
 //		UsedModel usedModel = extFeatureModel.getExternalModel(sourceModelName);
 //		if (usedModel != null) {
 //			usedModel.setPrefix(targetParentFeature.getFeature().getName() + "." + sourceModelName);
 //		}
-//		
+//
 //		final IFeatureStructure instanceRoot = sourceModel.getStructure().getRoot();
-//		final String connectorName = (targetParentFeature.isRoot() && targetParentFeature.getFeature().getName().equals(sourceModelName)) 
-//				? sourceModelName 
+//		final String connectorName = (targetParentFeature.isRoot() && targetParentFeature.getFeature().getName().equals(sourceModelName))
+//				? sourceModelName
 //				: targetParentFeature.getFeature().getName() + "." + sourceModelName;
 //		final ExtendedFeature connector = addFeature(targetParentFeature.getFeature(), connectorName, true, true, instanceRoot.isHidden());
 //		connector.setType(type);
@@ -900,7 +900,7 @@
 //		}
 //
 //		copyChildnodes(extFeatureModel, connector.getStructure(), instanceRoot, sourceModelName, connectorName, type);
-//		
+//
 //		for (final IConstraint constraint : sourceModel.getConstraints()) {
 //			Node constraintNode = constraint.getNode();
 //			updateConstraintNode(constraintNode, connectorName, instanceRoot.getFeature().getName());
@@ -909,7 +909,7 @@
 //			extFeatureModel.addConstraint(newConstraint);
 //		}
 //	}
-//	
+//
 //	private void parseInterfaceImport(final Tree root) throws RecognitionException {
 //		final LinkedList<Tree> nodeList = getChildren(root);
 //
@@ -918,7 +918,7 @@
 //			final String interfaceName = idNode.getText();
 //			final Tree nameNode = checkTree(nodeList.poll());
 //			final String varName = nameNode.getText();
-//			
+//
 //			if (checkInterfaceModelFile(idNode)) {
 //				if (!extFeatureModel.addInterface(interfaceName, varName)) {
 //					reportWarning(idNode, THE_VARIABLE_NAME + varName + IS_ALREADY_IN_USE_);
@@ -926,7 +926,7 @@
 //			}
 //		}
 //	}
-//	
+//
 //	private void parseInstanceImport(final Tree root) throws RecognitionException {
 //		final LinkedList<Tree> nodeList = getChildren(root);
 //
@@ -935,7 +935,7 @@
 //			final String interfaceName = idNode.getText();
 //			final Tree nameNode = checkTree(nodeList.poll());
 //			final String varName = nameNode.getText();
-//			
+//
 //			if (checkExternalModelFile(idNode)) {
 //				if (!extFeatureModel.addInstance(interfaceName, varName)) {
 //					reportWarning(idNode, THE_VARIABLE_NAME + varName + IS_ALREADY_IN_USE_);
@@ -970,7 +970,7 @@
 //		rootFeature.setAnd();
 //		rootFeature.setAbstract(true);
 //		rootFeature.setMandatory(true);
-//		
+//
 //		LinkedList<String> possibleProjects = new LinkedList<String>();
 //		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 //		for (int i = 0; i < projects.length; i++) {
@@ -979,7 +979,7 @@
 //				possibleProjects.add(project.getName());
 //			}
 //		}
-//		
+//
 //		for (Entry<String, UsedModel> parameter : extFeatureModel.getExternalModels().entrySet()) {
 //			if (parameter.getValue().getType() == ExtendedFeature.TYPE_INTERFACE) {
 //				IFeatureStructure parameterFeature = mappingModelFactory.createFeature(mappingModel, parameter.getKey()).getStructure();
@@ -987,7 +987,7 @@
 //				parameterFeature.setAbstract(true);
 //				parameterFeature.setMandatory(true);
 //				rootFeature.addChild(parameterFeature);
-//				
+//
 //				for (String projectName : possibleProjects) {
 //					IFeatureStructure projectFeature = mappingModelFactory.createFeature(mappingModel, parameterFeature.getFeature().getName() + "." + projectName).getStructure();
 //					projectFeature.setAbstract(false);
@@ -996,28 +996,28 @@
 //				}
 //			}
 //		}
-//		
+//
 //		mappingModel.getStructure().setRoot(rootFeature);
 //		extFeatureModel.setMappingModel(mappingModel);
-//		
+//
 //	}
 //
 //	private void parseUse(Tree root, IFeature parent) throws RecognitionException {
 //		final LinkedList<Tree> childList = getChildren(root);
 //		final Tree useNameNode = checkTree(childList.poll());
 //		final String varName = useNameNode.getText();
-//		
+//
 //		if (!usedVariables.add(varName)) {
 //			reportWarning(useNameNode, format("The Variable with the name %s was already used in this model.", varName));
 //			return;
 //		}
-//		
+//
 //		UsedModel usedModel = extFeatureModel.getExternalModel(varName);
 //		if (usedModel == null) {
 //			reportWarning(useNameNode, format("No variable with the name %s found.", varName));
 //			return;
 //		}
-//		
+//
 //		switch (usedModel.getType()) {
 //		case ExtendedFeature.TYPE_INTERFACE:
 //			final IFeatureModel interfaceModel = getInterfaceFeatureModel(usedModel.getModelName(), useNameNode);
@@ -1037,21 +1037,21 @@
 //			reportWarning(useNameNode, format("The variable with the name %s is no interface or instance.", varName));
 //		}
 //	}
-//	
+//
 //	private void reportWarning(Tree curNode, String message) {
 //		if (modelMarkerHandler != null) {
 //			modelMarkerHandler.createModelMarker(message, org.eclipse.core.resources.IMarker.SEVERITY_WARNING, curNode.getLine());
 //		}
-//		Logger.logWarning(message + " (at line "+ curNode.getLine() + ((featureModelFile != null)?IN_FILE + featureModelFile.getName():"") + ": \"" + curNode.getText() + "\")");		
+//		Logger.logWarning(message + " (at line "+ curNode.getLine() + ((featureModelFile != null)?IN_FILE + featureModelFile.getName():"") + ": \"" + curNode.getText() + "\")");
 //	}
-//	
+//
 //	private Tree checkTree(Tree root) throws RecognitionException {
 //		if (root instanceof CommonErrorNode) {
 //			throwException(((CommonErrorNode)root).trappedException, root);
 //		}
 //		return root;
-//	}	
-//	
+//	}
+//
 //	private void reportSyntaxError(Tree curNode) throws RecognitionException {
 //		checkTree(curNode);
 //		final RecognitionException ex = new RecognitionException();
@@ -1059,7 +1059,7 @@
 //		ex.charPositionInLine = 1;
 //		throwException(ex, curNode);
 //	}
-//	
+//
 //	private void throwException(RecognitionException e, Tree curNode) throws RecognitionException {
 //		if (modelMarkerHandler != null) {
 //			final String message = ILLEGAL_SYNTAX_IN_LINE + e.line + ":" + e.charPositionInLine + ". " + curNode.getText();

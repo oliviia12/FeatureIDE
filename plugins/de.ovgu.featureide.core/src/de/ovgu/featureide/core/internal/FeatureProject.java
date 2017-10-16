@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -112,7 +112,7 @@ import de.ovgu.featureide.fm.core.io.ProblemList;
 import de.ovgu.featureide.fm.core.io.manager.ConfigurationManager;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager.FeatureModelSnapshot;
-import de.ovgu.featureide.fm.core.io.manager.FileHandler;
+import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
 import de.ovgu.featureide.fm.core.job.LongRunningJob;
 import de.ovgu.featureide.fm.core.job.LongRunningMethod;
 import de.ovgu.featureide.fm.core.job.LongRunningWrapper;
@@ -120,7 +120,7 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 
 /**
  * Class that encapsulates any data and method related to FeatureIDE projects.
- * 
+ *
  * @author Marcus Leich
  * @author Thomas Thuem
  * @author Tom Brosch
@@ -136,17 +136,18 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		/**
 		 * listens to changed feature names
 		 */
+		@Override
 		public void propertyChange(FeatureIDEEvent evt) {
 			switch (evt.getEventType()) {
 			case FEATURE_NAME_CHANGED:
-				String oldName = (String) evt.getOldValue();
-				String newName = (String) evt.getNewValue();
-				FeatureProject.this.renameFeature((IFeatureModel) evt.getSource(), oldName, newName);
+				final String oldName = (String) evt.getOldValue();
+				final String newName = (String) evt.getNewValue();
+				renameFeature((IFeatureModel) evt.getSource(), oldName, newName);
 				break;
 			case MODEL_DATA_SAVED:
 				try {
 					createAndDeleteFeatureFolders();
-				} catch (CoreException e) {
+				} catch (final CoreException e) {
 					CorePlugin.getDefault().logError(e);
 				}
 				break;
@@ -200,6 +201,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	private boolean configurationUpdate = false;
 
+	@Override
 	public String getFeaturestubPath() {
 		return featureStubPath;
 	}
@@ -233,14 +235,14 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 						// set marker for each folder
 						if (folder.exists()) {
 							workMonitor.setRemainingWork(folder.members().length);
-							for (IResource res : folder.members()) {
-								if (res.exists() && res instanceof IFolder) {
+							for (final IResource res : folder.members()) {
+								if (res.exists() && (res instanceof IFolder)) {
 									setFeatureModuleMarker(model, (IFolder) res);
 								}
 								workMonitor.step();
 							}
 						}
-					} catch (CoreException e) {
+					} catch (final CoreException e) {
 						LOGGER.logError(e);
 					}
 					return true;
@@ -255,7 +257,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 					deleteConfigurationMarkers(folder, IResource.DEPTH_ZERO);
 					workMonitor.setRemainingWork(7);
 					next(CALCULATE_CORE_AND_DEAD_FEATURES, workMonitor);
-					List<String> concreteFeatures = (List<String>) getOptionalConcreteFeatures();
+					final List<String> concreteFeatures = (List<String>) getOptionalConcreteFeatures();
 					next(GET_SELECTION_MATRIX, workMonitor);
 					final boolean[][] selectionMatrix = getSelectionMatrix(concreteFeatures);
 					next(GET_FALSE_OPTIONAL_FEATURES, workMonitor);
@@ -286,9 +288,9 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				}
 
 				private String createShortMessage(Collection<String> features) {
-					StringBuilder message = new StringBuilder();
+					final StringBuilder message = new StringBuilder();
 					int addedFeatures = 0;
-					for (String feature : features) {
+					for (final String feature : features) {
 						message.append(feature);
 						message.append(", ");
 						if (addedFeatures++ >= 10) {
@@ -296,7 +298,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 							break;
 						}
 					}
-					if (addedFeatures < 10 && addedFeatures > 0) {
+					if ((addedFeatures < 10) && (addedFeatures > 0)) {
 						message.delete(message.lastIndexOf(", "), message.lastIndexOf(", ") + 2);
 					}
 
@@ -305,7 +307,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			});
 
 	private static FeatureModelManager getFeatureModelManager(IProject project) {
-		IFile modelFile = (project.getFile("mpl.velvet").exists()) ? project.getFile("mpl.velvet") : project.getFile("model.xml");
+		final IFile modelFile = (project.getFile("mpl.velvet").exists()) ? project.getFile("mpl.velvet") : project.getFile("model.xml");
 
 		return FeatureModelManager.getInstance(Paths.get(modelFile.getLocationURI()));
 	}
@@ -313,7 +315,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	/**
 	 * Creating a new ProjectData includes creating folders if they don't exist,
 	 * registering workspace listeners and initialization of the wrapper object.
-	 * 
+	 *
 	 * @param aProject
 	 *            the FeatureIDE project
 	 */
@@ -323,7 +325,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 		try {
 			project.refreshLocal(IResource.DEPTH_ONE, null);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 
@@ -341,21 +343,21 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		try {
 			// workaround needed for project imports
 			project.refreshLocal(IResource.DEPTH_INFINITE, null);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 
-		String projectBuildPath = getProjectBuildPath();
+		final String projectBuildPath = getProjectBuildPath();
 
 		try {
 			// just create the bin folder if project hat only the FeatureIDE
 			// Nature
-			if (project.getDescription().getNatureIds().length == 1 && project.hasNature(FeatureProjectNature.NATURE_ID)) {
+			if ((project.getDescription().getNatureIds().length == 1) && project.hasNature(FeatureProjectNature.NATURE_ID)) {
 				if (projectBuildPath.isEmpty() && getProjectSourcePath().isEmpty()) {
 					binFolder = FMCorePlugin.getFolder(project, "bin");
 				}
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		libFolder = FMCorePlugin.getFolder(project, "lib");
@@ -366,7 +368,8 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		fstModel = null;
 		// loading model data and listen to changes in the model file
 		addModelListener();
-		Job job = new Job(LOAD_MODEL) {
+		final Job job = new Job(LOAD_MODEL) {
+			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				if (loadModel()) {
 					return Status.OK_STATUS;
@@ -381,7 +384,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		setComposerID(getComposerID());
 		setPaths(getProjectSourcePath(), getProjectBuildPath(), getProjectConfigurationPath());
 
-		IComposerExtensionClass composer = getComposer();
+		final IComposerExtensionClass composer = getComposer();
 		// adds the compiler to the feature project if it is an older project
 		if (composer != null) {
 			if (sourceFolder != null) {
@@ -394,12 +397,13 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		if (getFeatureModel() instanceof ExtendedFeatureModel) {
 			try {
 				modelFile.getModelFile().touch(null);
-			} catch (CoreException e) {
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 			}
 		}
 	}
 
+	@Override
 	public void dispose() {
 		removeModelListener();
 	}
@@ -407,7 +411,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	/**
 	 * Loads the model again from the file. Attend that all local changes in the
 	 * model get lost.<br>
-	 * 
+	 *
 	 * Before loading, all error markers will be deleted and afterwards new ones
 	 * might be created if some errors occur.
 	 */
@@ -417,7 +421,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		try {
 			//			modelReader.readFromFile(modelFile.getModelFile());
 			getComposer();
-			if (composerExtension != null && composerExtension.createFolderForFeatures()) {
+			if ((composerExtension != null) && composerExtension.createFolderForFeatures()) {
 				createAndDeleteFeatureFolders();
 				setAllFeatureModuleMarkers();
 			}
@@ -427,7 +431,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			//			modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, 0);
 			//		} catch (UnsupportedModelException e) {
 			//			modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, e.lineNumber);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(ERROR_WHILE_LOADING_FEATURE_MODEL_FROM + modelFile.getModelFile(), e);
 		}
 		return false;
@@ -435,16 +439,16 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	/**
 	 * Reads the feature order from the deprecated order file if it still exists
-	 * 
+	 *
 	 * @throws CoreException
-	 * 
+	 *
 	 */
 	private void readFeatureOrder() throws CoreException {
-		IFile orderFile = project.getFile(".order");
+		final IFile orderFile = project.getFile(".order");
 		final IFeatureModel featureModel = featureModelManager.getObject();
 		if (featureModel.getFeatureOrderList().isEmpty() && !featureModel.getProperty().isFeatureOrderInXML() && orderFile.exists()) {
 
-			FileHandler.load(Paths.get(orderFile.getLocationURI()), featureModel, new FeatureOrderFormat());
+			SimpleFileHandler.load(Paths.get(orderFile.getLocationURI()), featureModel, new FeatureOrderFormat());
 			// write feature order to model
 			// XmlFeatureModelWriter modelWriter = new
 			// XmlFeatureModelWriter(featureModel);
@@ -484,23 +488,23 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		final IFeatureModel featureModel = featureModelManager.getObject();
 		// create folders for all layers
 		if (featureModel instanceof ExtendedFeatureModel) {
-			for (IFeature feature : featureModel.getFeatures()) {
-				if (feature.getStructure().isConcrete() && feature instanceof ExtendedFeature && !((ExtendedFeature) feature).isFromExtern()) {
+			for (final IFeature feature : featureModel.getFeatures()) {
+				if (feature.getStructure().isConcrete() && (feature instanceof ExtendedFeature) && !((ExtendedFeature) feature).isFromExtern()) {
 					createFeatureFolder(feature.getName());
 				}
 			}
 		} else {
-			for (IFeature feature : featureModel.getFeatures()) {
+			for (final IFeature feature : featureModel.getFeatures()) {
 				if (feature.getStructure().isConcrete()) {
 					createFeatureFolder(feature.getName());
 				}
 			}
 		}
 		// delete all empty folders which do not anymore belong to layers
-		for (IResource res : sourceFolder.members()) {
-			if (res instanceof IFolder && res.isAccessible()) {
+		for (final IResource res : sourceFolder.members()) {
+			if ((res instanceof IFolder) && res.isAccessible()) {
 				final IFeature feature = featureModel.getFeature(res.getName());
-				if (feature == null || !feature.getStructure().isConcrete()) {
+				if ((feature == null) || !feature.getStructure().isConcrete()) {
 					final IFolder folder = (IFolder) res;
 					folder.refreshLocal(IResource.DEPTH_ONE, null);
 					if (folder.members().length == 0) {
@@ -521,12 +525,12 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	private void createFeatureFolder(String name) {
 		try {
-			IFolder folder = sourceFolder.getFolder(name);
+			final IFolder folder = sourceFolder.getFolder(name);
 			if (!folder.exists() && composerExtension.hasFeatureFolder() && composerExtension.createFolderForFeatures()) {
 				folder.create(false, true, null);
 				LOGGER.fireFeatureFolderChanged(folder);
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_WARNING, 0);
 		}
 	}
@@ -534,7 +538,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	private void renameFeature(final IFeatureModel model, String oldName, String newName) {
 		final IComposerExtensionClass composer = getComposer();
 		boolean renamePerformed = false;
-		IJobManager manager = Job.getJobManager();
+		final IJobManager manager = Job.getJobManager();
 		try {
 			manager.beginRule(ModelScheduleRule.RULE, null);
 			renamePerformed = FMComposerManager.getFMComposerExtension(getProject()).performRenaming(oldName, newName, project);
@@ -544,14 +548,14 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		if (!renamePerformed && composer.hasFeatureFolder()) {
 			try {
 				sourceFolder.refreshLocal(IResource.DEPTH_ONE, null);
-				IFolder folder = sourceFolder.getFolder(oldName);
+				final IFolder folder = sourceFolder.getFolder(oldName);
 				if (folder.isAccessible()) {
-					IPath newPath = sourceFolder.getFolder(newName).getFullPath();
+					final IPath newPath = sourceFolder.getFolder(newName).getFullPath();
 					folder.move(newPath, true, null);
 					folder.refreshLocal(IResource.DEPTH_ZERO, null);
 					LOGGER.fireFeatureFolderChanged(folder);
 				}
-			} catch (CoreException e) {
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 				modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_WARNING, 0);
 			}
@@ -567,14 +571,14 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 						@Override
 						public boolean visit(IResource resource) throws CoreException {
 							final String name = resource.getName();
-							if (resource instanceof IFile && name.endsWith(suffix)) {
+							if ((resource instanceof IFile) && name.endsWith(suffix)) {
 								ConfigurationManager.getInstance(Paths.get(resource.getLocationURI()), model.getSourceFile()).save();
 							}
 							return true;
 						}
 					}, IResource.DEPTH_ONE, IResource.NONE);
 					configFolder.refreshLocal(IResource.DEPTH_ONE, null);
-				} catch (CoreException e) {
+				} catch (final CoreException e) {
 					LOGGER.logError(e);
 				} finally {
 					configurationUpdate = false;
@@ -583,56 +587,64 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 	}
 
+	@Override
 	public String getProjectName() {
 		return project.getName();
 	}
 
+	@Override
 	public IFile getCurrentConfiguration() {
-		if (currentConfiguration != null && currentConfiguration.exists())
+		if ((currentConfiguration != null) && currentConfiguration.exists()) {
 			return currentConfiguration;
+		}
 
-		if (getConfigFolder() == null)
+		if (getConfigFolder() == null) {
 			return null;
+		}
 
 		String configuration = null;
 		try {
 			if (project.exists() && project.isOpen()) {
 				configuration = project.getPersistentProperty(configConfigID);
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 
 		if (configuration != null) {
-			IFile file = configFolder.getFile(configuration);
-			if (file.exists())
+			final IFile file = configFolder.getFile(configuration);
+			if (file.exists()) {
 				return file;
+			}
 		}
 
 		// no valid configuration found
-		if (!getConfigFolder().exists())
+		if (!getConfigFolder().exists()) {
 			return null;
+		}
 
-		List<IFile> configs = getAllConfigurations();
-		if (configs.isEmpty())
+		final List<IFile> configs = getAllConfigurations();
+		if (configs.isEmpty()) {
 			return null;
+		}
 
 		// select the first configuration
-		IFile config = configs.get(0);
+		final IFile config = configs.get(0);
 		setCurrentConfiguration(config);
 		return config;
 	}
 
+	@Override
 	public void setCurrentConfiguration(IFile file) {
 		final boolean performBuild = currentConfiguration != null;
 		currentConfiguration = file;
 
-		int offset = getConfigFolder().getProjectRelativePath().toString().length();
-		String configPath = file.getProjectRelativePath().toString().substring(offset);
+		final int offset = getConfigFolder().getProjectRelativePath().toString().length();
+		final String configPath = file.getProjectRelativePath().toString().substring(offset);
 		try {
 			project.setPersistentProperty(configConfigID, configPath);
 			LOGGER.fireCurrentConfigurationChanged(this);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 
@@ -641,13 +653,13 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		// Eclipse calls builders, if a resource as changed, but in this case
 		// actually no resource in the file system changes.
 		if (performBuild) {
-			LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+			final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
 				@Override
 				public Boolean execute(IMonitor workMonitor) throws Exception {
 					buildRelevantChanges = true;
 					try {
 						project.build(IncrementalProjectBuilder.FULL_BUILD, null);
-					} catch (CoreException e) {
+					} catch (final CoreException e) {
 						LOGGER.logError(e);
 					}
 					return true;
@@ -657,27 +669,33 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 	}
 
+	@Override
 	@CheckForNull
 	public String getBuildPath() {
 		return buildFolder != null ? buildFolder.getRawLocation().toOSString() : null;
 	}
 
+	@Override
 	public IFolder getBinFolder() {
 		return binFolder;
 	}
 
+	@Override
 	public IFolder getLibFolder() {
 		return libFolder;
 	}
 
+	@Override
 	public IFolder getBuildFolder() {
 		return buildFolder;
 	}
 
+	@Override
 	public IFolder getConfigFolder() {
 		return configFolder;
 	}
 
+	@Override
 	public IFolder getSourceFolder() {
 		if (composerExtension.hasSourceFolder()) {
 			return sourceFolder;
@@ -686,42 +704,51 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 	}
 
+	@Override
 	public String getBinPath() {
 		return binFolder.getRawLocation().toOSString();
 	}
 
+	@Override
 	public String getConfigPath() {
 		return configFolder.getRawLocation().toOSString();
 	}
 
+	@Override
 	public String getSourcePath() {
 		return sourceFolder == null ? null : sourceFolder.getRawLocation().toOSString();
 	}
 
+	@Override
 	public String getFeatureName(IResource resource) {
 		return getFolderName(resource, sourceFolder);
 	}
 
+	@Override
 	public String getConfigName(IResource resource) {
 		return getFolderName(resource, buildFolder);
 	}
 
+	@Override
 	public String getFolderName(IResource resource, IFolder folder) {
 		// check whether resource belongs to this project
-		if (resource.getProject() != project)
+		if (resource.getProject() != project) {
 			return null;
-		IPath path = resource.getFullPath();
-		String segment = path.segment(1);
-		if (segment != null && segment.equals(folder.getName())) {
+		}
+		final IPath path = resource.getFullPath();
+		final String segment = path.segment(1);
+		if ((segment != null) && segment.equals(folder.getName())) {
 			return path.segment(2);
 		}
 		return null;
 	}
 
+	@Override
 	public IProject getProject() {
 		return project;
 	}
 
+	@Override
 	public ProjectSignatures getProjectSignatures() {
 		if (fstModel != null) {
 			return fstModel.getProjectSignatures();
@@ -729,59 +756,68 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return null;
 	}
 
+	@Override
 	public FSTModel getFSTModel() {
 		return fstModel;
 	}
 
+	@Override
 	public IFeatureModel getFeatureModel() {
 		return featureModelManager.getObject();
 	}
 
+	@Override
 	public IFile getModelFile() {
 		return modelFile.getModelFile();
 	}
 
+	@Override
 	public String[] getJavaClassPath() {
-		ArrayList<String> cp = new ArrayList<String>();
+		final ArrayList<String> cp = new ArrayList<String>();
 		cp.add(".");
 		cp.add(binFolder.getRawLocation().toOSString());
 		if (libFolder.exists()) { // delete lib folder implementation
 			cp.add(libFolder.getRawLocation().toOSString());
 			try {
-				for (IResource res : libFolder.members())
-					if (res instanceof IFile && ((IFile) res).getName().endsWith(".jar"))
+				for (final IResource res : libFolder.members()) {
+					if ((res instanceof IFile) && ((IFile) res).getName().endsWith(".jar")) {
 						cp.add(res.getRawLocation().toOSString());
-			} catch (CoreException e) {
+					}
+				}
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 			}
 		}
 
-		String[] paths = getAdditionalJavaClassPath();
-		for (String path : paths)
+		final String[] paths = getAdditionalJavaClassPath();
+		for (final String path : paths) {
 			cp.add(path);
+		}
 
 		return cp.toArray(new String[cp.size()]);
 	}
 
+	@Override
 	public String[] getAdditionalJavaClassPath() {
-		ArrayList<String> cp = new ArrayList<String>();
+		final ArrayList<String> cp = new ArrayList<String>();
 		String classPath = null;
 		try {
 			classPath = project.getPersistentProperty(javaClassPathID);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		if (classPath != null) {
-			String[] paths = classPath.split(";");
-			for (String path : paths)
+			final String[] paths = classPath.split(";");
+			for (final String path : paths) {
 				cp.add(path);
+			}
 		}
 		return cp.toArray(new String[cp.size()]);
 	}
 
 	/**
 	 * refreshes Feature Module Markers for all folders in the source folder
-	 * 
+	 *
 	 * @param featureModel
 	 * @param sourceFolder
 	 */
@@ -789,10 +825,10 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	 * The first job is waiting for the synchronization job to finish and sets
 	 * the variable waiting, so the job will finish early. Than a new job is
 	 * started.
-	 * 
+	 *
 	 * If <syncJob.join()> is called outside of a job the workspace is blocked,
 	 * because the method has a higher priority than the synchronization job.
-	 * 
+	 *
 	 * The goal of this is that a synchronization can't be executed
 	 * unnecessarily multiple times.
 	 */
@@ -806,16 +842,16 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	 * representing a feature module includes markers for: empty folders for
 	 * concrete features, non-empty folders for abstract features, folders
 	 * without corresponding feature.
-	 * 
+	 *
 	 * @param featureModel
 	 * @param folder
 	 *            the folder
 	 */
 	private void setFeatureModuleMarker(final IFeatureModel featureModel, IFolder folder) {
-		IFeature feature = featureModel.getFeature(folder.getName());
+		final IFeature feature = featureModel.getFeature(folder.getName());
 		try {
 			folder.deleteMarkers(FEATURE_MODULE_MARKER, true, IResource.DEPTH_ZERO);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 
@@ -827,23 +863,23 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		} else {
 			try {
 				final int memberCount = folder.members().length;
-				if (feature.getStructure().isConcrete() && memberCount == 0) {
+				if (feature.getStructure().isConcrete() && (memberCount == 0)) {
 					message = THE_FEATURE_MODULE_IS_EMPTY__YOU_EITHER_SHOULD_IMPLEMENT_IT_COMMA__MARK_THE_FEATURE_AS_ABSTRACT_COMMA__OR_REMOVE_THE_FEATURE_FROM_THE_FEATURE_MODEL_;
-				} else if (feature.getStructure().isAbstract() && memberCount > 0) {
+				} else if (feature.getStructure().isAbstract() && (memberCount > 0)) {
 					message = "This feature module is ignored as \"" + feature.getName() + "\" is marked as abstract.";
 				}
-			} catch (CoreException e) {
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 			}
 		}
 		if (message != null) {
 			try {
-				if (folder.findMarkers(FEATURE_MODULE_MARKER, false, IResource.DEPTH_ZERO).length == 0 && folder.exists()) {
-					IMarker marker = folder.createMarker(FEATURE_MODULE_MARKER);
+				if ((folder.findMarkers(FEATURE_MODULE_MARKER, false, IResource.DEPTH_ZERO).length == 0) && folder.exists()) {
+					final IMarker marker = folder.createMarker(FEATURE_MODULE_MARKER);
 					marker.setAttribute(IMarker.MESSAGE, message);
 					marker.setAttribute(IMarker.SEVERITY, severity);
 				}
-			} catch (CoreException e) {
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 			}
 		}
@@ -853,50 +889,54 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		if (!sourceFolder.exists()) {
 			return false;
 		}
-		for (IResource res : sourceFolder.members())
-			if (res instanceof IFolder && ((IFolder) res).members().length > 0)
+		for (final IResource res : sourceFolder.members()) {
+			if ((res instanceof IFolder) && (((IFolder) res).members().length > 0)) {
 				return false;
+			}
+		}
 		return true;
 	}
 
+	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
 		// if something in source folder changed
-		if (sourceFolder != null && event.getDelta().findMember(sourceFolder.getFullPath()) != null) {
+		if ((sourceFolder != null) && (event.getDelta().findMember(sourceFolder.getFullPath()) != null)) {
 			// set markers, only if event is not fired from changes to markers
-			if (event.findMarkerDeltas(FEATURE_MODULE_MARKER, false).length == 0 && composerExtension != null && composerExtension.createFolderForFeatures()) {
+			if ((event.findMarkerDeltas(FEATURE_MODULE_MARKER, false).length == 0) && (composerExtension != null)
+					&& composerExtension.createFolderForFeatures()) {
 				setAllFeatureModuleMarkers();
 			}
 		}
 
-		IPath modelPath = modelFile.getModelFile().getFullPath();
+		final IPath modelPath = modelFile.getModelFile().getFullPath();
 		if (checkModelChange(event.getDelta().findMember(modelPath))) {
 			setAllFeatureModuleMarkers();
 			return;
 		}
 
 		try {
-			List<IFile> configs = getAllConfigurations();
-			IResourceDelta configurationDelta = event.getDelta().findMember(configFolder.getFullPath());
+			final List<IFile> configs = getAllConfigurations();
+			final IResourceDelta configurationDelta = event.getDelta().findMember(configFolder.getFullPath());
 			if (configurationDelta != null) {
-				for (IResourceDelta delta : configurationDelta.getAffectedChildren(IResourceDelta.REMOVED)) {
+				for (final IResourceDelta delta : configurationDelta.getAffectedChildren(IResourceDelta.REMOVED)) {
 					CorePlugin.getDefault().logInfo(delta.toString() + " was removed.");
 					//if configuration was removed update warnings
 					checkFeatureCoverage();
 				}
 			}
-			List<IFile> changedConfigs = new ArrayList<IFile>();
-			IFile currentConfig = getCurrentConfiguration();
-			for (IFile config : configs) {
-				IResourceDelta delta = event.getDelta().findMember(config.getFullPath());
+			final List<IFile> changedConfigs = new ArrayList<IFile>();
+			final IFile currentConfig = getCurrentConfiguration();
+			for (final IFile config : configs) {
+				final IResourceDelta delta = event.getDelta().findMember(config.getFullPath());
 				if (delta != null) {
 					checkFeatureCoverage();
 					break;
 				}
 			}
 
-			for (IFile config : configs) {
-				IResourceDelta delta = event.getDelta().findMember(config.getFullPath());
-				if (delta != null && (delta.getFlags() & IResourceDelta.CONTENT) != 0) {
+			for (final IFile config : configs) {
+				final IResourceDelta delta = event.getDelta().findMember(config.getFullPath());
+				if ((delta != null) && ((delta.getFlags() & IResourceDelta.CONTENT) != 0)) {
 					changedConfigs.add(config);
 					if (config.equals(currentConfig)) {
 						buildRelevantChanges = true;
@@ -908,11 +948,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				checkConfigurations(changedConfigs);
 			}
 
-			if (!buildRelevantChanges && sourceFolder != null && sourceFolder.isAccessible()) {
-				if (currentConfig != null && composerExtension != null && composerExtension.hasFeatureFolder()) {
+			if (!buildRelevantChanges && (sourceFolder != null) && sourceFolder.isAccessible()) {
+				if ((currentConfig != null) && (composerExtension != null) && composerExtension.hasFeatureFolder()) {
 					// ignore changes in unselected feature folders
-					List<String> selectedFeatures = readFeaturesfromConfigurationFile(currentConfig.getRawLocation().toFile());
-					for (IResource res : sourceFolder.members()) {
+					final List<String> selectedFeatures = readFeaturesfromConfigurationFile(currentConfig.getRawLocation().toFile());
+					for (final IResource res : sourceFolder.members()) {
 						if (res instanceof IFolder) {
 							if (selectedFeatures.contains(res.getName())) {
 								checkSourceFolder((IFolder) res, event);
@@ -924,11 +964,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				}
 			}
 
-			if (composerExtension != null && buildFolder != null && buildFolder.isAccessible()) {
+			if ((composerExtension != null) && (buildFolder != null) && buildFolder.isAccessible()) {
 				checkBuildFolder(buildFolder, event);
 			}
 
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 	}
@@ -936,11 +976,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	/**
 	 * checks if something at source folder has been changed, except of marker
 	 * changes
-	 * 
+	 *
 	 */
 	private void checkSourceFolder(IFolder folder, IResourceChangeEvent event) throws CoreException {
 		if (!buildRelevantChanges) {
-			IResourceDelta delta = event.getDelta().findMember(folder.getFullPath());
+			final IResourceDelta delta = event.getDelta().findMember(folder.getFullPath());
 			if (delta != null) {
 				if (delta.getKind() != IResourceDelta.NO_CHANGE) {
 					if (checkSourceFolderChanges(folder, event)) {
@@ -952,23 +992,23 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	private boolean checkSourceFolderChanges(IFolder folder, IResourceChangeEvent event) throws CoreException {
-		IResourceDelta d = event.getDelta().findMember(folder.getFullPath());
-		if (d != null && (d.getFlags() & IResourceDelta.MARKERS) != 0) {
+		final IResourceDelta d = event.getDelta().findMember(folder.getFullPath());
+		if ((d != null) && ((d.getFlags() & IResourceDelta.MARKERS) != 0)) {
 			return false;
 		}
 
-		for (IResource res : folder.members()) {
+		for (final IResource res : folder.members()) {
 			if (res instanceof IFolder) {
-				IResourceDelta d2 = event.getDelta().findMember(res.getFullPath());
+				final IResourceDelta d2 = event.getDelta().findMember(res.getFullPath());
 				if (d2 != null) {
 					if (d2.getKind() != IResourceDelta.NO_CHANGE) {
 						return checkSourceFolderChanges((IFolder) res, event);
 					}
 				}
 			} else {
-				IResourceDelta delta = event.getDelta().findMember(res.getFullPath());
+				final IResourceDelta delta = event.getDelta().findMember(res.getFullPath());
 				if (delta != null) {
-					if ((delta.getFlags() & IResourceDelta.CONTENT) != 0 || delta.getKind() == IResourceDelta.ADDED) {
+					if (((delta.getFlags() & IResourceDelta.CONTENT) != 0) || (delta.getKind() == IResourceDelta.ADDED)) {
 						return true;
 					} else {
 						return false;
@@ -989,7 +1029,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 			private void checkBuildFolder(final IFolder folder) throws CoreException {
 				if (folder.isAccessible()) {
-					for (IResource res : folder.members()) {
+					for (final IResource res : folder.members()) {
 						if (res instanceof IFolder) {
 							checkBuildFolder((IFolder) res);
 						} else if (res instanceof IFile) {
@@ -1004,32 +1044,34 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}, REFRESH_COLLABORATION_VIEW).schedule();
 	}
 
+	@Override
 	public List<IFile> getAllConfigurations() {
-		List<IFile> configs = new ArrayList<IFile>();
-		if (!configFolder.isAccessible())
+		final List<IFile> configs = new ArrayList<IFile>();
+		if (!configFolder.isAccessible()) {
 			return configs;
+		}
 		try {
-			for (IResource res : configFolder.members()) {
-				if (res instanceof IFile && ConfigFormatManager.getInstance().hasFormat(res.getName())) {
+			for (final IResource res : configFolder.members()) {
+				if ((res instanceof IFile) && ConfigFormatManager.getInstance().hasFormat(res.getName())) {
 					configs.add((IFile) res);
 				}
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		return configs;
 	}
 
 	private boolean checkModelChange(IResourceDelta delta) {
-		return delta != null && (delta.getFlags() & IResourceDelta.CONTENT) != 0;
+		return (delta != null) && ((delta.getFlags() & IResourceDelta.CONTENT) != 0);
 	}
 
 	private void checkConfigurations(final List<IFile> files) {
-		if (files == null || files.isEmpty()) {
+		if ((files == null) || files.isEmpty()) {
 			return;
 		}
 
-		LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+		final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
 			@Override
 			public Boolean execute(IMonitor workMonitor) throws Exception {
 				workMonitor.setRemainingWork(2);
@@ -1040,7 +1082,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 					IMonitor subTask = workMonitor.subTask(1);
 					subTask.setTaskName(DELETE_CONFIGURATION_MARKERS);
 					subTask.setRemainingWork(files.size());
-					for (IFile file : files) {
+					for (final IFile file : files) {
 						deleteConfigurationMarkers(file, IResource.DEPTH_ZERO);
 						subTask.step();
 					}
@@ -1048,24 +1090,24 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 					subTask = workMonitor.subTask(1);
 					subTask.setRemainingWork(files.size());
 					// check validity
-					for (IFile file : files) {
+					for (final IFile file : files) {
 						subTask.setTaskName(CHECK_VALIDITY_OF + " - " + file.getName());
-						final ProblemList lastProblems = FileHandler.load(Paths.get(file.getLocationURI()), config, ConfigFormatManager.getInstance());
+						final ProblemList lastProblems = SimpleFileHandler.load(Paths.get(file.getLocationURI()), config, ConfigFormatManager.getInstance());
 						final ConfigurationPropagator propagator = snapshot.getPropagator(config, true);
 						if (!LongRunningWrapper.runMethod(propagator.isValid())) {
 							String name = file.getName();
 							name = name.substring(0, name.lastIndexOf('.'));
-							String message = CONFIGURATION_ + name + IS_INVALID;
+							final String message = CONFIGURATION_ + name + IS_INVALID;
 							createConfigurationMarker(file, message, 0, IMarker.SEVERITY_ERROR);
 						}
 						// create warnings (e.g., for features that are not available anymore)
-						for (Problem warning : lastProblems) {
+						for (final Problem warning : lastProblems) {
 							createConfigurationMarker(file, warning.getMessage(), warning.getLine(), IMarker.SEVERITY_WARNING);
 						}
 						subTask.step();
 					}
 					subTask.done();
-				} catch (OutOfMemoryError e) {
+				} catch (final OutOfMemoryError e) {
 					LOGGER.logError(e);
 					return false;
 				} finally {
@@ -1086,6 +1128,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		configurationChecker.schedule();
 	}
 
+	@Override
 	public Collection<String> getFalseOptionalConfigurationFeatures() {
 		return getFalseOptionalConfigurationFeatures(getSelectionMatrix(), (List<String>) getOptionalConcreteFeatures());
 	}
@@ -1094,6 +1137,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return checkValidSelections(selections, false, concreteFeatures);
 	}
 
+	@Override
 	public Collection<String> getUnusedConfigurationFeatures() {
 		return getUnusedConfigurationFeatures(getSelectionMatrix(), (List<String>) getOptionalConcreteFeatures());
 	}
@@ -1133,16 +1177,16 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		final Configuration configuration = new Configuration(featureModelManager.getObject());
 
 		int row = 0;
-		for (IFile file : configurations) {
+		for (final IFile file : configurations) {
 			final boolean[] currentRow = selections[row++];
 			try {
-				FileHandler.load(Paths.get(file.getLocationURI()), configuration, ConfigFormatManager.getInstance());
-			} catch (Exception e) {
+				SimpleFileHandler.load(Paths.get(file.getLocationURI()), configuration, ConfigFormatManager.getInstance());
+			} catch (final Exception e) {
 				FMCorePlugin.getDefault().logError(e);
 			}
 
 			int column = 0;
-			for (String feature : concreteFeatures) {
+			for (final String feature : concreteFeatures) {
 				final SelectableFeature selectablefeature = configuration.getSelectableFeature(feature);
 				if (selectablefeature != null) {
 					currentRow[column] = selectablefeature.getSelection() == Selection.SELECTED;
@@ -1168,11 +1212,13 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return concreteFeatures;
 	}
 
+	@Override
 	public IComposerExtensionClass getComposer() {
 		if (composerExtension == null) {
-			String compositionToolID = getComposerID();
-			if (compositionToolID == null)
+			final String compositionToolID = getComposerID();
+			if (compositionToolID == null) {
 				return null;
+			}
 
 			final ComposerExtensionManager composerManagerInstance = ComposerExtensionManager.getInstance();
 			composerExtension = composerManagerInstance.getComposerById(this, compositionToolID);
@@ -1185,46 +1231,55 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return composerExtension;
 	}
 
+	@Override
 	public String getProjectConfigurationPath() {
 		try {
 			String path = project.getPersistentProperty(configFolderConfigID);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
+			}
 
 			path = getPath(CONFIGS_ARGUMENT);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
-		} catch (Exception e) {
+			}
+		} catch (final Exception e) {
 			LOGGER.logError(e);
 		}
 		return DEFAULT_CONFIGS_PATH;
 	}
 
+	@Override
 	public String getProjectBuildPath() {
 		try {
 			String path = project.getPersistentProperty(buildFolderConfigID);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
+			}
 
 			path = getPath(BUILD_ARGUMENT);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
-		} catch (Exception e) {
+			}
+		} catch (final Exception e) {
 			LOGGER.logError(e);
 		}
 		return DEFAULT_BUILD_PATH;
 	}
 
+	@Override
 	public String getProjectSourcePath() {
 		try {
 			String path = project.getPersistentProperty(sourceFolderConfigID);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
+			}
 
 			path = getPath(SOURCE_ARGUMENT);
-			if (path != null && !path.isEmpty())
+			if ((path != null) && !path.isEmpty()) {
 				return path;
-		} catch (Exception e) {
+			}
+		} catch (final Exception e) {
 			LOGGER.logError(e);
 		}
 		return DEFAULT_SOURCE_PATH;
@@ -1232,12 +1287,12 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	private String getPath(String argument) {
 		try {
-			for (ICommand command : project.getDescription().getBuildSpec()) {
+			for (final ICommand command : project.getDescription().getBuildSpec()) {
 				if (isFIDEBuilder(command)) {
 					return command.getArguments().get(argument);
 				}
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		return null;
@@ -1248,6 +1303,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				|| command.getBuilderName().equals("de.ovgu.featureide.core.mpl.MSPLBuilder");
 	}
 
+	@Override
 	public String getComposerID() {
 		try {
 			String id = project.getPersistentProperty(composerConfigID);
@@ -1255,7 +1311,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				return id;
 			}
 
-			for (ICommand command : project.getDescription().getBuildSpec()) {
+			for (final ICommand command : project.getDescription().getBuildSpec()) {
 				if (isFIDEBuilder(command)) {
 					id = command.getArguments().get(ExtensibleFeatureProjectBuilder.COMPOSER_KEY);
 					if (id != null) {
@@ -1264,20 +1320,21 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				}
 			}
 
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		return null;
 	}
 
+	@Override
 	public void setPaths(String feature, String src, String configuration) {
 		try {
-			IProjectDescription description = project.getDescription();
+			final IProjectDescription description = project.getDescription();
 
-			ICommand[] commands = description.getBuildSpec();
-			for (ICommand command : commands) {
+			final ICommand[] commands = description.getBuildSpec();
+			for (final ICommand command : commands) {
 				if (isFIDEBuilder(command) || command.getBuilderName().equals("org.eclipse.ui.externaltools.ExternalToolBuilder")) {
-					Map<String, String> args = command.getArguments();
+					final Map<String, String> args = command.getArguments();
 					args.put(SOURCE_ARGUMENT, feature);
 					args.put(BUILD_ARGUMENT, src);
 					args.put(CONFIGS_ARGUMENT, configuration);
@@ -1289,22 +1346,23 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			}
 			description.setBuildSpec(commands);
 			project.setDescription(description, null);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 	}
 
+	@Override
 	public void setComposerID(String composerID) {
 		try {
 			project.setPersistentProperty(composerConfigID, composerID);
-			IProjectDescription description = project.getDescription();
+			final IProjectDescription description = project.getDescription();
 
-			LinkedList<ICommand> newCommandList = new LinkedList<ICommand>();
+			final LinkedList<ICommand> newCommandList = new LinkedList<ICommand>();
 			boolean added = false;
-			for (ICommand command : description.getBuildSpec()) {
+			for (final ICommand command : description.getBuildSpec()) {
 				if (isFIDEBuilder(command)) {
 					if (!added) {
-						Map<String, String> args = command.getArguments();
+						final Map<String, String> args = command.getArguments();
 						args.put(ExtensibleFeatureProjectBuilder.COMPOSER_KEY, composerID);
 						command.setArguments(args);
 						// Composer must be the first command
@@ -1315,40 +1373,45 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 					newCommandList.add(command);
 				}
 			}
-			ICommand[] newCommandArray = new ICommand[newCommandList.size()];
+			final ICommand[] newCommandArray = new ICommand[newCommandList.size()];
 			int i = 0;
-			for (ICommand c : newCommandList) {
+			for (final ICommand c : newCommandList) {
 				newCommandArray[i] = c;
 				i++;
 			}
 			description.setBuildSpec(newCommandArray);
 			project.setDescription(description, null);
-		} catch (CoreException ex) {
+		} catch (final CoreException ex) {
 		}
 	}
 
+	@Override
 	public void setAdditionalJavaClassPath(String[] paths) {
-		StringBuilder builder = new StringBuilder();
-		if (paths.length > 0)
+		final StringBuilder builder = new StringBuilder();
+		if (paths.length > 0) {
 			builder.append(paths[0]);
+		}
 		for (int i = 1; i < paths.length; ++i) {
 			builder.append(';');
 			builder.append(paths[i]);
 		}
 		try {
 			project.setPersistentProperty(javaClassPathID, builder.toString());
-		} catch (CoreException ex) {
+		} catch (final CoreException ex) {
 		}
 	}
 
+	@Override
 	public void setFSTModel(FSTModel model) {
 		fstModel = model;
 	}
 
+	@Override
 	public boolean buildRelevantChanges() {
 		return buildRelevantChanges;
 	}
 
+	@Override
 	public void built() {
 		buildRelevantChanges = false;
 	}
@@ -1371,7 +1434,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			} else {
 				return new ArrayList<String>();
 			}
-		} catch (FileNotFoundException e) {
+		} catch (final FileNotFoundException e) {
 			LOGGER.logError(e);
 		} finally {
 			if (scanner != null) {
@@ -1381,21 +1444,23 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return new ArrayList<String>();
 	}
 
+	@Override
 	public String getContractComposition() {
 		String contractComposition = null;
-		ProjectScope ps = new ProjectScope(project);
-		IEclipsePreferences prefs = ps.getNode("de.ovgu.featureide.core");
+		final ProjectScope ps = new ProjectScope(project);
+		final IEclipsePreferences prefs = ps.getNode("de.ovgu.featureide.core");
 		contractComposition = prefs.get("contract", DEFAULT_CONTRACT_COMPOSITION);
 		return contractComposition;
 	}
 
+	@Override
 	public void setContractComposition(String contractComposition) {
 		try {
-			ProjectScope ps = new ProjectScope(project);
-			IEclipsePreferences prefs = ps.getNode("de.ovgu.featureide.core");
+			final ProjectScope ps = new ProjectScope(project);
+			final IEclipsePreferences prefs = ps.getNode("de.ovgu.featureide.core");
 			prefs.put("contract", contractComposition);
 			prefs.flush();
-		} catch (BackingStoreException e) {
+		} catch (final BackingStoreException e) {
 			LOGGER.logError(e);
 		}
 	}
@@ -1403,11 +1468,12 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	private static final QualifiedName META_PRODUCT_GENERATION = new QualifiedName(FeatureProject.class.getName() + "#MetaProductGeneration",
 			FeatureProject.class.getName() + "#MetaProductGeneration");
 
+	@Override
 	public String getMetaProductGeneration() {
 		String metaProductGeneration = null;
 		try {
 			metaProductGeneration = project.getPersistentProperty(META_PRODUCT_GENERATION);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		if (metaProductGeneration == null) {
@@ -1416,10 +1482,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return metaProductGeneration;
 	}
 
+	@Override
 	public void setMetaProductGeneration(String metaProductGeneration) {
 		try {
 			project.setPersistentProperty(META_PRODUCT_GENERATION, metaProductGeneration);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 	}
@@ -1429,11 +1496,12 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return project.getName();
 	}
 
+	@Override
 	public String getCompositionMechanism() {
 		String compositionMechanism = null;
 		try {
 			compositionMechanism = project.getPersistentProperty(compositionMechanismConfigID);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 		if (compositionMechanism == null) {
@@ -1446,10 +1514,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return compositionMechanism;
 	}
 
+	@Override
 	public void setCompositionMechanism(String compositionMechanism) {
 		try {
 			project.setPersistentProperty(compositionMechanismConfigID, compositionMechanism);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LOGGER.logError(e);
 		}
 	}
@@ -1469,7 +1538,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		} else {
 			fileName = "." + fileName + "." + FeatureIDEFormat.EXTENSION;
 		}
-		IFile internalFile = configurationFile.getParent().getFile(Path.fromOSString(fileName));
+		final IFile internalFile = configurationFile.getParent().getFile(Path.fromOSString(fileName));
 
 		return (internalFile.isAccessible()) ? internalFile : null;
 	}
@@ -1479,10 +1548,12 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		return featureModelManager;
 	}
 
+	@Override
 	public void createBuilderMarker(IResource resource, String message, int lineNumber, int severity) {
 		EclipseMarkerHandler.createBuilderMarker((resource != null) ? resource : project, message, lineNumber, severity);
 	}
 
+	@Override
 	public void deleteBuilderMarkers(IResource resource, int depth) {
 		EclipseMarkerHandler.deleteBuilderMarkers(resource, depth);
 	}
@@ -1499,7 +1570,8 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	public void propertyChange(FeatureIDEEvent event) {
 		switch (event.getEventType()) {
 		case MODEL_DATA_OVERRIDDEN:
-			Job job = new Job(LOAD_MODEL) {
+			final Job job = new Job(LOAD_MODEL) {
+				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					if (loadModel()) {
 						final IComposerExtensionClass composerExtension = getComposer();

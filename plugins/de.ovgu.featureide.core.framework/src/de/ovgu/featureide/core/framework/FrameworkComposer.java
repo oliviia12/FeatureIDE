@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -52,13 +52,13 @@ import de.ovgu.featureide.core.framework.activator.FrameworkCorePlugin;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.impl.ConfigFormatManager;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
-import de.ovgu.featureide.fm.core.io.manager.FileHandler;
+import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
 
 /**
  * Framework composer updating .classpath file of eclipse
- * 
+ *
  * @author Daniel Hohmann
- * 
+ *
  */
 public class FrameworkComposer extends ComposerExtensionClass {
 	private FrameworkModelBuilder modelBuilder = null;
@@ -78,7 +78,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	/**
 	 * Creates JARs from all project in "resources" folder inside the main
 	 * projects
-	 * 
+	 *
 	 * @return <code>false</code> if creation was not successful
 	 */
 	private boolean createJARs(IProject project) {
@@ -141,9 +141,9 @@ public class FrameworkComposer extends ComposerExtensionClass {
 		final Path configPath = Paths.get(config.getLocationURI());
 		final Configuration configuration = new Configuration(featureProject.getFeatureModel());
 
-		FileHandler.load(configPath, configuration, ConfigFormatManager.getInstance());
+		SimpleFileHandler.load(configPath, configuration, ConfigFormatManager.getInstance());
 
-		selectedFeatures = new LinkedList<String>();
+		selectedFeatures = new LinkedList<>();
 		for (final IFeature feature : configuration.getSelectedFeatures()) {
 			if (feature.getStructure().isConcrete()) {
 				selectedFeatures.add(feature.getName());
@@ -182,14 +182,14 @@ public class FrameworkComposer extends ComposerExtensionClass {
 			final IFolder subproject = features.getFolder(featureName);
 			if (!subproject.exists()) {
 				try {
-					FrameworkProjectCreator.createSubprojectFolder(parentProjectName+"-"+featureName, subproject);
+					FrameworkProjectCreator.createSubprojectFolder(parentProjectName + "-" + featureName, subproject);
 				} catch (final CoreException e) {
 					FrameworkCorePlugin.getDefault().logError(e);
 				}
 			} else {
 				if (!subproject.getFile(".project").exists()) {
 					try {
-						FrameworkProjectCreator.createSubprojectFolder(parentProjectName+"-"+featureName, subproject);
+						FrameworkProjectCreator.createSubprojectFolder(parentProjectName + "-" + featureName, subproject);
 					} catch (final CoreException e) {
 						FrameworkCorePlugin.getDefault().logError(e);
 					}
@@ -205,7 +205,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 
 	/**
 	 * Checks if library jar is inside jar folder
-	 * 
+	 *
 	 * @param path
 	 * @return
 	 */
@@ -215,7 +215,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Folder with jars
 	 */
 	private IFolder getJarFolder() {
@@ -224,7 +224,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 
 	/**
 	 * Update .classpath file
-	 * 
+	 *
 	 * @param project
 	 */
 	private void setBuildpaths(IProject project) {
@@ -232,7 +232,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 		try {
 			final IJavaProject javaProject = JavaCore.create(project);
 			final IClasspathEntry[] oldEntries = javaProject.getRawClasspath();
-			final List<IClasspathEntry> entries = new ArrayList<IClasspathEntry>();
+			final List<IClasspathEntry> entries = new ArrayList<>();
 			/** copy existing non-feature entries **/
 			for (int i = 0; i < oldEntries.length; i++) {
 				if (oldEntries[i].getEntryKind() == IClasspathEntry.CPE_LIBRARY) {
@@ -268,12 +268,12 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	/**
 	 * creates a list of jars inside a folder<br>
 	 * goes into sub folders
-	 * 
+	 *
 	 * @param parentFolder
 	 * @return list of jars inside parentFolder
 	 */
 	private List<IPath> createNewIPath(IResource parentFolder) {
-		final List<IPath> result = new ArrayList<IPath>();
+		final List<IPath> result = new ArrayList<>();
 		try {
 			final IResource[] members = ((IFolder) parentFolder).members();
 			if (members.length <= 0) {
@@ -308,9 +308,9 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	 * <ul>
 	 * <li>Everytime called when a framework project does not contain pluginLoader or config file</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param project
-	 * 
+	 *
 	 * @return <code>true</code> if files are created without a problem
 	 */
 	private boolean copyRequiredFiles(IFeatureProject project) {
@@ -318,8 +318,8 @@ public class FrameworkComposer extends ComposerExtensionClass {
 		/** Copy plugin loader **/
 		InputStream inputStream = null;
 		try {
-			inputStream = FileLocator.openStream(FrameworkCorePlugin.getDefault().getBundle(), new org.eclipse.core.runtime.Path("resources"
-					+ FileSystems.getDefault().getSeparator() + "PluginLoader.java"), false);
+			inputStream = FileLocator.openStream(FrameworkCorePlugin.getDefault().getBundle(),
+					new org.eclipse.core.runtime.Path("resources" + FileSystems.getDefault().getSeparator() + "PluginLoader.java"), false);
 		} catch (final IOException e) {
 			FrameworkCorePlugin.getDefault().logError(e);
 		}

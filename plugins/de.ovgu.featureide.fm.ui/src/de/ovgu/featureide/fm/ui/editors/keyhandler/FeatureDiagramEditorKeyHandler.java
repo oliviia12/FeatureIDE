@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -45,11 +45,11 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
  * </br>
  * At Manual-Layout: </br>
  * to ensure that actions registered in {@link #createKeyBindings()} will be handled first! default actions will be handled at last!
- * 
+ *
  * Handles searching of features in the Tree.
  * </br>
  * At Automatic-Layout: run {@link GraphicalViewerKeyHandler} first
- * 
+ *
  * @author Guenter Ulreich
  * @author Andy Koch
  * @author Marcus Pinnecke
@@ -76,13 +76,13 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 		super();
 
 		this.featureModel = featureModel;
-		this.viewer = view;
+		viewer = view;
 
-		this.alternativeKeyHandler = new KeyHandler();
-		this.gvKeyHandler = new GraphicalViewerKeyHandler(view);
-		this.gvKeyHandler.setParent(alternativeKeyHandler);
-		this.setParent(gvKeyHandler);
-		this.lastTime = 0;
+		alternativeKeyHandler = new KeyHandler();
+		gvKeyHandler = new GraphicalViewerKeyHandler(view);
+		gvKeyHandler.setParent(alternativeKeyHandler);
+		setParent(gvKeyHandler);
+		lastTime = 0;
 
 		resetFeatureList();
 		featureModel.getFeatureModel().addListener(this);
@@ -108,14 +108,14 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 		}
 
 		final long currentTime = System.currentTimeMillis();
-		if (currentTime - lastTime > timeoutThreshold) {
+		if ((currentTime - lastTime) > timeoutThreshold) {
 			curSearchString = "";
 		}
 		lastTime = currentTime;
 
 		curIndex = updateIterator();
 
-		if (curSearchString.length() == 1 && curSearchString.charAt(0) == Character.toLowerCase(e.character)) {
+		if ((curSearchString.length() == 1) && (curSearchString.charAt(0) == Character.toLowerCase(e.character))) {
 			curSearchString = "";
 			curIndex = (curIndex + 1) % featureList.size();
 		}
@@ -127,7 +127,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 			final IFeature curFeature = featureModel.getFeatureModel().getFeature(featureList.get(foundIndex));
 			if (curFeature != null) {
 				final Map<?, ?> editPartRegistry = viewer.getEditPartRegistry();
-				FeatureEditPart part = (FeatureEditPart) editPartRegistry.get(featureModel.getGraphicalFeature(curFeature));
+				final FeatureEditPart part = (FeatureEditPart) editPartRegistry.get(featureModel.getGraphicalFeature(curFeature));
 				if (part != null) {
 					viewer.setSelection(new StructuredSelection(part));
 					viewer.reveal(part);
@@ -145,11 +145,12 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	}
 
 	/**
-	 * To handle 2 key handlers (otherwise there would be an action loop)</br> {@inheritDoc}
+	 * To handle 2 key handlers (otherwise there would be an action loop)</br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void put(KeyStroke keystroke, IAction action) {
-		this.alternativeKeyHandler.put(keystroke, action);
+		alternativeKeyHandler.put(keystroke, action);
 		super.put(keystroke, action);
 	}
 
@@ -178,7 +179,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	private int updateIterator() {
 		final IStructuredSelection sel = (IStructuredSelection) viewer.getSelection();
 
-		if (sel.size() == 1 && !(sel.getFirstElement() instanceof ModelEditPart)) {
+		if ((sel.size() == 1) && !(sel.getFirstElement() instanceof ModelEditPart)) {
 			final Object element = sel.getFirstElement();
 			final String featureName;
 

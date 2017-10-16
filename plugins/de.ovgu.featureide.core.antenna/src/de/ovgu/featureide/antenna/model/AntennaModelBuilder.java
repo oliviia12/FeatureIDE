@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -34,7 +34,7 @@ import de.ovgu.featureide.core.fstmodel.preprocessor.PPModelBuilder;
 
 /**
  * Build the FSTModel for antenna projects.
- * 
+ *
  * @author Christoph Giesel
  * @author Marcus Kamieth
  * @author Sebastian Krieter
@@ -56,16 +56,16 @@ public class AntennaModelBuilder extends PPModelBuilder {
 	 * returns true if the regular expression regex can be matched by a substring of text
 	 */
 	protected static boolean containsRegex(String text, String regex) {
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(text);
+		final Pattern pattern = Pattern.compile(regex);
+		final Matcher matcher = pattern.matcher(text);
 		return matcher.find();
 	}
 
 	@Override
 	public LinkedList<FSTDirective> buildModelDirectivesForFile(Vector<String> lines) {
 		//for preprocessor outline
-		Stack<FSTDirective> directivesStack = new Stack<FSTDirective>();
-		LinkedList<FSTDirective> directivesList = new LinkedList<FSTDirective>();
+		final Stack<FSTDirective> directivesStack = new Stack<FSTDirective>();
+		final LinkedList<FSTDirective> directivesList = new LinkedList<FSTDirective>();
 		int id = 0;
 
 		for (int i = 0; i < lines.size(); i++) {
@@ -103,24 +103,22 @@ public class AntennaModelBuilder extends PPModelBuilder {
 					if (!directivesStack.isEmpty()) {
 						directivesStack.peek().setEndLine(i, line.length());
 						while (!directivesStack.isEmpty()) {
-							FSTDirective parent = directivesStack.pop();
-							if (parent.getCommand() != FSTDirectiveCommand.ELIF && 
-								parent.getCommand() != FSTDirectiveCommand.ELIFDEF &&
-								parent.getCommand() != FSTDirectiveCommand.ELIFNDEF && 
-								parent.getCommand() != FSTDirectiveCommand.ELSE) {
+							final FSTDirective parent = directivesStack.pop();
+							if ((parent.getCommand() != FSTDirectiveCommand.ELIF) && (parent.getCommand() != FSTDirectiveCommand.ELIFDEF)
+									&& (parent.getCommand() != FSTDirectiveCommand.ELIFNDEF) && (parent.getCommand() != FSTDirectiveCommand.ELSE)) {
 								break;
 							}
 						}
 					}
 				} else {
-					FSTDirective directive = new FSTDirective();
+					final FSTDirective directive = new FSTDirective();
 
 					if (command == FSTDirectiveCommand.ELSE) {
 						if (!directivesStack.isEmpty()) {
 							directivesStack.peek().setEndLine(i, 0);
 							directive.setFeatureNames(directivesStack.peek().getFeatureNames());
 						}
-					} else if (command == FSTDirectiveCommand.ELIF || command == FSTDirectiveCommand.ELIFDEF || command == FSTDirectiveCommand.ELIFNDEF) {
+					} else if ((command == FSTDirectiveCommand.ELIF) || (command == FSTDirectiveCommand.ELIFDEF) || (command == FSTDirectiveCommand.ELIFNDEF)) {
 						if (!directivesStack.isEmpty()) {
 							directivesStack.peek().setEndLine(i, 0);
 						}
@@ -128,7 +126,7 @@ public class AntennaModelBuilder extends PPModelBuilder {
 
 					directive.setCommand(command);
 
-					Matcher m = patternCommands.matcher(line);
+					final Matcher m = patternCommands.matcher(line);
 					line = m.replaceAll("").trim();
 
 					if (directive.getFeatureNames() == null) {
@@ -147,8 +145,9 @@ public class AntennaModelBuilder extends PPModelBuilder {
 						directivesStack.peek().addChild(directive);
 					}
 
-					if (command != FSTDirectiveCommand.DEFINE && command != FSTDirectiveCommand.UNDEFINE)
+					if ((command != FSTDirectiveCommand.DEFINE) && (command != FSTDirectiveCommand.UNDEFINE)) {
 						directivesStack.push(directive);
+					}
 				}
 			}
 		}
@@ -171,8 +170,8 @@ public class AntennaModelBuilder extends PPModelBuilder {
 	 * </ul>
 	 */
 	public static boolean contains(String text, String feature) {
-		Pattern pattern = Pattern.compile(String.format(REGEX, feature));
-		Matcher matcher = pattern.matcher(text);
+		final Pattern pattern = Pattern.compile(String.format(REGEX, feature));
+		final Matcher matcher = pattern.matcher(text);
 		return matcher.find();
 	}
 
@@ -183,8 +182,8 @@ public class AntennaModelBuilder extends PPModelBuilder {
 		exp = exp.replaceAll("!", "");
 		exp = exp.replaceAll("\\|\\|", "");
 		exp = exp.replaceAll("\\^", "");
-		List<String> featureNameList = new LinkedList<String>();
-		for (String s : exp.split(" ")) {
+		final List<String> featureNameList = new LinkedList<String>();
+		for (final String s : exp.split(" ")) {
 			if (s.trim().length() > 0) {
 				featureNameList.add(s);
 			}

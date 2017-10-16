@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -68,7 +68,7 @@ import de.ovgu.featureide.ui.actions.generator.sorter.PriorizationSorter;
 
 /**
  * Builds all valid or current configurations for a selected feature project.
- * 
+ *
  * @author Jens Meinicke
  */
 @SuppressWarnings(RESTRICTION)
@@ -157,7 +157,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	/**
 	 * Gets the first entry of configurations or <code>null</code> if there is
 	 * none.
-	 * 
+	 *
 	 * @return The first entry
 	 */
 	@CheckForNull
@@ -167,7 +167,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 
 	/**
 	 * Adds the given configuration to configurations.
-	 * 
+	 *
 	 * @param configuration
 	 */
 	public synchronized void addConfiguration(BuilderConfiguration configuration) {
@@ -178,7 +178,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	/**
 	 * Starts the build process for valid or current configurations for the
 	 * given feature project.
-	 * 
+	 *
 	 * @param featureProject
 	 *            The feature project
 	 * @param buildAllValidConfigurations
@@ -191,11 +191,12 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	 *            separate projects
 	 * @param runTests
 	 * @param max Maximal number of configurations to generate.
-	 * @param tOrder 
+	 * @param tOrder
 	 * @see BuildAllCurrentConfigurationsAction
 	 * @see BuildAllValidConfigurationsAction
 	 */
-	public ConfigurationBuilder(final IFeatureProject featureProject, final BuildType buildType, final boolean createNewProjects, final String algorithm, final int t, final BuildOrder buildOrder, boolean runTests, int max, int tOrder) {
+	public ConfigurationBuilder(final IFeatureProject featureProject, final BuildType buildType, final boolean createNewProjects, final String algorithm,
+			final int t, final BuildOrder buildOrder, boolean runTests, int max, int tOrder) {
 		this(featureProject, buildType, createNewProjects, algorithm, t, buildOrder, runTests, null, max, tOrder);
 	}
 
@@ -205,8 +206,9 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 
 	static int id = 0;
 	IProgressMonitor globalMonitor;
-	public ConfigurationBuilder(final IFeatureProject featureProject, final BuildType buildType, final boolean createNewProjects, 
-			final String algorithm, final int t, final BuildOrder buildOrder, boolean runTests, final String featureName, final int maxConfigs, int tOrder) {
+
+	public ConfigurationBuilder(final IFeatureProject featureProject, final BuildType buildType, final boolean createNewProjects, final String algorithm,
+			final int t, final BuildOrder buildOrder, boolean runTests, final String featureName, final int maxConfigs, int tOrder) {
 		this.runTests = runTests;
 		if (maxConfigs <= 0) {
 			return;
@@ -273,10 +275,11 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 		}
 		jobName += StringTable.FOR + featureProject.getProjectName();
 		RemoveBaseMarkerFromSourceFolderFiles();
-		Job job = new Job(jobName) {
+		final Job job = new Job(jobName) {
 
 			private IRunner<Void> configurationBuilderJob;
 
+			@Override
 			public IStatus run(IProgressMonitor monitor) {
 				try {
 					monitor = SubMonitor.convert(monitor, getTaskName(), maxConfigs);
@@ -306,14 +309,14 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 					if (!createNewProjects) {
 						try {
 							folder.refreshLocal(IResource.DEPTH_INFINITE, null);
-						} catch (CoreException e) {
+						} catch (final CoreException e) {
 							LOGGER.logError(e);
 						}
 					}
 				} finally {
 					configurationBuilderJob.cancel();
 					cancelGenerationJobs();
-					for (Thread g : generatorJobs) {
+					for (final Thread g : generatorJobs) {
 						g.interrupt();
 					}
 					monitor.done();
@@ -326,7 +329,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 					while (configurationBuilderJob.getStatus() == JobStatus.NOT_STARTED) {
 						try {
 							Thread.sleep(150);
-						} catch (InterruptedException e) {
+						} catch (final InterruptedException e) {
 							LOGGER.logError(e);
 						}
 					}
@@ -339,7 +342,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 						}
 						try {
 							Thread.sleep(150);
-						} catch (InterruptedException e) {
+						} catch (final InterruptedException e) {
 							LOGGER.logError(e);
 						}
 					}
@@ -358,11 +361,11 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 								cancelGenerationJobs();
 								break;
 							}
-								final Generator generator = generatorJobs.get(0);
-								if (generator == null) {
-									// generator can never be null, however see #416
-									generatorJobs.remove(0);
-								} else if (generator.getState() == Thread.State.TERMINATED) {
+							final Generator generator = generatorJobs.get(0);
+							if (generator == null) {
+								// generator can never be null, however see #416
+								generatorJobs.remove(0);
+							} else if (generator.getState() == Thread.State.TERMINATED) {
 								generatorJobs.remove(generator);
 								if (sorter.getBufferSize() != 0) {
 									createNewGenerator(generator.nr);
@@ -370,18 +373,18 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 							}
 							monitor.setTaskName(getTaskName());
 							Thread.sleep(150);
-						} catch (InterruptedException e) {
+						} catch (final InterruptedException e) {
 							LOGGER.logError(e);
-						} catch (IndexOutOfBoundsException e) {
+						} catch (final IndexOutOfBoundsException e) {
 							// nothing here
 						}
 					}
 
-					long duration = System.currentTimeMillis() - time;
-					long s = (duration / 1000) % 60;
-					long min = (duration / (60 * 1000)) % 60;
-					long h = duration / (60 * 60 * 1000);
-					String t = h + "h " + (min < 10 ? "0" + min : min) + "min " + (s < 10 ? "0" + s : s) + "s.";
+					final long duration = System.currentTimeMillis() - time;
+					final long s = (duration / 1000) % 60;
+					final long min = (duration / (60 * 1000)) % 60;
+					final long h = duration / (60 * 60 * 1000);
+					final String t = h + "h " + (min < 10 ? "0" + min : min) + "min " + (s < 10 ? "0" + s : s) + "s.";
 
 					if (built > configurationNumber) {
 						built = (int) configurationNumber;
@@ -400,7 +403,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	/**
 	 * Initializes the configuration builder.<br>
 	 * -Removes old products -Generates the build folder
-	 * 
+	 *
 	 * @param monitor
 	 * @param buildAllValidConfigurations
 	 *            <code>true</code> if all possible valid configurations should
@@ -417,14 +420,14 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 			if (!folder.exists()) {
 				try {
 					folder.create(true, true, null);
-				} catch (CoreException e) {
+				} catch (final CoreException e) {
 					LOGGER.logError(e);
 				}
 			} else {
 				try {
 					folder.delete(true, null);
 					folder.create(true, true, null);
-				} catch (CoreException e) {
+				} catch (final CoreException e) {
 					LOGGER.logError(e);
 				}
 			}
@@ -434,7 +437,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 			if (!tmp.exists()) {
 				try {
 					tmp.create(true, true, null);
-				} catch (CoreException e) {
+				} catch (final CoreException e) {
 					LOGGER.logError(e);
 				}
 			}
@@ -462,15 +465,15 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 				}
 				for (final IResource res : ResourcesPlugin.getWorkspace().getRoot().members()) {
 					if (res instanceof IProject) {
-						IProject p = (IProject) res;
-						String projectName = p.getName();
+						final IProject p = (IProject) res;
+						final String projectName = p.getName();
 						if (projectName.startsWith(featureProject.getProjectName() + identifier)) {
 							monitor.setTaskName("Remove old products : " + projectName);
 							res.delete(true, null);
 						}
 					}
 				}
-			} catch (CoreException e) {
+			} catch (final CoreException e) {
 				LOGGER.logError(e);
 			}
 		}
@@ -481,24 +484,24 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	 * Sets the java classPath for compiling.
 	 */
 	private void setClassPath() {
-		String sep = System.getProperty("path.separator");
+		final String sep = System.getProperty("path.separator");
 		try {
-			JavaProject proj = new JavaProject(featureProject.getProject(), null);
-			IJavaElement[] elements = proj.getChildren();
-			for (IJavaElement e : elements) {
-				String path = e.getPath().toOSString();
+			final JavaProject proj = new JavaProject(featureProject.getProject(), null);
+			final IJavaElement[] elements = proj.getChildren();
+			for (final IJavaElement e : elements) {
+				final String path = e.getPath().toOSString();
 				if (e.getPath().isAbsolute()) {
 					classpath += sep + "\"" + path + "\"";
 				} else {
-				IResource resource = e.getResource();
-				if (resource != null && "jar".equals(resource.getFileExtension())) {
+					final IResource resource = e.getResource();
+					if ((resource != null) && "jar".equals(resource.getFileExtension())) {
 						classpath += sep + "\"" + resource.getLocation().toOSString() + "\"";
 					} else {
 						UIPlugin.getDefault().logWarning("ClassPath element " + e.toString() + " is missing.");
 					}
 				}
 			}
-		} catch (JavaModelException e) {
+		} catch (final JavaModelException e) {
 
 		}
 		classpath = classpath.length() > 0 ? classpath.substring(1) : classpath;
@@ -506,7 +509,7 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 
 	/**
 	 * Creates new {@link Generator}s
-	 * 
+	 *
 	 * @param count
 	 *            The amount of Generators that will be created.
 	 */
@@ -527,11 +530,11 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 
 	/**
 	 * Created a new {@link Generator} with the given number
-	 * 
+	 *
 	 * @param nr
 	 */
 	void createNewGenerator(int nr) {
-		Generator g = new Generator(nr, this);
+		final Generator g = new Generator(nr, this);
 		generatorJobs.add(g);
 		g.start();
 	}
@@ -557,15 +560,15 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 	 */
 	public String getTaskName() {
 		String t = "";
-		if (configurationNumber != 0 && built != 0) {
+		if ((configurationNumber != 0) && (built != 0)) {
 			long duration = System.currentTimeMillis() - time;
 			duration = (duration / built) * (configurationNumber - built);
-			long s = (duration / 1000) % 60;
-			long min = (duration / (60 * 1000)) % 60;
-			long h = duration / (60 * 60 * 1000);
+			final long s = (duration / 1000) % 60;
+			final long min = (duration / (60 * 1000)) % 60;
+			final long h = duration / (60 * 60 * 1000);
 			t = " " + h + "h " + (min < 10 ? "0" + min : min) + "min " + (s < 10 ? "0" + s : s) + "s.";
 		}
-		long buffer = sorter.getBufferSize();
+		final long buffer = sorter.getBufferSize();
 		return "Built configurations: " + built + "/" + (configurationNumber == Integer.MAX_VALUE ? COUNTING___ : configurationNumber) + "(" + buffer
 				+ " buffered)" + " Expected time: " + t;
 	}
@@ -580,19 +583,16 @@ public class ConfigurationBuilder implements IConfigurationBuilderBasics {
 		globalMonitor.worked(1);
 	}
 
-
-
 	/**
 	 * Removes the base markers from every file in the source folder
 	 */
-	public void RemoveBaseMarkerFromSourceFolderFiles()
-	{
+	public void RemoveBaseMarkerFromSourceFolderFiles() {
 		try {
-			IMarker[] baseMarker = featureProject.getSourceFolder().findMarkers(IMarker.MARKER, true, IResource.DEPTH_INFINITE);
-			for (IMarker iMarker : baseMarker) {
+			final IMarker[] baseMarker = featureProject.getSourceFolder().findMarkers(IMarker.MARKER, true, IResource.DEPTH_INFINITE);
+			for (final IMarker iMarker : baseMarker) {
 				iMarker.delete();
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			UIPlugin.getDefault().logError(e);
 		}
 	}

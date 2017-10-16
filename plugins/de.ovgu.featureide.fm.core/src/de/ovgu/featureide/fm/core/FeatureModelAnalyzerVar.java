@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -89,7 +89,7 @@ import de.ovgu.featureide.fm.core.job.monitor.NullMonitor;
 /**
  * A collection of methods for working with {@link IFeatureModel} will replace
  * the corresponding methods in {@link IFeatureModel}
- * 
+ *
  * @author Soenke Holthusen
  * @author Florian Proksch
  * @author Stefan Krueger
@@ -154,11 +154,11 @@ public class FeatureModelAnalyzerVar {
 
 			synchronized (curSyncObject) {
 				if (curAnalysisResult == null) {
-					AbstractAnalysis<R> analysisInstance = analysis.createNewAnalysis();
+					final AbstractAnalysis<R> analysisInstance = analysis.createNewAnalysis();
 					try {
 						LongRunningWrapper.runMethod(analysisInstance, curMonitor);
 						curAnalysisResult = analysisInstance.getResult();
-					} catch (Exception e) {
+					} catch (final Exception e) {
 						Logger.logError(e);
 					}
 
@@ -268,8 +268,8 @@ public class FeatureModelAnalyzerVar {
 	 */
 	private FeatureModelProperties featureModelProperties;
 
-	private FeatureModelFormula formula;
-	private IFeatureModel featureModel;
+	private final FeatureModelFormula formula;
+	private final IFeatureModel featureModel;
 	private List<IConstraint> constraints;
 
 	private int[] clauseGroupSize;
@@ -290,7 +290,7 @@ public class FeatureModelAnalyzerVar {
 			constraintContradictionAnalysis, constraintVoidAnalysis, constraintTautologyAnalysis, constraintRedundancyAnalysis, constraintAnomaliesAnalysis);
 
 	public void reset(IFeatureModel featureModel) {
-		for (AnalysisWrapper<?> analysisWrapper : list) {
+		for (final AnalysisWrapper<?> analysisWrapper : list) {
 			analysisWrapper.reset();
 		}
 		init(featureModel);
@@ -304,12 +304,12 @@ public class FeatureModelAnalyzerVar {
 		featurePropertiesMap.clear();
 		constraintPropertiesMap.clear();
 
-		for (IFeature feature : featureModel.getFeatures()) {
+		for (final IFeature feature : featureModel.getFeatures()) {
 			final FeatureProperties featureProperties = new FeatureProperties(feature);
 			featurePropertiesMap.put(feature, featureProperties);
 			elementPropertiesMap.put(feature, featureProperties);
 		}
-		for (IConstraint constraint : featureModel.getConstraints()) {
+		for (final IConstraint constraint : featureModel.getConstraints()) {
 			final ConstraintProperties constraintProperties = new ConstraintProperties(constraint);
 			constraintPropertiesMap.put(constraint, constraintProperties);
 			elementPropertiesMap.put(constraint, constraintProperties);
@@ -325,7 +325,7 @@ public class FeatureModelAnalyzerVar {
 
 	public FeatureModelAnalyzerVar(FeatureModelFormula formula) {
 		this.formula = formula;
-		this.featureModel = formula.getFeatureModel();
+		featureModel = formula.getFeatureModel();
 
 		featurePropertiesMap = new HashMap<>();
 		constraintPropertiesMap = new HashMap<>();
@@ -335,10 +335,10 @@ public class FeatureModelAnalyzerVar {
 	}
 
 	protected int[] getClauseGroups(List<IConstraint> constraints, List<LiteralSet> constraintClauses) {
-		int[] clauseGroupSize = new int[constraints.size()];
+		final int[] clauseGroupSize = new int[constraints.size()];
 		final IVariables variables = formula.getElement(new EmptyCNFCreator()).getVariables();
 		int i = 0;
-		for (IConstraint constraint : constraints) {
+		for (final IConstraint constraint : constraints) {
 			final List<LiteralSet> clauses = Nodes.convert(variables, constraint.getNode());
 			constraintClauses.addAll(clauses);
 			clauseGroupSize[i++] = clauses.size();
@@ -372,7 +372,7 @@ public class FeatureModelAnalyzerVar {
 	 * given features is selected. If the given list of features is empty, this
 	 * method will calculate the features that are present in all variants
 	 * specified by the feature model.
-	 * 
+	 *
 	 * @return a list of features that is common to all variants
 	 */
 	public List<IFeature> getCommonFeatures() {
@@ -394,11 +394,11 @@ public class FeatureModelAnalyzerVar {
 
 		final CNF cnf = formula.getCNF();
 		final ArrayList<List<IFeature>> resultList = new ArrayList<>();
-		for (LiteralSet literalList : result) {
+		for (final LiteralSet literalList : result) {
 			final List<IFeature> setList = new ArrayList<>();
 			resultList.add(Functional.mapToList(cnf.getVariables().convertToString(literalList, true, true, false), new StringToFeature(featureModel)));
 
-			for (int literal : literalList.getLiterals()) {
+			for (final int literal : literalList.getLiterals()) {
 				final IFeature feature = featureModel.getFeature(cnf.getVariables().getName(literal));
 				if (feature != null) {
 					setList.add(feature);
@@ -411,7 +411,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Calculations for indeterminate hidden features
-	 * 
+	 *
 	 * @param changedAttributes
 	 */
 	public List<IFeature> getIndeterminedHiddenFeatures() {
@@ -433,11 +433,11 @@ public class FeatureModelAnalyzerVar {
 
 	public List<IFeature> getFalseOptionalFeatures() {
 		final List<IFeature> optionalFeatures = Functional.filterToList(featureModel.getFeatures(), new InverseFilter<>(new MandatoryFeatureFilter()));
-		List<LiteralSet> result = getFalseOptionalFeatures(optionalFeatures);
+		final List<LiteralSet> result = getFalseOptionalFeatures(optionalFeatures);
 
 		final List<IFeature> resultList = new ArrayList<>();
 		int i = 0;
-		for (IFeature iFeature : optionalFeatures) {
+		for (final IFeature iFeature : optionalFeatures) {
 			if (result.get(i++) != null) {
 				resultList.add(iFeature);
 			}
@@ -453,7 +453,7 @@ public class FeatureModelAnalyzerVar {
 			protected void configureAnalysis(CNF cnf, IndependentRedundancyAnalysis analysis) {
 				final List<LiteralSet> literalSetList = new ArrayList<>();
 				final IVariables variables = cnf.getVariables();
-				for (IFeature iFeature : optionalFeatures) {
+				for (final IFeature iFeature : optionalFeatures) {
 					literalSetList.add(new LiteralSet(variables.getVariable(FeatureUtils.getParent(iFeature).getName(), false),
 							variables.getVariable(iFeature.getName(), true)));
 				}
@@ -561,7 +561,7 @@ public class FeatureModelAnalyzerVar {
 			if (anomalies != null) {
 				if (anomalies.getRedundantClauses() != null) {
 					final ArrayList<IFeature> falseOptionalFeatures = new ArrayList<>();
-					for (LiteralSet literalSet : anomalies.getRedundantClauses()) {
+					for (final LiteralSet literalSet : anomalies.getRedundantClauses()) {
 						if (literalSet != null) {
 							falseOptionalFeatures.add(featureModel.getFeature(cnf.getVariables().getName(literalSet.getLiterals()[1])));
 						}
@@ -665,8 +665,8 @@ public class FeatureModelAnalyzerVar {
 	 * check all changes of this method and called methods with the related tests and
 	 * benchmarks, see fm.core-test plug-in
 	 * think about performance (no unnecessary or redundant calculations)
-	 * 
-	 * Hashing might be fast for locating features, but creating a HashSet is costly 
+	 *
+	 * Hashing might be fast for locating features, but creating a HashSet is costly
 	 * So LinkedLists are much faster because the number of feature in the set is usually small (e.g. dead features)
 	 */
 	public Map<IFeatureModelElement, Object> analyzeFeatureModel(IMonitor monitor) {
@@ -692,7 +692,7 @@ public class FeatureModelAnalyzerVar {
 				monitor = new NullMonitor();
 			}
 			// set default values for constraint properties
-			for (IConstraint constraint : featureModel.getConstraints()) {
+			for (final IConstraint constraint : featureModel.getConstraints()) {
 				if (constraintRedundancyAnalysis.isEnabled()) {
 					constraintPropertiesMap.get(constraint).setConstraintRedundancyStatus(ConstraintRedundancyStatus.NORMAL);
 				}
@@ -706,19 +706,19 @@ public class FeatureModelAnalyzerVar {
 			}
 
 			// get constraint anomalies
-			for (IConstraint constraint : getRedundantConstraints()) {
+			for (final IConstraint constraint : getRedundantConstraints()) {
 				constraintPropertiesMap.get(constraint).setConstraintRedundancyStatus(ConstraintRedundancyStatus.REDUNDANT);
 			}
-			for (IConstraint constraint : getTautologyConstraints()) {
+			for (final IConstraint constraint : getTautologyConstraints()) {
 				constraintPropertiesMap.get(constraint).setConstraintRedundancyStatus(ConstraintRedundancyStatus.TAUTOLOGY);
 			}
-			for (IConstraint constraint : getVoidConstraints()) {
+			for (final IConstraint constraint : getVoidConstraints()) {
 				constraintPropertiesMap.get(constraint).setConstraintSatisfiabilityStatus(ConstraintFalseSatisfiabilityStatus.VOID_MODEL);
 			}
-			for (IConstraint constraint : getContradictoryConstraints()) {
+			for (final IConstraint constraint : getContradictoryConstraints()) {
 				constraintPropertiesMap.get(constraint).setConstraintSatisfiabilityStatus(ConstraintFalseSatisfiabilityStatus.UNSATISFIABLE);
 			}
-			for (IConstraint constraint : getAnomalyConstraints()) {
+			for (final IConstraint constraint : getAnomalyConstraints()) {
 				final ConstraintProperties constraintProperties = constraintPropertiesMap.get(constraint);
 				if (!constraintProperties.getDeadFeatures().isEmpty()) {
 					constraintProperties.setConstraintDeadStatus(ConstraintDeadStatus.DEAD);
@@ -740,7 +740,7 @@ public class FeatureModelAnalyzerVar {
 				monitor = new NullMonitor();
 			}
 			// set default values for feature properties
-			for (IFeature feature : featureModel.getFeatures()) {
+			for (final IFeature feature : featureModel.getFeatures()) {
 				featurePropertiesMap.get(feature).setFeatureSelectionStatus(FeatureSelectionStatus.COMMON);
 				featurePropertiesMap.get(feature).setFeatureDeterminedStatus(FeatureDeterminedStatus.UNKNOWN);
 
@@ -762,13 +762,13 @@ public class FeatureModelAnalyzerVar {
 			}
 
 			// get feature anomalies
-			for (IFeature feature : getDeadFeatures()) {
+			for (final IFeature feature : getDeadFeatures()) {
 				featurePropertiesMap.get(feature).setFeatureSelectionStatus(FeatureSelectionStatus.DEAD);
 			}
-			for (IFeature feature : getFalseOptionalFeatures()) {
+			for (final IFeature feature : getFalseOptionalFeatures()) {
 				featurePropertiesMap.get(feature).setFeatureParentStatus(FeatureParentStatus.FALSE_OPTIONAL);
 			}
-			for (IFeature feature : getIndeterminedHiddenFeatures()) {
+			for (final IFeature feature : getIndeterminedHiddenFeatures()) {
 				featurePropertiesMap.get(feature).setFeatureDeterminedStatus(FeatureDeterminedStatus.INDETERMINATE_HIDDEN);
 			}
 		}
@@ -777,7 +777,7 @@ public class FeatureModelAnalyzerVar {
 	// TODO implement as analysis
 	public int countConcreteFeatures() {
 		int number = 0;
-		for (IFeature feature : featureModel.getFeatures()) {
+		for (final IFeature feature : featureModel.getFeatures()) {
 			if (feature.getStructure().isConcrete()) {
 				number++;
 			}
@@ -788,7 +788,7 @@ public class FeatureModelAnalyzerVar {
 	// TODO implement as analysis
 	public int countHiddenFeatures() {
 		int number = 0;
-		for (IFeature feature : featureModel.getFeatures()) {
+		for (final IFeature feature : featureModel.getFeatures()) {
 			final IFeatureStructure structure = feature.getStructure();
 			if (structure.isHidden() || structure.hasHiddenParent()) {
 				number++;
@@ -800,7 +800,7 @@ public class FeatureModelAnalyzerVar {
 	// TODO implement as analysis
 	public int countTerminalFeatures() {
 		int number = 0;
-		for (IFeature feature : featureModel.getFeatures()) {
+		for (final IFeature feature : featureModel.getFeatures()) {
 			if (!feature.getStructure().hasChildren()) {
 				number++;
 			}
@@ -810,7 +810,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature model element is defect or null if it cannot be explained.
-	 * 
+	 *
 	 * @param modelElement potentially defect feature model element
 	 * @return an explanation why the given feature model element is defect or null if it cannot be explained
 	 */
@@ -820,7 +820,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature model element is defect or null if it cannot be explained.
-	 * 
+	 *
 	 * @param modelElement potentially defect feature model element
 	 * @param context another feature model that is used as reference for the explanations
 	 * @return an explanation why the given feature model element is defect or null if it cannot be explained
@@ -837,7 +837,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given constraint is defect or null if it cannot be explained.
-	 * 
+	 *
 	 * @param constraint potentially defect constraint
 	 * @return an explanation why the given constraint is defect or null if it cannot be explained
 	 */
@@ -869,7 +869,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature is defect or null if it cannot be explained.
-	 * 
+	 *
 	 * @param feature potentially defect feature
 	 * @return an explanation why the given feature is defect or null if it cannot be explained
 	 */
@@ -913,24 +913,24 @@ public class FeatureModelAnalyzerVar {
 	 * <p>
 	 * Returns whether the conjunction of A always implies the disjunction of B in the current feature model.
 	 * </p>
-	 * 
+	 *
 	 * <p>
 	 * In other words, the following satisfiability query is checked:
-	 * 
+	 *
 	 * <pre>
 	 * TAUT(FM &rArr; ((&and;<sub>a&in;A</sub> a) &rArr; (&or;<sub>b&in;B</sub> b)))
 	 * </pre>
 	 * </p>
-	 * 
+	 *
 	 * <p>
 	 * Note that this formula is always true if B is empty.
 	 * </p>
-	 * 
+	 *
 	 * @param a set of features that form a conjunction
 	 * @param b set of features that form a disjunction
 	 * @return whether the conjunction of A always implies the disjunction of B in the current feature model
 	 * @throws TimeoutException
-	 * 
+	 *
 	 * @deprecated Use ConfigurationPropagator instead.
 	 */
 	@Deprecated
@@ -947,10 +947,10 @@ public class FeatureModelAnalyzerVar {
 		//   |= -(A1 and ... and An and -B1 and ... and -Bm)
 		final int[] literals = new int[a.size() + b.size()];
 		int index = 0;
-		for (IFeature feature : b) {
+		for (final IFeature feature : b) {
 			literals[index++] = -variables.getVariable(feature.getName());
 		}
-		for (IFeature feature : a) {
+		for (final IFeature feature : a) {
 			literals[index++] = variables.getVariable(feature.getName());
 		}
 
@@ -1049,7 +1049,7 @@ public class FeatureModelAnalyzerVar {
 	/**
 	 * Returns an explanation why the feature model is void.
 	 * That is the same explanation for why its root feature is dead.
-	 * 
+	 *
 	 * @return an explanation; null if it cannot be explained
 	 */
 	public Explanation getVoidFeatureModelExplanation() {
@@ -1059,7 +1059,7 @@ public class FeatureModelAnalyzerVar {
 	/**
 	 * Returns an explanation why the given feature model is void.
 	 * That is the same explanation for why its root feature is dead.
-	 * 
+	 *
 	 * @param fm potentially void feature model; not null
 	 * @return an explanation; null if it cannot be explained
 	 */
@@ -1069,7 +1069,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature is dead.
-	 * 
+	 *
 	 * @param feature potentially dead feature; not null
 	 * @return an explanation; null if it cannot be explained
 	 */
@@ -1079,7 +1079,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Adds an explanation why the given feature is dead.
-	 * 
+	 *
 	 * @param fm feature model containing the feature; not null
 	 * @param feature potentially dead feature; not null
 	 * @return an explanation; null if it cannot be explained
@@ -1093,12 +1093,12 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Adds an explanation why the given feature is dead.
-	 * 
+	 *
 	 * @param fm feature model containing the feature; not null
 	 * @param feature potentially dead feature; not null
 	 */
 	private void addDeadFeatureExplanation(IFeatureModel fm, IFeature feature) {
-		final DeadFeatureExplanationCreator creator = fm == this.featureModel ? deadFeatureExplanationCreator
+		final DeadFeatureExplanationCreator creator = fm == featureModel ? deadFeatureExplanationCreator
 				: explanationCreatorFactory.getDeadFeatureExplanationCreator(fm);
 		creator.setDeadFeature(feature);
 		deadFeatureExplanations.put(feature, creator.getExplanation());
@@ -1106,7 +1106,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature is false-optional.
-	 * 
+	 *
 	 * @param feature potentially false-optional feature; not null
 	 * @return an explanation; null if it cannot be explained
 	 */
@@ -1116,7 +1116,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given feature is false-optional.
-	 * 
+	 *
 	 * @param fm feature model containing the feature; not null
 	 * @param feature potentially false-optional feature; not null
 	 * @return an explanation; null if it cannot be explained
@@ -1130,12 +1130,12 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Adds an explanation why the given feature is false-optional.
-	 * 
+	 *
 	 * @param fm feature model containing the feature; not null
 	 * @param feature potentially false-optional feature; not null
 	 */
 	private void addFalseOptionalFeatureExplanation(IFeatureModel fm, IFeature feature) {
-		final FalseOptionalFeatureExplanationCreator creator = fm == this.featureModel ? falseOptionalFeatureExplanationCreator
+		final FalseOptionalFeatureExplanationCreator creator = fm == featureModel ? falseOptionalFeatureExplanationCreator
 				: explanationCreatorFactory.getFalseOptionalFeatureExplanationCreator(fm);
 		creator.setFalseOptionalFeature(feature);
 		falseOptionalFeatureExplanations.put(feature, creator.getExplanation());
@@ -1143,7 +1143,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given constraint is redundant.
-	 * 
+	 *
 	 * @param constraint potentially redundant constraint; not null
 	 * @return an explanation; null if it cannot be explained
 	 */
@@ -1153,7 +1153,7 @@ public class FeatureModelAnalyzerVar {
 
 	/**
 	 * Returns an explanation why the given constraint is redundant.
-	 * 
+	 *
 	 * @param constraint potentially redundant constraint; not null
 	 * @return an explanation; null if it cannot be explained
 	 */
@@ -1168,17 +1168,17 @@ public class FeatureModelAnalyzerVar {
 	 * <p>
 	 * Adds an explanation why the given constraint is redundant.
 	 * </p>
-	 * 
+	 *
 	 * <p>
 	 * Uses the given feature model, which may differ from the default feature model stored in this instance.
 	 * This is for example the case when explaining implicit constraints in subtree models.
 	 * </p>
-	 * 
+	 *
 	 * @param fm feature model containing the constraint; not null
 	 * @param constraint potentially redundant constraint; not null
 	 */
 	private void addRedundantConstraintExplanation(IFeatureModel fm, IConstraint constraint) {
-		final RedundantConstraintExplanationCreator creator = fm == this.featureModel ? redundantConstraintExplanationCreator
+		final RedundantConstraintExplanationCreator creator = fm == featureModel ? redundantConstraintExplanationCreator
 				: explanationCreatorFactory.getRedundantConstraintExplanationCreator(fm);
 		creator.setRedundantConstraint(constraint);
 		redundantConstraintExplanations.put(constraint, creator.getExplanation());

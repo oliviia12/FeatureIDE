@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -35,7 +35,7 @@ import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
  * Abstract class that can be used for tests on configurations.
  * Each set of configuration tests that is performed on the same model is defined
  * in its own subclass.
- * 
+ *
  * @author Fabian Benduhn
  */
 public abstract class AbstractConfigurationTest {
@@ -52,7 +52,7 @@ public abstract class AbstractConfigurationTest {
 	 * the feature model before each test case.
 	 * For basic string input use methods loadGUIDSL or loadXML.
 	 * For file input use any FeatureModelReader.
-	 * 
+	 *
 	 * @return the FeatureModel used in this test class
 	 */
 
@@ -64,10 +64,10 @@ public abstract class AbstractConfigurationTest {
 
 	/**
 	 * shorthand to define a featuremodel by a String and load it into a FeatureModel
-	 * 
+	 *
 	 * @param fmXml XML representation of the feature model (without constraints -> part within first <struct> )
 	 * @param constraintsXml XML representation of the constraints (part within <constraints> ).
-	 * 
+	 *
 	 * @return
 	 */
 	protected static IFeatureModel loadXML(String fmXml, String constraintsXml) {
@@ -89,7 +89,7 @@ public abstract class AbstractConfigurationTest {
 				fail();
 			}
 			return fm;
-		} catch (NoSuchExtensionException e) {
+		} catch (final NoSuchExtensionException e) {
 			fail();
 		}
 		return null;
@@ -97,10 +97,10 @@ public abstract class AbstractConfigurationTest {
 
 	/**
 	 * shorthand to define a featuremodel by a String and load it into a FeatureModel
-	 * 
+	 *
 	 * @param fmXml XML representation of the feature model (without constraints -> part within first <struct> )
 	 * @param constraintsXml XML representation of the constraints (part within <constraints> ).
-	 * 
+	 *
 	 * @return
 	 */
 	protected static IFeatureModel loadXML(String fmXml) {
@@ -108,7 +108,7 @@ public abstract class AbstractConfigurationTest {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public AbstractConfigurationTest() {
 		super();

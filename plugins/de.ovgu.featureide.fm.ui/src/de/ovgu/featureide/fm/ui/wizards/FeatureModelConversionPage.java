@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -40,7 +40,7 @@ import de.ovgu.featureide.fm.core.base.impl.FMFormatManager;
 import de.ovgu.featureide.fm.core.io.IFeatureModelFormat;
 
 /**
- * 
+ *
  * @author Sebastian Krieter
  */
 public class FeatureModelConversionPage extends AbstractWizardPage {
@@ -62,6 +62,7 @@ public class FeatureModelConversionPage extends AbstractWizardPage {
 		setDescription("Converts the File Format of Feature Model Files");
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		final Composite container = new Composite(parent, SWT.NULL);
 		final GridLayout gridLayout = new GridLayout();
@@ -69,10 +70,10 @@ public class FeatureModelConversionPage extends AbstractWizardPage {
 		container.setLayout(gridLayout);
 		setControl(container);
 
-		Group toolGroup = new Group(container, SWT.NONE);
+		final Group toolGroup = new Group(container, SWT.NONE);
 		toolGroup.setText("Format Conversion:");
 		toolGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		GridLayout projGridLayout = new GridLayout();
+		final GridLayout projGridLayout = new GridLayout();
 		projGridLayout.numColumns = 2;
 		toolGroup.setLayout(projGridLayout);
 
@@ -83,7 +84,7 @@ public class FeatureModelConversionPage extends AbstractWizardPage {
 		toFormatCombo = new Combo(toolGroup, SWT.READ_ONLY | SWT.DROP_DOWN);
 		toFormatCombo.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		for (IFeatureModelFormat format : FMFormatManager.getInstance().getExtensions()) {
+		for (final IFeatureModelFormat format : FMFormatManager.getInstance().getExtensions()) {
 			fromFormatCombo.add(format.getId());
 			toFormatCombo.add(format.getId());
 		}

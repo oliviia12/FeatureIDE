@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -51,7 +51,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 				if (featureHead) {
 					if (parts.length > 2) {
 						final StringBuilder sb = new StringBuilder();
-						for (int i = 1; i < parts.length - 1; i++) {
+						for (int i = 1; i < (parts.length - 1); i++) {
 							sb.append(parts[i]);
 							sb.append(' ');
 						}
@@ -61,7 +61,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 						tagFeatureNode = null;
 					}
 				}
-			} catch (NumberFormatException e) {
+			} catch (final NumberFormatException e) {
 				tagPriority = 0;
 
 				if (featureHead) {

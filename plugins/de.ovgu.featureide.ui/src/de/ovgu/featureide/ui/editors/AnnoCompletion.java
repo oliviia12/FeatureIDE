@@ -2,17 +2,17 @@
  * Copyright (C) 2005-2017  FeatureIDE team, University of Magdeburg, Germany
  *
  * This file is part of FeatureIDE.
- * 
+ *
  * FeatureIDE is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * FeatureIDE is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with FeatureIDE.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -46,15 +46,15 @@ import de.ovgu.featureide.ui.UIPlugin;
 
 /**
  * Context Completion
- * 
+ *
  * @author Reimar Schr�ter
  * @author Marcus Pinnecke
  */
 @SuppressWarnings("restriction")
 public class AnnoCompletion implements IJavaCompletionProposalComputer {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final Image FEATURE_ICON = UIPlugin.getImage("FeatureIconSmall.ico");
 
@@ -104,34 +104,32 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 		if (arg0 instanceof JavaContentAssistInvocationContext) {
 			context = (JavaContentAssistInvocationContext) arg0;
 		}
-		
-				
-				
+
 		final IFile file = ((IFileEditorInput) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput())
 				.getFile();
 		final IFeatureProject featureProject = CorePlugin.getFeatureProject(file);
 
-		if (context == null || file == null || featureProject == null) {
+		if ((context == null) || (file == null) || (featureProject == null)) {
 			return Collections.emptyList();
 		}
-		
-		if(!isContextValid(context)){
+
+		if (!isContextValid(context)) {
 			return Collections.emptyList();
 		}
 
 		CharSequence prefix = "";
 		try {
 			prefix = context.computeIdentifierPrefix();
-		} catch (BadLocationException e) {
+		} catch (final BadLocationException e) {
 			e.printStackTrace();
 		}
 
-		List<CompletionProposal> completionProp = getCompl(featureProject, prefix);
+		final List<CompletionProposal> completionProp = getCompl(featureProject, prefix);
 
-		ArrayList<ICompletionProposal> list = new ArrayList<ICompletionProposal>();
-		for (CompletionProposal prop : completionProp) {
+		final ArrayList<ICompletionProposal> list = new ArrayList<ICompletionProposal>();
+		for (final CompletionProposal prop : completionProp) {
 
-			LazyJavaCompletionProposal curFeature = new LazyJavaCompletionProposal(prop, context);
+			final LazyJavaCompletionProposal curFeature = new LazyJavaCompletionProposal(prop, context);
 			curFeature.setImage(FEATURE_ICON);
 			//			curFeature.setReplacementLength(prop.getCompletion().length - prefix.length());
 			curFeature.setReplacementString(new String(prop.getCompletion()).replace(prefix, ""));
@@ -147,14 +145,14 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 	 */
 	private boolean isContextValid(JavaContentAssistInvocationContext context) {
 		try {
-			int line = context.getDocument().getLineOfOffset(context.getInvocationOffset());
-			int offsetOfLine = context.getDocument().getLineOffset(line);
-			int lineLength = context.getDocument().getLineLength(line);
-			String lineContent = context.getDocument().get(offsetOfLine,lineLength);
-			if (!lineContent.contains("#if") && !lineContent.contains("#elif") && !lineContent.contains("#condition")){
+			final int line = context.getDocument().getLineOfOffset(context.getInvocationOffset());
+			final int offsetOfLine = context.getDocument().getLineOffset(line);
+			final int lineLength = context.getDocument().getLineLength(line);
+			final String lineContent = context.getDocument().get(offsetOfLine, lineLength);
+			if (!lineContent.contains("#if") && !lineContent.contains("#elif") && !lineContent.contains("#condition")) {
 				return false;
 			}
-		} catch (BadLocationException e1) {
+		} catch (final BadLocationException e1) {
 			e1.printStackTrace();
 		}
 		return true;

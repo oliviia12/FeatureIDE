@@ -421,7 +421,7 @@ public class ConfigurationMap extends ViewPart implements ICustomTableHeaderSele
 			return;
 		}
 		featuresColumn.setWidth(featureColumnWidth);
-		
+
 		// Callback will handle creating columns
 		configurations = loader.loadConfigurations(featureProject.getFeatureModel(), featureProject.getConfigPath());
 		// update header
@@ -542,16 +542,19 @@ public class ConfigurationMap extends ViewPart implements ICustomTableHeaderSele
 				if (newInput instanceof FileEditorInput) {
 					final IFile projectFile = ((FileEditorInput) newInput).getFile();
 					final IFeatureProject newProject = CorePlugin.getFeatureProject(projectFile);
-					if (newProject != null && !newProject.equals(featureProject)) {
+					if ((newProject != null) && !newProject.equals(featureProject)) {
 						setFeatureProject(newProject);
 						isNew = true;
 					}
 				}
-				Object[] expandedElements = tree.getExpandedElements();
+				final Object[] expandedElements = tree.getExpandedElements();
 				tree.setInput(newInput);
 				updateTree();
-				if (expandedElements.length > 0 && !isNew) tree.setExpandedElements(expandedElements);
-				else tree.expandAll();
+				if ((expandedElements.length > 0) && !isNew) {
+					tree.setExpandedElements(expandedElements);
+				} else {
+					tree.expandAll();
+				}
 			}
 		}
 
