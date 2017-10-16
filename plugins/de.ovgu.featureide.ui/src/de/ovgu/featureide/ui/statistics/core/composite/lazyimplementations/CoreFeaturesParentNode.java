@@ -33,6 +33,7 @@ import de.ovgu.featureide.ui.statistics.core.composite.LazyParent;
  * @author Sebastian Krieter
  */
 public class CoreFeaturesParentNode extends LazyParent {
+
 	private final IFeatureModel model;
 
 	public CoreFeaturesParentNode(String description, IFeatureModel model) {

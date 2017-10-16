@@ -36,8 +36,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to set all features to collapsed. Enables
- * undo/redo functionality.
+ * Operation with functionality to set all features to collapsed. Enables undo/redo functionality.
  *
  * @author Joshua Sprey
  * @author Enis Belli
@@ -84,9 +83,8 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 	}
 
 	/**
-	 * Calls calculateLevels with the root and iterates then over the computed levels
-	 * to determine which levels are visible. Only visible features and thus visible
-	 * levels are taken into account.
+	 * Calls calculateLevels with the root and iterates then over the computed levels to determine which levels are visible. Only visible features and thus
+	 * visible levels are taken into account.
 	 *
 	 * @param root the root feature of the graphical feature model.
 	 */
@@ -103,8 +101,8 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 		}
 		LinkedList<IFeature> lastLevel = levels.getFirst();
 		for (final LinkedList<IFeature> level : levels) {
-			/* if the last level is not null AND the level exceeds
-			 * neither the width nor the height of the editor
+			/*
+			 * if the last level is not null AND the level exceeds neither the width nor the height of the editor
 			 */
 			if ((lastLevel != null) && featureDiagramEditor.isLevelSizeOverLimit()) {
 				affectedFeatureList.addAll(lastLevel);
@@ -113,7 +111,7 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 			}
 			lastLevel = level;
 
-			//expand next level
+			// expand next level
 			for (final IFeature f : level) {
 				final IGraphicalFeature graphicalF = graphicalFeatureModel.getGraphicalFeature(f);
 				graphicalF.setCollapsed(false);
@@ -145,7 +143,7 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 		for (final LinkedList<IFeature> parentSet : powerSet(parents)) {
 			final LinkedList<IFeature> childList = new LinkedList<IFeature>();
 			for (final IFeature f : parentSet) {
-				//Expand and relayout parent
+				// Expand and relayout parent
 				final IGraphicalFeature graphicalF = graphicalFeatureModel.getGraphicalFeature(f);
 				graphicalF.setCollapsed(false);
 				((FeatureDiagramEditor) getEditor()).propertyChange(new FeatureIDEEvent(null, EventType.STRUCTURE_CHANGED));
@@ -163,7 +161,7 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 			}
 
 			for (final IFeature f : parentSet) {
-				//collapse and relayout parent
+				// collapse and relayout parent
 				final IGraphicalFeature graphicalF = graphicalFeatureModel.getGraphicalFeature(f);
 				graphicalF.setCollapsed(true);
 			}
@@ -216,8 +214,7 @@ public class AdjustModelToEditorSizeOperation extends AbstractFeatureModelOperat
 	}
 
 	/**
-	 * Calculates the levels from the given IGraphicalFeature by iterating through the levels
-	 * of features.
+	 * Calculates the levels from the given IGraphicalFeature by iterating through the levels of features.
 	 *
 	 * @param root of the model.
 	 * @return list of levels, which are again lists of IFeatures

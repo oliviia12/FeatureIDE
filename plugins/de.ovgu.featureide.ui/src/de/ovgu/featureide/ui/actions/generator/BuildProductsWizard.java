@@ -78,8 +78,7 @@ public class BuildProductsWizard extends Wizard implements INewWizard, IConfigur
 	}
 
 	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-	}
+	public void init(IWorkbench workbench, IStructuredSelection selection) {}
 
 	public boolean getToggleState() {
 		return toggleState;

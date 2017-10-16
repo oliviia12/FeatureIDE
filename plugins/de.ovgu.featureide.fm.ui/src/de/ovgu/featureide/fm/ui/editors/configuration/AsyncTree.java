@@ -42,6 +42,7 @@ import de.ovgu.featureide.fm.core.functional.Functional.IBinaryFunction;
 public class AsyncTree extends Thread {
 
 	private class Builder implements Runnable {
+
 		private final TreeItem parent;
 		private final TreeElement[] children;
 
@@ -91,6 +92,7 @@ public class AsyncTree extends Thread {
 	}
 
 	private class Traverser implements Runnable {
+
 		private final TreeItem item;
 		private final IBinaryFunction<TreeItem, SelectableFeature, Void> perNodeFunction;
 
@@ -145,8 +147,7 @@ public class AsyncTree extends Thread {
 			while (true) {
 				currentDisplay.syncExec(runnableList.take());
 			}
-		} catch (final InterruptedException e) {
-		}
+		} catch (final InterruptedException e) {}
 	}
 
 	private AsyncTree(HashMap<SelectableFeature, TreeItem> itemMap, final Functional.IFunction<Void, Void> callbackIfDone) {

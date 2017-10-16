@@ -31,18 +31,16 @@ import de.ovgu.featureide.ahead.wrapper.AheadBuildErrorEvent;
 import de.ovgu.featureide.core.CorePlugin;
 
 /**
- * Tests the class {@link AheadBuildErrorEvent}<br>
- * <br>
+ * Tests the class {@link AheadBuildErrorEvent}<br> <br>
  *
- * To generate test cases copy the files into "testcases.<code>projectname</code>"<br>
- * java files need to be renamed into <code>filename</code>.javaX<br>
+ * To generate test cases copy the files into "testcases.<code>projectname</code>"<br> java files need to be renamed into <code>filename</code>.javaX<br>
  * feature files need to be renamed into <code>feature</code>_filename.jak
  *
  * @author Jens Meinicke
  */
 /*
- * A full test could be possible checking all lines of a generated file and compares the content
- * of the lines (except for lines whose content needed to be changed or is created at the composition process)
+ * A full test could be possible checking all lines of a generated file and compares the content of the lines (except for lines whose content needed to be
+ * changed or is created at the composition process)
  */
 public class TAheadErrorPropagation {
 
@@ -72,6 +70,7 @@ public class TAheadErrorPropagation {
 
 	private final static FileFilter getFileFilter(final String s) {
 		return new FileFilter() {
+
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getName().equals(s);
@@ -107,7 +106,7 @@ public class TAheadErrorPropagation {
 			System.out.println("Wrong source line @ " + className + ".java (expected: " + jakLine + " but was: " + sourceLine + ")");
 		}
 		// TODO #457 AHEAD error propagation add this test
-		//assertEquals(jakLine, sourceLine);
+		// assertEquals(jakLine, sourceLine);
 	}
 
 	private int calculateComposedJakLine(int javaLine, String fileName) {
@@ -133,10 +132,8 @@ public class TAheadErrorPropagation {
 		return builder.toString();
 	}
 
-	/*�**********************************************************************
-	 * project		 : HelloWorld-AHEAD										*
-	 * class  		 : Main													*
-	 * configuration : BeatifulWorld										*
+	/*
+	 * �********************************************************************** project : HelloWorld-AHEAD * class : Main * configuration : BeatifulWorld *
 	 ************************************************************************/
 	@Test
 	public void testMain_1() {
@@ -156,10 +153,8 @@ public class TAheadErrorPropagation {
 		test("Main", "World", 27, 27, 4);
 	}
 
-	/*�**********************************************************************
-	 * project		 : DesktopSearcher-AHEAD								*
-	 * class  		 : MainFrame											*
-	 * configuration : config												*
+	/*
+	 * �********************************************************************** project : DesktopSearcher-AHEAD * class : MainFrame * configuration : config *
 	 ************************************************************************/
 	@Test
 	public void testMainFrame_1() {

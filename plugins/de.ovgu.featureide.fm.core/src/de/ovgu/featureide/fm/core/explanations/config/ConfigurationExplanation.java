@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.core.explanations.Explanation;
  * @author Timo G&uuml;nther
  */
 public abstract class ConfigurationExplanation extends Explanation {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

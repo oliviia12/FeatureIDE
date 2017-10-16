@@ -30,6 +30,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.impl.AbstractFeatureModelExpla
  * @author Timo G&uuml;nther
  */
 public abstract class AbstractConfigurationExplanationCreator extends AbstractFeatureModelExplanationCreator implements ConfigurationExplanationCreator {
+
 	/** The configuration containing an issue that needs explaining. */
 	private Configuration config;
 

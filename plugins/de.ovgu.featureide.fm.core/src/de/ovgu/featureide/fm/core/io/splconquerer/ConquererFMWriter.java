@@ -289,7 +289,7 @@ public class ConquererFMWriter implements IFeatureModelFormat {
 		int indentLevel = 0;
 		final BufferedReader reader = new BufferedReader(new StringReader(text));
 		try {
-			reader.readLine(); //hack to remove first line
+			reader.readLine(); // hack to remove first line
 			line = reader.readLine();
 			while (line != null) {
 				if (line.startsWith("</")) {
@@ -325,7 +325,7 @@ public class ConquererFMWriter implements IFeatureModelFormat {
 
 	public String writeToString(IFeatureModel featureModel) {
 		this.featureModel = featureModel;
-		//Create Empty DOM Document
+		// Create Empty DOM Document
 		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		dbf.setIgnoringComments(true);
@@ -339,10 +339,10 @@ public class ConquererFMWriter implements IFeatureModelFormat {
 			Logger.logError(pce);
 		}
 		final Document doc = db.newDocument();
-		//Create the Xml Representation
+		// Create the Xml Representation
 		createXmlDoc(doc);
 
-		//Transform the Xml Representation into a String
+		// Transform the Xml Representation into a String
 		Transformer transfo = null;
 		try {
 			transfo = TransformerFactory.newInstance().newTransformer();

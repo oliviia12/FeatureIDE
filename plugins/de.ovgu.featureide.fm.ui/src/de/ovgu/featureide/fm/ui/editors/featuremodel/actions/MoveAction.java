@@ -44,14 +44,14 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.figures.LegendFigure;
 
 /**
- * This is the MoveAction for the manual movement of objects in the
- * FeatureModelDiagram
+ * This is the MoveAction for the manual movement of objects in the FeatureModelDiagram
  *
  * @author Guenter Ulreich
  * @author Andy Koch
  * @author Marcus Pinnecke
  */
 public class MoveAction extends Action {
+
 	public static final int stepwidth = 2;
 	public static final String ID = "de.ovgu.featureide.move";
 	public static final int UP = 1;
@@ -73,6 +73,7 @@ public class MoveAction extends Action {
 	private final HashMap<Object, Point> endPositions = new HashMap<Object, Point>();
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			// action only active when manual layout and feature diagram elements are selected
@@ -85,12 +86,9 @@ public class MoveAction extends Action {
 
 	/**
 	 *
-	 * @param viewer
-	 *            the object which for the MoveAction has been registered
-	 * @param featureModel
-	 *            the according FeatureModel object
-	 * @param graphicalViewer
-	 *            the according GraphicalViewerImpl
+	 * @param viewer the object which for the MoveAction has been registered
+	 * @param featureModel the according FeatureModel object
+	 * @param graphicalViewer the according GraphicalViewerImpl
 	 * @param direction
 	 */
 	public MoveAction(Object viewer, IGraphicalFeatureModel featureModel, Object graphicalViewer, int direction) {
@@ -168,8 +166,8 @@ public class MoveAction extends Action {
 
 			feature.setLocation(newPos);
 		} else if ((element instanceof ConstraintEditPart) || (element instanceof IConstraint)) {
-			final IGraphicalConstraint constraint = element instanceof ConstraintEditPart ? ((ConstraintEditPart) element).getModel()
-					: (IGraphicalConstraint) element;
+			final IGraphicalConstraint constraint =
+					element instanceof ConstraintEditPart ? ((ConstraintEditPart) element).getModel() : (IGraphicalConstraint) element;
 			final Point newPos = constraint.getLocation().translate(deltaPos);
 			constraint.setLocation(newPos);
 		} else if ((element instanceof LegendEditPart) || (element instanceof LegendFigure)) {
@@ -209,9 +207,7 @@ public class MoveAction extends Action {
 	/**
 	 * check if the selection has not only one element who is a ModelEditPart
 	 *
-	 * @param selection
-	 *            the IStructuredSelection object who contains the selected
-	 *            controls
+	 * @param selection the IStructuredSelection object who contains the selected controls
 	 * @return true if condition is matched
 	 */
 	private boolean isValidSelection(IStructuredSelection selection) {

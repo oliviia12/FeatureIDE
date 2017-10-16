@@ -40,8 +40,7 @@ import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import de.ovgu.featureide.fm.core.io.guidsl.GuidslFormat;
 
 /**
- * Checks that the calculation of edit categories works properly. A couple of
- * known refactorings, generalizations and arbitrary edits are performed and the
+ * Checks that the calculation of edit categories works properly. A couple of known refactorings, generalizations and arbitrary edits are performed and the
  * result of the ModelComperator is tested.
  *
  * @author Thomas Thuem

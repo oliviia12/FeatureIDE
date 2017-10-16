@@ -37,8 +37,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 import de.ovgu.featureide.fm.ui.views.outline.FmOutlineGroupStateStorage;
 
 /**
- * A default implementation for actions that only allow one feature to be
- * selected.
+ * A default implementation for actions that only allow one feature to be selected.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -46,6 +45,7 @@ import de.ovgu.featureide.fm.ui.views.outline.FmOutlineGroupStateStorage;
 public abstract class SingleSelectionAction extends Action implements IEventListener {
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

@@ -69,6 +69,7 @@ public class AheadComposer extends ComposerExtensionClass {
 	private AheadWrapper ahead;
 
 	private class BuilderErrorListener implements AheadBuildErrorListener {
+
 		@Override
 		public void parseErrorFound(AheadBuildErrorEvent event) {
 			if (featureProject != null) {
@@ -99,11 +100,9 @@ public class AheadComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Iterated through all jak files of the source folder.<br>
-	 * <br>
+	 * Iterated through all jak files of the source folder.<br> <br>
 	 *
-	 * The first line of a jak file must not start with imports.<br>
-	 * Removes derived layer declarations.
+	 * The first line of a jak file must not start with imports.<br> Removes derived layer declarations.
 	 *
 	 * @param folder
 	 * @throws CoreException
@@ -121,11 +120,9 @@ public class AheadComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Corrects the given source jak file.<br>
-	 * <br>
+	 * Corrects the given source jak file.<br> <br>
 	 *
-	 * The first line of a jak file must not start with imports.<br>
-	 * Removes derived layer declarations.
+	 * The first line of a jak file must not start with imports.<br> Removes derived layer declarations.
 	 *
 	 * @param file
 	 */
@@ -140,11 +137,9 @@ public class AheadComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Corrects the given file content of the source jak file.<br>
-	 * <br>
+	 * Corrects the given file content of the source jak file.<br> <br>
 	 *
-	 * The first line of a jak file must not start with imports.<br>
-	 * Removes derived layer declarations.
+	 * The first line of a jak file must not start with imports.<br> Removes derived layer declarations.
 	 *
 	 * @param fileContent The file content.
 	 * @return
@@ -351,8 +346,7 @@ public class AheadComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Removes the old build command from project setup.
-	 * "FeatureIDE_Core.jakBuilder"
+	 * Removes the old build command from project setup. "FeatureIDE_Core.jakBuilder"
 	 *
 	 * @param project
 	 */
@@ -376,8 +370,7 @@ public class AheadComposer extends ComposerExtensionClass {
 			}
 			description.setBuildSpec(newCommandArray);
 			project.setDescription(description, null);
-		} catch (final CoreException ex) {
-		}
+		} catch (final CoreException ex) {}
 	}
 
 	// TODO this should be done with external classes
@@ -438,7 +431,8 @@ public class AheadComposer extends ComposerExtensionClass {
 		return IComposerExtensionClass.Mechanism.FEATURE_ORIENTED_PROGRAMMING;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.core.builder.IComposerExtensionBase#supportsMigration()
 	 */
 	@Override

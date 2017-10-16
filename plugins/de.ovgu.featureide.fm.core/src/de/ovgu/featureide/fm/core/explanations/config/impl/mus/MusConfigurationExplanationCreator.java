@@ -34,9 +34,9 @@ import de.ovgu.featureide.fm.core.explanations.config.impl.AbstractConfiguration
  * @author Timo G&uuml;nther
  */
 public abstract class MusConfigurationExplanationCreator extends AbstractConfigurationExplanationCreator {
+
 	/**
-	 * The oracle with the CNF as input.
-	 * The oracle is created lazily when needed and reset when the CNF changes.
+	 * The oracle with the CNF as input. The oracle is created lazily when needed and reset when the CNF changes.
 	 */
 	private MusExtractor oracle;
 
@@ -57,8 +57,7 @@ public abstract class MusConfigurationExplanationCreator extends AbstractConfigu
 	}
 
 	/**
-	 * Returns the oracle.
-	 * Creates it first if necessary.
+	 * Returns the oracle. Creates it first if necessary.
 	 *
 	 * @return the oracle; not null
 	 */

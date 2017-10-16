@@ -29,8 +29,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent;
 import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 
 /**
- * Operation with functionality to set a Feature abstract/concrete. Enables
- * undo/redo functionality.
+ * Operation with functionality to set a Feature abstract/concrete. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke
@@ -43,10 +42,8 @@ public class SetFeatureToAbstractOperation extends AbstractFeatureModelOperation
 	private final IFeature feature;
 
 	/**
-	 * @param label
-	 *            Description of this operation to be used in the menu
-	 * @param feature
-	 *            feature on which this operation will be executed
+	 * @param label Description of this operation to be used in the menu
+	 * @param feature feature on which this operation will be executed
 	 *
 	 */
 	public SetFeatureToAbstractOperation(IFeature feature, IFeatureModel featureModel) {

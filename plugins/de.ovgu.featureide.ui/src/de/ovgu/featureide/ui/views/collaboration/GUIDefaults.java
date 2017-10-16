@@ -102,7 +102,7 @@ public interface GUIDefaults {
 	 * This color highlights the role(selected) representing the file at the open editor.
 	 */
 	Color OPEN_ROLE_BACKGROUND_SELECTED = ROLE_BACKGROUND_SELECTED;
-	//GUIBasics.createColor(180, 180, 255);
+	// GUIBasics.createColor(180, 180, 255);
 	Color OPEN_ROLE_BORDER_COLOR_SELECTED = GUIBasics.createBorderColor(OPEN_ROLE_BACKGROUND_SELECTED);
 	Border OPEN_ROLE_BORDER_SELECTED = new LineBorder(OPEN_ROLE_BORDER_COLOR_SELECTED, 1);
 
@@ -110,7 +110,7 @@ public interface GUIDefaults {
 	 * This color highlights the role(selected) representing the file at the open editor.
 	 */
 	Color OPEN_ROLE_BACKGROUND_UNSELECTED = ROLE_BACKGROUND_UNSELECTED;
-	//GUIBasics.createColor(242, 242, 255);
+	// GUIBasics.createColor(242, 242, 255);
 	Color OPEN_ROLE_BORDER_COLOR_UNSELECTED = GUIBasics.createBorderColor(OPEN_ROLE_BACKGROUND_UNSELECTED);
 	Border OPEN_ROLE_BORDER_UNSELECTED = new LineBorder(OPEN_ROLE_BORDER_COLOR_UNSELECTED, 1);
 

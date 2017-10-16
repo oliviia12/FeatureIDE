@@ -63,8 +63,8 @@ public class FeatureModelStructure implements IFeatureModelStructure {
 				return false;
 			}
 		}
-		//else if (!correspondingFeatureModel.equals(other.correspondingFeatureModel))
-		//	return false;
+		// else if (!correspondingFeatureModel.equals(other.correspondingFeatureModel))
+		// return false;
 		if (rootFeature == null) {
 			if (other.rootFeature != null) {
 				return false;
@@ -233,7 +233,7 @@ public class FeatureModelStructure implements IFeatureModelStructure {
 
 	@Override
 	public void replaceRoot(IFeatureStructure feature) {
-		//TODO remove all features that are no children of the new root (part of a different sub tree)
+		// TODO remove all features that are no children of the new root (part of a different sub tree)
 		correspondingFeatureModel.deleteFeatureFromTable(rootFeature.getFeature());
 
 		feature.setParent(null);

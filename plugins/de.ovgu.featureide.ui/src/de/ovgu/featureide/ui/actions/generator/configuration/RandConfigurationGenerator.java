@@ -51,6 +51,7 @@ public class RandConfigurationGenerator extends AConfigurationGenerator {
 
 	protected void exec(final CNF satInstance, final RandomConfigurationGenerator as, IMonitor monitor) {
 		final Thread consumer = new Thread() {
+
 			@Override
 			public void run() {
 				int foundConfigurations = 0;

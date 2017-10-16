@@ -85,8 +85,7 @@ public class RelationDecoration extends ConnectionDecoration implements GUIDefau
 	}
 
 	@Override
-	protected void fillShape(final Graphics graphics) {
-	}
+	protected void fillShape(final Graphics graphics) {}
 
 	@Override
 	protected void outlineShape(final Graphics graphics) {

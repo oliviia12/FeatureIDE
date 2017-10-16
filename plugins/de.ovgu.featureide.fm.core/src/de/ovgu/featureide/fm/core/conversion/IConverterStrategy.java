@@ -33,6 +33,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
  * @author Alexander Knueppel
  */
 public interface IConverterStrategy {
+
 	/**
 	 * Converts a feature model with complex constraints to a feature model with only requires- and excludes-constraints.
 	 *

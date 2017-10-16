@@ -63,51 +63,41 @@ abstract public class AbstractCorePlugin extends Plugin {
 	}
 
 	/**
-	 * Convenience method for easy and clean logging. All messages collected by
-	 * this method will be written to the eclipse log file.
+	 * Convenience method for easy and clean logging. All messages collected by this method will be written to the eclipse log file.
 	 *
-	 * Messages are only written to the error log, if the debug option is set
-	 * for this plug-in
+	 * Messages are only written to the error log, if the debug option is set for this plug-in
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
+	 * @param message A message that should be written to the eclipse log file
 	 */
 	public void logInfo(String message) {
 		log(IStatus.INFO, message, new Exception());
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of warnings. All messages
-	 * collected by this method will be written to the eclipse log file.
+	 * Convenience method for easy and clean logging of warnings. All messages collected by this method will be written to the eclipse log file.
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
+	 * @param message A message that should be written to the eclipse log file
 	 */
 	public void logWarning(String message) {
 		log(IStatus.WARNING, message, new Exception());
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of exceptions. All messages
-	 * collected by this method will be written to the eclipse log file. The
+	 * Convenience method for easy and clean logging of exceptions. All messages collected by this method will be written to the eclipse log file. The
 	 * exception's stack trace is added to the log as well.
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
-	 * @param exception
-	 *            Exception containing the stack trace
+	 * @param message A message that should be written to the eclipse log file
+	 * @param exception Exception containing the stack trace
 	 */
 	public void logError(String message, Throwable exception) {
 		log(IStatus.ERROR, message, exception);
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of exceptions. All messages
-	 * collected by this method will be written to the eclipse log file. The
+	 * Convenience method for easy and clean logging of exceptions. All messages collected by this method will be written to the eclipse log file. The
 	 * exception's stack trace is added to the log as well.
 	 *
-	 * @param exception
-	 *            Exception containing the stack trace
+	 * @param exception Exception containing the stack trace
 	 */
 	public void logError(Throwable exception) {
 		if (exception != null) {

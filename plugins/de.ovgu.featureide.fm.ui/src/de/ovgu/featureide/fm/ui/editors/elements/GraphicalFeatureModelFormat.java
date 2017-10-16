@@ -153,7 +153,7 @@ public class GraphicalFeatureModelFormat extends AXMLFormat<IGraphicalFeatureMod
 	private void parseConstraint(NodeList nodeList) {
 		final Iterator<IGraphicalConstraint> iterator = object.getConstraints().iterator();
 		for (final Element e : getElements(nodeList)) {
-			//			String nodeName = e.getNodeName();
+			// String nodeName = e.getNodeName();
 			if (!iterator.hasNext()) {
 				break;
 			}

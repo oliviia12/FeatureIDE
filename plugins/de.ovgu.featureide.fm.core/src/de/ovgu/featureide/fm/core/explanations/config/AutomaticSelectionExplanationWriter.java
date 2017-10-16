@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.explanations.ExplanationWriter;
  * @author Timo G&uuml;nther
  */
 public class AutomaticSelectionExplanationWriter extends ConfigurationExplanationWriter {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

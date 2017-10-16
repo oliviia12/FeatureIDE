@@ -93,27 +93,27 @@ public class SelectFeaturesWizardPage extends AbstractWizardPage {
 		final Button selectAllButton = new Button(buttonGroup, SWT.PUSH);
 		selectAllButton.setText("Select All");
 		selectAllButton.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				checkItems(true);
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		final Button deselectAllButton = new Button(buttonGroup, SWT.PUSH);
 		deselectAllButton.setText("Deselect All");
 		deselectAllButton.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				checkItems(false);
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		setPageComplete(false);
@@ -159,8 +159,7 @@ public class SelectFeaturesWizardPage extends AbstractWizardPage {
 	/**
 	 * Add the feature name as an item to the tree.
 	 *
-	 * @param root
-	 *            the feature to add
+	 * @param root the feature to add
 	 */
 	private void addFeaturesToTree(IFeature root) {
 		final TreeItem item = new TreeItem(featuresTree, SWT.NORMAL);
@@ -176,10 +175,8 @@ public class SelectFeaturesWizardPage extends AbstractWizardPage {
 	/**
 	 * Add the feature name as an item to the tree.
 	 *
-	 * @param root
-	 *            the feature to add
-	 * @param parent
-	 *            the parent item to add the feature as a child
+	 * @param root the feature to add
+	 * @param parent the parent item to add the feature as a child
 	 */
 	private void addFeaturesToTree(IFeature root, TreeItem parent) {
 		final TreeItem item = new TreeItem(parent, SWT.NORMAL);

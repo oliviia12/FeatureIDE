@@ -55,10 +55,10 @@ public class DeRestriction extends Restriction {
 
 		if (op == Op.GEQ) {
 			// negated restriction for GEQ (>=):
-			//     ~( +a_1*x_1 +a_2*x_2 ... >=  d)
-			// <=> +a_1*x_1 +a_2*x_2 ...    <   d
-			// <=> -a_1*x_1 -a_2*x_2 ...    >  -d
-			// <=> -a_1*x_1 -a_2*x_2 ...    >= -d+1
+			// ~( +a_1*x_1 +a_2*x_2 ... >= d)
+			// <=> +a_1*x_1 +a_2*x_2 ... < d
+			// <=> -a_1*x_1 -a_2*x_2 ... > -d
+			// <=> -a_1*x_1 -a_2*x_2 ... >= -d+1
 			final List<Term> newTerms = new ArrayList<>();
 			for (final Term term : terms) {
 				newTerms.add(term.flipCoefficientSign());
@@ -66,16 +66,16 @@ public class DeRestriction extends Restriction {
 			inverseConjunction.add(new DeRestriction(newTerms, RelationOperator.GREATER_EQUAL, -degree + 1));
 		} else {
 			// negated restriction for EQ (==):
-			//     ~( +a_1*x_1 +a_2*x_2 ... ==  d)
-			// <=> +a_1*x_1 +a_2*x_2 ...    !=  d
-			// <=> (+a_1*x_1 +a_2*x_2 ...   >=  d+1)
-			//  || (+a_1*x_1 +a_2*x_2 ...   <=  d-1)
-			// <=> (+a_1*x_1 +a_2*x_2 ...   >=  d+1)
-			//  || (-a_1*x_1 -a_2*x_2 ...   >= -d+1)
+			// ~( +a_1*x_1 +a_2*x_2 ... == d)
+			// <=> +a_1*x_1 +a_2*x_2 ... != d
+			// <=> (+a_1*x_1 +a_2*x_2 ... >= d+1)
+			// || (+a_1*x_1 +a_2*x_2 ... <= d-1)
+			// <=> (+a_1*x_1 +a_2*x_2 ... >= d+1)
+			// || (-a_1*x_1 -a_2*x_2 ... >= -d+1)
 			// <=> (+(d+1)y +a_1*x_1 +a_2*x_2 ... >= d+1)
-			//  && ((-d+1+a_1+a_2 ...)~y +a_1*x_1 +a_2*x_2 ... >= -d+1+a_1+a_2 ...)
+			// && ((-d+1+a_1+a_2 ...)~y +a_1*x_1 +a_2*x_2 ... >= -d+1+a_1+a_2 ...)
 			// <=> (+e y +a_1*x_1 +a_2*x_2 ... >= e)
-			//  && (+f~y +a_1*x_1 +a_2*x_2 ... >= f)
+			// && (+f~y +a_1*x_1 +a_2*x_2 ... >= f)
 			// where e=d+1 and f=(-d+1+a_1+a_2 ...)
 			final List<Term> newTerms1 = new ArrayList<>();
 			final List<Term> newTerms2 = new ArrayList<>();

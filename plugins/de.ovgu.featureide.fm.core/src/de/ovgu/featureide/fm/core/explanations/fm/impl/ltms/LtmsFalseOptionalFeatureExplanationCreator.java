@@ -37,6 +37,7 @@ import de.ovgu.featureide.fm.core.explanations.impl.ltms.Ltms;
  * @author Timo G&uuml;nther
  */
 public class LtmsFalseOptionalFeatureExplanationCreator extends LtmsFeatureModelExplanationCreator implements FalseOptionalFeatureExplanationCreator {
+
 	/** The false-optional feature in the feature model. */
 	private IFeature falseOptionalFeature;
 
@@ -80,10 +81,8 @@ public class LtmsFalseOptionalFeatureExplanationCreator extends LtmsFeatureModel
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Sets initial truth value assumptions of the false-optional feature to false and its parent to true.
-	 * Then propagates the values until a violation in a clause occurs.
-	 * </p>
+	 * <p> Sets initial truth value assumptions of the false-optional feature to false and its parent to true. Then propagates the values until a violation in a
+	 * clause occurs. </p>
 	 */
 	@Override
 	public FalseOptionalFeatureExplanation getExplanation() throws IllegalStateException {

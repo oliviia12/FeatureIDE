@@ -28,6 +28,7 @@ import static de.ovgu.featureide.fm.core.localization.StringTable.INVARIANT;
  * @author Jens Meinicke
  */
 public interface FHNodeTypes {
+
 	static final String NODE_TYPE_FEATURE = "Feature";
 	static final String NODE_TYPE_CLASS = "EOF Marker";
 	static final String NODE_COMPILATIONUNIT = "CompilationUnit";
@@ -42,7 +43,7 @@ public interface FHNodeTypes {
 	static final String JAVA_NODE_FIELD_3 = "FieldDeclaration";
 	static final String JAVA_NODE_METHOD = "MethodDecl";
 	static final String JAVA_NODE_CONSTRUCTOR = "ConstructorDecl";
-	//	static final String COMPOSITION_RULE_NAME = "JavaMethodOverriding";
+	// static final String COMPOSITION_RULE_NAME = "JavaMethodOverriding";
 	static final String JAVA_NODE_INNER_CLASS_TYPE = "InnerClassDecl";
 	static final String JAVA_NODE_IMPORTDECLARATION = "ImportDeclaration";
 	static final String JAVA_NODE_PACKAGEDECLARATION = "PackageDeclaration";
@@ -50,11 +51,11 @@ public interface FHNodeTypes {
 	static final String JAVA_NODE_EXTENDSLIST = "ExtendsList";
 	static final String JAVA_NODE_METHOD_SPEC = "MethodDeclarationWithSpec";
 
-	//JML specific node types
+	// JML specific node types
 	static final String JML_SPEC_CASE_SEQ = "SpecCaseSeq";
 	static final String JML_INVARIANT = INVARIANT;
 
-	//AsmetaL specific node types
+	// AsmetaL specific node types
 	static final String ASMETAL_DOMAIN = "Domain";
 	static final String ASMETAL_MODULE_DECLARATION = "ModuleDeclaration";
 	static final String ASMETAL_RULE = "RuleDeclaration";
@@ -68,10 +69,10 @@ public interface FHNodeTypes {
 	// C specific node types
 	static final String C_NODE_SEQUENCE_CODEUNIT_TOPLEVEL = "Sequence_CodeUnit_TopLevel";
 	static final String C_NODE_FUNC = "Func";
-	//	static final String C_NODE_ID = "Id";
+	// static final String C_NODE_ID = "Id";
 	static final String C_NODE_STATEMENT = "Statement";
 	static final String C_NODE_STRUCTDEC = "StructDec";
-	//	static final Object C_NODE_TYPEDEF = "TypeDef_";
+	// static final Object C_NODE_TYPEDEF = "TypeDef_";
 	static final String C_NODE_STMTL = "StmtTL";
 
 	// C# specific node types

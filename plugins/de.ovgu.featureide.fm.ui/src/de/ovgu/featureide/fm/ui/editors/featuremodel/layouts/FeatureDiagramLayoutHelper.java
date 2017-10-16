@@ -80,8 +80,7 @@ public class FeatureDiagramLayoutHelper {
 	}
 
 	/**
-	 * sets initial positions for new constraints
-	 * needed for manual layout
+	 * sets initial positions for new constraints needed for manual layout
 	 */
 	public static void initializeConstraintPosition(IGraphicalFeatureModel featureModel, int index) {
 		Point newLocation = new Point(0, 0);
@@ -112,8 +111,7 @@ public class FeatureDiagramLayoutHelper {
 	}
 
 	/**
-	 * sets initial positions for new features (above)
-	 * needed for manual layout
+	 * sets initial positions for new features (above) needed for manual layout
 	 */
 	public static void initializeCompoundFeaturePosition(IGraphicalFeatureModel featureModel, LinkedList<IGraphicalFeature> selectedFeatures,
 			IGraphicalFeature newCompound) {
@@ -138,8 +136,7 @@ public class FeatureDiagramLayoutHelper {
 	}
 
 	/**
-	 * sets initial positions for new features (below)
-	 * needed for manual layout
+	 * sets initial positions for new features (below) needed for manual layout
 	 */
 	public static void initializeLayerFeaturePosition(IGraphicalFeatureModel featureModel, IGraphicalFeature newLayer, IGraphicalFeature feature) {
 		final List<IGraphicalFeature> graphicalChildren = FeatureUIHelper.getGraphicalChildren(feature);
@@ -173,8 +170,8 @@ public class FeatureDiagramLayoutHelper {
 	public static FeatureDiagramLayoutManager getLayoutManager(int layoutAlgorithm, IGraphicalFeatureModel featureModel) {
 		switch (layoutAlgorithm) {
 		case 0:
-			//			FeatureUIHelper.setVerticalLayoutBounds(false, featureModel);
-			//			featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));
+			// FeatureUIHelper.setVerticalLayoutBounds(false, featureModel);
+			// featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));
 			return new ManualLayout();
 		case 1:
 			FeatureUIHelper.setVerticalLayoutBounds(false, featureModel);
@@ -192,10 +189,10 @@ public class FeatureDiagramLayoutHelper {
 			FeatureUIHelper.setVerticalLayoutBounds(true, featureModel);
 			featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));
 			return new VerticalLayout();
-		//		case 5:
-		//			FeatureUIHelper.setVerticalLayoutBounds(true, featureModel);
-		//			featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));
-		//			return new VerticalLayout2();
+		// case 5:
+		// FeatureUIHelper.setVerticalLayoutBounds(true, featureModel);
+		// featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));
+		// return new VerticalLayout2();
 		default:
 			FeatureUIHelper.setVerticalLayoutBounds(false, featureModel);
 			featureModel.getLayout().verticalLayout(FeatureUIHelper.hasVerticalLayout(featureModel));

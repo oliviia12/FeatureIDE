@@ -43,6 +43,7 @@ import de.ovgu.featureide.fm.core.io.ProblemList;
 public class ConfigurationManager extends FileManager<Configuration> {
 
 	private static class ObjectCreator extends FileManager.ObjectCreator<Configuration> {
+
 		private final Path modelFile;
 
 		public ObjectCreator(Path modelFile) {
@@ -85,15 +86,16 @@ public class ConfigurationManager extends FileManager<Configuration> {
 
 	// TODO !!! react on feature name change
 	private class FeatureModelChangeListner implements IEventListener {
+
 		@Override
 		public void propertyChange(FeatureIDEEvent evt) {
 			final EventType eventType = evt.getEventType();
 			switch (eventType) {
 			case FEATURE_NAME_CHANGED:
 				// TODO !!! react on feature name change
-				//				String oldName = (String) evt.getOldValue();
-				//				String newName = (String) evt.getNewValue();
-				//				FeatureModelManager.this.renameFeature((IFeatureModel) evt.getSource(), oldName, newName);
+				// String oldName = (String) evt.getOldValue();
+				// String newName = (String) evt.getNewValue();
+				// FeatureModelManager.this.renameFeature((IFeatureModel) evt.getSource(), oldName, newName);
 				break;
 			case MODEL_DATA_OVERRIDDEN:
 				// TODO !!! check correctness

@@ -330,7 +330,7 @@ public class FeatureColorManager implements IEventListener {
 		if (currentSchemes.containsKey(csName)) {
 			throw new RuntimeException("scheme " + csName + " already exists");
 		}
-		//		featureModel.getRenamingsManager().addListener(INSTANCE);
+		// featureModel.getRenamingsManager().addListener(INSTANCE);
 		currentSchemes.put(csName, newColorScheme);
 	}
 

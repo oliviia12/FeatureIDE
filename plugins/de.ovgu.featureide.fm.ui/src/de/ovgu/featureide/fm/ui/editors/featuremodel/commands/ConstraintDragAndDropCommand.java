@@ -41,6 +41,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.MoveConstraintTo
  * @author Marcus Pinnecke
  */
 public class ConstraintDragAndDropCommand extends Command {
+
 	private int maxLeft;
 	private int maxRight;
 	private int maxUp;
@@ -155,8 +156,8 @@ public class ConstraintDragAndDropCommand extends Command {
 
 	public Point getRightPoint() {
 
-		final Point p = new Point(constraint.getLocation().x + constraint.getSize().width + 5,
-				featureModel.getConstraints().get(calculateNewIndex()).getLocation().y);
+		final Point p =
+				new Point(constraint.getLocation().x + constraint.getSize().width + 5, featureModel.getConstraints().get(calculateNewIndex()).getLocation().y);
 		if (isLastPos) {
 			p.y = p.y + 17;
 

@@ -44,8 +44,7 @@ import de.ovgu.featureide.fm.core.constraint.WeightedTerm;
 import de.ovgu.featureide.fm.core.functional.Functional;
 
 /**
- * The Translator utility provides a bunch of handy tools to translate feature
- * models and their associated rules in the internal model to apply analysis.
+ * The Translator utility provides a bunch of handy tools to translate feature models and their associated rules in the internal model to apply analysis.
  *
  * @author Sebastian Henneberg
  * @author Marcus Pinnecke (Feature Interface)
@@ -53,8 +52,7 @@ import de.ovgu.featureide.fm.core.functional.Functional;
 public class Translator {
 
 	/**
-	 * Creates a bijective mapping between the first n natural numbers and the
-	 * features present in the model.
+	 * Creates a bijective mapping between the first n natural numbers and the features present in the model.
 	 *
 	 * @param fm The feature model.
 	 * @return 1-to-1 mapping of natural numbers to features.
@@ -70,8 +68,7 @@ public class Translator {
 	}
 
 	/**
-	 * Extends the given bijective mapping by all features present in the
-	 * passed model which are not yet in the mapping.
+	 * Extends the given bijective mapping by all features present in the passed model which are not yet in the mapping.
 	 *
 	 * @param map 1-to-1 mapping of natural numbers to features.
 	 * @param fm The feature model.
@@ -229,7 +226,7 @@ public class Translator {
 					} else if (clause instanceof Or) {
 						clause2Constraint(map, rs, (Or) clause, factory);
 					}
-					//					clause2Constraint(map, rs, (Or) clause, factory);
+					// clause2Constraint(map, rs, (Or) clause, factory);
 				}
 			}
 		}

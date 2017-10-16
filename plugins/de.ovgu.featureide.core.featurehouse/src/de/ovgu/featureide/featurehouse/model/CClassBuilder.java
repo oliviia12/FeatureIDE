@@ -57,9 +57,7 @@ public class CClassBuilder extends ClassBuilder {
 	/**
 	 *
 	 * @param terminal body
-	 * @return list(0) field modifiers
-	 *         list(1) field type
-	 *         ... field names
+	 * @return list(0) field modifiers list(1) field type ... field names
 	 */
 	public LinkedList<String> getFields(String body) {
 		final LinkedList<String> fields = new LinkedList<String>();
@@ -123,13 +121,8 @@ public class CClassBuilder extends ClassBuilder {
 	}
 
 	/**
-	 * @param
-	 * 			method body
-	 * @return
-	 * 		list(0): name
-	 *         list(1): return type
-	 *         list(2): modifiers
-	 *         ...: parameter types
+	 * @param method body
+	 * @return list(0): name list(1): return type list(2): modifiers ...: parameter types
 	 *
 	 */
 	public LinkedList<String> getMethod(String body) {

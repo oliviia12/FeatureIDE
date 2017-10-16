@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.core.explanations.Reason;
  * @author Timo G&uuml;nther
  */
 public abstract class FeatureModelExplanationWriter extends ExplanationWriter {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

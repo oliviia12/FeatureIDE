@@ -25,5 +25,4 @@ package de.ovgu.featureide.fm.core.explanations;
  *
  * @author Timo G&uuml;nther
  */
-public interface ExplanationCreatorFactory {
-}
+public interface ExplanationCreatorFactory {}

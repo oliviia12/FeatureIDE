@@ -53,8 +53,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.SetFeatureToColl
 import de.ovgu.featureide.fm.ui.editors.featuremodel.policies.FeatureDirectEditPolicy;
 
 /**
- * An editpart for features. It implements the <code>NodeEditPart</code> that
- * the models of features can provide connection anchors.
+ * An editpart for features. It implements the <code>NodeEditPart</code> that the models of features can provide connection anchors.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -103,8 +102,8 @@ public class FeatureEditPart extends ModelElementEditPart implements NodeEditPar
 	public void showRenameManager() {
 		if (manager == null) {
 			final IGraphicalFeature f = getModel();
-			manager = new FeatureLabelEditManager(this, TextCellEditor.class, new FeatureCellEditorLocator(getFigure()),
-					f.getGraphicalModel().getFeatureModel());
+			manager =
+					new FeatureLabelEditManager(this, TextCellEditor.class, new FeatureCellEditorLocator(getFigure()), f.getGraphicalModel().getFeatureModel());
 		}
 		manager.show();
 	}
@@ -156,7 +155,7 @@ public class FeatureEditPart extends ModelElementEditPart implements NodeEditPar
 
 	@Override
 	protected List<FeatureConnection> getModelTargetConnections() {
-		return Collections.<FeatureConnection> emptyList();// getModel().getTargetConnections();
+		return Collections.<FeatureConnection>emptyList();// getModel().getTargetConnections();
 	}
 
 	@Override
@@ -266,10 +265,10 @@ public class FeatureEditPart extends ModelElementEditPart implements NodeEditPar
 		case COLLAPSED_ALL_CHANGED:
 		case COLLAPSED_CHANGED:
 			/*
-			 * Reset the active reason in case we missed that it was set to null while this was collapsed.
-			 * In case it should not be null, the active reason will be set to the correct value in the upcoming feature model analysis anyway.
+			 * Reset the active reason in case we missed that it was set to null while this was collapsed. In case it should not be null, the active reason will
+			 * be set to the correct value in the upcoming feature model analysis anyway.
 			 */
-			setActiveReason(null); //reset includes a refresh (getFigure().setProperties())
+			setActiveReason(null); // reset includes a refresh (getFigure().setProperties())
 			break;
 		case MANDATORY_CHANGED:
 			sourceConnection = getModel().getSourceConnection();
@@ -294,7 +293,7 @@ public class FeatureEditPart extends ModelElementEditPart implements NodeEditPar
 			connectionEditPart.refreshSourceDecoration();
 			break;
 		case ACTIVE_EXPLANATION_CHANGED:
-			setActiveReason(null); //reset
+			setActiveReason(null); // reset
 			break;
 		case ACTIVE_REASON_CHANGED:
 			setActiveReason((FeatureModelReason) event.getNewValue());
@@ -306,28 +305,23 @@ public class FeatureEditPart extends ModelElementEditPart implements NodeEditPar
 	}
 
 	/**
-	 * <p>
-	 * Sets the currently active reason.
-	 * </p>
+	 * <p> Sets the currently active reason. </p>
 	 *
-	 * <p>
-	 * Propagates into the figure and the source connection.
-	 * Refreshes accordingly.
-	 * </p>
+	 * <p> Propagates into the figure and the source connection. Refreshes accordingly. </p>
 	 *
 	 * @param activeReason the new active reason; null to reset
 	 */
 	protected void setActiveReason(FeatureModelReason activeReason) {
-		//Update the figure.
-		if ((activeReason == null //reset
+		// Update the figure.
+		if ((activeReason == null // reset
 		) || (activeReason.getTrace().getOrigin() == Origin.CHILD_HORIZONTAL)) {
 			final FeatureFigure figure = getFigure();
 			figure.setActiveReason(activeReason);
 			figure.setProperties();
 		}
 
-		//Update the source connection.
-		if ((activeReason == null //reset
+		// Update the source connection.
+		if ((activeReason == null // reset
 		) || (activeReason.getTrace().getOrigin() == Origin.CHILD_UP) || (activeReason.getTrace().getOrigin() == Origin.CHILD_DOWN)) {
 			final ConnectionEditPart sourceConnection = getSourceConnection();
 			sourceConnection.setActiveReason(activeReason);

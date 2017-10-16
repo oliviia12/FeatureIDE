@@ -67,8 +67,7 @@ import de.ovgu.featureide.fm.core.job.LongRunningMethod;
 import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 
 /**
- * This job generates Javadoc from the feature-aware comments in a selected location.
- * Subsequently it uses the Javadoc parser to generate the documentation.
+ * This job generates Javadoc from the feature-aware comments in a selected location. Subsequently it uses the Javadoc parser to generate the documentation.
  *
  * @author Sebastian Krieter
  */
@@ -177,6 +176,7 @@ public class PrintDocumentationJob implements LongRunningMethod<Boolean> {
 				commentFilters.add(new ConstraintFilter(nodes));
 
 				commentFilters.add(new IFilter<BlockTag>() {
+
 					@Override
 					public boolean isValid(BlockTag object) {
 						for (final String featureName : object.getConstraint().getContainedFeatures()) {

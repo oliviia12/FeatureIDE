@@ -43,8 +43,8 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalConstraint;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * A wizard page to show implicit constraints of a sub feature model. Enables automated analysis
- * on the sub feature model to explain implicit (redundant) constraints.
+ * A wizard page to show implicit constraints of a sub feature model. Enables automated analysis on the sub feature model to explain implicit (redundant)
+ * constraints.
  *
  * @author "Ananieva Sofia"
  */
@@ -63,8 +63,7 @@ public class SubtreeDependencyPage extends AbstractWizardPage {
 	private final FeatureModelAnalyzer subTreeAnalyzer;
 
 	/**
-	 * Remember explanation for redundant constraint. Key = constraintIndex, Value = explanation.
-	 * Used as tool tip for redundant constraint.
+	 * Remember explanation for redundant constraint. Key = constraintIndex, Value = explanation. Used as tool tip for redundant constraint.
 	 */
 	public static HashMap<Integer, List<String>> redundantExpl = new HashMap<Integer, List<String>>();
 
@@ -85,8 +84,7 @@ public class SubtreeDependencyPage extends AbstractWizardPage {
 	}
 
 	/**
-	 * Creates a control for the dialog page. Integrates the sub feature model and uses FillLayout to
-	 * fill all available space.
+	 * Creates a control for the dialog page. Integrates the sub feature model and uses FillLayout to fill all available space.
 	 *
 	 * @param parent A composite which contains the feature model
 	 */
@@ -100,8 +98,7 @@ public class SubtreeDependencyPage extends AbstractWizardPage {
 	}
 
 	/**
-	 * Inserts the subtree model into a container within a wizard page.
-	 * Enables automated analysis for the sub feature model and explains implicit constraints
+	 * Inserts the subtree model into a container within a wizard page. Enables automated analysis for the sub feature model and explains implicit constraints
 	 * using the origin feature model.
 	 *
 	 * @param comp A composite which contains the sub feature model
@@ -129,8 +126,7 @@ public class SubtreeDependencyPage extends AbstractWizardPage {
 	}
 
 	/**
-	 * Checks if implicit constraints are redundant (must be) and explains them.
-	 * Sets the tool tip with explanations.
+	 * Checks if implicit constraints are redundant (must be) and explains them. Sets the tool tip with explanations.
 	 *
 	 * @param analyzer The feature model analyzer for the sub feature model
 	 * @param graphicalFeatModel The graphical feature model of the sub feature model
@@ -154,9 +150,8 @@ public class SubtreeDependencyPage extends AbstractWizardPage {
 	}
 
 	/**
-	 * Returns implicit constraints for the sub feature model by iterating constraints of the
-	 * origin model and the sub feature model and collecting constraints which are only present
-	 * in the sub feature model but not in the origin one.
+	 * Returns implicit constraints for the sub feature model by iterating constraints of the origin model and the sub feature model and collecting constraints
+	 * which are only present in the sub feature model but not in the origin one.
 	 *
 	 * @return result A list which contains implicit constraints for the subtree feature model
 	 */

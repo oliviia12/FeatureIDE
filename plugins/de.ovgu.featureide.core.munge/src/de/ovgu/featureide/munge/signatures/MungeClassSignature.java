@@ -39,8 +39,8 @@ public class MungeClassSignature extends AbstractClassSignature {
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
 
-		//		sb.append(super.toString());
-		//		sb.append(LINE_SEPARATOR);
+		// sb.append(super.toString());
+		// sb.append(LINE_SEPARATOR);
 
 		if (mergedjavaDocComment != null) {
 			sb.append(mergedjavaDocComment);
@@ -62,10 +62,10 @@ public class MungeClassSignature extends AbstractClassSignature {
 	@Override
 	protected void computeHashCode() {
 		super.computeHashCode();
-		//		hashCode *= hashCodePrime;
-		//		for (TypeDecl thisSuperType : superTypes) {
-		//			hashCode += thisSuperType.hashCode();
-		//		}
+		// hashCode *= hashCodePrime;
+		// for (TypeDecl thisSuperType : superTypes) {
+		// hashCode += thisSuperType.hashCode();
+		// }
 	}
 
 	@Override

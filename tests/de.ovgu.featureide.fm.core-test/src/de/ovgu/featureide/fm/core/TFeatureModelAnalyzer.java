@@ -55,6 +55,7 @@ public class TFeatureModelAnalyzer {
 	protected static File MODEL_FILE_FOLDER = getFolder();
 
 	private static final FileFilter filter = new FileFilter() {
+
 		@Override
 		public boolean accept(File pathname) {
 			return pathname.getName().endsWith(".xml");

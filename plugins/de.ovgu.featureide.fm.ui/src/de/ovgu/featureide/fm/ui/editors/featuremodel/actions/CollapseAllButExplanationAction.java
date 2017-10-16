@@ -40,6 +40,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.CollapseAllButEx
  * @author Timo G&uuml;nther
  */
 public class CollapseAllButExplanationAction extends Action {
+
 	/** The ID of this action. */
 	public static final String ID = "de.ovgu.featureide.collapseallbutexplanation";
 
@@ -65,6 +66,7 @@ public class CollapseAllButExplanationAction extends Action {
 	 */
 	private void addActiveExplanationListener() {
 		fm.getFeatureModel().addListener(new IEventListener() {
+
 			@Override
 			public void propertyChange(FeatureIDEEvent event) {
 				if (event.getEventType() != EventType.ACTIVE_EXPLANATION_CHANGED) {

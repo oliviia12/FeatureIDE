@@ -60,8 +60,7 @@ public class RenameColorSchemeWizard extends Wizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {

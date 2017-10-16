@@ -70,6 +70,7 @@ public class SetColorAction extends AbstractColorAction {
 	 * ImageDescriptor for the checked sign next to the colors in the contextmenu
 	 */
 	private static final class SelectedColorDescriptor extends UnselectedColorDescriptor {
+
 		public SelectedColorDescriptor(int color) {
 			super(color);
 

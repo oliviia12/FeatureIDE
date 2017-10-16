@@ -29,8 +29,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent;
 import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 
 /**
- * Operation with functionality to set a Feature hidden. Enables undo/redo
- * functionality.
+ * Operation with functionality to set a Feature hidden. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke

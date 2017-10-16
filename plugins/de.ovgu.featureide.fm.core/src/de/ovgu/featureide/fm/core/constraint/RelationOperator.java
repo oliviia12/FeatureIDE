@@ -21,8 +21,7 @@
 package de.ovgu.featureide.fm.core.constraint;
 
 /**
- * Different relation operators.<br>
- * {EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_EQUAL, LESS_EQUAL}
+ * Different relation operators.<br> {EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_EQUAL, LESS_EQUAL}
  *
  * @author Sebastian Henneberg
  */

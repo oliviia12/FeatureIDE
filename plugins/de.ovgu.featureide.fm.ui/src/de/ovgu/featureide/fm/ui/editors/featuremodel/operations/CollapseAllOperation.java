@@ -32,8 +32,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to set all features to collapsed. Enables
- * undo/redo functionality.
+ * Operation with functionality to set all features to collapsed. Enables undo/redo functionality.
  *
  * @author Joshua Sprey
  * @author Enis Belli

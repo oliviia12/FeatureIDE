@@ -56,14 +56,14 @@ import de.ovgu.featureide.ui.UIPlugin;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Handles the export of information from {@link TreeViewer}. Consists of a
- * {@link FileDialog} following by an export to a *.csv-file. If the export
- * fails the user gets the chance to repeat it, so his selection isn't lost.
+ * Handles the export of information from {@link TreeViewer}. Consists of a {@link FileDialog} following by an export to a *.csv-file. If the export fails the
+ * user gets the chance to repeat it, so his selection isn't lost.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
  */
 public class CsvExporter {
+
 	private final Shell shell;
 	public static final String SEPARATOR = ";";
 
@@ -79,6 +79,7 @@ public class CsvExporter {
 	public void export(final Object[] export) {
 
 		final UIJob uiJob = new UIJob("") {
+
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
 				visibleExpandedElements = export;
@@ -106,16 +107,13 @@ public class CsvExporter {
 		uiJob.addJobChangeListener(new IJobChangeListener() {
 
 			@Override
-			public void sleeping(IJobChangeEvent event) {
-			}
+			public void sleeping(IJobChangeEvent event) {}
 
 			@Override
-			public void scheduled(IJobChangeEvent event) {
-			}
+			public void scheduled(IJobChangeEvent event) {}
 
 			@Override
-			public void running(IJobChangeEvent event) {
-			}
+			public void running(IJobChangeEvent event) {}
 
 			@Override
 			public void done(IJobChangeEvent event) {
@@ -125,19 +123,16 @@ public class CsvExporter {
 			}
 
 			@Override
-			public void awake(IJobChangeEvent event) {
-			}
+			public void awake(IJobChangeEvent event) {}
 
 			@Override
-			public void aboutToRun(IJobChangeEvent event) {
-			}
+			public void aboutToRun(IJobChangeEvent event) {}
 		});
 
 	}
 
 	/**
-	 * Puts the description of each selected node in the first row as header and
-	 * it's value in the second row.
+	 * Puts the description of each selected node in the first row as header and it's value in the second row.
 	 *
 	 */
 	private void exportToCSV() {

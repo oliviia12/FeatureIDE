@@ -30,6 +30,7 @@ import de.ovgu.featureide.ui.UIPlugin;
  * @author Jens Meinicke
  */
 public class Test implements Comparable<Test> {
+
 	final String name;
 	final float time;
 	final String classname;
@@ -51,7 +52,8 @@ public class Test implements Comparable<Test> {
 		return toString().compareToIgnoreCase(other.toString());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -61,7 +63,8 @@ public class Test implements Comparable<Test> {
 		return 42;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -70,7 +73,8 @@ public class Test implements Comparable<Test> {
 		return classname.equals(otherTest.classname) && name.equals(otherTest.name);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

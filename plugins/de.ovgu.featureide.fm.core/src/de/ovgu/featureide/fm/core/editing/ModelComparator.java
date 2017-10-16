@@ -40,8 +40,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
 
 /**
- * Compares two feature models based on a satisfiability solver. The result is a
- * classification of the edit that transforms one model into the second model.
+ * Compares two feature models based on a satisfiability solver. The result is a classification of the edit that transforms one model into the second model.
  *
  * @author Thomas Thuem
  */
@@ -192,10 +191,8 @@ public class ModelComparator {
 	/**
 	 * Removes all child nodes that are contained in the reference node.
 	 *
-	 * @param node
-	 *            the node to copy and remove from
-	 * @param referenceNode
-	 *            node that specifies what do remove
+	 * @param node the node to copy and remove from
+	 * @param referenceNode node that specifies what do remove
 	 * @return a copy of the node where some child nodes are not existent
 	 */
 	private Node removeIdenticalNodes(Node node, Node referenceNode) {

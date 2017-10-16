@@ -21,8 +21,7 @@
 package de.ovgu.featureide.ahead.wrapper;
 
 /**
- * Provides support for parsing strings. This class capsulates a substring of
- * the whole string to match. A line number calculation was also implemented.
+ * Provides support for parsing strings. This class capsulates a substring of the whole string to match. A line number calculation was also implemented.
  *
  * @author Thomas Thuem
  */

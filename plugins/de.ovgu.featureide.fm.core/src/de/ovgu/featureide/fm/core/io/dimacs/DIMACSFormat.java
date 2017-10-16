@@ -57,7 +57,7 @@ public class DIMACSFormat implements IFeatureModelFormat {
 	public ProblemList read(IFeatureModel featureModel, CharSequence source) {
 		final ProblemList problemList = new ProblemList();
 
-		//Transform the input into a propositional node.
+		// Transform the input into a propositional node.
 		final DimacsReader r = new DimacsReader(source.toString());
 		r.setReadingVariableDirectory(true);
 		final Node read;
@@ -68,28 +68,28 @@ public class DIMACSFormat implements IFeatureModelFormat {
 			return problemList;
 		}
 
-		//Add the propositional node to the feature model.
+		// Add the propositional node to the feature model.
 		addNodeToFeatureModel(featureModel, read);
 
 		return problemList;
 	}
 
 	/**
-	 * Adds the given propositional node to the given feature model.
-	 * The current implementation is naive in that it does not attempt to interpret any constraint as {@link IFeatureStructure structure}.
+	 * Adds the given propositional node to the given feature model. The current implementation is naive in that it does not attempt to interpret any constraint
+	 * as {@link IFeatureStructure structure}.
 	 *
 	 * @param featureModel feature model to edit
 	 * @param node propositional node to add
 	 */
 	private void addNodeToFeatureModel(IFeatureModel featureModel, Node node) {
-		//Add a dummy feature as root.
+		// Add a dummy feature as root.
 		final IFeatureModelFactory factory = FMFactoryManager.getFactory(featureModel);
 		final IFeature rootFeature = factory.createFeature(featureModel, "__Root__");
 		rootFeature.getStructure().setAbstract(true);
 		featureModel.addFeature(rootFeature);
 		featureModel.getStructure().setRoot(rootFeature.getStructure());
 
-		//Add a feature for each variable.
+		// Add a feature for each variable.
 		final Set<String> variables = new LinkedHashSet<>(node.getContainedFeatures());
 		for (final String variable : variables) {
 			final IFeature feature = factory.createFeature(featureModel, variable);
@@ -97,7 +97,7 @@ public class DIMACSFormat implements IFeatureModelFormat {
 			rootFeature.getStructure().addChild(feature.getStructure());
 		}
 
-		//Add a constraint for each conjunctive clause.
+		// Add a constraint for each conjunctive clause.
 		final List<Node> clauses = node instanceof And ? Arrays.asList(node.getChildren()) : Collections.singletonList(node);
 		for (final Node clause : clauses) {
 			final IConstraint constraint = factory.createConstraint(featureModel, clause);

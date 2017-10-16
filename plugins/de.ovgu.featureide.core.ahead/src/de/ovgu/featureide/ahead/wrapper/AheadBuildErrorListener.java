@@ -21,8 +21,7 @@
 package de.ovgu.featureide.ahead.wrapper;
 
 /**
- * Use this interface to handle AheadBuildErrorEvents. The only event type
- * that is supported by now are parse errors. So you have to implement the
+ * Use this interface to handle AheadBuildErrorEvents. The only event type that is supported by now are parse errors. So you have to implement the
  * parseErrorFound method only.
  *
  * @author Tom Brosch

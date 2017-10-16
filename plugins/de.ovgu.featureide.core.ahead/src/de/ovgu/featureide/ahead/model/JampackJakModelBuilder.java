@@ -44,8 +44,7 @@ import jampack.MethodDcl;
 import jampack.MthDector;
 
 /**
- * This builder builds the JakProjectModel, by extracting features,
- * methods and fields from classes to build.
+ * This builder builds the JakProjectModel, by extracting features, methods and fields from classes to build.
  *
  * @author Tom Brosch
  * @author Constanze Adler
@@ -69,14 +68,10 @@ public class JampackJakModelBuilder extends AbstractJakModelBuilder<AST_Program>
 	/**
 	 * Adds a class to the jak project model
 	 *
-	 * @param className
-	 *            Name of the class
-	 * @param sources
-	 *            source files that were composed to build this class
-	 * @param composedASTs
-	 *            composed ahead ASTs during the composition step
-	 * @param ownASTs
-	 *            ahead ASTs of each source file without composing
+	 * @param className Name of the class
+	 * @param sources source files that were composed to build this class
+	 * @param composedASTs composed ahead ASTs during the composition step
+	 * @param ownASTs ahead ASTs of each source file without composing
 	 */
 	@Override
 	public void addClass(String className, List<IFile> sources, AST_Program[] composedASTs, AST_Program[] ownASTs) {

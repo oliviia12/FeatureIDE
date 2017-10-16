@@ -32,6 +32,7 @@ import org.junit.Test;
  * @author Jens Meinicke
  */
 public class TCClassBuilder {
+
 	private final CClassBuilder builder = new CClassBuilder(null);
 
 	// METHOD TEST 1

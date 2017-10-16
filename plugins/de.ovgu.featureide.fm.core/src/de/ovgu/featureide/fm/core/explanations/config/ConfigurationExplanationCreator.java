@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.core.explanations.ExplanationCreator;
  * @author Timo G&uuml;nther
  */
 public interface ConfigurationExplanationCreator extends ExplanationCreator {
+
 	/**
 	 * Returns the configuration.
 	 *

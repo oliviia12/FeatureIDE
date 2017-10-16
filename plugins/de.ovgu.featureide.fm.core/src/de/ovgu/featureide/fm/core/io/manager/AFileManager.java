@@ -30,8 +30,7 @@ import de.ovgu.featureide.fm.core.base.event.IEventManager;
 import de.ovgu.featureide.fm.core.io.IPersistentFormat;
 
 /**
- * Responsible to load and save all information from / to a file.<br/>
- * To get an instance use the {@link FileManagerMap}.
+ * Responsible to load and save all information from / to a file.<br/> To get an instance use the {@link FileManagerMap}.
  *
  * @author Sebastian Krieter
  */
@@ -52,8 +51,7 @@ public abstract class AFileManager<T> implements IFileManager<T>, IEventManager 
 		protected abstract Snapshot<T> createSnapshot(T object);
 
 		/**
-		 * Compares two object for equality.<br/>
-		 * Subclasses should override (implement) this method.
+		 * Compares two object for equality.<br/> Subclasses should override (implement) this method.
 		 *
 		 * @param o1 First object.
 		 * @param o2 Second object.

@@ -55,10 +55,11 @@ public class CreateMetaInformation {
 	private static final String SPACE_REPLACEMENT = "%20";
 
 	private static final class FileWalker implements FileVisitor<Path> {
+
 		private final static Pattern names;
 		static {
-			final List<String> lines = new ArrayList<>(
-					Arrays.asList(".svn", ".git", ".gitignore", ".metadata", ProjectRecord.INDEX_FILENAME, "bin", "projectInformation.xml"));
+			final List<String> lines =
+					new ArrayList<>(Arrays.asList(".svn", ".git", ".gitignore", ".metadata", ProjectRecord.INDEX_FILENAME, "bin", "projectInformation.xml"));
 			try {
 				lines.addAll(Files.readAllLines(Paths.get(".gitignore"), Charset.forName("UTF-8")));
 			} catch (final IOException e) {
@@ -68,7 +69,7 @@ public class CreateMetaInformation {
 			if (!lines.isEmpty()) {
 				for (final String line : lines) {
 					sb.append("|");
-					//TODO implement full support for .gitignore syntax
+					// TODO implement full support for .gitignore syntax
 					if (line.startsWith("*")) {
 						sb.append(".*" + Pattern.quote(line.substring(1)));
 					} else {
@@ -229,8 +230,7 @@ public class CreateMetaInformation {
 					System.out.printf("\tAdded Project: %s \n", projectRecord.getProjectName());
 					try {
 						Files.copy(pluginRoot.resolve(TEMPLATE_PROJECT_INFORMATION_XML), Paths.get(projectRecord.getInformationDocumentPath()));
-					} catch (final FileAlreadyExistsException e) {
-					} catch (IOException | UnsupportedOperationException e) {
+					} catch (final FileAlreadyExistsException e) {} catch (IOException | UnsupportedOperationException e) {
 						System.err.println("\t\tWARNING: Could not create " + ProjectRecord.PROJECT_INFORMATION_XML + " file.");
 						e.printStackTrace();
 					}

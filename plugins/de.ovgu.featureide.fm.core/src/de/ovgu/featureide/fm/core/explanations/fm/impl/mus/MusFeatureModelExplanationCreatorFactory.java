@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.RedundantConstraintExplanation
  * @author Timo G&uuml;nther
  */
 public class MusFeatureModelExplanationCreatorFactory extends FeatureModelExplanationCreatorFactory {
+
 	@Override
 	public DeadFeatureExplanationCreator getDeadFeatureExplanationCreator() {
 		return new MusDeadFeatureExplanationCreator();

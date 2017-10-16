@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.core.explanations.Reason;
  * @author Timo G&uuml;nther
  */
 public class ConfigurationReason extends Reason {
+
 	/** The feature that has been selected or unselected. */
 	private final SelectableFeature featureSelection;
 

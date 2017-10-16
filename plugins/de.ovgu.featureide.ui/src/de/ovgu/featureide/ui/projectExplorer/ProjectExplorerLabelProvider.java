@@ -78,7 +78,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 		final Image superImage = super.getImage(element);
 		final Set<Integer> elementColors = new HashSet<Integer>();
 
-		//first returns the image for packages
+		// first returns the image for packages
 		if (element instanceof PackageFragment) {
 			final PackageFragment frag = (PackageFragment) element;
 			final IResource fragmentRes = frag.getResource();
@@ -110,10 +110,10 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 				}
 			}
 
-			//Get current Package color
+			// Get current Package color
 			getPackageColors((IFolder) fragmentRes, elementColors, model, !composer.hasFeatureFolder() && !composer.hasSourceFolder());
 
-			//Get all packages colors
+			// Get all packages colors
 			final Set<Integer> allPackageColors = new HashSet<Integer>();
 			if (fragmentRes instanceof IFolder) {
 				getAllPackageColors((IFolder) fragmentRes, allPackageColors, model, !composer.hasFeatureFolder() && !composer.hasSourceFolder());
@@ -143,7 +143,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 				}
 			}
 
-			//Get color for the feature folder
+			// Get color for the feature folder
 			if (res instanceof IFolder) {
 				final IFolder folder = (IFolder) res;
 				if (composer.hasFeatureFolder() && isInFeatureFolder(folder)) {
@@ -156,7 +156,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 				}
 			}
 
-			//Return folder package images for the source folder when working with munge composer
+			// Return folder package images for the source folder when working with munge composer
 			if (composer.getName().equals("Munge")) {
 				if (element instanceof IFile) {
 					final IFile file = (IFile) element;
@@ -173,7 +173,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 			}
 
 			Set<Integer> parentColors = null;
-			//return images for composed files (.jak files)
+			// return images for composed files (.jak files)
 			if (isInBuildFolder(res) && (res instanceof IFile) && isJavaFile((IFile) res)) {
 				if (res.getParent() instanceof IFolder) {
 					parentColors = new HashSet<Integer>();
@@ -184,7 +184,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 						new ArrayList<Integer>(parentColors), superImage);
 			}
 		} else if (element instanceof org.eclipse.jdt.internal.core.CompilationUnit) {
-			//return images for compilation files
+			// return images for compilation files
 			final CompilationUnit cu = (CompilationUnit) element;
 			final IFile myfile = (IFile) cu.getResource();
 			final IFeatureProject featureProject = CorePlugin.getFeatureProject(myfile);
@@ -324,11 +324,11 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 	 * @return colors for packages
 	 */
 	private void getAllPackageColors(IFolder folder, Set<Integer> allColors, FSTModel model, boolean colorUnselectedFeature) {
-		//Check if default package
+		// Check if default package
 		if (folder.getName().equals("src")) {
 			getPackageColors(folder, allColors, model, colorUnselectedFeature);
 		} else {
-			//Not default package
+			// Not default package
 			if (folder.getParent() instanceof IFolder) {
 				getPackageColors((IFolder) folder.getParent(), allColors, model, colorUnselectedFeature);
 			}
@@ -383,7 +383,8 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jdt.internal.ui.packageview.PackageExplorerLabelProvider#getStyledText(java.lang.Object)
 	 */
 	@Override
@@ -401,7 +402,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 		final Set<Integer> elementColors = new HashSet<Integer>();
 		SPACE_STRING = "";
 
-		//text for Packages
+		// text for Packages
 		if (element instanceof PackageFragment) {
 			final PackageFragment frag = (PackageFragment) element;
 			final IResource parent = frag.getParent().getResource();
@@ -481,7 +482,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 					if (element instanceof IFolder) {
 						final IFolder folder = (IFolder) element;
 
-						//folder inSourceFolder but not SourceFolder itself
+						// folder inSourceFolder but not SourceFolder itself
 						if (isInSourceFolder(folder) && folder.getParent().equals(featureProject.getSourceFolder())) {
 							return " " + folder.getName();
 						}
@@ -491,13 +492,13 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 					return SPACE_STRING + res.getName();
 				}
 
-				//Return spaces for the source folder when working with munge composer
+				// Return spaces for the source folder when working with munge composer
 				if (composer.getName().equals("Munge")) {
 					final FSTModel model = featureProject.getFSTModel();
 					if ((model == null) || model.getClasses().isEmpty()) {
 						return SPACE_STRING + res.getName();
 					}
-					//Return text for munge source folder
+					// Return text for munge source folder
 					if ((element instanceof IFolder) && ((IFolder) element).getName().equals("source")) {
 						final IFolder folder = (IFolder) element;
 						getPackageColors(folder, elementColors, model, true);
@@ -522,7 +523,7 @@ public class ProjectExplorerLabelProvider extends PackageExplorerLabelProvider {
 
 		}
 
-		//text for composed files
+		// text for composed files
 		else if (element instanceof org.eclipse.jdt.internal.core.CompilationUnit) {
 			final CompilationUnit cu = (CompilationUnit) element;
 			final IResource myfile = cu.getResource();

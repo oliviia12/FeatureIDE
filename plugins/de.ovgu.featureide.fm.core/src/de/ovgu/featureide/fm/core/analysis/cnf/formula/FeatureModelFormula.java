@@ -40,8 +40,8 @@ public class FeatureModelFormula {
 	private final HashMap<ACreator<?>, ACreator<?>> map = new HashMap<>();
 
 	/**
-	 * Get an arbitrary element that can be derived from the associated feature model.<br/>
-	 * This methods first checks whether there is a cached instance and only computes the requested object otherwise.
+	 * Get an arbitrary element that can be derived from the associated feature model.<br/> This methods first checks whether there is a cached instance and
+	 * only computes the requested object otherwise.
 	 *
 	 * @return a {@link Node} instance.
 	 */
@@ -74,8 +74,7 @@ public class FeatureModelFormula {
 	}
 
 	/**
-	 * Get the CNF for the associated feature model.<br/>
-	 * Convenience method, fully equivalent to {@code getElement(new CNFFormula())}.
+	 * Get the CNF for the associated feature model.<br/> Convenience method, fully equivalent to {@code getElement(new CNFFormula())}.
 	 *
 	 * @return a {@link CNF} instance.
 	 */
@@ -84,8 +83,7 @@ public class FeatureModelFormula {
 	}
 
 	/**
-	 * Get the Node in CNF for the associated feature model.<br/>
-	 * Convenience method, fully equivalent to {@code getElement(new CNFNode())}.
+	 * Get the Node in CNF for the associated feature model.<br/> Convenience method, fully equivalent to {@code getElement(new CNFNode())}.
 	 *
 	 * @return a {@link Node} instance.
 	 */

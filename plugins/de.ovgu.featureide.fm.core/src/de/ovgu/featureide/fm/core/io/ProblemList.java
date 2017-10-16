@@ -39,8 +39,7 @@ public class ProblemList extends ArrayList<Problem> {
 	 * Checks whether a given list of problems contains at least one problem with the specified or a greater severity level.
 	 *
 	 * @param problems The problem list.
-	 * @param minimumLevel The minimum severity level
-	 *            (one of {@link Severity#INFO}, {@link Severity#WARNING}, or {@link Severity#ERROR}).
+	 * @param minimumLevel The minimum severity level (one of {@link Severity#INFO}, {@link Severity#WARNING}, or {@link Severity#ERROR}).
 	 *
 	 * @return {@code true} if the list contains a problem with severity at the given minimum level or above, {@code false} otherwise.
 	 */

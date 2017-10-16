@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.ui.handlers.base.AbstractFMImportHandler;
  * @author Marcus Pinnecke
  */
 public class ImportVelvetHandler extends AbstractFMImportHandler {
+
 	@Override
 	protected IFeatureModelFormat setModelReader() {
 		return new VelvetFeatureModelFormat();

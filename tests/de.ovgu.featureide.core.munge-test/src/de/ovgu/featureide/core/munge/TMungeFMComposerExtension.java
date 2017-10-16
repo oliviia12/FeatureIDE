@@ -32,6 +32,7 @@ import de.ovgu.featureide.munge.MungeFMComposerExtension;
  * @author Jens Meinicke
  */
 public class TMungeFMComposerExtension {
+
 	private final MungeFMComposerExtension fmComposerExtension = new MungeFMComposerExtension();
 
 	private static final String OLD_NAME = "Hello";

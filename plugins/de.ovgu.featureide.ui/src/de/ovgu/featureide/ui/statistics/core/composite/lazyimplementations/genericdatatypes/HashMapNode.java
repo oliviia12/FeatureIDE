@@ -27,8 +27,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Convenience class for simply displaying {@link HashMap}s in a
- * {@link TreeViewer}. Autosorted with two different sorting-types.
+ * Convenience class for simply displaying {@link HashMap}s in a {@link TreeViewer}. Autosorted with two different sorting-types.
  *
  * @see AbstractSortModeNode
  *

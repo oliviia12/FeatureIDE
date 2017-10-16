@@ -133,6 +133,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	private static final String FEATURE_MODULE_MARKER = "de.ovgu.featureide.core.featureModuleMarker";
 
 	public class FeatureModelChangeListner implements IEventListener {
+
 		/**
 		 * listens to changed feature names
 		 */
@@ -165,8 +166,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	private FSTModel fstModel;
 
 	/**
-	 * a folder for the generated files (only needed if the Prject has only the
-	 * FeatureIDE Nature)
+	 * a folder for the generated files (only needed if the Prject has only the FeatureIDE Nature)
 	 */
 	private IFolder binFolder;
 
@@ -196,7 +196,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	private IComposerExtensionClass composerExtension = null;
 
-	//TODO: Implement possibility to change this path
+	// TODO: Implement possibility to change this path
 	private final String featureStubPath = "featurestub";
 
 	private boolean configurationUpdate = false;
@@ -207,17 +207,16 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * If <code>true</code> there is something changed that is relevant for
-	 * composition.<br>
-	 * Usually the the folders of the selected features and the actual
+	 * If <code>true</code> there is something changed that is relevant for composition.<br> Usually the the folders of the selected features and the actual
 	 * configuration file.
 	 */
 	private boolean buildRelevantChanges = false;
 
 	private IFile currentConfiguration = null;
 
-	private final LongRunningJob<Boolean> syncModulesJob = new LongRunningJob<>(SYNCHRONIZE_FEATURE_MODEL_AND_FEATURE_MODULES,
-			new LongRunningMethod<Boolean>() {
+	private final LongRunningJob<Boolean> syncModulesJob =
+			new LongRunningJob<>(SYNCHRONIZE_FEATURE_MODEL_AND_FEATURE_MODULES, new LongRunningMethod<Boolean>() {
+
 				@Override
 				public Boolean execute(IMonitor workMonitor) throws Exception {
 					try {
@@ -249,8 +248,9 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 				}
 			});
 
-	private final LongRunningJob<Boolean> configurationChecker = new LongRunningJob<>(CHECKING_CONFIGURATIONS_FOR_UNUSED_FEATURES,
-			new LongRunningMethod<Boolean>() {
+	private final LongRunningJob<Boolean> configurationChecker =
+			new LongRunningJob<>(CHECKING_CONFIGURATIONS_FOR_UNUSED_FEATURES, new LongRunningMethod<Boolean>() {
+
 				@Override
 				public Boolean execute(IMonitor workMonitor) throws Exception {
 					final IFolder folder = configFolder;
@@ -313,11 +313,9 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * Creating a new ProjectData includes creating folders if they don't exist,
-	 * registering workspace listeners and initialization of the wrapper object.
+	 * Creating a new ProjectData includes creating folders if they don't exist, registering workspace listeners and initialization of the wrapper object.
 	 *
-	 * @param aProject
-	 *            the FeatureIDE project
+	 * @param aProject the FeatureIDE project
 	 */
 	public FeatureProject(IProject aProject) {
 		super();
@@ -369,6 +367,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		// loading model data and listen to changes in the model file
 		addModelListener();
 		final Job job = new Job(LOAD_MODEL) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				if (loadModel()) {
@@ -409,17 +408,15 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * Loads the model again from the file. Attend that all local changes in the
-	 * model get lost.<br>
+	 * Loads the model again from the file. Attend that all local changes in the model get lost.<br>
 	 *
-	 * Before loading, all error markers will be deleted and afterwards new ones
-	 * might be created if some errors occur.
+	 * Before loading, all error markers will be deleted and afterwards new ones might be created if some errors occur.
 	 */
 	synchronized private boolean loadModel() {
 		guidslToXML();
 
 		try {
-			//			modelReader.readFromFile(modelFile.getModelFile());
+			// modelReader.readFromFile(modelFile.getModelFile());
 			getComposer();
 			if ((composerExtension != null) && composerExtension.createFolderForFeatures()) {
 				createAndDeleteFeatureFolders();
@@ -427,10 +424,10 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			}
 			readFeatureOrder();
 			return true;
-			//		} catch (FileNotFoundException e) {
-			//			modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, 0);
-			//		} catch (UnsupportedModelException e) {
-			//			modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, e.lineNumber);
+			// } catch (FileNotFoundException e) {
+			// modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, 0);
+			// } catch (UnsupportedModelException e) {
+			// modelFile.createModelMarker(e.getMessage(), IMarker.SEVERITY_ERROR, e.lineNumber);
 		} catch (final CoreException e) {
 			LOGGER.logError(ERROR_WHILE_LOADING_FEATURE_MODEL_FROM + modelFile.getModelFile(), e);
 		}
@@ -455,10 +452,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			FeatureModelManager.save(featureModel, Paths.get(modelFile.getModelFile().getLocationURI()));
 		}
 		/*
-		 * TODO delete .order file in 2013 delete
-		 * de.ovgu.featureide.fm.ui.editors
-		 * .FeatureOrderEditor#writeToOrderFile() and corresponding call see
-		 * TODOs
+		 * TODO delete .order file in 2013 delete de.ovgu.featureide.fm.ui.editors .FeatureOrderEditor#writeToOrderFile() and corresponding call see TODOs
 		 */
 		// if (file.exists()){
 		// file.delete();
@@ -467,19 +461,18 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * If the project contains only an old model in guidsl format it will be
-	 * converted into a .xml
+	 * If the project contains only an old model in guidsl format it will be converted into a .xml
 	 */
 	private void guidslToXML() {
 		if (project.getFile("model.m").exists() && !project.getFile("model.xml").exists()) {
 			FeatureModelManager.convert(Paths.get(project.getFile("model.m").getLocationURI()), Paths.get(project.getFile("model.xml").getLocationURI()));
 			// TODO GUIDSL Annotations, should be handled in guidsl format #write
-			//				if (!guidslReader.getAnnLine().isEmpty()) {
-			//					ModelMarkerHandler<IFile> modelFile = new ModelMarkerHandler<>(project.getFile("model.m"));
-			//					for (int i = 0; i < guidslReader.getAnnLine().size(); i++)
-			//						modelFile.createModelMarker(THIS_ANNOTATION_IS_NOT_SUPPORTED_YET___MOVED_TO_THE_COMMENT_SECTION_, IMarker.SEVERITY_WARNING,
-			//								guidslReader.getAnnLine().get(i));
-			//				}
+			// if (!guidslReader.getAnnLine().isEmpty()) {
+			// ModelMarkerHandler<IFile> modelFile = new ModelMarkerHandler<>(project.getFile("model.m"));
+			// for (int i = 0; i < guidslReader.getAnnLine().size(); i++)
+			// modelFile.createModelMarker(THIS_ANNOTATION_IS_NOT_SUPPORTED_YET___MOVED_TO_THE_COMMENT_SECTION_, IMarker.SEVERITY_WARNING,
+			// guidslReader.getAnnLine().get(i));
+			// }
 		}
 	}
 
@@ -566,6 +559,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 					configFolder.refreshLocal(IResource.DEPTH_ONE, null);
 					configurationUpdate = true;
 					configFolder.accept(new IResourceVisitor() {
+
 						private final String suffix = "." + composer.getConfigurationExtension();
 
 						@Override
@@ -654,6 +648,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		// actually no resource in the file system changes.
 		if (performBuild) {
 			final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+
 				@Override
 				public Boolean execute(IMonitor workMonitor) throws Exception {
 					buildRelevantChanges = true;
@@ -822,15 +817,9 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	 * @param sourceFolder
 	 */
 	/*
-	 * The first job is waiting for the synchronization job to finish and sets
-	 * the variable waiting, so the job will finish early. Than a new job is
-	 * started.
-	 *
-	 * If <syncJob.join()> is called outside of a job the workspace is blocked,
-	 * because the method has a higher priority than the synchronization job.
-	 *
-	 * The goal of this is that a synchronization can't be executed
-	 * unnecessarily multiple times.
+	 * The first job is waiting for the synchronization job to finish and sets the variable waiting, so the job will finish early. Than a new job is started. If
+	 * <syncJob.join()> is called outside of a job the workspace is blocked, because the method has a higher priority than the synchronization job. The goal of
+	 * this is that a synchronization can't be executed unnecessarily multiple times.
 	 */
 	// TODO this should not be called if only markers are changed
 	private synchronized void setAllFeatureModuleMarkers() {
@@ -838,14 +827,11 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * creates (or deletes) Feature Module Marker for the specified folder
-	 * representing a feature module includes markers for: empty folders for
-	 * concrete features, non-empty folders for abstract features, folders
-	 * without corresponding feature.
+	 * creates (or deletes) Feature Module Marker for the specified folder representing a feature module includes markers for: empty folders for concrete
+	 * features, non-empty folders for abstract features, folders without corresponding feature.
 	 *
 	 * @param featureModel
-	 * @param folder
-	 *            the folder
+	 * @param folder the folder
 	 */
 	private void setFeatureModuleMarker(final IFeatureModel featureModel, IFolder folder) {
 		final IFeature feature = featureModel.getFeature(folder.getName());
@@ -864,7 +850,8 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			try {
 				final int memberCount = folder.members().length;
 				if (feature.getStructure().isConcrete() && (memberCount == 0)) {
-					message = THE_FEATURE_MODULE_IS_EMPTY__YOU_EITHER_SHOULD_IMPLEMENT_IT_COMMA__MARK_THE_FEATURE_AS_ABSTRACT_COMMA__OR_REMOVE_THE_FEATURE_FROM_THE_FEATURE_MODEL_;
+					message =
+							THE_FEATURE_MODULE_IS_EMPTY__YOU_EITHER_SHOULD_IMPLEMENT_IT_COMMA__MARK_THE_FEATURE_AS_ABSTRACT_COMMA__OR_REMOVE_THE_FEATURE_FROM_THE_FEATURE_MODEL_;
 				} else if (feature.getStructure().isAbstract() && (memberCount > 0)) {
 					message = "This feature module is ignored as \"" + feature.getName() + "\" is marked as abstract.";
 				}
@@ -920,7 +907,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			if (configurationDelta != null) {
 				for (final IResourceDelta delta : configurationDelta.getAffectedChildren(IResourceDelta.REMOVED)) {
 					CorePlugin.getDefault().logInfo(delta.toString() + " was removed.");
-					//if configuration was removed update warnings
+					// if configuration was removed update warnings
 					checkFeatureCoverage();
 				}
 			}
@@ -974,8 +961,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 	}
 
 	/**
-	 * checks if something at source folder has been changed, except of marker
-	 * changes
+	 * checks if something at source folder has been changed, except of marker changes
 	 *
 	 */
 	private void checkSourceFolder(IFolder folder, IResourceChangeEvent event) throws CoreException {
@@ -1021,6 +1007,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 
 	private void checkBuildFolder(final IFolder folder, final IResourceChangeEvent event) {
 		LongRunningWrapper.getRunner(new LongRunningMethod<Boolean>() {
+
 			@Override
 			public Boolean execute(IMonitor workMonitor) throws Exception {
 				checkBuildFolder(folder);
@@ -1072,6 +1059,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 
 		final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+
 			@Override
 			public Boolean execute(IMonitor workMonitor) throws Exception {
 				workMonitor.setRemainingWork(2);
@@ -1381,8 +1369,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 			}
 			description.setBuildSpec(newCommandArray);
 			project.setDescription(description, null);
-		} catch (final CoreException ex) {
-		}
+		} catch (final CoreException ex) {}
 	}
 
 	@Override
@@ -1397,8 +1384,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 		try {
 			project.setPersistentProperty(javaClassPathID, builder.toString());
-		} catch (final CoreException ex) {
-		}
+		} catch (final CoreException ex) {}
 	}
 
 	@Override
@@ -1465,8 +1451,8 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		}
 	}
 
-	private static final QualifiedName META_PRODUCT_GENERATION = new QualifiedName(FeatureProject.class.getName() + "#MetaProductGeneration",
-			FeatureProject.class.getName() + "#MetaProductGeneration");
+	private static final QualifiedName META_PRODUCT_GENERATION =
+			new QualifiedName(FeatureProject.class.getName() + "#MetaProductGeneration", FeatureProject.class.getName() + "#MetaProductGeneration");
 
 	@Override
 	public String getMetaProductGeneration() {
@@ -1571,6 +1557,7 @@ public class FeatureProject implements IFeatureProject, IResourceChangeListener,
 		switch (event.getEventType()) {
 		case MODEL_DATA_OVERRIDDEN:
 			final Job job = new Job(LOAD_MODEL) {
+
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					if (loadModel()) {

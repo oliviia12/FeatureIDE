@@ -30,8 +30,7 @@ public class ClassTester extends PropertyTester {
 	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
 		try {
 			return SelectionWrapper.checkClass(receiver, Class.forName((String) expectedValue)) != null;
-		} catch (final ClassNotFoundException e) {
-		}
+		} catch (final ClassNotFoundException e) {}
 		return false;
 	}
 

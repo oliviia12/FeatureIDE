@@ -105,12 +105,14 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	private int docLines, docLength;
 
 	private final IEventListener colorChangeListener = new IEventListener() {
+
 		@Override
 		public void propertyChange(FeatureIDEEvent event) {
 			updateAnnotations(true);
 		}
 	};
 	private final IDocumentListener documentListener = new IDocumentListener() {
+
 		@Override
 		public void documentChanged(DocumentEvent event) {
 			final IDocument newDoc = event.getDocument();
@@ -124,8 +126,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 		}
 
 		@Override
-		public void documentAboutToBeChanged(DocumentEvent event) {
-		}
+		public void documentAboutToBeChanged(DocumentEvent event) {}
 	};
 
 	private ColorAnnotationModel(IDocument document, IFile file, IFeatureProject project, ITextEditor editor) {
@@ -142,6 +143,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 		updateAnnotations(true);
 
 		editor.addPropertyListener(new IPropertyListener() {
+
 			@Override
 			public void propertyChanged(Object source, int propId) {
 				if ((propId == IEditorPart.PROP_DIRTY) && !((ITextEditor) source).isDirty()) {
@@ -172,11 +174,9 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * Attaches a coverage annotation model for the given editor if the editor
-	 * can be annotated. Does nothing if the model is already attached.
+	 * Attaches a coverage annotation model for the given editor if the editor can be annotated. Does nothing if the model is already attached.
 	 *
-	 * @param editor
-	 *            Editor to attach a annotation model to
+	 * @param editor Editor to attach a annotation model to
 	 */
 	public static boolean attach(ITextEditor editor) {
 		final IDocumentProvider provider = editor.getDocumentProvider();
@@ -197,7 +197,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 						final IDocument document = provider.getDocument(input);
 						colormodel = new ColorAnnotationModel(document, file, project, editor);
 						modelex.addAnnotationModel(KEY, colormodel);
-						//						colormodel.updateAnnotations(!editor.isDirty());
+						// colormodel.updateAnnotations(!editor.isDirty());
 						return true;
 					}
 				} else {
@@ -209,11 +209,9 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * Detaches the coverage annotation model from the given editor. If the
-	 * editor does not have a model attached, this method does nothing.
+	 * Detaches the coverage annotation model from the given editor. If the editor does not have a model attached, this method does nothing.
 	 *
-	 * @param editor
-	 *            Editor to detach the annotation model from
+	 * @param editor Editor to detach the annotation model from
 	 */
 	public static void detach(ITextEditor editor) {
 		final IDocumentProvider provider = editor.getDocumentProvider();
@@ -233,8 +231,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	 *
 	 * Updates the annotations if the value changed.
 	 *
-	 * @param highlighting
-	 *            true: highlights directives in the editor
+	 * @param highlighting true: highlights directives in the editor
 	 */
 	public static void setHighlighting(boolean highlighting, ITextEditor editor) {
 		if (ColorAnnotationModel.highlighting != highlighting) {
@@ -244,11 +241,9 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * This method is called, when the document is changed,
-	 * but the number of lines stays the same.
+	 * This method is called, when the document is changed, but the number of lines stays the same.
 	 *
-	 * It updates the offset and length of annotations,
-	 * with an offset greater than the CHANGE_OFFSET.
+	 * It updates the offset and length of annotations, with an offset greater than the CHANGE_OFFSET.
 	 *
 	 * @param offset the change offset
 	 * @param newLength the length of the changed document
@@ -272,14 +267,11 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * This method is called, when the document is saved or
-	 * when the document and the number of lines are changed.
+	 * This method is called, when the document is saved or when the document and the number of lines are changed.
 	 *
 	 * It removes all annotations and creates new.
 	 *
-	 * @param createNew
-	 *            true: builds new FSTModel
-	 *            false: only gets new FSTDirectives
+	 * @param createNew true: builds new FSTModel false: only gets new FSTDirectives
 	 */
 	private void updateAnnotations(boolean createNew) {
 		if (!annotations.isEmpty()) {
@@ -328,8 +320,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * Builds the FSTModel of the feature project and
-	 * creates a list of all directives with valid colors
+	 * Builds the FSTModel of the feature project and creates a list of all directives with valid colors
 	 *
 	 * @return the directive list
 	 */
@@ -358,8 +349,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 	}
 
 	/**
-	 * Assigns the mapped colors to the FSTDirectives
-	 * from the changed document.
+	 * Assigns the mapped colors to the FSTDirectives from the changed document.
 	 *
 	 * @return the directive list
 	 */
@@ -493,7 +483,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 		final int lineOffset = document.getLineOffset(startline);
 		int length = 0;
 
-		//Add directive to map for coloring issuesq
+		// Add directive to map for coloring issuesq
 		final FSTDirective div = new FSTDirective();
 		div.setStartLine(startline, 0);
 		div.setEndLine(endline, 0);
@@ -519,7 +509,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 		annotations.add(cafho);
 		event.annotationAdded(cafho);
 		if (highlighting) {
-			//background colors
+			// background colors
 			final ColorAnnotation cafhh = new ColorAnnotation(m.getRole().getFeature().getColor(), methodposition, ColorAnnotation.TYPE_HIGHLIGHT);
 			cafhh.setText(fstFeature.getName());
 			annotations.add(cafhh);
@@ -746,8 +736,7 @@ public final class ColorAnnotationModel implements IAnnotationModel {
 		for (final ColorAnnotation ca : annotations) {
 			try {
 				document.addPosition(ca.getPosition());
-			} catch (final BadLocationException ex) {
-			}
+			} catch (final BadLocationException ex) {}
 		}
 		if (openConnections++ == 0) {
 			document.addDocumentListener(documentListener);

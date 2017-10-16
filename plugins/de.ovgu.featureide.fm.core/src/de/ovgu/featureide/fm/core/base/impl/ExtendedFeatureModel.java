@@ -43,6 +43,7 @@ import de.ovgu.featureide.fm.core.constraint.FeatureAttributeMap;
 public class ExtendedFeatureModel extends FeatureModel {
 
 	public static class UsedModel {
+
 		private final String modelName;
 		private final String varName;
 		private final int type;
@@ -163,12 +164,9 @@ public class ExtendedFeatureModel extends FeatureModel {
 	/**
 	 * Adds a parameter to the available parameters of the model
 	 *
-	 * @param varType
-	 *            the name of the interface that shall be bound to the variable
-	 * @param varName
-	 *            the name of the variable an interface shall be bound to
-	 * @return true if the parameter could be added to the parameters. False if
-	 *         the variable name was already bound to another interface.
+	 * @param varType the name of the interface that shall be bound to the variable
+	 * @param varName the name of the variable an interface shall be bound to
+	 * @return true if the parameter could be added to the parameters. False if the variable name was already bound to another interface.
 	 */
 	public boolean addInterface(final String varType, final String varName) {
 		return addModel(varType, varName, ExtendedFeature.TYPE_INTERFACE);

@@ -30,6 +30,7 @@ import java.util.Map.Entry;
  * @author Sebastian Krieter
  */
 public abstract class AbstractClassFragment {
+
 	protected static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	protected static final int hashCodePrime = 31;
 

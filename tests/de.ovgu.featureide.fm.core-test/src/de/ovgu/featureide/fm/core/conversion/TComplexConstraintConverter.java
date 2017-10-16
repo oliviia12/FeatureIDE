@@ -58,7 +58,7 @@ public class TComplexConstraintConverter {
 		final IFeature A = factory.createFeature(fm, "A");
 		final IFeature B = factory.createFeature(fm, "B");
 		final IFeature C = factory.createFeature(fm, "C");
-		//IFeature D = factory.createFeature(fm, "D");
+		// IFeature D = factory.createFeature(fm, "D");
 
 		A.getStructure().setMandatory(false);
 		B.getStructure().setMandatory(false);
@@ -67,24 +67,24 @@ public class TComplexConstraintConverter {
 		A.getStructure().setAbstract(false);
 		B.getStructure().setAbstract(false);
 		C.getStructure().setAbstract(false);
-		//D.getStructure().setMandatory(false);
+		// D.getStructure().setMandatory(false);
 
 		fm.getStructure().getRoot().addChild(A.getStructure());
 		fm.getStructure().getRoot().addChild(B.getStructure());
 		fm.getStructure().getRoot().addChild(C.getStructure());
-		//fm.getStructure().getRoot().addChild(D.getStructure());
+		// fm.getStructure().getRoot().addChild(D.getStructure());
 		fm.getStructure().getRoot().setAnd();
 
 		final Node n1 = new Or(A, B);
 		final Node n2 = new Or(B, C);
-		//Node n3 = new Implies(new And(new Or(A,B), D), new Not(C));
+		// Node n3 = new Implies(new And(new Or(A,B), D), new Not(C));
 
 		final IConstraint c1 = factory.createConstraint(fm, n1);
 		final IConstraint c2 = factory.createConstraint(fm, n2);
-		//IConstraint c3 = factory.createConstraint(fm, n3);
+		// IConstraint c3 = factory.createConstraint(fm, n3);
 		fm.addConstraint(c1);
 		fm.addConstraint(c2);
-		//fm.addConstraint(c3);
+		// fm.addConstraint(c3);
 	}
 
 	/*
@@ -124,28 +124,28 @@ public class TComplexConstraintConverter {
 	/*
 	 * Conversion should preserve semantics.
 	 */
-	//	@Test
-	//	public void testNNFConversion() throws UnsupportedModelException {
-	//		ComplexConstraintConverter converter = new ComplexConstraintConverter();
-	//		IFeatureModel resultFM = converter.convert(fm, new NNFConverter());
+	// @Test
+	// public void testNNFConversion() throws UnsupportedModelException {
+	// ComplexConstraintConverter converter = new ComplexConstraintConverter();
+	// IFeatureModel resultFM = converter.convert(fm, new NNFConverter());
 	//
-	//		assertEquals(Comparison.REFACTORING, comparator.compare(fm, resultFM));
-	//	}
+	// assertEquals(Comparison.REFACTORING, comparator.compare(fm, resultFM));
+	// }
 
 	/*
 	 * Conversion should preserve semantics.
 	 */
-	//	@Test
-	//	public void testCNFConversion() throws UnsupportedModelException {
-	//		ComplexConstraintConverter converter = new ComplexConstraintConverter();
-	//		IFeatureModel resultFM = converter.convert(fm, new CNFConverter(), Option.COHERENT);
-	//		comparator.compare(fm, resultFM);
+	// @Test
+	// public void testCNFConversion() throws UnsupportedModelException {
+	// ComplexConstraintConverter converter = new ComplexConstraintConverter();
+	// IFeatureModel resultFM = converter.convert(fm, new CNFConverter(), Option.COHERENT);
+	// comparator.compare(fm, resultFM);
 	//
-	//		System.out.println(fm.getFeatureOrderList());
-	//		System.out.println(resultFM.getFeatureOrderList());
-	//		System.out.println(comparator.getAddedFeatures());
-	//		System.out.println(comparator.getDeletedFeatures());
-	//		assertEquals(Comparison.REFACTORING, comparator.getResult());
-	//	}
+	// System.out.println(fm.getFeatureOrderList());
+	// System.out.println(resultFM.getFeatureOrderList());
+	// System.out.println(comparator.getAddedFeatures());
+	// System.out.println(comparator.getDeletedFeatures());
+	// assertEquals(Comparison.REFACTORING, comparator.getResult());
+	// }
 
 }

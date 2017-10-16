@@ -36,8 +36,7 @@ import de.ovgu.featureide.fm.ui.wizards.AbstractWizardPage;
 import de.ovgu.featureide.fm.ui.wizards.WizardConstants;
 
 /**
- * A wizard page to select the project the user wants to import from. Shows all
- * project in workbench.
+ * A wizard page to select the project the user wants to import from. Shows all project in workbench.
  *
  * @author Christoph Giesel
  * @author Sebastian Krieter
@@ -67,17 +66,17 @@ public class SelectProjectWizardPage extends AbstractWizardPage implements Selec
 		projectTree.addSelectionListener(this);
 
 		for (final IFeatureProject project : CorePlugin.getFeatureProjects()) {
-			//			try {
+			// try {
 			final IProject projectHandle = project.getProject();
-			if ((projectHandle != null) && projectHandle.isAccessible()) { //&& !projectHandle.isNatureEnabled(MSPLNature.NATURE_ID)
+			if ((projectHandle != null) && projectHandle.isAccessible()) { // && !projectHandle.isNatureEnabled(MSPLNature.NATURE_ID)
 				final TreeItem item = new TreeItem(projectTree, SWT.NORMAL);
 				item.setImage(GUIDefaults.FEATURE_SYMBOL);
 				item.setText(project.getProjectName());
 				item.setData(project);
 			}
-			//			} catch (CoreException e) {
-			//				CorePlugin.getDefault().logError(e);
-			//			}
+			// } catch (CoreException e) {
+			// CorePlugin.getDefault().logError(e);
+			// }
 		}
 	}
 

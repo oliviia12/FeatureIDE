@@ -51,6 +51,7 @@ public abstract class AbstractConstraintEditorAction extends Action {
 	protected String featuretext;
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

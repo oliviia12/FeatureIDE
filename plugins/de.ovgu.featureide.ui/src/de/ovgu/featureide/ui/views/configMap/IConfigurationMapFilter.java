@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
  * @author Paul Maximilian Bittner
  */
 public interface IConfigurationMapFilter {
+
 	public void initialize(ConfigurationMap configurationMap);
 
 	/**

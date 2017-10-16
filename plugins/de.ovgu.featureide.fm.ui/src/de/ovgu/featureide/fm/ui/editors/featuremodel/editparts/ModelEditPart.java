@@ -36,10 +36,8 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.figures.ModelFigure;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.policies.ModelLayoutEditPolicy;
 
 /**
- * The main editpart that has all <code>FeatureEditPart</code>s as children.
- * Notice that Draw2D calls a figure child of another when its drawn within the
- * parent figure. Therefore, all features need to by direct children of this
- * editpart.
+ * The main editpart that has all <code>FeatureEditPart</code>s as children. Notice that Draw2D calls a figure child of another when its drawn within the parent
+ * figure. Therefore, all features need to by direct children of this editpart.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke

@@ -21,10 +21,8 @@
 package de.ovgu.featureide.fm.core.constraint.analysis;
 
 /**
- * Term represents a mathematical term in a (linear) pseudo-boolean restriction.
- * The class describes terms like <code>a*x_id<code> where a is an integer
- * unequal 0, and id an integer greater 0. Additionally, the value of the
- * boolean variable <code>x_id<code> can be inverted.
+ * Term represents a mathematical term in a (linear) pseudo-boolean restriction. The class describes terms like <code>a*x_id<code> where a is an integer unequal
+ * 0, and id an integer greater 0. Additionally, the value of the boolean variable <code>x_id<code> can be inverted.
  *
  * @author Sebastian Henneberg
  */
@@ -93,8 +91,7 @@ public final class Term implements Cloneable {
 	}
 
 	/**
-	 * Flips a positive coefficient to a negative and vice versa preserving the
-	 * absolute value.
+	 * Flips a positive coefficient to a negative and vice versa preserving the absolute value.
 	 */
 	Term flipCoefficientSign() {
 		return new Term(id, -coefficient, positive);
@@ -108,12 +105,10 @@ public final class Term implements Cloneable {
 	}
 
 	/**
-	 * Converts the term to equivalent term with a positive coefficient. The
-	 * return value has to be added to the other side of the restriction. This
-	 * method helps to achieve a normal form.
+	 * Converts the term to equivalent term with a positive coefficient. The return value has to be added to the other side of the restriction. This method
+	 * helps to achieve a normal form.
 	 *
-	 * @return The value that has to be added to the other side of the
-	 *         restriction (equation or inequality).
+	 * @return The value that has to be added to the other side of the restriction (equation or inequality).
 	 */
 	Term flipBoth() {
 		return new Term(id, -coefficient, !positive);

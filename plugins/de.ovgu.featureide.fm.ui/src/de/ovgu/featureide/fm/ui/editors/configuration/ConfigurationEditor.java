@@ -87,8 +87,8 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 
 	public static final String ID = FMUIPlugin.PLUGIN_ID + ".editors.configuration.ConfigurationEditor";
 
-	private static final QualifiedName MODEL_PATH = new QualifiedName(ConfigurationEditor.class.getName() + "#MODEL_PATH",
-			ConfigurationEditor.class.getName() + "#MODEL_PATH");
+	private static final QualifiedName MODEL_PATH =
+			new QualifiedName(ConfigurationEditor.class.getName() + "#MODEL_PATH", ConfigurationEditor.class.getName() + "#MODEL_PATH");
 
 	private final JobSynchronizer configJobManager = new JobSynchronizer();
 
@@ -119,8 +119,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 	private final IPartListener iPartListener = new IPartListener() {
 
 		@Override
-		public void partBroughtToTop(IWorkbenchPart part) {
-		}
+		public void partBroughtToTop(IWorkbenchPart part) {}
 
 		@Override
 		public void partClosed(IWorkbenchPart part) {
@@ -141,12 +140,10 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 		}
 
 		@Override
-		public void partOpened(IWorkbenchPart part) {
-		}
+		public void partOpened(IWorkbenchPart part) {}
 
 		@Override
-		public void partActivated(IWorkbenchPart part) {
-		}
+		public void partActivated(IWorkbenchPart part) {}
 	};
 
 	public List<IConfigurationEditorPage> getExtensionPages() {
@@ -178,8 +175,8 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 		// if mpl.velvet exists then it is a multi product line
 		IResource res = project.findMember("mpl.velvet");
 		if (res instanceof IFile) {
-			//			final IContainer parentFolder = file.getParent();
-			//			mappingModel = parentFolder != null && "InterfaceMapping".equals(parentFolder.getName());
+			// final IContainer parentFolder = file.getParent();
+			// mappingModel = parentFolder != null && "InterfaceMapping".equals(parentFolder.getName());
 		} else {
 			res = project.findMember("model.xml");
 		}
@@ -230,11 +227,11 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 			return;
 		}
 
-		//TODO mapping model
-		//		if (mappingModel) {
-		//			featureModelManager = FeatureModelManager.getInstance(absolutePath, format);
-		//			featureModel = ((ExtendedFeatureModel) featureModel).getMappingModel();
-		//		}
+		// TODO mapping model
+		// if (mappingModel) {
+		// featureModelManager = FeatureModelManager.getInstance(absolutePath, format);
+		// featureModel = ((ExtendedFeatureModel) featureModel).getMappingModel();
+		// }
 
 		final ProblemList lastProblems = configurationManager.getLastProblems();
 		createModelFileMarkers(lastProblems);
@@ -248,8 +245,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 	/**
 	 * Sets and saved the model file with the given path
 	 *
-	 * @param path
-	 *            The path of the model file
+	 * @param path The path of the model file
 	 * @return <i>false</i> if the file with the given path does not exist
 	 */
 	private boolean setModelFile(String path) {
@@ -289,8 +285,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 	/**
 	 * Saves the given path at persistent properties of the project
 	 *
-	 * @param path
-	 *            The path of the models file
+	 * @param path The path of the models file
 	 */
 	private void setPersitentModelFilePath(String path) {
 		try {
@@ -438,6 +433,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 				} else {
 					textEditorPage.updateConfiguration();
 					configurationManager.externalSave(new ICriticalConsumer<Configuration>() {
+
 						@Override
 						public void invoke(Configuration t) throws Exception {
 							for (final IConfigurationEditorPage internalPage : allPages) {
@@ -466,8 +462,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 	}
 
 	@Override
-	public void doSaveAs() {
-	}
+	public void doSaveAs() {}
 
 	@Override
 	public boolean isSaveAsAllowed() {
@@ -498,6 +493,7 @@ public class ConfigurationEditor extends MultiPageEditorPart implements GUIDefau
 
 	private void closeEditor(final IEditorInput input) {
 		Display.getDefault().asyncExec(new Runnable() {
+
 			@Override
 			public void run() {
 				if ((getSite() != null) && (getSite().getWorkbenchWindow() != null)) {

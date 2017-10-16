@@ -243,8 +243,7 @@ public class FeatureStructure implements IFeatureStructure {
 	}
 
 	/**
-	 * Returns true if the rule can be writen in a format like 'Ab [Cd] Ef ::
-	 * Gh'.
+	 * Returns true if the rule can be writen in a format like 'Ab [Cd] Ef :: Gh'.
 	 */
 	@Override
 	public boolean hasInlineRule() {

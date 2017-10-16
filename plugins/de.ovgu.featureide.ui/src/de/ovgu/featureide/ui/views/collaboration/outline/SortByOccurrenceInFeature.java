@@ -40,6 +40,7 @@ import de.ovgu.featureide.core.fstmodel.RoleElement;
  * @author Daniel P�sche
  */
 public class SortByOccurrenceInFeature implements ICollaborationOutlineFilter {
+
 	private IFile file;
 	private boolean enabled = false;
 
@@ -55,6 +56,7 @@ public class SortByOccurrenceInFeature implements ICollaborationOutlineFilter {
 	public Object[] filter(Object[] obj) {
 		if ((obj.length > 0) && (obj[0] instanceof RoleElement)) {
 			Arrays.sort(obj, new Comparator<Object>() {
+
 				@Override
 				public int compare(Object o1, Object o2) {
 					final boolean c1 = isNotInCurrentFeature((IRoleElement) o1);
@@ -69,7 +71,7 @@ public class SortByOccurrenceInFeature implements ICollaborationOutlineFilter {
 		return obj;
 	}
 
-	//check if element is in the current feature
+	// check if element is in the current feature
 	public boolean isNotInCurrentFeature(IRoleElement element) {
 		for (final FSTRole role : element.getRole().getFSTClass().getRoles()) {
 			if (role.getFile().equals(file) && (((element instanceof FSTMethod) && role.getAllMethods().contains(element))

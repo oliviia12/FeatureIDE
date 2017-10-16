@@ -45,6 +45,7 @@ import org.sat4j.specs.TimeoutException;
  * @author Timo G&uuml;nther
  */
 public class Sat4jSatSolver extends AbstractSatSolver {
+
 	/** Maps clauses to constraints (handles to the clauses in the oracle). */
 	protected final Map<Node, IConstr> clauseConstraints = new LinkedHashMap<>();
 
@@ -59,8 +60,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	/**
 	 * Constructs a new instance of this class.
 	 */
-	protected Sat4jSatSolver() {
-	}
+	protected Sat4jSatSolver() {}
 
 	@Override
 	protected ISolver createOracle() {
@@ -93,8 +93,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Adds the given variables to the solver and oracle.
-	 * Ignores any that have already been added.
+	 * Adds the given variables to the solver and oracle. Ignores any that have already been added.
 	 *
 	 * @param variables variables to add
 	 */
@@ -160,8 +159,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Constructs a Sat4J vector from the given clauses.
-	 * Does not add any variables or clauses.
+	 * Constructs a Sat4J vector from the given clauses. Does not add any variables or clauses.
 	 *
 	 * @param clauses clauses to transform; not null
 	 * @return a Sat4J vector; contains a 0 in case of an unknown variable; not null
@@ -175,8 +173,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Constructs a Sat4J vector from the given clause.
-	 * Does not add any variables or clauses.
+	 * Constructs a Sat4J vector from the given clause. Does not add any variables or clauses.
 	 *
 	 * @param clause clause to transform; not null
 	 * @return a Sat4J vector; contains a 0 in case of an unknown variable; not null
@@ -191,8 +188,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns the Sat4J index corresponding to the given literal.
-	 * Does not add any variables or clauses.
+	 * Returns the Sat4J index corresponding to the given literal. Does not add any variables or clauses.
 	 *
 	 * @param l literal to transform; not null
 	 * @return a Sat4J index; 0 in case of an unknown variable
@@ -202,8 +198,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns the Sat4J index corresponding to the given literal.
-	 * Does not add any variables or clauses.
+	 * Returns the Sat4J index corresponding to the given literal. Does not add any variables or clauses.
 	 *
 	 * @param variable variable of the literal; not null
 	 * @param positive whether the literal is positive
@@ -218,8 +213,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns the Sat4J index corresponding to the given variable.
-	 * Does not add any variables or clauses.
+	 * Returns the Sat4J index corresponding to the given variable. Does not add any variables or clauses.
 	 *
 	 * @param variable variable to transform; not null
 	 * @return a Sat4J index; 0 in case of an unknown variable
@@ -246,8 +240,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns a literal corresponding to the given Sat4J index.
-	 * Does not add any variables or clauses.
+	 * Returns a literal corresponding to the given Sat4J index. Does not add any variables or clauses.
 	 *
 	 * @param index Sat4J index to transform; not 0
 	 * @return a literal; null in case of an unknown index
@@ -261,8 +254,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns a variable corresponding to the given Sat4J index.
-	 * Does not add any variables or clauses.
+	 * Returns a variable corresponding to the given Sat4J index. Does not add any variables or clauses.
 	 *
 	 * @param index Sat4J index to transform; not 0
 	 * @return a variable; null in caseof an unknown index
@@ -285,8 +277,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns a vector encompassing the assumptions.
-	 * Does not add any clauses or variables.
+	 * Returns a vector encompassing the assumptions. Does not add any clauses or variables.
 	 *
 	 * @return a Sat4J vector; contains 0 in case of an unknown variable; not null
 	 */
@@ -299,8 +290,7 @@ public class Sat4jSatSolver extends AbstractSatSolver {
 	}
 
 	/**
-	 * Returns the internal clause index for the given Sat4J clause index.
-	 * Sat4J clause indexes start at 1 instead of 0.
+	 * Returns the internal clause index for the given Sat4J clause index. Sat4J clause indexes start at 1 instead of 0.
 	 *
 	 * @param index Sat4J clause index
 	 * @return internal clause index

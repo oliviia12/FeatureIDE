@@ -30,8 +30,8 @@ import de.ovgu.featureide.fm.core.io.IFeatureModelFormat;
 import de.ovgu.featureide.fm.core.io.IPersistentFormat;
 
 /**
- * A factory workspace maps feature model {@link IFeatureModelFormat formats} to a feature model {@link IFeatureModelFactory factory}.
- * This way it can be ensured that a specific factory is used when reading from a certain file type.
+ * A factory workspace maps feature model {@link IFeatureModelFormat formats} to a feature model {@link IFeatureModelFactory factory}. This way it can be
+ * ensured that a specific factory is used when reading from a certain file type.
  *
  * @author Sebastian Krieter
  */

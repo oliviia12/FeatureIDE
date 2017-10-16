@@ -46,15 +46,15 @@ public class AsmetaLClassBuilder extends ClassBuilder {
 	public void caseInvariant(FSTTerminal terminal) {
 		final String[] type = terminal.getBody().substring(terminal.getBody().indexOf("over") + 4, terminal.getBody().indexOf(":")).trim().split(",");
 
-		final boolean hasProperIdentifier = terminal.getBody().substring(terminal.getBody().indexOf("invariant") + 4, terminal.getBody().indexOf("over"))
-				.contains("inv_");
+		final boolean hasProperIdentifier =
+				terminal.getBody().substring(terminal.getBody().indexOf("invariant") + 4, terminal.getBody().indexOf("over")).contains("inv_");
 
 		final FSTInvariant invariant = new FSTInvariant(terminal.getName(), terminal.getBody(), new LinkedList<String>(Arrays.asList(type)), terminal.beginLine,
 				terminal.endLine, hasProperIdentifier, true);
 		modelBuilder.getCurrentClassFragment().add(invariant);
 	}
 
-	//Used for "Functions"
+	// Used for "Functions"
 	@Override
 	void caseFieldDeclaration(FSTTerminal terminal) {
 
@@ -63,8 +63,8 @@ public class AsmetaLClassBuilder extends ClassBuilder {
 			final String startTokens = "";
 			final String type = "";
 
-			final FSTAsmetaLDomain field = new FSTAsmetaLDomain(terminal.getName(), type, startTokens, terminal.getBody(), terminal.beginLine,
-					terminal.endLine);
+			final FSTAsmetaLDomain field =
+					new FSTAsmetaLDomain(terminal.getName(), type, startTokens, terminal.getBody(), terminal.beginLine, terminal.endLine);
 			modelBuilder.getCurrentClassFragment().add(field);
 		} else if (terminal.getType().equals("Function")) {
 			final String begin = terminal.getBody().substring(0, terminal.getBody().indexOf(":"));
@@ -110,10 +110,10 @@ public class AsmetaLClassBuilder extends ClassBuilder {
 		}
 	}
 
-	//Used for "Rules"
+	// Used for "Rules"
 	@Override
 	public void caseMethodDeclaration(FSTTerminal terminal) {
-		//Rules always start with "r_"
+		// Rules always start with "r_"
 		String name = terminal.getBody().substring(terminal.getBody().indexOf("r_"), terminal.getBody().indexOf("="));
 		name = name.contains("(") ? name.substring(0, name.indexOf("(")).trim() : name.trim();
 		final String returnType = terminal.getBody().indexOf("rule") == -1 ? "" : terminal.getBody().substring(0, terminal.getBody().indexOf("rule"));

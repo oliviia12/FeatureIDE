@@ -87,28 +87,31 @@ public class FeatureStubsGenerator {
 			featureProject.getComposer().buildFSTModel();
 		}
 
-		//		String fhc = FeatureHouseComposer.getClassPaths(featureProject);
-		//		String[] fujiOptions = new String[] { "-" + fuji.Main.OptionName.CLASSPATH, fhc, "-" + fuji.Main.OptionName.PROG_MODE, "-" + fuji.Main.OptionName.COMPOSTION_STRATEGY,
-		//				fuji.Main.OptionName.COMPOSTION_STRATEGY_ARG_FAMILY, "-typechecker", "-basedir", featureProject.getSourcePath() };
-		//		ProjectManager.getAnalyzer(featureProject.getFeatureModel()).setDependencies();
+		// String fhc = FeatureHouseComposer.getClassPaths(featureProject);
+		// String[] fujiOptions = new String[] { "-" + fuji.Main.OptionName.CLASSPATH, fhc, "-" + fuji.Main.OptionName.PROG_MODE, "-" +
+		// fuji.Main.OptionName.COMPOSTION_STRATEGY,
+		// fuji.Main.OptionName.COMPOSTION_STRATEGY_ARG_FAMILY, "-typechecker", "-basedir", featureProject.getSourcePath() };
+		// ProjectManager.getAnalyzer(featureProject.getFeatureModel()).setDependencies();
 
-		//		try {
-		//			fuji.Main fuji = new fuji.Main(fujiOptions, fm, featureProject.getFeatureModel().getConcreteFeatureNames());
-		//			Composition composition = fuji.getComposition(fuji);
-		//			Program ast = composition.composeAST();
-		//			// run type check
-		//			fuji.typecheckAST(ast);
+		// try {
+		// fuji.Main fuji = new fuji.Main(fujiOptions, fm, featureProject.getFeatureModel().getConcreteFeatureNames());
+		// Composition composition = fuji.getComposition(fuji);
+		// Program ast = composition.composeAST();
+		// // run type check
+		// fuji.typecheckAST(ast);
 		//
-		//			if (!fuji.getWarnings().isEmpty()) {
-		//				FeatureHouseCorePlugin.getDefault().logError("The SPL " + featureProject.getProjectName() + " contains type errors. Therefore, the verification is aborted.", null);
-		//			}
-		//		} catch (IllegalArgumentException | ParseException | IOException | FeatureDirNotFoundException | SyntacticErrorException
-		//				| SemanticErrorException | CompilerWarningException | UnsupportedModelException e1) {
-		//			FeatureHouseCorePlugin.getDefault().logError(e1);
-		//		}
+		// if (!fuji.getWarnings().isEmpty()) {
+		// FeatureHouseCorePlugin.getDefault().logError("The SPL " + featureProject.getProjectName() + " contains type errors. Therefore, the verification is
+		// aborted.", null);
+		// }
+		// } catch (IllegalArgumentException | ParseException | IOException | FeatureDirNotFoundException | SyntacticErrorException
+		// | SemanticErrorException | CompilerWarningException | UnsupportedModelException e1) {
+		// FeatureHouseCorePlugin.getDefault().logError(e1);
+		// }
 
 		final IRunner<ProjectSignatures> efsj = LongRunningWrapper.getRunner(new ExtendedFujiSignaturesJob(featureProject));
 		efsj.addJobFinishedListener(new JobFinishListener<ProjectSignatures>() {
+
 			@Override
 			public void jobFinished(IJob<ProjectSignatures> finishedJob) {
 				getFeatures(featureProject.getFSTModel().getProjectSignatures());
@@ -122,6 +125,7 @@ public class FeatureStubsGenerator {
 
 	private void createFeatureStub(final FSTFeature feat, final ProjectSignatures signatures) {
 		final Thread keyThread = new Thread() {
+
 			@Override
 			public void run() {
 				try {
@@ -168,15 +172,15 @@ public class FeatureStubsGenerator {
 
 										if (meth.hasContract() && meth.getContract().contains("\\original")) {
 											contractChanged = true;
-											//fileTextSB = checkForOriginalInContract(fileTextSB, curSig);
+											// fileTextSB = checkForOriginalInContract(fileTextSB, curSig);
 										}
 
 										for (final String typeName : ((FOPFeatureData[]) curSig.getFeatureData())[i].getUsedNonPrimitveTypes()) {
 											checkForMissingTypes(feat, role, typeName);
 										}
 
-										final Set<AbstractSignature> calledSignatures = new HashSet<AbstractSignature>(
-												((FOPFeatureData[]) curSig.getFeatureData())[i].getCalledSignatures());
+										final Set<AbstractSignature> calledSignatures =
+												new HashSet<AbstractSignature>(((FOPFeatureData[]) curSig.getFeatureData())[i].getCalledSignatures());
 										for (final AbstractSignature innerAbs : calledSignatures) {
 											if (!isInCurrentFeature(featureID, innerAbs) && alreadyUsedSigs.add(innerAbs.toString())) {
 												if (innerAbs.getParent().getName().equals(
@@ -239,8 +243,7 @@ public class FeatureStubsGenerator {
 	void nextElement(final ProjectSignatures signatures, final LinkedList<FSTFeature> features) {
 		if (!features.isEmpty()) {
 			FSTFeature fstFeat;
-			while (!(fstFeat = features.removeFirst()).hasMethodContracts()) {
-			}
+			while (!(fstFeat = features.removeFirst()).hasMethodContracts()) {}
 			;
 			createFeatureStub(fstFeat, signatures);
 		} else {
@@ -256,8 +259,8 @@ public class FeatureStubsGenerator {
 			} else {
 				final String newClassFileText = new String(Files.readAllBytes(classFile.toPath()));
 				final int lastIndexInNewClassFile = newClassFileText.lastIndexOf("}");
-				newClassFileTextSB = new StringBuilder(
-						newClassFileText.substring(0, lastIndexInNewClassFile > -1 ? lastIndexInNewClassFile : newClassFileText.length()));
+				newClassFileTextSB =
+						new StringBuilder(newClassFileText.substring(0, lastIndexInNewClassFile > -1 ? lastIndexInNewClassFile : newClassFileText.length()));
 			}
 		} catch (final IOException e1) {
 			FeatureHouseCorePlugin.getDefault().logError(e1);
@@ -321,17 +324,17 @@ public class FeatureStubsGenerator {
 		}
 	}
 
-	//	private StringBuilder checkForOriginalInContract(StringBuilder fileTextSB, AbstractSignature curSig) {
-	//		final int indexOfBody = fileTextSB.indexOf(curSig.toString().trim());
-	//		String tmpText = fileTextSB.substring(0, indexOfBody);
-	//		final int indexOfStartOfContract = tmpText.lastIndexOf("/*@");
-	//		final String contractBody = fileTextSB.substring(tmpText.length() - 1);
-	//		String tmpFileText = fileTextSB.substring(0, indexOfStartOfContract)
-	//				+ "\n\n\t/*@\n\t@ requires_abs   " + curSig.getName() + "R;\n\t@ ensures_abs    "
-	//				+ curSig.getName() + "E;\n\t@ assignable_abs " + curSig.getName() + "A;\n\t@*/\n"
-	//				+ contractBody;
-	//		return new StringBuilder(tmpFileText);
-	//	}
+	// private StringBuilder checkForOriginalInContract(StringBuilder fileTextSB, AbstractSignature curSig) {
+	// final int indexOfBody = fileTextSB.indexOf(curSig.toString().trim());
+	// String tmpText = fileTextSB.substring(0, indexOfBody);
+	// final int indexOfStartOfContract = tmpText.lastIndexOf("/*@");
+	// final String contractBody = fileTextSB.substring(tmpText.length() - 1);
+	// String tmpFileText = fileTextSB.substring(0, indexOfStartOfContract)
+	// + "\n\n\t/*@\n\t@ requires_abs " + curSig.getName() + "R;\n\t@ ensures_abs "
+	// + curSig.getName() + "E;\n\t@ assignable_abs " + curSig.getName() + "A;\n\t@*/\n"
+	// + contractBody;
+	// return new StringBuilder(tmpFileText);
+	// }
 
 	private StringBuilder transformIntoAbstractContract(StringBuilder fileTextSB, AbstractSignature curSig) {
 		int indexOfBody = fileTextSB.toString().lastIndexOf(curSig.toString().trim());
@@ -405,8 +408,8 @@ public class FeatureStubsGenerator {
 
 	private void copyRolesToFeatureStubsFolder(final FSTFeature feat) {
 		for (final FSTRole role : feat.getRoles()) {
-			final String pathString = featureProject.getFeaturestubPath() + File.separator + feat.getName() + File.separator
-					+ role.getClassFragment().getName();
+			final String pathString =
+					featureProject.getFeaturestubPath() + File.separator + feat.getName() + File.separator + role.getClassFragment().getName();
 
 			final IPath path = new Path(pathString);
 			final IFile newRole = featureProject.getProject().getFile(path);

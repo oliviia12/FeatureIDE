@@ -47,6 +47,7 @@ import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
  * @author Alexander Knueppel
  */
 public class NNFConverter implements IConverterStrategy {
+
 	/** Feature model factory */
 	protected IFeatureModelFactory factory;
 	/** Working feature model */
@@ -66,13 +67,13 @@ public class NNFConverter implements IConverterStrategy {
 	 * Constructor
 	 */
 	public NNFConverter() {
-		//continues number + level
+		// continues number + level
 		naming.put(And.class, "AND%d_%d");
-		//continues number + level
+		// continues number + level
 		naming.put(Or.class, "OR%d_%d");
-		//feature name + continues number + level
+		// feature name + continues number + level
 		naming.put(Literal.class, "%s_%d_%d");
-		//feature name + continues number + level
+		// feature name + continues number + level
 		naming.put(Not.class, "NOT_%s_%d_%d");
 	}
 
@@ -183,10 +184,10 @@ public class NNFConverter implements IConverterStrategy {
 	 * @param level
 	 */
 	private void createAbstractSubtree(IFeature top, List<Node> nodes, int level) {
-		//Increment suffix for every new modeled constraint
-		//		if(level == 1) {
-		//			System.out.println("Next subtree: " + (++subtree));
-		//		}
+		// Increment suffix for every new modeled constraint
+		// if(level == 1) {
+		// System.out.println("Next subtree: " + (++subtree));
+		// }
 		for (final Node node : nodes) {
 			if (level == 1) {
 				suffix++;
@@ -194,7 +195,7 @@ public class NNFConverter implements IConverterStrategy {
 
 			final String name = getName(node, level);
 
-			//Terminal feature
+			// Terminal feature
 			if ((node.getContainedFeatures().size() == 1) && !(node instanceof And) && !(node instanceof Or)) {
 				final IFeature feature = factory.createFeature(top.getFeatureModel(), name);
 				feature.getStructure().setAbstract(true);
@@ -213,8 +214,8 @@ public class NNFConverter implements IConverterStrategy {
 				continue;
 			}
 
-			//Non-Terminal feature: either And or Or
-			final IFeature feature = factory.createFeature(top.getFeatureModel(), name);//"c_" + (suffix++));
+			// Non-Terminal feature: either And or Or
+			final IFeature feature = factory.createFeature(top.getFeatureModel(), name);// "c_" + (suffix++));
 			feature.getStructure().setAbstract(true);
 			feature.getStructure().setMandatory(true);
 			if (node instanceof And) {
@@ -223,7 +224,7 @@ public class NNFConverter implements IConverterStrategy {
 				feature.getStructure().setOr();
 			}
 
-			//Recursive call
+			// Recursive call
 			createAbstractSubtree(feature, Arrays.asList(node.getChildren()), level + 1);
 			top.getStructure().addChild(feature.getStructure());
 			fm.addFeature(feature);
@@ -272,7 +273,7 @@ public class NNFConverter implements IConverterStrategy {
 	 */
 	protected void simplify(IFeature top) {
 		if (top instanceof And) {
-			//TODO
+			// TODO
 		}
 	}
 
@@ -307,7 +308,7 @@ public class NNFConverter implements IConverterStrategy {
 			}
 		}
 
-		//node is an atom
+		// node is an atom
 		if (negated) {
 			return new Not(node);
 		}

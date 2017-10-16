@@ -34,8 +34,7 @@ class Executer<T> {
 		this.method = method;
 	}
 
-	public void cancel() {
-	}
+	public void cancel() {}
 
 	public T execute(IMonitor monitor) throws Exception {
 		return method.execute(monitor);

@@ -35,8 +35,8 @@ public class TAHEADToFeatureHouseConversion {
 
 	private final String TEXT_1 = "layer testLayer;/r/n" + "/r/n" + "public refines class testClass {/r/n" + "/r/n" + " public void method() {/r/n"
 			+ "  Super().method();/r/n" + " }/r/n" + "}";
-	private final String CHANGED_TEXT_1 = "/r/n" + "/r/n" + "public class testClass {/r/n" + "/r/n" + " public void method() {/r/n" + "  original();/r/n"
-			+ " }/r/n" + "}";
+	private final String CHANGED_TEXT_1 =
+			"/r/n" + "/r/n" + "public class testClass {/r/n" + "/r/n" + " public void method() {/r/n" + "  original();/r/n" + " }/r/n" + "}";
 
 	@Test
 	public void changeFile_1() {

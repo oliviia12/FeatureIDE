@@ -36,8 +36,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 import de.ovgu.featureide.fm.core.base.impl.Feature;
 
 /**
- * Operation with functionality to create a compound feature. Enables undo/redo
- * functionality.
+ * Operation with functionality to create a compound feature. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke
@@ -57,8 +56,7 @@ public class CreateFeatureAboveOperation extends AbstractFeatureModelOperation {
 		this.selectedFeatures = selectedFeatures;
 		child = selectedFeatures.get(0);
 		int number = 0;
-		while (FeatureUtils.getFeatureNames(featureModel).contains(DEFAULT_FEATURE_LAYER_CAPTION + ++number)) {
-		}
+		while (FeatureUtils.getFeatureNames(featureModel).contains(DEFAULT_FEATURE_LAYER_CAPTION + ++number)) {}
 
 		newCompound = new Feature(featureModel, DEFAULT_FEATURE_LAYER_CAPTION + number);
 	}
@@ -104,7 +102,7 @@ public class CreateFeatureAboveOperation extends AbstractFeatureModelOperation {
 	protected FeatureIDEEvent inverseOperation() {
 		final IFeatureStructure parent = newCompound.getStructure().getParent();
 		if (parent != null) {
-			newCompound.getStructure().setChildren(Collections.<IFeatureStructure> emptyList());
+			newCompound.getStructure().setChildren(Collections.<IFeatureStructure>emptyList());
 			featureModel.deleteFeature(newCompound);
 			for (final IFeature iFeature : children.keySet()) {
 				parent.addChildAtPosition(children.get(iFeature), iFeature.getStructure());

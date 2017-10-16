@@ -28,6 +28,7 @@ import org.prop4j.explain.solvers.impl.sat4j.Sat4jSatSolverFactory;
  * @author Timo G&uuml;nther
  */
 public abstract class SatSolverFactory {
+
 	/**
 	 * Returns a default instance of this class.
 	 *

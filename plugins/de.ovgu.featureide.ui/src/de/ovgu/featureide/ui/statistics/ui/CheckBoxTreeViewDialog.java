@@ -48,9 +48,8 @@ import de.ovgu.featureide.ui.statistics.ui.helper.JobDoneListener;
 import de.ovgu.featureide.ui.statistics.ui.helper.TreeLabelProvider;
 
 /**
- * The purpose of this dialog is to display the content of a 'normal'
- * {@link TreeViewer} in a {@link CheckboxTreeViewer} to select some of it's
- * content and then export it to *.csv.
+ * The purpose of this dialog is to display the content of a 'normal' {@link TreeViewer} in a {@link CheckboxTreeViewer} to select some of it's content and then
+ * export it to *.csv.
  *
  * @see CsvExporter
  *

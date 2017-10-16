@@ -32,8 +32,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ConstraintEditPar
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
 
 /**
- * An action to edit a selected propositional constraint below the feature
- * diagram.
+ * An action to edit a selected propositional constraint below the feature diagram.
  *
  * @author Christian Becker
  * @author Thomas Thuem

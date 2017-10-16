@@ -32,6 +32,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Fabian Benduhn
  */
 public class ConstraintContentAdapter extends TextContentAdapter {
+
 	@Override
 	public void insertControlContents(Control control, String text, int cursorPosition) {
 		final Point selection = ((Text) control).getSelection();

@@ -40,9 +40,9 @@ import de.ovgu.featureide.fm.core.explanations.config.ConfigurationReason;
  * @author Timo G&uuml;nther
  */
 public class MusAutomaticSelectionExplanationCreator extends MusConfigurationExplanationCreator implements AutomaticSelectionExplanationCreator {
+
 	/**
-	 * The features that have been added to the oracle.
-	 * Stored for performance reasons.
+	 * The features that have been added to the oracle. Stored for performance reasons.
 	 */
 	private final List<SelectableFeature> selectedFeatures = new LinkedList<>();
 
@@ -109,7 +109,7 @@ public class MusAutomaticSelectionExplanationCreator extends MusConfigurationExp
 					default:
 						throw new IllegalStateException("Unknown feature selection state");
 					}
-					oracle.addAssumption(var, value); //Assumptions do not show up in the explanation.
+					oracle.addAssumption(var, value); // Assumptions do not show up in the explanation.
 				} else {
 					switch (featureSelection.getManual()) {
 					case SELECTED:

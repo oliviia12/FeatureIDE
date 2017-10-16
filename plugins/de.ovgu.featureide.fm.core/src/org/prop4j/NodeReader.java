@@ -114,10 +114,8 @@ public class NodeReader {
 	/**
 	 * returns true if constraint is well formed
 	 *
-	 * @param constraint
-	 *            constraint supposed to be checked
-	 * @param featureNames
-	 *            list of feature names
+	 * @param constraint constraint supposed to be checked
+	 * @param featureNames list of feature names
 	 * @return true if constraint is well formed
 	 */
 	public boolean isWellFormed(String constraint, final Collection<String> featureNames) {
@@ -125,8 +123,7 @@ public class NodeReader {
 	}
 
 	/**
-	 * if stringToNode or isWellFormed were called with not well-formed
-	 * constraint this method returns the error message otherwise empty String
+	 * if stringToNode or isWellFormed were called with not well-formed constraint this method returns the error message otherwise empty String
 	 *
 	 * @return
 	 */
@@ -153,14 +150,10 @@ public class NodeReader {
 	/**
 	 * Checking expression on correct syntax
 	 *
-	 * @param constraint
-	 *            constraint (without parenthesis) to convert
-	 * @param symbols
-	 *            array containing strings for: iff, implies, or, and, not
-	 * @param quotedFeatureNames
-	 *            list of substituted feature names
-	 * @param subExpressions
-	 *            list of substituted parenthesis expressions
+	 * @param constraint constraint (without parenthesis) to convert
+	 * @param symbols array containing strings for: iff, implies, or, and, not
+	 * @param quotedFeatureNames list of substituted feature names
+	 * @param subExpressions list of substituted parenthesis expressions
 	 * @return
 	 */
 	private Node checkExpression(String constraint, List<String> quotedFeatureNames, List<String> subExpressions) throws ParseException {

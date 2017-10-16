@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.core.color.FeatureColorManager;
  */
 
 public class SetProfileColorSchemeAction extends Action {
+
 	private final IFeatureModel model;
 	private final String newProfileColorSchemeName;
 

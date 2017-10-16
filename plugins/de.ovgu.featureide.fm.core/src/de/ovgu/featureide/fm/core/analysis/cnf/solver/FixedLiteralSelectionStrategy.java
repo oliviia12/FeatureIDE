@@ -28,8 +28,7 @@ public class FixedLiteralSelectionStrategy implements IPhaseSelectionStrategy {
 	}
 
 	@Override
-	public void updateVar(int p) {
-	}
+	public void updateVar(int p) {}
 
 	@Override
 	public void assignLiteral(int p) {
@@ -40,16 +39,13 @@ public class FixedLiteralSelectionStrategy implements IPhaseSelectionStrategy {
 	}
 
 	@Override
-	public void updateVarAtDecisionLevel(int q) {
-	}
+	public void updateVarAtDecisionLevel(int q) {}
 
 	@Override
-	public void init(int nlength) {
-	}
+	public void init(int nlength) {}
 
 	@Override
-	public void init(int var, int p) {
-	}
+	public void init(int var, int p) {}
 
 	@Override
 	public int select(int var) {

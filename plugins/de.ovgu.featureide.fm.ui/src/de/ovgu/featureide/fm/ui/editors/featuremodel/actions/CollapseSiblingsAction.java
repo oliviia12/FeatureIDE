@@ -50,6 +50,7 @@ public class CollapseSiblingsAction extends SingleSelectionAction {
 	 * Collapse siblings should not be accessible for root.
 	 */
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
@@ -67,10 +68,8 @@ public class CollapseSiblingsAction extends SingleSelectionAction {
 	};
 
 	/**
-	 * @param label
-	 *            Description of this operation to be used in the menu
-	 * @param feature
-	 *            feature on which this operation will be executed
+	 * @param label Description of this operation to be used in the menu
+	 * @param feature feature on which this operation will be executed
 	 *
 	 */
 	public CollapseSiblingsAction(Object viewer, IGraphicalFeatureModel graphicalFeatureModel) {
@@ -99,6 +98,5 @@ public class CollapseSiblingsAction extends SingleSelectionAction {
 	}
 
 	@Override
-	protected void updateProperties() {
-	}
+	protected void updateProperties() {}
 }

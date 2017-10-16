@@ -84,8 +84,7 @@ public class ContentProvider implements ITreeContentProvider, StatisticsIds {
 	}
 
 	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-	}
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
 
 	@Override
 	public Object[] getElements(Object inputElement) {
@@ -120,15 +119,12 @@ public class ContentProvider implements ITreeContentProvider, StatisticsIds {
 	}
 
 	/**
-	 * Calculates content to be shown. If the current editor is not editing a
-	 * file out of a feature project a default message is being displayed. Every
-	 * node is responsible for its own content. So for further information see
-	 * the classes in "lazyimplementations"-package.
+	 * Calculates content to be shown. If the current editor is not editing a file out of a feature project a default message is being displayed. Every node is
+	 * responsible for its own content. So for further information see the classes in "lazyimplementations"-package.
 	 *
 	 * @see Parent
 	 * @see LazyParent
-	 * @param res
-	 *            Any file out of the current feature-project.
+	 * @param res Any file out of the current feature-project.
 	 */
 	public void calculateContent(IResource res) {
 		final IFeatureProject newProject = CorePlugin.getFeatureProject(res);
@@ -185,8 +181,7 @@ public class ContentProvider implements ITreeContentProvider, StatisticsIds {
 	}
 
 	/**
-	 * Prints a default message when the plug-in can't find necessary
-	 * information.
+	 * Prints a default message when the plug-in can't find necessary information.
 	 */
 	public void defaultContent() {
 		godfather = new Parent("GODFATHER");
@@ -195,11 +190,11 @@ public class ContentProvider implements ITreeContentProvider, StatisticsIds {
 	}
 
 	/**
-	 * Refreshes the {@link ContentProvider#view} using a UI-Job with highest
-	 * priority.
+	 * Refreshes the {@link ContentProvider#view} using a UI-Job with highest priority.
 	 */
 	protected void refresh() {
 		final UIJob job_setColor = new UIJob(REFRESH_STATISTICS_VIEW) {
+
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
 				if (!viewer.getControl().isDisposed()) {

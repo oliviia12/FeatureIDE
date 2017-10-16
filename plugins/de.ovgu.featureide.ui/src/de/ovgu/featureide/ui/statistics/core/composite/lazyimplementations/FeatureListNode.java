@@ -30,8 +30,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.ui.statistics.core.composite.LazyParent;
 
 /**
- * Parent node which evaluates if it has children before actually displaying
- * them. All features are sorted in an alphabetical order ignoring the case.
+ * Parent node which evaluates if it has children before actually displaying them. All features are sorted in an alphabetical order ignoring the case.
  *
  * @author Dominik Hamann
  * @author Patrick Haese

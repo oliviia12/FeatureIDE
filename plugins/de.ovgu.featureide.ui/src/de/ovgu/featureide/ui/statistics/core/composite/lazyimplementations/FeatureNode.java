@@ -47,9 +47,8 @@ import de.ovgu.featureide.ui.statistics.core.composite.LazyParent;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Evaluates a feature by showing its attributes and description in a tool tip
- * and by displaying child features and constraints as further child nodes in
- * the {@link TreeViewer}
+ * Evaluates a feature by showing its attributes and description in a tool tip and by displaying child features and constraints as further child nodes in the
+ * {@link TreeViewer}
  *
  * @author Dominik Hamann
  * @author Patrick Haese
@@ -80,9 +79,8 @@ public class FeatureNode extends LazyParent implements IToolTip {
 	}
 
 	/**
-	 * Creates child nodes for constraints affecting this feature and child
-	 * features of this feature. If both are present each category is stored in
-	 * a separate node.
+	 * Creates child nodes for constraints affecting this feature and child features of this feature. If both are present each category is stored in a separate
+	 * node.
 	 */
 	@Override
 	protected void initChildren() {
@@ -96,10 +94,7 @@ public class FeatureNode extends LazyParent implements IToolTip {
 	}
 
 	/*
-	 * Is called when a tooltip is requested. The tooltip is built in this
-	 * manner:
-	 *
-	 * <attribute_1> | <attribute_2> | ... | <attribute_n> [Description:
+	 * Is called when a tooltip is requested. The tooltip is built in this manner: <attribute_1> | <attribute_2> | ... | <attribute_n> [Description:
 	 * <description>]
 	 */
 	private String buildToolTip() {

@@ -63,8 +63,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Defines descriptions for nodes in the TreeViewer in order to keep everything
- * in one place.
+ * Defines descriptions for nodes in the TreeViewer in order to keep everything in one place.
  *
  * @see Parent
  * @see TreeViewer
@@ -118,6 +117,7 @@ public interface StatisticsIds {
 	public static final String METHOD_CONTRACTS_FEATURE = METHOD_CONTRACTS_IN_FEATURES;
 
 	public static final HashMap<String, String> REFINEMENT_COMPOSING_MECHANISM_MAPPING = new HashMap<String, String>() {
+
 		private static final long serialVersionUID = 1L;
 
 		{

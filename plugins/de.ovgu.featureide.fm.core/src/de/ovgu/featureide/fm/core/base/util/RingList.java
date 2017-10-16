@@ -36,8 +36,7 @@ public class RingList<T> implements Iterable<T> {
 	private static final RingList<Object> emptyRingList = new RingList<Object>() {
 
 		@Override
-		public void add(Object element) {
-		}
+		public void add(Object element) {}
 
 		@Override
 		public Iterator<Object> iterator() {
@@ -98,6 +97,7 @@ public class RingList<T> implements Iterable<T> {
 			return ring.iterator();
 		} else {
 			return new Iterator<T>() {
+
 				int index = firstPointer;
 				int count = 0;
 

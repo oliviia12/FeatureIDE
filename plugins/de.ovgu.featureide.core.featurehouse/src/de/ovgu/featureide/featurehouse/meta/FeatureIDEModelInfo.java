@@ -45,8 +45,7 @@ import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import de.ovgu.featureide.fm.core.job.LongRunningWrapper;
 
 /**
- * Representation of the feature model.
- * This class is accessed by FeatureHouse to get information about the feature model.
+ * Representation of the feature model. This class is accessed by FeatureHouse to get information about the feature model.
  *
  * @author Matthias Praast
  * @author Marcus Pinnecke (Feature Interface)
@@ -63,7 +62,7 @@ public class FeatureIDEModelInfo implements FeatureModelInfo {
 
 	private final boolean obligatory = true;
 	private final boolean obligatoryMethod = true;
-	private final boolean fm = true;//??
+	private final boolean fm = true;// ??
 	private final String validClause;
 	private final boolean useValidMethod;
 

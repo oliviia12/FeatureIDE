@@ -39,12 +39,12 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
  */
 public abstract class AConstraint extends AFeatureModelElement implements IConstraint {
 
-	//	protected ConstraintAttribute attribute = ConstraintAttribute.NORMAL;
+	// protected ConstraintAttribute attribute = ConstraintAttribute.NORMAL;
 
 	protected final Collection<IFeature> containedFeatureList = new ArrayList<>();
-	//	protected final Collection<IFeature> deadFeatures = new LinkedList<>();
+	// protected final Collection<IFeature> deadFeatures = new LinkedList<>();
 
-	//	protected final Collection<IFeature> falseOptionalFeatures = new LinkedList<>();
+	// protected final Collection<IFeature> falseOptionalFeatures = new LinkedList<>();
 
 	protected Node propNode;
 	boolean featureSelected;
@@ -64,10 +64,10 @@ public abstract class AConstraint extends AFeatureModelElement implements IConst
 		isImplicit = false;
 	}
 
-	//	@Override
-	//	public ConstraintAttribute getConstraintAttribute() {
-	//		return attribute;
-	//	}
+	// @Override
+	// public ConstraintAttribute getConstraintAttribute() {
+	// return attribute;
+	// }
 
 	/**
 	 *
@@ -85,33 +85,33 @@ public abstract class AConstraint extends AFeatureModelElement implements IConst
 		}
 	}
 
-	//	@Override
-	//	public Collection<IFeature> getDeadFeatures() {
-	//		return Collections.unmodifiableCollection(deadFeatures);
-	//	}
+	// @Override
+	// public Collection<IFeature> getDeadFeatures() {
+	// return Collections.unmodifiableCollection(deadFeatures);
+	// }
 
-	//	@Override
-	//	public Collection<IFeature> getDeadFeatures(SatSolver solver, IFeatureModel featureModel, Collection<IFeature> exlcudeFeatuers) {
+	// @Override
+	// public Collection<IFeature> getDeadFeatures(SatSolver solver, IFeatureModel featureModel, Collection<IFeature> exlcudeFeatuers) {
 	//
-	//		final Collection<IFeature> deadFeatures;
-	//		final Node propNode = getNode();
-	//		final Comparator<IFeature> featComp = new FeatureComparator(true);
-	//		if (propNode != null) {
-	//			deadFeatures = ProjectManager.getAnalyzer(featureModel).getDeadFeatures(solver, propNode);
-	//		} else {
-	//			deadFeatures = new TreeSet<IFeature>(featComp);
-	//		}
-	//		final Collection<IFeature> deadFeaturesAfter = new TreeSet<>(featComp);
+	// final Collection<IFeature> deadFeatures;
+	// final Node propNode = getNode();
+	// final Comparator<IFeature> featComp = new FeatureComparator(true);
+	// if (propNode != null) {
+	// deadFeatures = ProjectManager.getAnalyzer(featureModel).getDeadFeatures(solver, propNode);
+	// } else {
+	// deadFeatures = new TreeSet<IFeature>(featComp);
+	// }
+	// final Collection<IFeature> deadFeaturesAfter = new TreeSet<>(featComp);
 	//
-	//		deadFeaturesAfter.addAll(exlcudeFeatuers);
-	//		deadFeaturesAfter.retainAll(deadFeatures);
-	//		return deadFeaturesAfter;
-	//	}
+	// deadFeaturesAfter.addAll(exlcudeFeatuers);
+	// deadFeaturesAfter.retainAll(deadFeatures);
+	// return deadFeaturesAfter;
+	// }
 
-	//	@Override
-	//	public Collection<IFeature> getFalseOptional() {
-	//		return falseOptionalFeatures;
-	//	}
+	// @Override
+	// public Collection<IFeature> getFalseOptional() {
+	// return falseOptionalFeatures;
+	// }
 
 	@Override
 	public Node getNode() {
@@ -133,46 +133,46 @@ public abstract class AConstraint extends AFeatureModelElement implements IConst
 		return false;
 	}
 
-	//	@Override
-	//	public void setConstraintAttribute(ConstraintAttribute attribute, boolean notifyListeners) {
-	//		this.attribute = attribute;
-	//		if (notifyListeners) {
-	//			fireEvent(new FeatureIDEEvent(this, EventType.ATTRIBUTE_CHANGED, Boolean.FALSE, Boolean.TRUE));
-	//		}
-	//	}
+	// @Override
+	// public void setConstraintAttribute(ConstraintAttribute attribute, boolean notifyListeners) {
+	// this.attribute = attribute;
+	// if (notifyListeners) {
+	// fireEvent(new FeatureIDEEvent(this, EventType.ATTRIBUTE_CHANGED, Boolean.FALSE, Boolean.TRUE));
+	// }
+	// }
 
-	//	/**
-	//	 * Sets the <code>containedFeatureList</code> given by <code>propNode</code>.
-	//	 */
-	//	@Override
-	//	public void setContainedFeatures() {
-	//		synchronized (containedFeatureList) {
-	//			containedFeatureList.clear();
-	//			for (final String featureName : propNode.getContainedFeatures()) {
-	//				containedFeatureList.add(featureModel.getFeature(featureName));
-	//			}
-	//		}
-	//	}
+	// /**
+	// * Sets the <code>containedFeatureList</code> given by <code>propNode</code>.
+	// */
+	// @Override
+	// public void setContainedFeatures() {
+	// synchronized (containedFeatureList) {
+	// containedFeatureList.clear();
+	// for (final String featureName : propNode.getContainedFeatures()) {
+	// containedFeatureList.add(featureModel.getFeature(featureName));
+	// }
+	// }
+	// }
 
-	//	@Override
-	//	public void setDeadFeatures(Iterable<IFeature> deadFeatures) {
-	//		this.deadFeatures.clear();
-	//		this.deadFeatures.addAll(Functional.toList(deadFeatures));
-	//	}
+	// @Override
+	// public void setDeadFeatures(Iterable<IFeature> deadFeatures) {
+	// this.deadFeatures.clear();
+	// this.deadFeatures.addAll(Functional.toList(deadFeatures));
+	// }
 	//
-	//	@Override
-	//	public boolean setFalseOptionalFeatures(IFeatureModel featureModel, Collection<IFeature> collection) {
-	//		falseOptionalFeatures.clear();
-	//		falseOptionalFeatures.addAll(ProjectManager.getAnalyzer(featureModel).getFalseOptionalFeatures(collection));
-	//		collection.removeAll(falseOptionalFeatures);
-	//		return !falseOptionalFeatures.isEmpty();
-	//	}
+	// @Override
+	// public boolean setFalseOptionalFeatures(IFeatureModel featureModel, Collection<IFeature> collection) {
+	// falseOptionalFeatures.clear();
+	// falseOptionalFeatures.addAll(ProjectManager.getAnalyzer(featureModel).getFalseOptionalFeatures(collection));
+	// collection.removeAll(falseOptionalFeatures);
+	// return !falseOptionalFeatures.isEmpty();
+	// }
 	//
-	//	@Override
-	//	public void setFalseOptionalFeatures(Iterable<IFeature> foFeatures) {
-	//		falseOptionalFeatures.clear();
-	//		this.falseOptionalFeatures.addAll(Functional.toList(foFeatures));
-	//	}
+	// @Override
+	// public void setFalseOptionalFeatures(Iterable<IFeature> foFeatures) {
+	// falseOptionalFeatures.clear();
+	// this.falseOptionalFeatures.addAll(Functional.toList(foFeatures));
+	// }
 
 	@Override
 	public void setNode(Node node) {

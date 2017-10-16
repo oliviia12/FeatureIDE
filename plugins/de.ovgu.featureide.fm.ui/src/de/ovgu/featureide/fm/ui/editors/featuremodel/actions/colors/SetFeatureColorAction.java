@@ -56,8 +56,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 import de.ovgu.featureide.fm.ui.wizards.ColorSchemeWizard;
 
 /**
- * ColorSelectedFeatureAction is the action that opens the ColorSelectedFeatureDialog
- * with the selected features in the feature diagram.
+ * ColorSelectedFeatureAction is the action that opens the ColorSelectedFeatureDialog with the selected features in the feature diagram.
  *
  * @author Christian Elzholz
  * @author Marcus Schmelz
@@ -76,6 +75,7 @@ public class SetFeatureColorAction extends Action {
 	private boolean undoRedoEnabled = false;
 
 	private final ISelectionChangedListener selectionListener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

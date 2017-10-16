@@ -35,7 +35,8 @@ import de.ovgu.featureide.fm.core.base.IFeatureModelProperty;
  */
 public class FeatureModelProperty implements IFeatureModelProperty {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -48,7 +49,8 @@ public class FeatureModelProperty implements IFeatureModelProperty {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -82,8 +84,8 @@ public class FeatureModelProperty implements IFeatureModelProperty {
 				return false;
 			}
 		}
-		//		else if (!correspondingFeatureModel.equals(other.correspondingFeatureModel))
-		//			return false;
+		// else if (!correspondingFeatureModel.equals(other.correspondingFeatureModel))
+		// return false;
 		if (featureOrderInXML != other.featureOrderInXML) {
 			return false;
 		}
@@ -91,14 +93,12 @@ public class FeatureModelProperty implements IFeatureModelProperty {
 	}
 
 	/**
-	 * Saves the annotations from the model file as they were read,
-	 * because they were not yet used.
+	 * Saves the annotations from the model file as they were read, because they were not yet used.
 	 */
 	protected final List<String> annotations;
 
 	/**
-	 * All comment lines from the model file without line number at which they
-	 * occur
+	 * All comment lines from the model file without line number at which they occur
 	 */
 	protected final List<String> comments;
 

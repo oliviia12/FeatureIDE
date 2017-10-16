@@ -57,7 +57,8 @@ public class TwoColorGradientLine extends Shape implements GUIDefaults {
 		setOpaque(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.draw2d.Shape#fillShape(org.eclipse.draw2d.Graphics)
 	 */
 	@Override
@@ -74,10 +75,10 @@ public class TwoColorGradientLine extends Shape implements GUIDefaults {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.draw2d.Shape#outlineShape(org.eclipse.draw2d.Graphics)
 	 */
 	@Override
-	protected void outlineShape(Graphics graphics) {
-	}
+	protected void outlineShape(Graphics graphics) {}
 }

@@ -80,14 +80,15 @@ public class XmlFeatureModelWriter extends AbstractXMLFeatureModelWriter<IFeatur
 		final Element calculations = doc.createElement(CALCULATIONS);
 		final Element comments = doc.createElement(COMMENTS);
 		final Element order = doc.createElement(FEATURE_ORDER);
-		//		root.setAttribute(CHOSEN_LAYOUT_ALGORITHM, "" + featureModel.getGraphicRepresenation().getLayout().getLayoutAlgorithm());
+		// root.setAttribute(CHOSEN_LAYOUT_ALGORITHM, "" + featureModel.getGraphicRepresenation().getLayout().getLayoutAlgorithm());
 		//
-		//		if (featureModel.getGraphicRepresenation().getLayout().verticalLayout() && !featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
-		//			root.setAttribute(HORIZONTAL_LAYOUT, TRUE);
-		//		}
-		//		if (!featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures()) {
-		//			root.setAttribute(SHOW_HIDDEN_FEATURES, FALSE);
-		//		}
+		// if (featureModel.getGraphicRepresenation().getLayout().verticalLayout() &&
+		// !featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
+		// root.setAttribute(HORIZONTAL_LAYOUT, TRUE);
+		// }
+		// if (!featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures()) {
+		// root.setAttribute(SHOW_HIDDEN_FEATURES, FALSE);
+		// }
 
 		doc.appendChild(root);
 		root.appendChild(properties);
@@ -100,10 +101,10 @@ public class XmlFeatureModelWriter extends AbstractXMLFeatureModelWriter<IFeatur
 		for (int i = 0; i < object.getConstraints().size(); i++) {
 			Element rule;
 			rule = doc.createElement(RULE);
-			//			if (!featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
-			//				rule.setAttribute(COORDINATES, "" + featureModel.getConstraints().get(i).getGraphicRepresenation().getLocation().x + "," + " "
-			//						+ featureModel.getConstraints().get(i).getGraphicRepresenation().getLocation().y);
-			//			}
+			// if (!featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
+			// rule.setAttribute(COORDINATES, "" + featureModel.getConstraints().get(i).getGraphicRepresenation().getLocation().x + "," + " "
+			// + featureModel.getConstraints().get(i).getGraphicRepresenation().getLocation().y);
+			// }
 
 			constraints.appendChild(rule);
 			createPropositionalConstraints(doc, rule, object.getConstraints().get(i).getNode());
@@ -211,7 +212,7 @@ public class XmlFeatureModelWriter extends AbstractXMLFeatureModelWriter<IFeatur
 			} else if (feat.getStructure().isAlternative()) {
 				fnod = doc.createElement(ALT);
 			} else {
-				fnod = doc.createElement(UNKNOWN);//Logger.logInfo("creatXMlDockRec: Unexpected error!");
+				fnod = doc.createElement(UNKNOWN);// Logger.logInfo("creatXMlDockRec: Unexpected error!");
 			}
 			final String description = feat.getProperty().getDescription();
 			if (description != null) {
@@ -241,16 +242,15 @@ public class XmlFeatureModelWriter extends AbstractXMLFeatureModelWriter<IFeatur
 			fnod.setAttribute(ABSTRACT, TRUE);
 		}
 
-		//		if (!featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures()
-		//				|| !featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
-		//			fnod.setAttribute(COORDINATES, +feat.getGraphicRepresenation().getLocation().x + ", " + feat.getGraphicRepresenation().getLocation().y);
-		//		}
+		// if (!featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures()
+		// || !featureModel.getGraphicRepresenation().getLayout().hasFeaturesAutoLayout()) {
+		// fnod.setAttribute(COORDINATES, +feat.getGraphicRepresenation().getLocation().x + ", " + feat.getGraphicRepresenation().getLocation().y);
+		// }
 		node.appendChild(fnod);
 	}
 
 	/**
-	 * Inserts the tags concerning propositional constraints into the DOM
-	 * document representation
+	 * Inserts the tags concerning propositional constraints into the DOM document representation
 	 *
 	 * @param doc
 	 * @param FeatMod Parent node for the propositional nodes

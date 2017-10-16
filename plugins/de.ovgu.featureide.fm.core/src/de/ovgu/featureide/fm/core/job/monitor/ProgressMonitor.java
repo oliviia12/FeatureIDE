@@ -26,8 +26,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import de.ovgu.featureide.fm.core.job.IJob;
 
 /**
- * Control object for {@link IJob}s.
- * Can be used to check for cancel request, display job progress, and calling intermediate functions.
+ * Control object for {@link IJob}s. Can be used to check for cancel request, display job progress, and calling intermediate functions.
  *
  * @author Sebastian Krieter
  */

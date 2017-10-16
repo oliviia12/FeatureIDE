@@ -71,12 +71,12 @@ public class THiddenFeaturesConfiguration extends AbstractConfigurationTest {
 		final ConfigurationPropagator propagator = FeatureModelManager.getPropagator(c, true);
 		assertEquals(2L, LongRunningWrapper.runMethod(propagator.number(1000)).longValue());
 
-		//set={S,B}
+		// set={S,B}
 		c.setManual("A", Selection.UNSELECTED);
 		LongRunningWrapper.runMethod(propagator.update());
 		assertEquals(new ArrayList<>(Arrays.asList(fm.getFeature("S"), fm.getFeature("B"))), c.getSelectedFeatures());
 
-		//set={S,A}
+		// set={S,A}
 		c.setManual("A", Selection.SELECTED);
 		LongRunningWrapper.runMethod(propagator.update());
 		assertEquals(new ArrayList<>(Arrays.asList(fm.getFeature("S"), fm.getFeature("A"))), c.getSelectedFeatures());

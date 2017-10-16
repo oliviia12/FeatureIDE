@@ -44,8 +44,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.ElementDeleteOperation;
 
 /**
- * Deletes the selected features and moves their unselected children upwards.
- * Also deletes the selected propositional constraint.
+ * Deletes the selected features and moves their unselected children upwards. Also deletes the selected propositional constraint.
  *
  * @author Thomas Thuem
  * @author Christian Becker
@@ -62,6 +61,7 @@ public class DeleteAction extends Action {
 	private final IFeatureModel featureModel;
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

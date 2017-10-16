@@ -97,43 +97,43 @@ public class TWiseConfiguration implements Comparable<TWiseConfiguration> {
 		}
 	}
 
-	//	public void strong() {
-	//		traverser.changed.clear();
-	//		ArrayDeque<Integer> stronglyConnected = null;
-	//		for (int literal : literals) {
-	//			final int i = Math.abs(literal) - 1;
-	//			if (solution[i] == 0) {
-	//				solution[i] = literal;
-	//				countLiterals--;
-	//				if (traverser != null) {
-	//					traverser.selectVariables(literal);
-	//					stronglyConnected = traverser.getStronglyConnected(literal);
-	//					for (Iterator<int[]> iterator = solverSolutions.iterator(); iterator.hasNext();) {
-	//						int[] is = iterator.next();
-	//						if (is[i] == -literal) {
-	//							iterator.remove();
-	//						}
-	//					}
-	//				}
-	//			}
-	//		}
-	//		if (stronglyConnected != null) {
-	//			while (!stronglyConnected.isEmpty()) {
-	//				final int literal = stronglyConnected.pop();
-	//				final int i = Math.abs(literal) - 1;
-	//				if (solution[i] == 0) {
-	//					solution[i] = literal;
-	//					countLiterals--;
-	//					for (Iterator<int[]> iterator = solverSolutions.iterator(); iterator.hasNext();) {
-	//						int[] is = iterator.next();
-	//						if (is[i] == -literal) {
-	//							iterator.remove();
-	//						}
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
+	// public void strong() {
+	// traverser.changed.clear();
+	// ArrayDeque<Integer> stronglyConnected = null;
+	// for (int literal : literals) {
+	// final int i = Math.abs(literal) - 1;
+	// if (solution[i] == 0) {
+	// solution[i] = literal;
+	// countLiterals--;
+	// if (traverser != null) {
+	// traverser.selectVariables(literal);
+	// stronglyConnected = traverser.getStronglyConnected(literal);
+	// for (Iterator<int[]> iterator = solverSolutions.iterator(); iterator.hasNext();) {
+	// int[] is = iterator.next();
+	// if (is[i] == -literal) {
+	// iterator.remove();
+	// }
+	// }
+	// }
+	// }
+	// }
+	// if (stronglyConnected != null) {
+	// while (!stronglyConnected.isEmpty()) {
+	// final int literal = stronglyConnected.pop();
+	// final int i = Math.abs(literal) - 1;
+	// if (solution[i] == 0) {
+	// solution[i] = literal;
+	// countLiterals--;
+	// for (Iterator<int[]> iterator = solverSolutions.iterator(); iterator.hasNext();) {
+	// int[] is = iterator.next();
+	// if (is[i] == -literal) {
+	// iterator.remove();
+	// }
+	// }
+	// }
+	// }
+	// }
+	// }
 
 	public void clear() {
 		traverser = null;

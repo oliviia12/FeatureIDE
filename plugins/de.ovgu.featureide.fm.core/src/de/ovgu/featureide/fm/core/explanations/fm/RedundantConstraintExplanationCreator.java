@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.base.IConstraint;
  * @author Timo G&uuml;nther
  */
 public interface RedundantConstraintExplanationCreator extends FeatureModelExplanationCreator {
+
 	/**
 	 * Returns the redundant constraint in the feature model.
 	 *

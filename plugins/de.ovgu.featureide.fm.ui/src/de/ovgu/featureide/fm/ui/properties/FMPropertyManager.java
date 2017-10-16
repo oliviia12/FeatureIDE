@@ -44,9 +44,7 @@ import de.ovgu.featureide.fm.ui.properties.language.ILanguage;
 import de.ovgu.featureide.fm.ui.properties.page.FMPropertyPage;
 
 /**
- * Manages all persistent properties defined at the property page.<br>
- * These properties are defined for the whole workspace.<br>
- * <br>
+ * Manages all persistent properties defined at the property page.<br> These properties are defined for the whole workspace.<br> <br>
  *
  * Use this methods instead of {@link GUIDefaults}.
  *
@@ -57,8 +55,8 @@ import de.ovgu.featureide.fm.ui.properties.page.FMPropertyPage;
 @CheckReturnValue
 public class FMPropertyManager extends FMPropertyManagerDefaults implements GUIDefaults {
 
-	/* ****************************************************
-	 * current values
+	/*
+	 * **************************************************** current values
 	 ******************************************************/
 	private volatile static Boolean CURRENT_HIDE_LEGEND = null;
 	private volatile static Boolean CURRENT_HIDE_BORDER_COLOR = null;
@@ -467,9 +465,9 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 		return GUIBasics.createLineBorder(HIDDEN_BORDER_COLOR, 1, Graphics.LINE_DASH);
 	}
 
-	//	private static Color getHiddenBorderColor() {
-	//		return GUIBasics.createBorderColor(getDeadFeatureBackgroundColor());
-	//	}
+	// private static Color getHiddenBorderColor() {
+	// return GUIBasics.createBorderColor(getDeadFeatureBackgroundColor());
+	// }
 
 	public static Border getDeadFeatureBorder(boolean selected) {
 		if (selected) {
@@ -583,7 +581,7 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	}
 
 	public static Color getReasonColor(Reason reason) {
-		//		FMCorePlugin.getDefault().logInfo(reason.getSourceElement().getName() + " got color " + GUIBasics.createColor(reason.getConfidence(), 0.0, 0.0));
+		// FMCorePlugin.getDefault().logInfo(reason.getSourceElement().getName() + " got color " + GUIBasics.createColor(reason.getConfidence(), 0.0, 0.0));
 		return GUIBasics.createColor(reason.getConfidence(), 0.0, 0.0);
 	}
 
@@ -592,8 +590,7 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	}
 
 	/**
-	 * Gets the value(int) saved for the QualifiedName.<br>
-	 * If there is no value saved, the given default value is returned.
+	 * Gets the value(int) saved for the QualifiedName.<br> If there is no value saved, the given default value is returned.
 	 *
 	 * @param name The QualifiedName
 	 * @param defaultValue The default value from {@link GUIDefaults}
@@ -626,8 +623,7 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	}
 
 	/**
-	 * Gets the value(boolean) saved for the QualifiedName.<br>
-	 * If there is no value saved, it returns: <code>false</code>
+	 * Gets the value(boolean) saved for the QualifiedName.<br> If there is no value saved, it returns: <code>false</code>
 	 *
 	 * @param name The QualifiedName
 	 * @return The value for the QualifiedName
@@ -656,8 +652,7 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	}
 
 	/**
-	 * Gets the value(Color) saved for the QualifiedName.<br>
-	 * If there is no value saved, the given default value is returned.
+	 * Gets the value(Color) saved for the QualifiedName.<br> If there is no value saved, the given default value is returned.
 	 *
 	 * @param name The QualifiedName
 	 * @param defaultColor The default value from {@link GUIDefaults}
@@ -694,8 +689,7 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	}
 
 	/**
-	 * Gets the value(String) saved for the QualifiedName.<br>
-	 * If there is no value saved, it returns: "".
+	 * Gets the value(String) saved for the QualifiedName.<br> If there is no value saved, it returns: "".
 	 *
 	 * @param name The QualifiedName
 	 * @return The value for the QualifiedName
@@ -728,15 +722,15 @@ public class FMPropertyManager extends FMPropertyManagerDefaults implements GUID
 	public static LinkedList<QualifiedName> getQualifiedNames() {
 		final LinkedList<QualifiedName> names = new LinkedList<QualifiedName>();
 		names.add(QN_HIDE_LEGEND);
-		//		names.add(QN_LEGEND_FORGOUND);
+		// names.add(QN_LEGEND_FORGOUND);
 		names.add(QN_LEGEND_BACKGROUND);
 		names.add(QN_LEGEND_BORDER);
 		names.add(QN_LANGUAGE);
 		names.add(QN_DIAGRAM_BACKGROUND);
-		//		names.add(QN_FEATURE_FORGROUND);
+		// names.add(QN_FEATURE_FORGROUND);
 		names.add(QN_FEATURE_CONCRETE);
 		names.add(QN_FEATURE_ABSTRACT);
-		//		names.add(QN_FEATURE_HIDEEN_FORGROUND);
+		// names.add(QN_FEATURE_HIDEEN_FORGROUND);
 		names.add(QN_FEATURE_HIDEEN_BACKGROUND);
 		names.add(QN_FEATURE_DEAD);
 		names.add(QN_CONSTRAINT);

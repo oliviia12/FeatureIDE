@@ -34,8 +34,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
 
 /**
- * Layouts the features at the feature diagram using a reverse level order
- * search.
+ * Layouts the features at the feature diagram using a reverse level order search.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke

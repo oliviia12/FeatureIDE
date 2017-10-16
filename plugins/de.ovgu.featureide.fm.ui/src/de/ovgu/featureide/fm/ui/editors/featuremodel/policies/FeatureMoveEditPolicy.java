@@ -39,8 +39,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.commands.FeatureDragAndDrop
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 
 /**
- * Allows feature to be moved at the feature diagram and provides a feedback
- * figure.
+ * Allows feature to be moved at the feature diagram and provides a feedback figure.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -92,7 +91,7 @@ public class FeatureMoveEditPolicy extends NonResizableEditPolicy implements GUI
 	@Override
 	protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
 
-		//call createDragSourceFeedbackFigure on start of the move
+		// call createDragSourceFeedbackFigure on start of the move
 		getDragSourceFeedbackFigure();
 
 		final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds().getCopy());

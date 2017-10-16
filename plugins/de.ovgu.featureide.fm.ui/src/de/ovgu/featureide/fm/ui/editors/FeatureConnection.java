@@ -23,8 +23,7 @@ package de.ovgu.featureide.fm.ui.editors;
 import de.ovgu.featureide.fm.core.IGraphicItem;
 
 /**
- * An instance of this class represents a connection between a feature and its
- * parent. It is necessary because every figure in GEF needs a associated model.
+ * An instance of this class represents a connection between a feature and its parent. It is necessary because every figure in GEF needs a associated model.
  *
  * @author Thomas Thuem
  *

@@ -49,6 +49,7 @@ import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
  * @author Marcus Pinnecke (Feature Interface)
  */
 public class RenamingsManager implements IEventManager {
+
 	/**
 	 * a list containing all renamings since the last save
 	 */
@@ -57,11 +58,9 @@ public class RenamingsManager implements IEventManager {
 
 	private final DefaultEventManager eventManager = new DefaultEventManager();
 
-	/* *****************************************************************
-	 *
-	 * Renaming
-	 *
-	 *#*****************************************************************/
+	/*
+	 * ***************************************************************** Renaming #
+	 *****************************************************************/
 
 	public RenamingsManager(IFeatureModel model) {
 		this.model = model;
@@ -146,8 +145,7 @@ public class RenamingsManager implements IEventManager {
 	/**
 	 * Returns the current name of a feature given its name at the last save.
 	 *
-	 * @param name
-	 *            name when last saved
+	 * @param name name when last saved
 	 * @return current name of this feature
 	 */
 	public String getNewName(String name) {
@@ -160,11 +158,9 @@ public class RenamingsManager implements IEventManager {
 	}
 
 	/**
-	 * Returns the name of a feature at the time of the last save given its
-	 * current name.
+	 * Returns the name of a feature at the time of the last save given its current name.
 	 *
-	 * @param name
-	 *            current name of a feature
+	 * @param name current name of a feature
 	 * @return name when last saved
 	 */
 	public String getOldName(String name) {

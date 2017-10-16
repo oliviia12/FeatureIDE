@@ -29,8 +29,7 @@ import de.ovgu.featureide.fm.ui.handlers.base.ASelectionHandler;
 import de.ovgu.featureide.ui.wizards.ConversionWizard;
 
 /**
- * Starts the conversion wizard for the selected project with the context menu
- * to add the FeatureIDE nature.
+ * Starts the conversion wizard for the selected project with the context menu to add the FeatureIDE nature.
  *
  * @author Jens Meinicke
  */
@@ -48,7 +47,6 @@ public class ConversionHandler extends ASelectionHandler {
 	}
 
 	@Override
-	protected void singleAction(Object element) {
-	}
+	protected void singleAction(Object element) {}
 
 }

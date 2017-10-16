@@ -91,18 +91,18 @@ public class NewFeatureProjectWizard extends BasicNewProjectResourceWizard {
 	public IWizardPage getNextPage(IWizardPage page) {
 		// determine wizard extension and next page (basic new project page) when composer has been selected
 		if (page == this.page) {
-			//			this.wizardExtension = null;
-			//			IConfigurationElement[] conf = Platform.getExtensionRegistry().getConfigurationElementsFor("de.ovgu.featureide.ui.wizard");
-			//			for (IConfigurationElement c : conf) {
-			//				try {
-			//					if (c.getAttribute("composerid").equals(this.page.getCompositionTool().getId())) {
-			//						wizardExtension = (INewFeatureProjectWizardExtension) c.createExecutableExtension("class");
-			//						wizardExtension.setWizard(this);
-			//					}
-			//				} catch (CoreException e) {
-			//					UIPlugin.getDefault().logError(e);
-			//				}
-			//			}
+			// this.wizardExtension = null;
+			// IConfigurationElement[] conf = Platform.getExtensionRegistry().getConfigurationElementsFor("de.ovgu.featureide.ui.wizard");
+			// for (IConfigurationElement c : conf) {
+			// try {
+			// if (c.getAttribute("composerid").equals(this.page.getCompositionTool().getId())) {
+			// wizardExtension = (INewFeatureProjectWizardExtension) c.createExecutableExtension("class");
+			// wizardExtension.setWizard(this);
+			// }
+			// } catch (CoreException e) {
+			// UIPlugin.getDefault().logError(e);
+			// }
+			// }
 			return super.getNextPage(page);
 		} else if (page instanceof WizardNewProjectCreationPage) {
 			// determine next page (reference page) after project has been named
@@ -124,7 +124,7 @@ public class NewFeatureProjectWizard extends BasicNewProjectResourceWizard {
 			return false;
 		}
 
-		//		this.wizardExtension = null;
+		// this.wizardExtension = null;
 		final IConfigurationElement[] conf = Platform.getExtensionRegistry().getConfigurationElementsFor("de.ovgu.featureide.core.wizard");
 		for (final IConfigurationElement c : conf) {
 			try {
@@ -144,6 +144,7 @@ public class NewFeatureProjectWizard extends BasicNewProjectResourceWizard {
 
 		if (wizardExtension.performOwnFinish()) {
 			final UIJob job = new UIJob(CREATING_ANDROID_PROJECT) {
+
 				@Override
 				public IStatus runInUIThread(IProgressMonitor monitor) {
 					if (wizardExtension.performBeforeFinish(page)) {

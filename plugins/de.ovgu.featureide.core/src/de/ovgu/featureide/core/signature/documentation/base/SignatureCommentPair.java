@@ -27,6 +27,7 @@ import de.ovgu.featureide.core.signature.base.AbstractSignature;
 public class SignatureCommentPair {
 
 	public static class Comment {
+
 		private final String comment;
 		private final int featureID;
 

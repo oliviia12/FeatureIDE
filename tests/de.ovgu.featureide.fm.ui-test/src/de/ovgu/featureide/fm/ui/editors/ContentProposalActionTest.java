@@ -29,8 +29,7 @@ import org.junit.Test;
 import de.ovgu.featureide.fm.ui.editors.SimpleSyntaxHighlighterConstraintContentAdapter.InsertionResult;
 
 /**
- * Tests related action of the content proposal in ConstraintDialog, e.g.
- * insertion of a word
+ * Tests related action of the content proposal in ConstraintDialog, e.g. insertion of a word
  *
  * @author Marcus Pinnecke
  */

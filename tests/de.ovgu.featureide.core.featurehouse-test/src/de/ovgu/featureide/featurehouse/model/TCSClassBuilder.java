@@ -32,6 +32,7 @@ import org.junit.Test;
  * @author Jens Meinicke
  */
 public class TCSClassBuilder {
+
 	private final JavaClassBuilder builder = new JavaClassBuilder(null);
 
 	// TEST 1

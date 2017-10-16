@@ -43,6 +43,7 @@ import de.ovgu.featureide.featurecpp.FeatureCppCorePlugin;
  * @author Jens Meinicke
  */
 public class FeatureCppModelBuilder {
+
 	private final FSTModel model;
 
 	private final IFeatureProject featureProject;

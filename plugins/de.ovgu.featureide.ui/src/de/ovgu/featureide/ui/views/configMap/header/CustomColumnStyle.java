@@ -28,6 +28,7 @@ import org.eclipse.swt.graphics.Color;
  * @author Antje Moench
  */
 public class CustomColumnStyle {
+
 	private String title;
 	private int width;
 	private Color backgroundColor, foregroundColor;

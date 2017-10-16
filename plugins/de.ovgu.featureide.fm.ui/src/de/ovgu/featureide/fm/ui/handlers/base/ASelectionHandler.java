@@ -59,21 +59,18 @@ public abstract class ASelectionHandler extends AbstractHandler {
 	}
 
 	/**
-	 * This method is called before iterating through the current selection.</br>
-	 * Default implementation returns {@code true}.
+	 * This method is called before iterating through the current selection.</br> Default implementation returns {@code true}.
 	 *
 	 * @param selection the current selection
 	 *
-	 * @return {@code true} if the handler should iterate through the current selection,</br>
-	 *         {@code false} if the handler should stop.
+	 * @return {@code true} if the handler should iterate through the current selection,</br> {@code false} if the handler should stop.
 	 */
 	protected boolean startAction(IStructuredSelection selection) {
 		return true;
 	}
 
 	/**
-	 * This method is called after the last object in the selection was handled.</br>
-	 * Default implementation does nothing.
+	 * This method is called after the last object in the selection was handled.</br> Default implementation does nothing.
 	 */
 	protected void endAction() {
 		// do nothing.

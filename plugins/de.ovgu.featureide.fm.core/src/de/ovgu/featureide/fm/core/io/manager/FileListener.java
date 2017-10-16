@@ -35,8 +35,7 @@ import org.eclipse.core.runtime.IPath;
 import de.ovgu.featureide.fm.core.Logger;
 
 /**
- * Responsible to load and save all information from / to a file.</br>
- * To get an instance use the {@link FileManagerMap}.
+ * Responsible to load and save all information from / to a file.</br> To get an instance use the {@link FileManagerMap}.
  *
  * @author Sebastian Krieter
  */
@@ -73,6 +72,7 @@ public abstract class FileListener<T> implements IResourceChangeListener {
 				final IResourceDelta deltaMember = delta.findMember(eclipseFile);
 				if (deltaMember != null) {
 					final IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
+
 						@Override
 						public boolean visit(IResourceDelta delta) {
 							if ((delta.getKind() == IResourceDelta.CHANGED) && ((delta.getFlags() & IResourceDelta.CONTENT) != 0)) {
@@ -83,8 +83,7 @@ public abstract class FileListener<T> implements IResourceChangeListener {
 					};
 					try {
 						deltaMember.accept(visitor);
-					} catch (final CoreException e) {
-					}
+					} catch (final CoreException e) {}
 				}
 			}
 		}

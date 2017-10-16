@@ -32,6 +32,7 @@ import de.ovgu.featureide.ui.statistics.core.composite.Parent;
  * @author Patrick Haese
  */
 public class GenericListNode<T> extends AbstractSortModeNode {
+
 	private final List<T> list;
 
 	/**

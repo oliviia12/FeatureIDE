@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.layouts.FeatureDiagramLayou
  * Operation to select the layout for the feature model editor.
  */
 public class NameTypeSelectionOperation extends AbstractGraphicalFeatureModelOperation {
+
 	private final int newNameType;
 	private final int oldNameType;
 	private final IGraphicalFeatureModel featureModel;

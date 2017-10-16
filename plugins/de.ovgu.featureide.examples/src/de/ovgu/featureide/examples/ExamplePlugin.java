@@ -49,6 +49,7 @@ public class ExamplePlugin extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		new Thread() {
+
 			@Override
 			public void run() {
 				try {

@@ -47,19 +47,19 @@ import de.ovgu.featureide.fm.core.functional.Functional;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 
 /**
- * Takes a feature model as input and returns a propositional formula
- * representing the valid feature combinations.
+ * Takes a feature model as input and returns a propositional formula representing the valid feature combinations.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke (Feature Interface)
  */
 public class NodeCreator {
+
 	public static Node createNodes(IFeatureModel featureModel) {
 		return createNodes(featureModel, true);
 	}
 
 	public static Node createNodes(IFeatureModel featureModel, boolean ignoreAbstractFeatures) {
-		return createNodes(featureModel, ignoreAbstractFeatures ? Collections.<Object, Node> emptyMap() : calculateReplacingMap(featureModel));
+		return createNodes(featureModel, ignoreAbstractFeatures ? Collections.<Object, Node>emptyMap() : calculateReplacingMap(featureModel));
 	}
 
 	public static Node createNodes(IFeatureModel featureModel, Collection<String> removeFeatures) {
@@ -159,12 +159,14 @@ public class NodeCreator {
 	// user cannot choose the same name by accident. Overriding the toString
 	// method is just for convenient printing of formulas.
 	public final static Object varTrue = new Object() {
+
 		@Override
 		public String toString() {
 			return "True";
 		};
 	};
 	public final static Object varFalse = new Object() {
+
 		@Override
 		public String toString() {
 			return "False";
@@ -435,7 +437,7 @@ public class NodeCreator {
 		final String s = getVariable(rootFeature.getName(), featureModel);
 
 		final Node[] children = new Node[rootFeature.getStructure().getChildrenCount()];
-		//Children need to be Node[] instead of Literal[] in case other children types are added throughout the lifecycle of the node.
+		// Children need to be Node[] instead of Literal[] in case other children types are added throughout the lifecycle of the node.
 		int i = 0;
 		for (final IFeatureStructure rootChild : rootFeature.getStructure().getChildren()) {
 			final String var = getVariable(rootChild.getFeature().getName(), featureModel);

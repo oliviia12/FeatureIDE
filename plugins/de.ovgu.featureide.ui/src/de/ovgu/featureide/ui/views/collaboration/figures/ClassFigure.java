@@ -33,8 +33,7 @@ import de.ovgu.featureide.ui.views.collaboration.GUIDefaults;
 import de.ovgu.featureide.ui.views.collaboration.model.CollaborationModelBuilder;
 
 /**
- * An instance of this class represents the graphical representation of the
- * Class with in the Collaboration Diagram.
+ * An instance of this class represents the graphical representation of the Class with in the Collaboration Diagram.
  *
  * @author Constanze Adler
  */

@@ -32,6 +32,7 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor.MethodCancelException;
 class StoppableExecuter<T> extends Executer<T> {
 
 	private class InnerThread extends Thread {
+
 		private final IMonitor workMonitor;
 
 		private T result = null;

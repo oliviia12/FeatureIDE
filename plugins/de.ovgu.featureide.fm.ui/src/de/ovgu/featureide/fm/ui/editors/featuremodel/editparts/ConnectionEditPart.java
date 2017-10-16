@@ -64,8 +64,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.SetFeatureToMand
 import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
 
 /**
- * An editpart for connections between features and their parents. Creates the
- * source decoration dependent on the mandatory property.
+ * An editpart for connections between features and their parents. Creates the source decoration dependent on the mandatory property.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -73,9 +72,9 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
 public class ConnectionEditPart extends AbstractConnectionEditPart implements GUIDefaults, PropertyChangeListener {
 
 	private static final DirectEditPolicy ROLE_DIRECT_EDIT_POLICY = new DirectEditPolicy() {
+
 		@Override
-		protected void showCurrentEditValue(DirectEditRequest request) {
-		}
+		protected void showCurrentEditValue(DirectEditRequest request) {}
 
 		@Override
 		protected Command getDirectEditCommand(DirectEditRequest request) {
@@ -261,15 +260,14 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 	}
 
 	public void refreshTargetDecoration() {
-		//Check if there is a target to refresh.
+		// Check if there is a target to refresh.
 		final IGraphicalFeature target = getModel().getTarget();
 		if (target == null) {
 			return;
 		}
 
 		/*
-		 * Add a target decoration only if this is the main connection.
-		 * The main connection is the first sibling and the only one with a target decoration.
+		 * Add a target decoration only if this is the main connection. The main connection is the first sibling and the only one with a target decoration.
 		 */
 		final IFeatureStructure targetStructure = target.getObject().getStructure();
 		final IGraphicalFeature source = getModel().getSource();
@@ -278,7 +276,7 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 		ConnectionDecoration targetDecoration = null;
 		if ((sourceStructure == mainSourceStructure) && !targetStructure.isAnd() && (targetStructure.getChildrenCount() > 1)) {
 			final List<IGraphicalFeature> graphicalChildren = FeatureUIHelper.getGraphicalChildren(target);
-			if (!graphicalChildren.isEmpty()) { //Even if the target has children, it might be collapsed, leading to no graphical children.
+			if (!graphicalChildren.isEmpty()) { // Even if the target has children, it might be collapsed, leading to no graphical children.
 				final IGraphicalFeature lastChild = FeatureUIHelper.hasVerticalLayout(target.getGraphicalModel()) ? graphicalChildren.get(0)
 						: graphicalChildren.get(graphicalChildren.size() - 1);
 				targetDecoration = new RelationDecoration(targetStructure.isMultiple(), lastChild);
@@ -287,8 +285,8 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 		getFigure().setTargetDecoration(targetDecoration);
 
 		/*
-		 * Refresh the active reason of the target decoration of the main connection (which might not be this one).
-		 * We have to do this whenever any connection is refreshed as the main connection might not be refreshed even though its target decoration has to be.
+		 * Refresh the active reason of the target decoration of the main connection (which might not be this one). We have to do this whenever any connection
+		 * is refreshed as the main connection might not be refreshed even though its target decoration has to be.
 		 */
 		final IGraphicalFeature mainSource = FeatureUIHelper.getGraphicalFeature(mainSourceStructure, target.getGraphicalModel());
 		final ConnectionEditPart mainConnectionEditPart = (ConnectionEditPart) getViewer().getEditPartRegistry().get(mainSource.getSourceConnection());
@@ -381,8 +379,8 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 	}
 
 	/**
-	 * Returns the active reason for use with the main connection's target decoration.
-	 * The main active reason has the maximum confidence of all reasons of all siblings.
+	 * Returns the active reason for use with the main connection's target decoration. The main active reason has the maximum confidence of all reasons of all
+	 * siblings.
 	 *
 	 * @return the active reason for use with the main connection's target decoration
 	 */
@@ -399,15 +397,14 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 			final IGraphicalFeature sibling;
 			final ConnectionEditPart siblingConnectionEditPart;
 			if (siblingStructure == sourceStructure) {
-				//Don't bother looking up this edit part.
+				// Don't bother looking up this edit part.
 				sibling = source;
 				siblingConnectionEditPart = this;
 			} else {
 				/*
-				 * TODO Increase performance by accessing edit parts directly instead of looking them up.
-				 * The sibling edit parts should be accessible through getTarget().getTargetConnections().
-				 * However, as of writing, that method always returns an empty list.
-				 * As a result, the sibling edit parts have to be looked up with a detour to each sibling's model.
+				 * TODO Increase performance by accessing edit parts directly instead of looking them up. The sibling edit parts should be accessible through
+				 * getTarget().getTargetConnections(). However, as of writing, that method always returns an empty list. As a result, the sibling edit parts
+				 * have to be looked up with a detour to each sibling's model.
 				 */
 				sibling = FeatureUIHelper.getGraphicalFeature(siblingStructure, target.getGraphicalModel());
 				siblingConnectionEditPart = (ConnectionEditPart) getViewer().getEditPartRegistry().get(sibling.getSourceConnection());
@@ -416,7 +413,10 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 				continue;
 			}
 			final FeatureModelReason activeReason = siblingConnectionEditPart.activeReasonDown;
-			if ((activeReason != null) && ((mainActiveReason == null) || (mainActiveReason.getConfidence() < activeReason.getConfidence()))) { //maximum confidence of all siblings
+			if ((activeReason != null) && ((mainActiveReason == null) || (mainActiveReason.getConfidence() < activeReason.getConfidence()))) { // maximum
+																																				 // confidence
+																																				 // of all
+																																				 // siblings
 				mainActiveReason = activeReason;
 			}
 		}
@@ -424,8 +424,7 @@ public class ConnectionEditPart extends AbstractConnectionEditPart implements GU
 	}
 
 	/**
-	 * Checks if the target and source features are from an external feature
-	 * model.
+	 * Checks if the target and source features are from an external feature model.
 	 *
 	 * @return true if both features are from an external feature model
 	 */

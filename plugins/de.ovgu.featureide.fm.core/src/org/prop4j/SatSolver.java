@@ -53,8 +53,7 @@ import de.ovgu.featureide.fm.core.Logger;
 import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 
 /**
- * A solver that computes if a given propositional node is satisfiable and
- * retrieves solutions.
+ * A solver that computes if a given propositional node is satisfiable and retrieves solutions.
  *
  * @author Thomas Thuem
  */
@@ -122,8 +121,7 @@ public class SatSolver {
 	/**
 	 * Adds clauses to the SatSolver. Assumes that the given node is in CNF.
 	 *
-	 * @param root
-	 *            the new clauses (e.g. AND or OR node)
+	 * @param root the new clauses (e.g. AND or OR node)
 	 */
 	public void addClauses(Node root) {
 		if (contradiction) {
@@ -454,11 +452,9 @@ public class SatSolver {
 	 *
 	 * f and l1 and l2 and ... and ln
 	 *
-	 * Where f is the formula currently feed into the solver and l1,...,ln are
-	 * the elements in the given array <code>literals</code>.
+	 * Where f is the formula currently feed into the solver and l1,...,ln are the elements in the given array <code>literals</code>.
 	 *
-	 * @param literals
-	 *            an array of literals for which the value is assumed
+	 * @param literals an array of literals for which the value is assumed
 	 * @return true if the formula with all assumed values is satisfiable
 	 * @throws TimeoutException
 	 */
@@ -479,11 +475,9 @@ public class SatSolver {
 	 *
 	 * f and l1 and l2 and ... and ln
 	 *
-	 * Where f is the formula currently feed into the solver and l1,...,ln are
-	 * the elements in the given list <code>literals</code>.
+	 * Where f is the formula currently feed into the solver and l1,...,ln are the elements in the given list <code>literals</code>.
 	 *
-	 * @param literals
-	 *            a list of literals for which the value is assumed
+	 * @param literals a list of literals for which the value is assumed
 	 * @return true if the formula with all assumed values is satisfiable
 	 * @throws TimeoutException
 	 */
@@ -504,11 +498,9 @@ public class SatSolver {
 	 *
 	 * f and g
 	 *
-	 * Where f is the formula currently feed into the solver and g is the
-	 * formula given in the parameter <code>node</code>.
+	 * Where f is the formula currently feed into the solver and g is the formula given in the parameter <code>node</code>.
 	 *
-	 * @param node
-	 *            a propositional formula
+	 * @param node a propositional formula
 	 * @return true if adding the given formula results in a satisfiable formula
 	 * @throws TimeoutException
 	 */
@@ -544,11 +536,9 @@ public class SatSolver {
 	}
 
 	/**
-	 * Counts the solutions of the propositional formula. If the given timeout
-	 * is reached the result is negative.
+	 * Counts the solutions of the propositional formula. If the given timeout is reached the result is negative.
 	 *
-	 * Since -0 equals 0, the output is y = -1 - x. If the output y is negative
-	 * there are at least x = -1 - y solutions.
+	 * Since -0 equals 0, the output is y = -1 - x. If the output y is negative there are at least x = -1 - y solutions.
 	 *
 	 * @return number of solutions (at least solutions)
 	 */

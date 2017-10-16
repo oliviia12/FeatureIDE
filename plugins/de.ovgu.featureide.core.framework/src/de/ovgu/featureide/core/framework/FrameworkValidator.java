@@ -35,6 +35,7 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 
 public class FrameworkValidator {
+
 	/**
 	 * Checks given file
 	 *
@@ -61,9 +62,7 @@ public class FrameworkValidator {
 
 	/**
 	 *
-	 * class for validating XML file depending on dtd file
-	 * <p>
-	 * {@code TODO missing implementation}
+	 * class for validating XML file depending on dtd file <p> {@code TODO missing implementation}
 	 *
 	 * @author Daniel Hohmann
 	 */

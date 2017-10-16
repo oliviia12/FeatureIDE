@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
  * @author Timo G&uuml;nther
  */
 public class CollapseAllButExplanationOperation extends AbstractFeatureModelOperation {
+
 	/** The graphical feature model context. */
 	private final IGraphicalFeatureModel fm;
 	/** The currently active explanation. */

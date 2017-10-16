@@ -64,7 +64,7 @@ public class FeatureFolderDecorator implements ILightweightLabelDecorator, IFeat
 	public void decorate(Object element, IDecoration decoration) {
 		final IFolder folder = (IFolder) element;
 
-		//decorate only files in our projects
+		// decorate only files in our projects
 		final IFeatureProject featureProject = CorePlugin.getFeatureProject(folder);
 		if (featureProject == null) {
 			return;
@@ -78,10 +78,10 @@ public class FeatureFolderDecorator implements ILightweightLabelDecorator, IFeat
 			return;
 		}
 
-		//handle only not-in-use folders
+		// handle only not-in-use folders
 		final IFeature feature = featureProject.getFeatureModel().getFeature(folder.getName());
 		if ((feature == null) || feature.getStructure().isAbstract()) {
-			//decorate not-in-use folders
+			// decorate not-in-use folders
 			decoration.addOverlay(OVERLAY, IDecoration.TOP_LEFT);
 		}
 	}

@@ -82,90 +82,34 @@ import de.ovgu.featureide.munge.MungeCorePlugin;
  */
 
 /**
- * Munge: a purposely-simple Java preprocessor. It only
- * supports conditional inclusion of source based on defined strings of
- * the form "if[tag]",
- * "if_not[tag]", "else[tag], and "end[tag]". Unlike traditional
- * preprocessors, comments and formatting are all preserved for the
- * included lines. This is on purpose, as the output of Munge
- * will be distributed as human-readable source code.
- * <p>
- * To avoid creating a separate Java dialect, the conditional tags are
- * contained in Java comments. This allows one build to compile the
- * source files without pre-processing, to facilitate faster incremental
- * development. Other builds from the same source have their code contained
- * within that comment. The format of the tags is a little verbose, so
- * that the tags won't accidentally be used by other comment readers
- * such as javadoc. Munge tags <b>must</b> be in C-style comments;
- * C++-style comments may be used to comment code within a comment.
+ * Munge: a purposely-simple Java preprocessor. It only supports conditional inclusion of source based on defined strings of the form "if[tag]", "if_not[tag]",
+ * "else[tag], and "end[tag]". Unlike traditional preprocessors, comments and formatting are all preserved for the included lines. This is on purpose, as the
+ * output of Munge will be distributed as human-readable source code. <p> To avoid creating a separate Java dialect, the conditional tags are contained in Java
+ * comments. This allows one build to compile the source files without pre-processing, to facilitate faster incremental development. Other builds from the same
+ * source have their code contained within that comment. The format of the tags is a little verbose, so that the tags won't accidentally be used by other
+ * comment readers such as javadoc. Munge tags <b>must</b> be in C-style comments; C++-style comments may be used to comment code within a comment.
  *
- * <p>
- * To demonstrate this, our sample source has 1.1 and 1.2-specific code,
- * with 1.1 as the default build:
+ * <p> To demonstrate this, our sample source has 1.1 and 1.2-specific code, with 1.1 as the default build:
  *
- * <pre>
- * <code>
- *     public void setSystemProperty(String key, String value) {
- *         &#47;*if[JDK1.1]*&#47;
- *         Properties props = System.getProperties();
- *         props.setProperty(key, value);
- *         System.setProperties(props);
- *         &#47;*end[JDK1.1]*&#47;
- * <p>
- *         &#47;*if[JDK1.2]
- *         // Use the new System method.
- *         System.setProperty(key, value);
- *           end[JDK1.2]*&#47;
- *     }
- * </code>
- * </pre>
- * <p>
- * When the above code is directly compiled, the code bracketed by
- * the JDK1.1 tags will be used. If the file is run through
- * Munge with the JDK1.2 tag defined, the second code block
- * will used instead. This code can also be written as:
+ * <pre> <code> public void setSystemProperty(String key, String value) { &#47;*if[JDK1.1]*&#47; Properties props = System.getProperties();
+ * props.setProperty(key, value); System.setProperties(props); &#47;*end[JDK1.1]*&#47; <p> &#47;*if[JDK1.2] // Use the new System method.
+ * System.setProperty(key, value); end[JDK1.2]*&#47; } </code> </pre> <p> When the above code is directly compiled, the code bracketed by the JDK1.1 tags will
+ * be used. If the file is run through Munge with the JDK1.2 tag defined, the second code block will used instead. This code can also be written as:
  *
- * <pre>
- * <code>
- *     public void setSystemProperty(String key, String value) {
- *         &#47;*if[JDK1.2]
- *         // Use the new System method.
- *         System.setProperty(key, value);
- *           else[JDK1.2]*&#47;
- * <p>
- *         Properties props = System.getProperties();
- *         props.setProperty(key, value);
- *         System.setProperties(props);
- *         &#47;*end[JDK1.2]*&#47;
- *     }
- * </code>
- * </pre>
+ * <pre> <code> public void setSystemProperty(String key, String value) { &#47;*if[JDK1.2] // Use the new System method. System.setProperty(key, value);
+ * else[JDK1.2]*&#47; <p> Properties props = System.getProperties(); props.setProperty(key, value); System.setProperties(props); &#47;*end[JDK1.2]*&#47; }
+ * </code> </pre>
  *
- * Munge also performs text substitution; the Swing build uses this to
- * convert its package references from <code>javax.swing</code>
- * to <code>java.awt.swing</code>, for example. This substitution is
- * has no knowledge of Java syntax, so only use it to convert strings
- * which are unambiguous. Substitutions are made in the same order as
- * the arguments are specified, so the first substitution is made over
- * the whole file before the second one, and so on.
- * <p>
- * Munge's command line takes one of the following forms:
+ * Munge also performs text substitution; the Swing build uses this to convert its package references from <code>javax.swing</code> to
+ * <code>java.awt.swing</code>, for example. This substitution is has no knowledge of Java syntax, so only use it to convert strings which are unambiguous.
+ * Substitutions are made in the same order as the arguments are specified, so the first substitution is made over the whole file before the second one, and so
+ * on. <p> Munge's command line takes one of the following forms:
  *
- * <pre>
- * <code>
- *    java Munge [-D&lt;symbol&gt; ...] [-s &lt;old&gt;=&lt;new&gt; ...] [&lt;in file&gt;] [&lt;out file&gt;]
- *    java Munge [-D&lt;symbol&gt; ...] [-s &lt;old&gt;=&lt;new&gt; ...] &lt;file&gt; ... &lt;directory&gt;
- * </code>
- * </pre>
- * <p>
- * In the first form, if no output file is given, System.out is used. If
- * neither input nor output file are given, System.in and System.out are used.
- * Munge can also take an <code>@&lt;cmdfile&gt;</code> argument. If one is
- * specified then the given file is read for additional command line arguments.
- * <p>
- * Like any preprocessor, developers must be careful not to abuse its
- * capabilities so that their code becomes unreadable. Please use it
- * as little as possible.
+ * <pre> <code> java Munge [-D&lt;symbol&gt; ...] [-s &lt;old&gt;=&lt;new&gt; ...] [&lt;in file&gt;] [&lt;out file&gt;] java Munge [-D&lt;symbol&gt; ...] [-s
+ * &lt;old&gt;=&lt;new&gt; ...] &lt;file&gt; ... &lt;directory&gt; </code> </pre> <p> In the first form, if no output file is given, System.out is used. If
+ * neither input nor output file are given, System.in and System.out are used. Munge can also take an <code>@&lt;cmdfile&gt;</code> argument. If one is
+ * specified then the given file is read for additional command line arguments. <p> Like any preprocessor, developers must be careful not to abuse its
+ * capabilities so that their code becomes unreadable. Please use it as little as possible.
  *
  * @author: Thomas Ball
  * @author: Joerg Liebig (Nesting)
@@ -234,6 +178,7 @@ public class Munge {
 
 	public void addMarker(final String text, final IFile file, final int line) {
 		final Job job = new Job(PROPAGATE_SYNTAX_MARKERS) {
+
 			@Override
 			public IStatus run(IProgressMonitor monitor) {
 				try {
@@ -272,8 +217,7 @@ public class Munge {
 		job.schedule();
 	}
 
-	public void printErrorCount() {
-	}
+	public void printErrorCount() {}
 
 	public boolean hasErrors() {
 		return (errors > 0);
@@ -367,8 +311,7 @@ public class Munge {
 	}
 
 	/*
-	 * If there's a preprocessor tag in this comment, act on it and return
-	 * any text within it.  If not, just return the whole comment unchanged.
+	 * If there's a preprocessor tag in this comment, act on it and return any text within it. If not, just return the whole comment unchanged.
 	 */
 	void processComment(String comment) throws IOException {
 		final String commentText = comment.substring(2, comment.length() - 2);
@@ -519,7 +462,7 @@ public class Munge {
 	public static void usage() {
 		MungeCorePlugin.getDefault().logWarning("usage:" + "\n    java Munge [-D<symbol> ...] " + "[-s <old>=<new> ...] " + "[<in file>] [<out file>]"
 				+ "\n    java Munge [-D<symbol> ...] " + "[-s <old>=<new> ...] " + "<file> ... <directory>");
-		//	System.exit(1);
+		// System.exit(1);
 	}
 
 	public static void usage(String msg) {
@@ -611,7 +554,7 @@ public class Munge {
 			if (munge.hasErrors()) {
 				munge.printErrorCount();
 
-				//                System.exit(munge.errors);
+				// System.exit(munge.errors);
 			}
 
 			try {
@@ -623,29 +566,24 @@ public class Munge {
 
 			if (munge.hasErrors()) {
 				munge.printErrorCount();
-				//                System.exit(munge.errors);
+				// System.exit(munge.errors);
 			}
 		}
 
-		//	System.exit(0);
+		// System.exit(0);
 	}
 
 	/**
-	 * This class was cut and pasted from the JDK1.2 sun.tools.util package.
-	 * Since Munge needs to be used when only a JRE is present, we could not
-	 * use it from that place. Likewise, Munge needs to be able to run under 1.1
-	 * so the 1.2 collections classes had to be replaced in this version.
+	 * This class was cut and pasted from the JDK1.2 sun.tools.util package. Since Munge needs to be used when only a JRE is present, we could not use it from
+	 * that place. Likewise, Munge needs to be able to run under 1.1 so the 1.2 collections classes had to be replaced in this version.
 	 */
 	static class CommandLine {
+
 		/**
-		 * Process Win32-style command files for the specified command line
-		 * arguments and return the resulting arguments. A command file argument
-		 * is of the form '@file' where 'file' is the name of the file whose
-		 * contents are to be parsed for additional arguments. The contents of
-		 * the command file are parsed using StreamTokenizer and the original
-		 * '@file' argument replaced with the resulting tokens. Recursive command
-		 * files are not supported. The '@' character itself can be quoted with
-		 * the sequence '@@'.
+		 * Process Win32-style command files for the specified command line arguments and return the resulting arguments. A command file argument is of the form
+		 * '@file' where 'file' is the name of the file whose contents are to be parsed for additional arguments. The contents of the command file are parsed
+		 * using StreamTokenizer and the original '@file' argument replaced with the resulting tokens. Recursive command files are not supported. The '@'
+		 * character itself can be quoted with the sequence '@@'.
 		 */
 		static String[] parse(String[] args) throws IOException {
 			final Vector<String> newArgs = new Vector<String>(args.length);

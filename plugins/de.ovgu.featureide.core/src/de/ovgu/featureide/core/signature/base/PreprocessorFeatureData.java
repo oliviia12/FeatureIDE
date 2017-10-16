@@ -24,8 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * Extends the abstract {@link AFeatureData} class.
- * Stores additional information for signatures in a preprocessor project.
+ * Extends the abstract {@link AFeatureData} class. Stores additional information for signatures in a preprocessor project.
  *
  * @author Sebastian Krieter
  */

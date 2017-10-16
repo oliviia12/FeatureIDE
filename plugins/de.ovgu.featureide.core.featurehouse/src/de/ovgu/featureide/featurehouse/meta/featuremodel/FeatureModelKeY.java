@@ -34,7 +34,8 @@ import de.ovgu.featureide.fm.core.functional.Functional;
  */
 public class FeatureModelKeY implements IFeatureModelClass {
 
-	private final static String HEAD = "/**\r\n * Variability encoding of the feature model for KeY.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
+	private final static String HEAD =
+			"/**\r\n * Variability encoding of the feature model for KeY.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
 	private final static String FIELD_MODIFIER = "\tpublic static boolean ";
 
 	private final IFeatureModel featureModel;
@@ -67,12 +68,12 @@ public class FeatureModelKeY implements IFeatureModelClass {
 	@Override
 	public String getFormula() {
 		return "";
-		//		final Node nodes = NodeCreator.createNodes(featureModel.clone()).eliminateNotSupportedSymbols(NodeWriter.javaSymbols);
-		//		String formula = nodes.toString(NodeWriter.javaSymbols).toLowerCase(Locale.ENGLISH);
-		//		if (formula.contains("  &&  true  &&  ! false")) {
-		//			formula = formula.substring(0, formula.indexOf("  &&  true  &&  ! false"));
-		//		}
-		//		return VALID + "return " + formula + ";\r\n\t}\r\n";
+		// final Node nodes = NodeCreator.createNodes(featureModel.clone()).eliminateNotSupportedSymbols(NodeWriter.javaSymbols);
+		// String formula = nodes.toString(NodeWriter.javaSymbols).toLowerCase(Locale.ENGLISH);
+		// if (formula.contains(" && true && ! false")) {
+		// formula = formula.substring(0, formula.indexOf(" && true && ! false"));
+		// }
+		// return VALID + "return " + formula + ";\r\n\t}\r\n";
 	}
 
 	@Override

@@ -83,6 +83,7 @@ import de.ovgu.featureide.ui.UIPlugin;
  */
 @SuppressWarnings(RESTRICTION)
 public class NewFeatureIDEFilePage extends WizardPage {
+
 	private static final String PAGE_DESCRIPTION = CREATES_A_NEW_LANGUAGE_SPECIFIC_FEATUREIDE_SOURCE_FILE_;
 	private static final String PAGE_TITLE = NEW_FEATUREIDE_SOURCE_FILE;
 
@@ -145,14 +146,10 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	/**
 	 * Constructor for NewFeatureIDEFilePage.
 	 *
-	 * @param selection
-	 *            Selection at the package explorer.
-	 * @param feature
-	 *            Feature selected at the collaboration diagram.
-	 * @param clss
-	 *            Class selected at the collaboration diagram.
-	 * @param pack
-	 *            Package selected at the collaboration diagram
+	 * @param selection Selection at the package explorer.
+	 * @param feature Feature selected at the collaboration diagram.
+	 * @param clss Class selected at the collaboration diagram.
+	 * @param pack Package selected at the collaboration diagram
 	 */
 	public NewFeatureIDEFilePage(ISelection selection, String feature, String clss, String pack) {
 		super("wizardPage");
@@ -236,6 +233,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 
 	private void addListeners() {
 		comboProject.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				projectDirty = true;
@@ -264,6 +262,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 			}
 		});
 		comboFeature.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				featureDirty = true;
@@ -275,6 +274,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 			}
 		});
 		comboLanguage.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				languageDirty = true;
@@ -294,6 +294,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 		});
 
 		comboPackage.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				initComboClassName();
@@ -302,6 +303,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 		});
 
 		comboClass.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				if (comboClass.getText().length() > 0) {
@@ -311,6 +313,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 			}
 		});
 		textModulename.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				modulenameDirty = true;
@@ -319,14 +322,14 @@ public class NewFeatureIDEFilePage extends WizardPage {
 
 		});
 		buttonRefines.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				refines = buttonRefines.getSelection();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 	}
 
@@ -365,8 +368,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	}
 
 	/**
-	 * Fills the class combo with class names of the same package at other
-	 * features.
+	 * Fills the class combo with class names of the same package at other features.
 	 */
 	private void initInterfaceCheckbox() {
 		if (comboLanguage.getText().equals(JAVA)) {
@@ -380,8 +382,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	}
 
 	/**
-	 * Fills the class combo with class names of the same package at other
-	 * features.
+	 * Fills the class combo with class names of the same package at other features.
 	 */
 	private void initComboClassName() {
 		String c = comboClass.getText();
@@ -437,11 +438,9 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	}
 
 	/**
-	 * Collects all class files with the selected extension at the selected
-	 * package.
+	 * Collects all class files with the selected extension at the selected package.
 	 *
-	 * @param folder
-	 *            The folder to look at.
+	 * @param folder The folder to look at.
 	 * @return A list of all class file names.
 	 */
 	private LinkedList<String> getClasses(IFolder folder) {
@@ -521,11 +520,8 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	/**
 	 * Looks for the package of the selected resource.
 	 *
-	 * @param folder
-	 *            The selected folder or the folder containing the selected
-	 *            file.
-	 * @return The package name or "" if the selected resource is not at the
-	 *         source folder.
+	 * @param folder The selected folder or the folder containing the selected file.
+	 * @return The package name or "" if the selected resource is not at the source folder.
 	 */
 	private String setPackage(IFolder folder) {
 		String p = "";
@@ -547,8 +543,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	/**
 	 * Looks if the <code>comboPackage</code> contains the package.
 	 *
-	 * @param packageName
-	 *            The package to look for.
+	 * @param packageName The package to look for.
 	 * @return <code>true</code> if it contains the package.
 	 */
 	private boolean containsPackage(String packageName) {
@@ -574,8 +569,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	}
 
 	/**
-	 * Initializes the combo containing all feature projects.<br>
-	 * Selects the feature project corresponding to the selected resource.
+	 * Initializes the combo containing all feature projects.<br> Selects the feature project corresponding to the selected resource.
 	 */
 	private void initComboProject() {
 		final Object obj = selection.getFirstElement();
@@ -621,8 +615,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	}
 
 	/**
-	 * Initializes the container collecting the supported languages.<br>
-	 * If a file was selected, the language of the file will be selected.
+	 * Initializes the container collecting the supported languages.<br> If a file was selected, the language of the file will be selected.
 	 */
 	private void initComboLanguage() {
 		composer = featureProject.getComposer();
@@ -713,7 +706,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 		sourceFolder = featureProject.getSourceFolder();
 
 		if (resource.getParent().equals(sourceFolder)) {
-			//TODO: ???
+			// TODO: ???
 			container = sourceFolder.getFolder(comboFeature.getText());
 		} else if (featureProject.getComposer().refines()) {
 			buttonRefines.setSelection(isRefinement());
@@ -817,8 +810,7 @@ public class NewFeatureIDEFilePage extends WizardPage {
 	/**
 	 * Looks if the current package name is valid.
 	 *
-	 * @param packageName
-	 *            The package to look for.
+	 * @param packageName The package to look for.
 	 */
 	private boolean validatePackage(String packageName) {
 		String errorMessage = null;

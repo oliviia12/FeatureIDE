@@ -31,7 +31,9 @@ import de.ovgu.featureide.fm.ui.FMUIPlugin;
  * @author Sebastian Krieter
  */
 public class JobSynchronizer {
+
 	private class JobEntry {
+
 		private final IRunner<?> currentJob;
 		private Thread starterThread;
 
@@ -62,6 +64,7 @@ public class JobSynchronizer {
 		if (currentEntry != null) {
 			if (currentEntry.starterThread == null) {
 				newEntry.starterThread = new Thread(new Runnable() {
+
 					@Override
 					public void run() {
 						if (cancelPreviousJob) {

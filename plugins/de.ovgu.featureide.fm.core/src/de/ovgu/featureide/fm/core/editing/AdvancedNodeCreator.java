@@ -90,8 +90,7 @@ public class AdvancedNodeCreator implements LongRunningMethod<Node> {
 	/** True to create the trace model while creating nodes. */
 	private boolean recordTraceModel = false;
 
-	public AdvancedNodeCreator() {
-	}
+	public AdvancedNodeCreator() {}
 
 	public AdvancedNodeCreator(IFeatureModel featureModel) {
 		setFeatureModel(featureModel);
@@ -132,8 +131,7 @@ public class AdvancedNodeCreator implements LongRunningMethod<Node> {
 	}
 
 	/**
-	 * Creates the clauses for the given constraint.
-	 * Adds them to the given list of clauses.
+	 * Creates the clauses for the given constraint. Adds them to the given list of clauses.
 	 *
 	 * @param constraint constraint to transform
 	 * @param clauses clauses to add to; out variable
@@ -412,15 +410,10 @@ public class AdvancedNodeCreator implements LongRunningMethod<Node> {
 	}
 
 	/**
-	 * <p>
-	 * Returns the trace model.
-	 * The trace model keeps track of the origin of transformed elements.
-	 * </p>
+	 * <p> Returns the trace model. The trace model keeps track of the origin of transformed elements. </p>
 	 *
-	 * <p>
-	 * Building the trace model must have been {@link #setRecordTraceModel(boolean) enabled} prior to creating the nodes.
-	 * As a performance concern, this is disabled by default.
-	 * </p>
+	 * <p> Building the trace model must have been {@link #setRecordTraceModel(boolean) enabled} prior to creating the nodes. As a performance concern, this is
+	 * disabled by default. </p>
 	 *
 	 * @return the trace model
 	 */
@@ -429,8 +422,7 @@ public class AdvancedNodeCreator implements LongRunningMethod<Node> {
 	}
 
 	/**
-	 * Returns true iff this creates a trace model while creating nodes.
-	 * Defaults to false.
+	 * Returns true iff this creates a trace model while creating nodes. Defaults to false.
 	 *
 	 * @return true iff this creates a trace model while creating nodes
 	 */
@@ -447,7 +439,7 @@ public class AdvancedNodeCreator implements LongRunningMethod<Node> {
 		final boolean old = this.recordTraceModel;
 		this.recordTraceModel = recordTraceModel;
 		if (old != recordTraceModel) {
-			traceModel = isRecordingTraceModel() ? new FeatureModelToNodeTraceModel() : null; //Reset the trace model.
+			traceModel = isRecordingTraceModel() ? new FeatureModelToNodeTraceModel() : null; // Reset the trace model.
 		}
 	}
 }

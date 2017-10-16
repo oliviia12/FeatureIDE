@@ -27,6 +27,7 @@ package de.ovgu.featureide.ui.views.configMap;
  * @author Antje Moench
  */
 public abstract class ConfigurationMapFilter implements IConfigurationMapFilter {
+
 	protected final static String Image_Empty = "undefined.ico";
 	protected final static String Image_Plus = "aselected.ico";
 	protected final static String Image_Minus = "adeselected.ico";
@@ -68,7 +69,8 @@ public abstract class ConfigurationMapFilter implements IConfigurationMapFilter 
 		return name;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter#isDefault()
 	 */
 	@Override

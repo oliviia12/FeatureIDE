@@ -54,7 +54,8 @@ public class SetFeatureColorOperation extends AbstractFeatureModelOperation {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.featuremodel.operations.AbstractFeatureModelOperation#operation()
 	 */
 	@Override
@@ -67,7 +68,8 @@ public class SetFeatureColorOperation extends AbstractFeatureModelOperation {
 		return new FeatureIDEEvent(features, EventType.COLOR_CHANGED);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.featuremodel.operations.AbstractFeatureModelOperation#inverseOperation()
 	 */
 	@Override

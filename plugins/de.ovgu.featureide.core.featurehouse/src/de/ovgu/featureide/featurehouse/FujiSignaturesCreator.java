@@ -68,6 +68,7 @@ import de.ovgu.featureide.featurehouse.signature.fuji.FujiMethodSignature;
 public class FujiSignaturesCreator {
 
 	private static final class SignatureReference {
+
 		private final HashMap<Integer, FOPFeatureData> ids = new HashMap<>();
 		private final AbstractSignature sig;
 
@@ -155,9 +156,9 @@ public class FujiSignaturesCreator {
 						parent = roleStack.pop();
 					}
 					featurename = getFeatureName(typeDecl);
-					final FujiClassSignature curClassSig = (FujiClassSignature) addFeatureID(
-							new FujiClassSignature(parent, name, modifierString, typeString, pckg, typeDecl, importList),
-							projectSignatures.getFeatureID(featurename), Symbol.getLine(typeDecl.getStart()), Symbol.getLine(typeDecl.getEnd()));
+					final FujiClassSignature curClassSig =
+							(FujiClassSignature) addFeatureID(new FujiClassSignature(parent, name, modifierString, typeString, pckg, typeDecl, importList),
+									projectSignatures.getFeatureID(featurename), Symbol.getLine(typeDecl.getStart()), Symbol.getLine(typeDecl.getEnd()));
 					for (final ImportDecl importDecl : importList) {
 						curClassSig.addImport(importDecl.toString());
 					}

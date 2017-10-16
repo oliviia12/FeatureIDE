@@ -27,8 +27,7 @@ import java.util.TreeSet;
 import javax.annotation.CheckForNull;
 
 /**
- * A sorted list of literals.
- * Can be used as a clause of a CNF or DNF.
+ * A sorted list of literals. Can be used as a clause of a CNF or DNF.
  *
  * @author Sebastian Krieter
  */
@@ -41,10 +40,7 @@ public class LiteralSet implements Cloneable, Serializable {
 	private final int hashCode;
 
 	/**
-	 * Constructs a new clause from the given literals.
-	 * Negates the given literals.
-	 * <br/>
-	 * <b>Does not modify the given literal array.</b>
+	 * Constructs a new clause from the given literals. Negates the given literals. <br/> <b>Does not modify the given literal array.</b>
 	 *
 	 * @param literals literals of the clause
 	 * @return A newly constructed clause from the given literals (negated).
@@ -54,9 +50,7 @@ public class LiteralSet implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Constructs a new clause from the given literals.
-	 * <br/>
-	 * <b>Does not modify the given literal array.</b>
+	 * Constructs a new clause from the given literals. <br/> <b>Does not modify the given literal array.</b>
 	 *
 	 * @param literals literals of the clause
 	 * @return A newly constructed clause from the given literals.
@@ -76,10 +70,7 @@ public class LiteralSet implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Constructs a new clause from the given literals.
-	 * <br/>
-	 * <b>The resulting clause is backed by the given literal array.
-	 * The array will be sorted.</b>
+	 * Constructs a new clause from the given literals. <br/> <b>The resulting clause is backed by the given literal array. The array will be sorted.</b>
 	 *
 	 * @param literals literals of the clause
 	 */
@@ -252,8 +243,7 @@ public class LiteralSet implements Cloneable, Serializable {
 	}
 
 	/**
-	 * Constructs a new {@link LiteralSet} that contains no duplicates and unwanted literals.
-	 * Also checks whether the set contains a literal and its negation.
+	 * Constructs a new {@link LiteralSet} that contains no duplicates and unwanted literals. Also checks whether the set contains a literal and its negation.
 	 *
 	 * @param literalSet The initial literal set.
 	 * @param unwantedVariables An array of variables that should be removed.

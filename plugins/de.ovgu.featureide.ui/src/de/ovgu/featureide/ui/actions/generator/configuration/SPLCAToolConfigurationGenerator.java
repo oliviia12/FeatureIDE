@@ -99,6 +99,7 @@ public class SPLCAToolConfigurationGenerator extends AConfigurationGenerator {
 		} catch (final Exception e) {
 			final Display display = Display.getDefault();
 			display.syncExec(new Runnable() {
+
 				@Override
 				public void run() {
 					final String errorMessage = algorithm + " experienced an error during its execution.\n" + (casa
@@ -127,10 +128,7 @@ public class SPLCAToolConfigurationGenerator extends AConfigurationGenerator {
 	}
 
 	/**
-	 * The result of the generator can:<br>
-	 * a) contain duplicate solutions<br>
-	 * b) duplicate solutions that differ only by the selection of abstract
-	 * features
+	 * The result of the generator can:<br> a) contain duplicate solutions<br> b) duplicate solutions that differ only by the selection of abstract features
 	 *
 	 * @return Duplicate free solutions
 	 */

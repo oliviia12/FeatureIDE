@@ -77,7 +77,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 	/* color group objects: */
 	ColorSelector selectorLegendBackground, selectorConcreteBackground, selectorAbstractBackground, selectorDeadBackground, selectorLegendBorder,
 			selectorDiagramBackground, selectorConstraint, selectorConnection, selectorWarning;
-	//selectorHiddenBackground
+	// selectorHiddenBackground
 	static ColorSelector selectorFeatureBorder;
 	Button buttonHideBorderColor;
 
@@ -96,7 +96,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		addLegendGroup(composite);
 		addSpacesGroup(composite);
 		addColorGroup(composite);
-		//		addExtensionsGroup(composite);
+		// addExtensionsGroup(composite);
 		return composite;
 	}
 
@@ -132,8 +132,8 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 			i++;
 		}
 
-		selectorLegendBackground = createSelectorEntry(group, LEGEND_BACKGROUND_LABEL, FMPropertyManager.getLegendBackgroundColor().getRGB(),
-				LEGEND_BACKGROUND__TIP);
+		selectorLegendBackground =
+				createSelectorEntry(group, LEGEND_BACKGROUND_LABEL, FMPropertyManager.getLegendBackgroundColor().getRGB(), LEGEND_BACKGROUND__TIP);
 		selectorLegendBorder = createSelectorEntry(group, LEGEND_BORDER_LABEL, FMPropertyManager.getLegendBorderColor().getRGB(), LEGEND_BORDER_TIP);
 	}
 
@@ -160,12 +160,12 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 	private void addColorGroup(Composite composite) {
 		final Group colorGroup = createGroup(composite, COLOR_GROUP_TEXT);
 
-		selectorDiagramBackground = createSelectorEntry(colorGroup, COLOR_DIAGRAM_LABEL, FMPropertyManager.getDiagramBackgroundColor().getRGB(),
-				COLOR_BACKGROUND_TIP);
-		selectorConcreteBackground = createSelectorEntry(colorGroup, COLOR_CONCRETE_LABEL, FMPropertyManager.getConcreteFeatureBackgroundColor().getRGB(),
-				COLOR_CONCRETE_TIP);
-		selectorAbstractBackground = createSelectorEntry(colorGroup, COLOR_ABSTRACT_LABEL, FMPropertyManager.getAbstractFeatureBackgroundColor().getRGB(),
-				COLOR_ABSTRACT_TIP);
+		selectorDiagramBackground =
+				createSelectorEntry(colorGroup, COLOR_DIAGRAM_LABEL, FMPropertyManager.getDiagramBackgroundColor().getRGB(), COLOR_BACKGROUND_TIP);
+		selectorConcreteBackground =
+				createSelectorEntry(colorGroup, COLOR_CONCRETE_LABEL, FMPropertyManager.getConcreteFeatureBackgroundColor().getRGB(), COLOR_CONCRETE_TIP);
+		selectorAbstractBackground =
+				createSelectorEntry(colorGroup, COLOR_ABSTRACT_LABEL, FMPropertyManager.getAbstractFeatureBackgroundColor().getRGB(), COLOR_ABSTRACT_TIP);
 
 		final Label label = new Label(colorGroup, SWT.NULL);
 		label.setText(HIDE_BORDER_COLOR);
@@ -176,7 +176,8 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		buttonHideBorderColor.setSelection(FMPropertyManager.isBorderColorHidden());
 
 		selectorFeatureBorder = createSelectorEntry(colorGroup, COLOR_BORDER, FMPropertyManager.getFeatureBorderColor().getRGB(), COLOR_BORDER_TIP);
-		//		selectorHiddenBackground = createSelectorEntry(colorGroup, COLOR_HIDDEN, PersistentPropertyManager.getHiddenFeatureBackgroundColor().getRGB(), COLOR_HIDDEN_TIP);
+		// selectorHiddenBackground = createSelectorEntry(colorGroup, COLOR_HIDDEN, PersistentPropertyManager.getHiddenFeatureBackgroundColor().getRGB(),
+		// COLOR_HIDDEN_TIP);
 		selectorConnection = createSelectorEntry(colorGroup, COLOR_CONNECTION, FMPropertyManager.getConnectionForegroundColor().getRGB(), COLOR_CONNECTION_TIP);
 		selectorConstraint = createSelectorEntry(colorGroup, COLOR_CONSTRAINT, FMPropertyManager.getConstraintBackgroundColor().getRGB(), COLOR_CONSTRAINT_TIP);
 		selectorWarning = createSelectorEntry(colorGroup, COLOR_WARNING, FMPropertyManager.getWarningColor().getRGB(), COLOR_WARNING_TIP);
@@ -231,6 +232,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		data.widthHint = Math.max(widthHint, minButtonSize.x);
 		importButton.setLayoutData(data);
 		importButton.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				performImport();
@@ -244,6 +246,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		data.widthHint = Math.max(widthHint, minButtonSize.x);
 		exportButton.setLayoutData(data);
 		exportButton.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				performExport();
@@ -376,7 +379,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		FMPropertyManager.setDiagramBackgroundColor(new Color(null, selectorDiagramBackground.getColorValue()));
 		FMPropertyManager.setConcreteFeatureBackgroundColor(new Color(null, selectorConcreteBackground.getColorValue()));
 		FMPropertyManager.setAbstractFeatureBackgroundColor(new Color(null, selectorAbstractBackground.getColorValue()));
-		//		PersistentPropertyManager.setHiddenFeatureBackgroundColor(new Color(null, selectorHiddenBackground.getColorValue()));
+		// PersistentPropertyManager.setHiddenFeatureBackgroundColor(new Color(null, selectorHiddenBackground.getColorValue()));
 		FMPropertyManager.setDeadFeatureBackgroundColor(new Color(null, selectorDeadBackground.getColorValue()));
 		FMPropertyManager.setConstraintBackgroundColor(new Color(null, selectorConstraint.getColorValue()));
 		FMPropertyManager.setConnectionForegroundColor(new Color(null, selectorConnection.getColorValue()));
@@ -421,7 +424,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		selectorDiagramBackground.setColorValue(DIAGRAM_BACKGROUND.getRGB());
 		selectorConcreteBackground.setColorValue(CONCRETE_BACKGROUND.getRGB());
 		selectorAbstractBackground.setColorValue(ABSTRACT_BACKGROUND.getRGB());
-		//		selectorHiddenBackground.setColorValue(HIDDEN_BACKGROUND.getRGB());
+		// selectorHiddenBackground.setColorValue(HIDDEN_BACKGROUND.getRGB());
 		selectorDeadBackground.setColorValue(DEAD_BACKGROUND.getRGB());
 		selectorConstraint.setColorValue(CONSTRAINT_BACKGROUND.getRGB());
 		selectorConnection.setColorValue(CONNECTION_FOREGROUND.getRGB());
@@ -432,8 +435,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 	}
 
 	/**
-	 * Fills the List LANGUAGES with all defines languages at the extension point
-	 * "de.ovgu.featureide.fm.core.language".
+	 * Fills the List LANGUAGES with all defines languages at the extension point "de.ovgu.featureide.fm.core.language".
 	 */
 	private void getLanguageExtensions() {
 		final IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(FMUIPlugin.PLUGIN_ID + ".language");
@@ -491,7 +493,7 @@ public class FMPropertyPage extends PropertyPage implements IFMPropertyPage, GUI
 		selectorDiagramBackground.setColorValue(FMPropertyManager.getDiagramBackgroundColor().getRGB());
 		selectorConcreteBackground.setColorValue(FMPropertyManager.getConcreteFeatureBackgroundColor().getRGB());
 		selectorAbstractBackground.setColorValue(FMPropertyManager.getAbstractFeatureBackgroundColor().getRGB());
-		//		selectorHiddenBackground.setColorValue(PersistentPropertyManager.getHiddenFeatureBackgroundColor().getRGB());
+		// selectorHiddenBackground.setColorValue(PersistentPropertyManager.getHiddenFeatureBackgroundColor().getRGB());
 		selectorDeadBackground.setColorValue(FMPropertyManager.getDeadFeatureBackgroundColor().getRGB());
 		selectorConstraint.setColorValue(FMPropertyManager.getConstraintBackgroundColor().getRGB());
 		selectorConnection.setColorValue(FMPropertyManager.getConnectionForegroundColor().getRGB());

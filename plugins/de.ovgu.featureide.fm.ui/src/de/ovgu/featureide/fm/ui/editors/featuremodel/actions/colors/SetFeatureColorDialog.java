@@ -65,8 +65,7 @@ import de.ovgu.featureide.fm.ui.FMUIPlugin;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.SetFeatureColorOperation;
 
 /**
- * Sets the color of the features in the feature diagram.
- * The color is chosen in the dialog.
+ * Sets the color of the features in the feature diagram. The color is chosen in the dialog.
  *
  * @author Christian Elzholz
  * @author Marcus Schmelz
@@ -190,18 +189,19 @@ public class SetFeatureColorDialog extends Dialog {
 		featureTable.setLayoutData(gridData);
 
 		final SelectionListener colorSelectionListener = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				onColorSelectionChanged(((Combo) event.widget).getSelectionIndex());
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			};
+			public void widgetDefaultSelected(SelectionEvent e) {};
 		};
 		colorDropDownMenu.addSelectionListener(colorSelectionListener);
 
 		final SelectionListener actionSelectionListener = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				bufferSelectedFeatures();
@@ -265,8 +265,7 @@ public class SetFeatureColorDialog extends Dialog {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			};
+			public void widgetDefaultSelected(SelectionEvent e) {};
 		};
 		actionDropDownMenu.addSelectionListener(actionSelectionListener);
 

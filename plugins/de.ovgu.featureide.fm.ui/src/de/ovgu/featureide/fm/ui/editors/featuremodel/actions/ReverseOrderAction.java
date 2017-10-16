@@ -52,7 +52,7 @@ public class ReverseOrderAction extends Action {
 	public void run() {
 
 		final ModelReverseOrderOperation op = new ModelReverseOrderOperation(featureModel);
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 		op.addContext((IUndoContext) featureModel.getFeatureModel().getUndoContext());
 
 		try {

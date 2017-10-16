@@ -52,7 +52,7 @@ public class ShowHiddenFeaturesAction extends Action {
 	@Override
 	public void run() {
 		final ShowHiddenFeaturesOperation op = new ShowHiddenFeaturesOperation(featureModel);
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 		op.addContext((IUndoContext) featureModel.getFeatureModel().getUndoContext());
 
 		try {

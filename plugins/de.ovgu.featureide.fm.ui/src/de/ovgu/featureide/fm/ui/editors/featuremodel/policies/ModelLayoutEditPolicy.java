@@ -64,14 +64,14 @@ public class ModelLayoutEditPolicy extends LayoutEditPolicy {
 			return new ConstraintMoveEditPolicy((ConstraintEditPart) child, this);
 		} else if (child instanceof FeatureEditPart) {
 			// TODO _Interface : Removed Code
-			//			if (featureModel instanceof ExtendedFeatureModel) {
-			//				IFeature feature = ((FeatureEditPart) child).getFeature();
-			//				if (feature instanceof ExtendedFeature && ((ExtendedFeature) feature).isFromExtern()) {
-			//					if (feature.getFeatureModel().getGraphicRepresenation().getLayout().getLayoutAlgorithm() != 0) {
-			//						return null;
-			//					}
-			//				}
-			//			}
+			// if (featureModel instanceof ExtendedFeatureModel) {
+			// IFeature feature = ((FeatureEditPart) child).getFeature();
+			// if (feature instanceof ExtendedFeature && ((ExtendedFeature) feature).isFromExtern()) {
+			// if (feature.getFeatureModel().getGraphicRepresenation().getLayout().getLayoutAlgorithm() != 0) {
+			// return null;
+			// }
+			// }
+			// }
 			return new FeatureMoveEditPolicy((FeatureEditPart) child, this);
 		} else if (child instanceof LegendEditPart) {
 			return new LegendMoveEditPolicy();

@@ -32,6 +32,7 @@ import de.ovgu.featureide.fm.core.explanations.ExplanationCreator;
  * @see {@link RedundantConstraintExplanationCreator} for explaining redundant constraints
  */
 public interface FeatureModelExplanationCreator extends ExplanationCreator {
+
 	/**
 	 * Returns the feature model context.
 	 *

@@ -34,6 +34,7 @@ public class SPLMerger extends ADocumentationCommentMerger {
 	private static final long serialVersionUID = -7089505215805435500L;
 
 	private static final class BlockTagFilter implements IFilter<BlockTag> {
+
 		@Override
 		public boolean isValid(BlockTag blockTag) {
 			return blockTag.isFeatureIndependent(); // || blockTag.getPriority() > 0; // ???

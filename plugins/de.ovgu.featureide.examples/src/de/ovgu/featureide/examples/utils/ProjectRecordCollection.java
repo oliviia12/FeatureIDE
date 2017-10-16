@@ -25,8 +25,7 @@ import java.util.ArrayList;
 import de.ovgu.featureide.fm.core.io.IPersistentFormat;
 
 /**
- * Wrapper class.
- * Is used for {@link IPersistentFormat}.
+ * Wrapper class. Is used for {@link IPersistentFormat}.
  *
  * @author Sebastian Krieter
  */

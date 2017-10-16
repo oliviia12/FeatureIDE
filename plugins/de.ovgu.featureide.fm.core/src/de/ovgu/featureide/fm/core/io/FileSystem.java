@@ -79,7 +79,6 @@ public final class FileSystem {
 		return new String(INSTANCE.read(path), Charset.forName("UTF-8"));
 	}
 
-	private FileSystem() {
-	}
+	private FileSystem() {}
 
 }

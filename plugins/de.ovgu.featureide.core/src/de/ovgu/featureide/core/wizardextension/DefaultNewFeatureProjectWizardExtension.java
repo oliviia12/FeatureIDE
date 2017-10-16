@@ -63,8 +63,7 @@ public class DefaultNewFeatureProjectWizardExtension {
 	 *
 	 * @param wizard the wizard to set for the extension pages.
 	 */
-	public void setWizard(BasicNewResourceWizard wizard) {
-	}
+	public void setWizard(BasicNewResourceWizard wizard) {}
 
 	/**
 	 * Executed after FeatureIDE project is created and before editor is opened.
@@ -81,8 +80,7 @@ public class DefaultNewFeatureProjectWizardExtension {
 		extendedEnhanceProject(project, compID, sourcePath, configPath, buildPath);
 	}
 
-	protected void extendedEnhanceProject(IProject project, String compID, String sourcePath, String configPath, String buildPath) {
-	}
+	protected void extendedEnhanceProject(IProject project, String compID, String sourcePath, String configPath, String buildPath) {}
 
 	public boolean performOwnFinish() {
 		return false;

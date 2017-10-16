@@ -85,7 +85,7 @@ public class CNFCreator implements LongRunningMethod<CNF> {
 
 	public CNF createNodes(IMonitor monitor) {
 		if (featureModel == null) {
-			return new CNF(new Variables(Collections.<String> emptyList()));
+			return new CNF(new Variables(Collections.<String>emptyList()));
 		}
 
 		final CNF cnf = new FeatureModelCNF(featureModel, useOldNames);

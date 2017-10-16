@@ -35,7 +35,8 @@ import de.ovgu.featureide.core.fstmodel.FSTRole;
  */
 public class GraphicalEditPartFactory implements EditPartFactory {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.gef.EditPartFactory#createEditPart(org.eclipse.gef.EditPart, java.lang.Object)
 	 */
 	@Override

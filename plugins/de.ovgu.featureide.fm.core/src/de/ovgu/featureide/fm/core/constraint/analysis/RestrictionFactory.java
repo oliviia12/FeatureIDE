@@ -26,10 +26,8 @@ import java.util.List;
 import de.ovgu.featureide.fm.core.constraint.RelationOperator;
 
 /**
- * The different feature model analysis operations need different concrete
- * implementations to reason on the input date. This interface of an abstract
- * factory enables to use a general translation utility that builds restrictions
- * out of a feature model and additional constraints.
+ * The different feature model analysis operations need different concrete implementations to reason on the input date. This interface of an abstract factory
+ * enables to use a general translation utility that builds restrictions out of a feature model and additional constraints.
  *
  * @author Sebastian Henneberg
  *

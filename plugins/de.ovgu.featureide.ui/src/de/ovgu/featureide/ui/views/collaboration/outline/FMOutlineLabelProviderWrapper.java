@@ -78,12 +78,11 @@ public class FMOutlineLabelProviderWrapper extends OutlineLabelProvider implemen
 
 	@Override
 	public void colorizeItems(TreeItem[] treeItems, IFile file) {
-		//	prov.colorizeItems(treeItems, file);
+		// prov.colorizeItems(treeItems, file);
 	}
 
 	@Override
-	public void setForeground(TreeItem item, IFile file) {
-	}
+	public void setForeground(TreeItem item, IFile file) {}
 
 	@Override
 	public String getLabelProvName() {
@@ -101,8 +100,7 @@ public class FMOutlineLabelProviderWrapper extends OutlineLabelProvider implemen
 	}
 
 	@Override
-	public void init() {
-	}
+	public void init() {}
 
 	@Override
 	public Color getForeground(Object element) {

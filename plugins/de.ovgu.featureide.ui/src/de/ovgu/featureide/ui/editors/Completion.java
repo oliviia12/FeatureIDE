@@ -74,8 +74,7 @@ public class Completion implements IJavaCompletionProposalComputer {
 	}
 
 	@Override
-	public void sessionStarted() {
-	}
+	public void sessionStarted() {}
 
 	@Override
 	public List<ICompletionProposal> computeCompletionProposals(ContentAssistInvocationContext arg0, IProgressMonitor arg1) {
@@ -85,8 +84,8 @@ public class Completion implements IJavaCompletionProposalComputer {
 			context = (JavaContentAssistInvocationContext) arg0;
 		}
 
-		final IFile file = ((IFileEditorInput) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput())
-				.getFile();
+		final IFile file =
+				((IFileEditorInput) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput()).getFile();
 		final IFeatureProject featureProject = CorePlugin.getFeatureProject(file);
 
 		if ((context == null) || (featureProject == null) || (featureProject.getProjectSignatures() == null)) {
@@ -141,16 +140,16 @@ public class Completion implements IJavaCompletionProposalComputer {
 				displayString = displayString.concat(normalize(new String(Signature.getReturnType(curProp.getSignature()))));
 
 				final StyledString methString = new StyledString(displayString);
-				final Styler styler = StyledString.createColorRegistryStyler(JFacePreferences.DECORATIONS_COLOR,
-						JFacePreferences.CONTENT_ASSIST_BACKGROUND_COLOR);
+				final Styler styler =
+						StyledString.createColorRegistryStyler(JFacePreferences.DECORATIONS_COLOR, JFacePreferences.CONTENT_ASSIST_BACKGROUND_COLOR);
 				// TextStyle style = new
 				// TextStyle(JFaceResources.getDefaultFont(),JFaceResources.getResources().createColor(new
 				// RGB(10, 10,
 				// 10)),JFaceResources.getResources().createColor(new
 				// RGB(0,0,0)));
 				// styler.applyStyles(style);
-				final StyledString infoString = new StyledString(
-						new String(" - " + normalize(new String(curProp.getDeclarationSignature())) + " " + featureName), styler);
+				final StyledString infoString =
+						new StyledString(new String(" - " + normalize(new String(curProp.getDeclarationSignature())) + " " + featureName), styler);
 				methString.append(infoString);
 				meth.setStyledDisplayString(methString);
 
@@ -162,8 +161,8 @@ public class Completion implements IJavaCompletionProposalComputer {
 			} else if (curProp.getKind() == CompletionProposal.FIELD_REF) {
 				final LazyJavaCompletionProposal field = new LazyJavaCompletionProposal(curProp, context);
 				final StyledString fieldString = new StyledString(new String(curProp.getCompletion()));
-				final Styler styler = StyledString.createColorRegistryStyler(JFacePreferences.DECORATIONS_COLOR,
-						JFacePreferences.CONTENT_ASSIST_BACKGROUND_COLOR);
+				final Styler styler =
+						StyledString.createColorRegistryStyler(JFacePreferences.DECORATIONS_COLOR, JFacePreferences.CONTENT_ASSIST_BACKGROUND_COLOR);
 				final StyledString infoString = new StyledString(new String(" - " + new String(curProp.getName()) + " " + featureName), styler);
 				fieldString.append(infoString);
 				field.setStyledDisplayString(fieldString);

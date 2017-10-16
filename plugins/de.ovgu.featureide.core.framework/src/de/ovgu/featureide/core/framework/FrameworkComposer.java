@@ -61,6 +61,7 @@ import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
  *
  */
 public class FrameworkComposer extends ComposerExtensionClass {
+
 	private FrameworkModelBuilder modelBuilder = null;
 
 	private LinkedList<String> selectedFeatures;
@@ -76,8 +77,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Creates JARs from all project in "resources" folder inside the main
-	 * projects
+	 * Creates JARs from all project in "resources" folder inside the main projects
 	 *
 	 * @return <code>false</code> if creation was not successful
 	 */
@@ -121,7 +121,8 @@ public class FrameworkComposer extends ComposerExtensionClass {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.core.builder.ComposerExtensionClass#buildFSTModel()
 	 */
 	@Override
@@ -266,8 +267,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * creates a list of jars inside a folder<br>
-	 * goes into sub folders
+	 * creates a list of jars inside a folder<br> goes into sub folders
 	 *
 	 * @param parentFolder
 	 * @return list of jars inside parentFolder
@@ -304,10 +304,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Copies needed files to project folder<br>
-	 * <ul>
-	 * <li>Everytime called when a framework project does not contain pluginLoader or config file</li>
-	 * </ul>
+	 * Copies needed files to project folder<br> <ul> <li>Everytime called when a framework project does not contain pluginLoader or config file</li> </ul>
 	 *
 	 * @param project
 	 *
@@ -356,8 +353,7 @@ public class FrameworkComposer extends ComposerExtensionClass {
 	}
 
 	@Override
-	public void postCompile(IResourceDelta delta, IFile buildFile) {
-	}
+	public void postCompile(IResourceDelta delta, IFile buildFile) {}
 
 	@Override
 	public boolean clean() {

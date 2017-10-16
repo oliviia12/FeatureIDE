@@ -27,6 +27,7 @@ package org.prop4j;
  * @author Timo G&uuml;nther
  */
 public class NodeWriter {
+
 	/**
 	 * The type of notation of the formula.
 	 *
@@ -34,51 +35,24 @@ public class NodeWriter {
 	 */
 	public enum Notation {
 		/**
-		 * <p>
-		 * The infix notation.
-		 * Operators are written between operands where possible.
-		 * </p>
+		 * <p> The infix notation. Operators are written between operands where possible. </p>
 		 *
-		 * <p>
-		 * Examples:
-		 * <ul>
-		 * <li><em>A & B & C</em></li>
-		 * <li><em>A => B <=> -A | B</em></li>
-		 * <li><em>atleast2(A, B, C, D) & atmost3(A, B, C, D)</em></li>
-		 * </ul>
+		 * <p> Examples: <ul> <li><em>A & B & C</em></li> <li><em>A => B <=> -A | B</em></li> <li><em>atleast2(A, B, C, D) & atmost3(A, B, C, D)</em></li> </ul>
 		 * </p>
 		 */
 		INFIX,
 		/**
-		 * <p>
-		 * The prefix notation.
-		 * Operators are written before the operands.
-		 * </p>
+		 * <p> The prefix notation. Operators are written before the operands. </p>
 		 *
-		 * <p>
-		 * Examples:
-		 * <ul>
-		 * <li><em>(& A B C)</em></li>
-		 * <li><em>(<=> (=> A B) (| (- A) B)</em></li>
-		 * <li><em>(& (atleast2 A B C D) (atmost3 A B C D))</em></li>
-		 * </ul>
-		 * </p>
+		 * <p> Examples: <ul> <li><em>(& A B C)</em></li> <li><em>(<=> (=> A B) (| (- A) B)</em></li> <li><em>(& (atleast2 A B C D) (atmost3 A B C D))</em></li>
+		 * </ul> </p>
 		 */
 		PREFIX,
 		/**
-		 * <p>
-		 * The postfix notation.
-		 * Operators are written after the operands.
-		 * </p>
+		 * <p> The postfix notation. Operators are written after the operands. </p>
 		 *
-		 * <p>
-		 * Examples:
-		 * <ul>
-		 * <li><em>(A B C &)</em></li>
-		 * <li><em>((A B =>) ((A -) B |) <=>)</em></li>
-		 * <li><em>((A B C D atleast2) (A B C D atmost3) &)</em></li>
-		 * </ul>
-		 * </p>
+		 * <p> Examples: <ul> <li><em>(A B C &)</em></li> <li><em>((A B =>) ((A -) B |) <=>)</em></li> <li><em>((A B C D atleast2) (A B C D atmost3)
+		 * &)</em></li> </ul> </p>
 		 */
 		POSTFIX,
 	}
@@ -86,27 +60,23 @@ public class NodeWriter {
 	/** Denotes an unsupported symbol. */
 	public static final String noSymbol = "?";
 	/**
-	 * Symbols for a logical representation.
-	 * These are best used for displaying to the user due to brevity and beauty.
-	 * Since they consist of unwieldy Unicode characters, do not use them for editing or serialization;
-	 * in these cases, instead use {@link #textual long} or {@link #shortSymbols short textual symbols} respectively.
+	 * Symbols for a logical representation. These are best used for displaying to the user due to brevity and beauty. Since they consist of unwieldy Unicode
+	 * characters, do not use them for editing or serialization; in these cases, instead use {@link #textual long} or {@link #shortSymbols short textual
+	 * symbols} respectively.
 	 */
 	public static final String[] logicalSymbols = new String[] { "\u00AC", "\u2227", "\u2228", "\u21D2", "\u21D4", ", ", "choose", "atleast", "atmost" };
 	/**
-	 * Symbols for a long textual representation.
-	 * These are best used for editing by the user due to simplicity and ease of handling.
-	 * Use {@link #logicalSymbols logical symbols} for displaying to the user and {@link #shortSymbols short textual symbols} for serialization.
+	 * Symbols for a long textual representation. These are best used for editing by the user due to simplicity and ease of handling. Use {@link #logicalSymbols
+	 * logical symbols} for displaying to the user and {@link #shortSymbols short textual symbols} for serialization.
 	 */
 	public static final String[] textualSymbols = new String[] { "not", "and", "or", "implies", "iff", ", ", "choose", "atleast", "atmost" };
 	/**
-	 * Symbols for a short textual representation.
-	 * Best used for serialization since they fall in the ASCII range but are still relatively short.
-	 * Use {@link #logicalSymbols} for displaying to the user and {@link #textualSymbols long textual symbols} for editing by the user.
+	 * Symbols for a short textual representation. Best used for serialization since they fall in the ASCII range but are still relatively short. Use
+	 * {@link #logicalSymbols} for displaying to the user and {@link #textualSymbols long textual symbols} for editing by the user.
 	 */
 	public static final String[] shortSymbols = new String[] { "-", "&", "|", "=>", "<=>", ", ", "choose", "atleast", "atmost" };
 	/**
-	 * Symbols for a representation like in Java.
-	 * These are inherently incomplete and should only be used if absolutely necessary.
+	 * Symbols for a representation like in Java. These are inherently incomplete and should only be used if absolutely necessary.
 	 */
 	public static final String[] javaSymbols = new String[] { "!", "&&", "||", noSymbol, "==", ", ", noSymbol, noSymbol, noSymbol };
 
@@ -123,9 +93,8 @@ public class NodeWriter {
 	private boolean enquoteWhitespace = false;
 
 	/**
-	 * Constructs a new instance of this class with the given node to transform.
-	 * By default, the set of short symbols and infix notation are used, brackets are only placed if necessary, and variables containing whitespace will not be
-	 * enquoted.
+	 * Constructs a new instance of this class with the given node to transform. By default, the set of short symbols and infix notation are used, brackets are
+	 * only placed if necessary, and variables containing whitespace will not be enquoted.
 	 *
 	 * @param propositional node to transform; not null
 	 */
@@ -134,20 +103,9 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Sets the symbols to use for the operations.
-	 * By index, these are:
-	 * <ol start="0">
-	 * <li>{@link Not}</li>
-	 * <li>{@link And}</li>
-	 * <li>{@link Or}</li>
-	 * <li>{@link Implies}</li>
-	 * <li>{@link Equals}</li>
-	 * <li>the separator joining the operands of the following operations</li>
-	 * <li>{@link Choose}</li>
-	 * <li>{@link AtLeast}</li>
-	 * <li>{@link AtMost}</li>
-	 * </ol>
-	 * By default, the set of {@link shortSymbols short symbols} is used.
+	 * Sets the symbols to use for the operations. By index, these are: <ol start="0"> <li>{@link Not}</li> <li>{@link And}</li> <li>{@link Or}</li>
+	 * <li>{@link Implies}</li> <li>{@link Equals}</li> <li>the separator joining the operands of the following operations</li> <li>{@link Choose}</li>
+	 * <li>{@link AtLeast}</li> <li>{@link AtMost}</li> </ol> By default, the set of {@link shortSymbols short symbols} is used.
 	 *
 	 * @param symbols symbols for the operations; not null
 	 * @see #logicalSymbols
@@ -169,8 +127,7 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Sets the notation to use.
-	 * By default, this is the {@link Notation#INFIX infix} notation.
+	 * Sets the notation to use. By default, this is the {@link Notation#INFIX infix} notation.
 	 *
 	 * @param notation notation to use
 	 */
@@ -188,8 +145,7 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Sets the enforcing brackets flag.
-	 * If true, this writer will always place brackets, even if they are semantically irrelevant.
+	 * Sets the enforcing brackets flag. If true, this writer will always place brackets, even if they are semantically irrelevant.
 	 *
 	 * @param enforceBrackets
 	 */
@@ -207,8 +163,7 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Sets the enquoting whitespace flag.
-	 * If true, this writer will enquote variables if they contain whitespace.
+	 * Sets the enquoting whitespace flag. If true, this writer will enquote variables if they contain whitespace.
 	 *
 	 * @param enquoteWhitespace
 	 */
@@ -334,11 +289,9 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Returns true iff the given operation can be written in infix notation.
-	 * For example, this is true for operations such as {@link And},
-	 * which can be written as <em>A and B</em> instead of <em>and(A, B)</em>.
-	 * By contrast, this is false for unary operations (i.e. {@link Not}).
-	 * This is also false for {@link Choose}, {@link AtLeast} and {@link AtMost}.
+	 * Returns true iff the given operation can be written in infix notation. For example, this is true for operations such as {@link And}, which can be written
+	 * as <em>A and B</em> instead of <em>and(A, B)</em>. By contrast, this is false for unary operations (i.e. {@link Not}). This is also false for
+	 * {@link Choose}, {@link AtLeast} and {@link AtMost}.
 	 *
 	 * @param node operation in question
 	 * @return true iff the given operation can be written in infix notation
@@ -348,8 +301,8 @@ public class NodeWriter {
 	}
 
 	/**
-	 * Assigns a number to every type of node.
-	 * For instance, that {@link And} has a higher order than {@link Or} means that <em>(A and B or C)</em> is equal to <em>((A and B) or C)</em>.
+	 * Assigns a number to every type of node. For instance, that {@link And} has a higher order than {@link Or} means that <em>(A and B or C)</em> is equal to
+	 * <em>((A and B) or C)</em>.
 	 *
 	 * @param nodeClass type of node; not null
 	 * @return the order assigned to the type of node

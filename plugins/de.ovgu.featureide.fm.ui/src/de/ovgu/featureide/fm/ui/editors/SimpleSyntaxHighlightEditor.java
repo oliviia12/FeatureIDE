@@ -161,6 +161,7 @@ public class SimpleSyntaxHighlightEditor extends StyledText {
 	}
 
 	private static class Match {
+
 		private final int start, end;
 
 		public Match(int start, int end) {

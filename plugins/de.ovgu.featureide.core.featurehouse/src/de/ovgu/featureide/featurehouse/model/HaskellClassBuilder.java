@@ -61,8 +61,7 @@ public class HaskellClassBuilder extends ClassBuilder {
 	/**
 	 *
 	 * @param terminal body
-	 * @return list(0) method name
-	 *         list(1) method type
+	 * @return list(0) method name list(1) method type
 	 */
 	public LinkedList<String> getMethod(String body) {
 		final LinkedList<String> method = new LinkedList<String>();

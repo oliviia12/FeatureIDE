@@ -54,8 +54,7 @@ import de.ovgu.featureide.fm.ui.editors.FeatureDiagramEditor;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.GEFImageWriter;
 
 /**
- * This class is responsible for exporting graphics (FeatureModel and
- * CollaborationDiagram)
+ * This class is responsible for exporting graphics (FeatureModel and CollaborationDiagram)
  *
  * @author Guenter Ulreich
  * @author Marcus Pinnecke (Feature Interface)
@@ -127,8 +126,8 @@ public class GraphicsExporter {
 			// check if gef-imageexport is existing and activated!
 			if ((bundleExport != null) && (bundleExportSVG != null)) {
 				try {
-					final org.osgi.framework.BundleActivator act = ((org.osgi.framework.BundleActivator) bundleExport
-							.loadClass(NL_UTWENTE_CE_IMAGEEXPORT_CORE_IMAGEEXPORTPLUGIN).newInstance());
+					final org.osgi.framework.BundleActivator act =
+							((org.osgi.framework.BundleActivator) bundleExport.loadClass(NL_UTWENTE_CE_IMAGEEXPORT_CORE_IMAGEEXPORTPLUGIN).newInstance());
 					act.start(InternalPlatform.getDefault().getBundleContext());
 
 					final Class<?> cl = bundleExportSVG.loadClass("nl.utwente.ce.imagexport.export.svg.ExportSVG");

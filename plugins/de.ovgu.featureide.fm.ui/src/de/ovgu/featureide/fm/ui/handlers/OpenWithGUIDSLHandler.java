@@ -142,8 +142,7 @@ public class OpenWithGUIDSLHandler extends AFileHandler {
 						throw new IOException("The process doesn't finish normally (exit=" + exitValue + ")!");
 					}
 					return;
-				} catch (final IllegalThreadStateException e) {
-				}
+				} catch (final IllegalThreadStateException e) {}
 			}
 		} finally {
 			try {

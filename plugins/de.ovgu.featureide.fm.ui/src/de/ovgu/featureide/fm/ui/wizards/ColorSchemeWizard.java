@@ -26,8 +26,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.ui.FMUIPlugin;
 
 /**
- * Wizard for managing color schemes for a given feature model.
- * Can select, rename, delete, and create color schemes.
+ * Wizard for managing color schemes for a given feature model. Can select, rename, delete, and create color schemes.
  *
  * @author Sebastian Krieter
  */

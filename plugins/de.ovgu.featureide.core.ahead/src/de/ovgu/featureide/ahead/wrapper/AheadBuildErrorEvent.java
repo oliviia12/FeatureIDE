@@ -39,9 +39,8 @@ import org.eclipse.core.runtime.CoreException;
 import de.ovgu.featureide.ahead.AheadCorePlugin;
 
 /**
- * The AheadBuildErrorEvent is dispatched when ever a syntax error was found
- * during the compilation step. The Event contains all needed information to
- * set an error marker
+ * The AheadBuildErrorEvent is dispatched when ever a syntax error was found during the compilation step. The Event contains all needed information to set an
+ * error marker
  *
  * @author Tom Brosch
  * @author Thomas Thuem
@@ -62,8 +61,7 @@ public class AheadBuildErrorEvent {
 	private Matcher matcher;
 
 	/**
-	 * Constructor for test purpose<br>
-	 * Does nothing.
+	 * Constructor for test purpose<br> Does nothing.
 	 */
 	public AheadBuildErrorEvent() {
 
@@ -75,7 +73,7 @@ public class AheadBuildErrorEvent {
 		this.line = line;
 		if (type == AheadBuildErrorType.COMPOSER_ERROR) {
 			this.message = "Composer: " + message;
-			//nothing else to do, because its already the position at the source jak file
+			// nothing else to do, because its already the position at the source jak file
 		} else if (type == AheadBuildErrorType.JAVAC_ERROR) {
 			this.message = "Javac: " + message;
 			initJavacErrorEvent();
@@ -91,7 +89,7 @@ public class AheadBuildErrorEvent {
 				calculateJakLine();
 			}
 		} catch (final Exception e) {
-			//if calculation fails the error will be at the old position
+			// if calculation fails the error will be at the old position
 			AheadCorePlugin.getDefault().logError(e);
 		}
 	}
@@ -115,14 +113,10 @@ public class AheadBuildErrorEvent {
 	}
 
 	/*
-	 * TODO #457 fix wrong line calculation for AHEAD
-	 *
-	 * The first pattern causes an endless loop.
-	 *
-	 * The second pattern caused a wrong line calculation.
-	 * see: Tests @ TAheadErrorPropagation
+	 * TODO #457 fix wrong line calculation for AHEAD The first pattern causes an endless loop. The second pattern caused a wrong line calculation. see: Tests @
+	 * TAheadErrorPropagation
 	 */
-	//	private static Pattern inheritedPattern = Pattern.compile("(// inherited constructors(?:[^{}]+|\\{[^{}]+\\})+\\{[^{}]+\\})\\s*}");
+	// private static Pattern inheritedPattern = Pattern.compile("(// inherited constructors(?:[^{}]+|\\{[^{}]+\\})+\\{[^{}]+\\})\\s*}");
 	private static Pattern inheritedPattern = Pattern.compile("(// inherited constructors(?:[^{}]+|\\{[^{}]+\\})+)\\}");
 
 	/**
@@ -207,10 +201,9 @@ public class AheadBuildErrorEvent {
 		}
 
 		/*
-		 * Removed because layer declaration is not supported and necessary anymore.
-		 * It caused a wrong line calculation.
+		 * Removed because layer declaration is not supported and necessary anymore. It caused a wrong line calculation.
 		 */
-		//		jakLine += lineNumberOfLayerDeclaration(jakFile);
+		// jakLine += lineNumberOfLayerDeclaration(jakFile);
 		return jakLine;
 	}
 
@@ -249,7 +242,7 @@ public class AheadBuildErrorEvent {
 			return newFile;
 		}
 
-		//		AheadCorePlugin.getDefault().logWarning(WAS_NOT_ABLE_TO_LOCATE_AN_ERROR_IN_THE_SOURCE_JAK_FILE_ + filename + "'");
+		// AheadCorePlugin.getDefault().logWarning(WAS_NOT_ABLE_TO_LOCATE_AN_ERROR_IN_THE_SOURCE_JAK_FILE_ + filename + "'");
 		return null;
 	}
 
@@ -269,13 +262,13 @@ public class AheadBuildErrorEvent {
 		return content.lineNumber() - 1;
 	}
 
-	//	private int lineNumberOfLayerDeclaration(IFile jakFile) throws CoreException, IOException {
-	//		jakFile.refreshLocal(IResource.DEPTH_ZERO, null);
-	//		String contentString = getString(jakFile);
-	//		PosString content = new PosString(contentString);
-	//		content.pos = contentString.indexOf("layer");
-	//		return content.lineNumber() - 1;
-	//	}
+	// private int lineNumberOfLayerDeclaration(IFile jakFile) throws CoreException, IOException {
+	// jakFile.refreshLocal(IResource.DEPTH_ZERO, null);
+	// String contentString = getString(jakFile);
+	// PosString content = new PosString(contentString);
+	// content.pos = contentString.indexOf("layer");
+	// return content.lineNumber() - 1;
+	// }
 
 	public int getLine() {
 		return line;

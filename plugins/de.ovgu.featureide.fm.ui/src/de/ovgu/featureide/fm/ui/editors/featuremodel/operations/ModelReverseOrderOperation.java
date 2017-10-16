@@ -33,8 +33,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to reverse the feature model layout order.
- * Enables undo/redo functionality.
+ * Operation with functionality to reverse the feature model layout order. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke

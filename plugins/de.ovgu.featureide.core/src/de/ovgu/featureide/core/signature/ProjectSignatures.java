@@ -46,6 +46,7 @@ import de.ovgu.featureide.fm.core.filter.base.IFilter;
 public class ProjectSignatures implements Iterable<AbstractSignature> {
 
 	public static final class SignatureIterator implements Iterator<AbstractSignature> {
+
 		private final AbstractSignature[] signatureArray;
 
 		private final LinkedList<IFilter<?>> filter = new LinkedList<>();
@@ -114,8 +115,7 @@ public class ProjectSignatures implements Iterable<AbstractSignature> {
 		}
 
 		@Override
-		public void remove() {
-		}
+		public void remove() {}
 	}
 
 	private final String[] featureNames;

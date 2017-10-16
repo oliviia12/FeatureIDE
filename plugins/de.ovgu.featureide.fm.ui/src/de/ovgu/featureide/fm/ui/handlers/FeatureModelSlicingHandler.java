@@ -58,6 +58,7 @@ public class FeatureModelSlicingHandler extends AFileHandler {
 
 				final IRunner<IFeatureModel> runner = LongRunningWrapper.getRunner(method, "Slicing Feature Model");
 				runner.addJobFinishedListener(new JobFinishListener<IFeatureModel>() {
+
 					@Override
 					public void jobFinished(IJob<IFeatureModel> finishedJob) {
 						final Path modelFile = Paths.get(file.getLocationURI());

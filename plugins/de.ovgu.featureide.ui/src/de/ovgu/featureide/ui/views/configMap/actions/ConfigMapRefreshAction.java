@@ -42,7 +42,8 @@ public class ConfigMapRefreshAction extends Action {
 		configMap = map;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	@Override

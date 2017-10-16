@@ -43,6 +43,7 @@ import org.prop4j.Or;
  * @author Timo G&uuml;nther
  */
 public abstract class MutableSatSolverTests extends SatSolverTests {
+
 	@Test
 	public void testPush() {
 		final MutableSatSolver instance = getInstance();

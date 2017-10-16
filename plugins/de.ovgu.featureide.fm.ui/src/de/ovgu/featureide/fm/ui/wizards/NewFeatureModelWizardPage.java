@@ -83,6 +83,7 @@ public class NewFeatureModelWizardPage extends WizardPage {
 		final Button browseButton = new Button(composite, SWT.NONE);
 		browseButton.setText(BROWSE___);
 		browseButton.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				final String selectedPath = openFileDialog();
@@ -97,6 +98,7 @@ public class NewFeatureModelWizardPage extends WizardPage {
 		});
 
 		fileName.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				checkFileName();

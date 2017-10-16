@@ -48,6 +48,7 @@ public class StatisticsSemanticalFeatureModel extends LazyParent {
 	private final IFeatureModel model;
 
 	public static class ConfigNode extends Parent {
+
 		private final IFeatureModel innerModel;
 
 		public ConfigNode(String description, IFeatureModel innerModel) {
@@ -56,18 +57,14 @@ public class StatisticsSemanticalFeatureModel extends LazyParent {
 		}
 
 		/**
-		 * calculates the number of configurations/variants depending on
-		 * ignoreAbstract. This method should be called by
-		 * {@link TreeClickListener}.
+		 * calculates the number of configurations/variants depending on ignoreAbstract. This method should be called by {@link TreeClickListener}.
 		 *
-		 * @param timeout
-		 *            defines how long the SAT-Solver may take to accomplish the
-		 *            task.
-		 * @param priority
-		 *            for the job.
+		 * @param timeout defines how long the SAT-Solver may take to accomplish the task.
+		 * @param priority for the job.
 		 */
 		public void calculate(final int timeout, final int priority) {
 			final LongRunningMethod<Boolean> job = new TreeJob(this) {
+
 				private String calculateConfigs() {
 					final boolean ignoreAbstract = description.equals(DESC_CONFIGS);
 					if (!ignoreAbstract && (FeatureUtils.getConcreteFeatures(innerModel).size() == 0)) {

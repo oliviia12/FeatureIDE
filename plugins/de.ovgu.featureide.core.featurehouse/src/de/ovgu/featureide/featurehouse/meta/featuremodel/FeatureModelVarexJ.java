@@ -44,7 +44,8 @@ import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
  */
 public class FeatureModelVarexJ implements IFeatureModelClass {
 
-	private final static String HEAD = "/**\r\n * Variability encoding of the feature model for VarexJ.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
+	private final static String HEAD =
+			"/**\r\n * Variability encoding of the feature model for VarexJ.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
 	private final static String FIELD_MODIFIER = "\tpublic static boolean ";
 	private final static String ANNOTATION = "\t@Conditional\r\n";
 

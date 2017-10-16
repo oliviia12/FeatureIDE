@@ -26,6 +26,7 @@ package de.ovgu.featureide.fm.core;
  * @author Fabian Benduhn
  */
 public class Operator {
+
 	public static final String[] NAMES = { "Not", "And", "Or", "Implies", "Iff", "(", ")" };
 
 	/**

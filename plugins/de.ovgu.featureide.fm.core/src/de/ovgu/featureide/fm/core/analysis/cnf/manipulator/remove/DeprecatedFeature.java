@@ -52,7 +52,7 @@ public class DeprecatedFeature implements Comparable<DeprecatedFeature> {
 
 	public long getClauseCount() {
 		try {
-			return ((positiveCount * negativeCount) - (positiveCount + negativeCount));//Math.multiplyExact(positiveCount, negativeCount);
+			return ((positiveCount * negativeCount) - (positiveCount + negativeCount));// Math.multiplyExact(positiveCount, negativeCount);
 		} catch (final ArithmeticException e) {
 			return Long.MAX_VALUE;
 		}

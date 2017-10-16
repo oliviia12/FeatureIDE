@@ -63,8 +63,7 @@ public class VirtualFileManager<T> extends AFileManager<T> {
 	}
 
 	@Override
-	public void override() {
-	}
+	public void override() {}
 
 	@Override
 	public boolean save() {

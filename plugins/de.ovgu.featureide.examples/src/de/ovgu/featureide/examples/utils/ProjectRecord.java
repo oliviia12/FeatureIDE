@@ -110,6 +110,7 @@ public class ProjectRecord {
 	}
 
 	public class TreeItem {
+
 		private final IContentProvider contProv;
 
 		public TreeItem(IContentProvider contProv) {
@@ -144,8 +145,8 @@ public class ProjectRecord {
 	}
 
 	public boolean init() {
-		try (InputStream inputStream = new URL("platform:/plugin/de.ovgu.featureide.examples/" + projectDescriptionRelativePath).openConnection()
-				.getInputStream()) {
+		try (InputStream inputStream =
+				new URL("platform:/plugin/de.ovgu.featureide.examples/" + projectDescriptionRelativePath).openConnection().getInputStream()) {
 			projectDescription = ResourcesPlugin.getWorkspace().loadProjectDescription(inputStream);
 		} catch (IOException | CoreException e) {
 			ExamplePlugin.getDefault().logError(e);
@@ -263,8 +264,7 @@ public class ProjectRecord {
 	}
 
 	/**
-	 * Gets the label to be used when rendering this project record in the
-	 * UI.
+	 * Gets the label to be used when rendering this project record in the UI.
 	 *
 	 * @return String the label
 	 * @since 3.4
@@ -300,10 +300,8 @@ public class ProjectRecord {
 	/**
 	 * Determine if the project with the given name is in the current workspace.
 	 *
-	 * @param projectName
-	 *            String the project name to check
-	 * @return boolean true if the project with the given name is in this
-	 *         workspace
+	 * @param projectName String the project name to check
+	 * @return boolean true if the project with the given name is in this workspace
 	 */
 	protected static boolean isProjectInWorkspace(String projectName) {
 		if (projectName == null) {
@@ -347,8 +345,8 @@ public class ProjectRecord {
 	public Document getInformationDocument() {
 		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		try {
-			final InputStream inputStream = new URL("platform:/plugin/de.ovgu.featureide.examples/" + getInformationDocumentPath()).openConnection()
-					.getInputStream();
+			final InputStream inputStream =
+					new URL("platform:/plugin/de.ovgu.featureide.examples/" + getInformationDocumentPath()).openConnection().getInputStream();
 			final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			final Document doc = dBuilder.parse(inputStream);
 			return doc;

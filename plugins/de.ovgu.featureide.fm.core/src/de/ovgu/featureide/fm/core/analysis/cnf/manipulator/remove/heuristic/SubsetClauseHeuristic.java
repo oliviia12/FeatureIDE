@@ -23,8 +23,7 @@ package de.ovgu.featureide.fm.core.analysis.cnf.manipulator.remove.heuristic;
 import de.ovgu.featureide.fm.core.analysis.cnf.manipulator.remove.DeprecatedFeature;
 
 /**
- * Implementation of {@link AFeatureOrderHeuristic}.
- * Returns features dependent on the current clauses in the formula.
+ * Implementation of {@link AFeatureOrderHeuristic}. Returns features dependent on the current clauses in the formula.
  *
  * @author Sebastian Krieter
  */
@@ -45,12 +44,12 @@ public class SubsetClauseHeuristic extends AFeatureOrderHeuristic {
 			}
 		}
 
-		//		for (int i = 1; i < map.length; i++) {
-		//			final DeprecatedFeature next = map[i];
-		//			if (next != null && next.exp1()) {
-		//				return i;
-		//			}
-		//		}
+		// for (int i = 1; i < map.length; i++) {
+		// final DeprecatedFeature next = map[i];
+		// if (next != null && next.exp1()) {
+		// return i;
+		// }
+		// }
 
 		DeprecatedFeature smallestFeature = map[1];
 		int minIndex = 1;

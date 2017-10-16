@@ -73,25 +73,25 @@ public class IncrementalTraverser {
 
 	final ArrayDeque<Integer> changed = new ArrayDeque<>();
 
-	//	public byte[] markConnected(int literal) {
-	//		for (int i = 0; i < computationMark.length; i++) {
-	//			computationMark[i] &= MARK_AUTO_SELECTION;
-	//		}
-	//		final byte[] copy = Arrays.copyOf(computationMark, computationMark.length);
-	//		final boolean[] copy2 = Arrays.copyOf(complexClauseSatisfiability, complexClauseSatisfiability.length);
+	// public byte[] markConnected(int literal) {
+	// for (int i = 0; i < computationMark.length; i++) {
+	// computationMark[i] &= MARK_AUTO_SELECTION;
+	// }
+	// final byte[] copy = Arrays.copyOf(computationMark, computationMark.length);
+	// final boolean[] copy2 = Arrays.copyOf(complexClauseSatisfiability, complexClauseSatisfiability.length);
 	//
-	//		changed.clear();
-	//		changed.push(literal);
-	//		traverseStrong(literal, changed);
+	// changed.clear();
+	// changed.push(literal);
+	// traverseStrong(literal, changed);
 	//
-	//		while (!changed.isEmpty()) {
-	//			traverseWeak(changed.pop(), changed);
-	//		}
-	//		complexClauseSatisfiability = copy2;
-	//		final byte[] temp = computationMark;
-	//		computationMark = copy;
-	//		return temp;
-	//	}
+	// while (!changed.isEmpty()) {
+	// traverseWeak(changed.pop(), changed);
+	// }
+	// complexClauseSatisfiability = copy2;
+	// final byte[] temp = computationMark;
+	// computationMark = copy;
+	// return temp;
+	// }
 
 	public byte[] markConnected(int... literals) {
 		for (int i = 0; i < computationMark.length; i++) {
@@ -303,12 +303,12 @@ public class IncrementalTraverser {
 		}
 
 		// TODO is this if statement correct?
-		//		if ((computationMark[curIndex] & MARK_AUTO_SELECTION) != 0) {
+		// if ((computationMark[curIndex] & MARK_AUTO_SELECTION) != 0) {
 		// Strong Edges
 		for (int i = 0; i < strongEdges.length; i++) {
 			traverseWeakRec(strongEdges[i]);
 		}
-		//		}
+		// }
 
 		// Weak Edges
 		final VecInt v = new VecInt();

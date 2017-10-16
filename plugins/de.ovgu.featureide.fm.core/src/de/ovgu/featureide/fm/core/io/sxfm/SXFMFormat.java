@@ -120,8 +120,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Creates the DOM Document Representation from the feature model fmodel
-	 * by using createXmlDocRec
+	 * Creates the DOM Document Representation from the feature model fmodel by using createXmlDocRec
 	 *
 	 * @param doc Document where the feature model is put
 	 */
@@ -137,14 +136,12 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Creates the DOM Document Representation from the feature model fmodel
-	 * by recursively building the Nodes
+	 * Creates the DOM Document Representation from the feature model fmodel by recursively building the Nodes
 	 *
 	 * @param doc Document where the feature model is put
 	 * @param nod Current Node in the Document Tree
 	 * @param feat Current Feature in the feature model Tree
-	 * @param andMode true if the connection between the current feature and
-	 *            its parent is of the type "and", false otherwise
+	 * @param andMode true if the connection between the current feature and its parent is of the type "and", false otherwise
 	 * @param indent indentation of the parent feature
 	 */
 	private void createXmlDocRec(Document doc, Node nod, IFeature feat, boolean andMode, String indent) {
@@ -197,8 +194,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Inserts the tags concerning propositional constraints into the DOM
-	 * document representation
+	 * Inserts the tags concerning propositional constraints into the DOM document representation
 	 *
 	 * @param doc
 	 * @param FeatMod Parent node for the propositional nodes
@@ -216,7 +212,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 		int i = 1;
 		for (final org.prop4j.Node node : FeatureUtils.getPropositionalNodes(object.getConstraints())) {
 			// avoid use of parenthesis from the beginning
-			//			org.prop4j.Node cnf = node.clone().toCNF();
+			// org.prop4j.Node cnf = node.clone().toCNF();
 
 			final org.prop4j.Node cnf = node.toCNF();
 
@@ -332,8 +328,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Reads the input in the feature tree section, interprets the input line
-	 * by line by using buildFeatureTree
+	 * Reads the input in the feature tree section, interprets the input line by line by using buildFeatureTree
 	 *
 	 * @param n
 	 * @throws UnsupportedModelException
@@ -396,10 +391,10 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 				}
 				int relativeIndent = countIndent - lastFeat.getIndentation();
 				while (relativeIndent < 1) {
-					//					if (lastFeat.isRoot()) throw new UnsupportedModelException(
-					//							INDENTATION_ERROR_COMMA__FEATURE_HAS_NO_PARENT, line);
-					//					lastFeat = (FeatureIndent) lastFeat.getParent();
-					//					relativeIndent = countIndent - lastFeat.getIndentation();
+					// if (lastFeat.isRoot()) throw new UnsupportedModelException(
+					// INDENTATION_ERROR_COMMA__FEATURE_HAS_NO_PARENT, line);
+					// lastFeat = (FeatureIndent) lastFeat.getParent();
+					// relativeIndent = countIndent - lastFeat.getIndentation();
 
 					if (lastFeat != null) {
 						lastFeat = lastFeat.getParent();
@@ -425,8 +420,8 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 					feat = new FeatureIndent(null, 0, factory.createFeature(object, ""));
 					feat.getFeature().getStructure().setMandatory(true);
 					featId = setNameGetID(feat.getFeature(), lineText);
-					//		    		if (feat.getName().trim().toLowerCase().equals("root"))
-					//		    			feat.setName("root_");
+					// if (feat.getName().trim().toLowerCase().equals("root"))
+					// feat.setName("root_");
 					object.getStructure().setRoot(feat.getFeature().getStructure());
 					feat.getFeature().getStructure().setAnd();
 					countIndent = 0;
@@ -445,11 +440,11 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 					lastFeat.getFeature().getStructure().addChild(feat.getFeature().getStructure());
 					feat.getFeature().getStructure().setAnd();
 				} else if (lineText.startsWith(":g")) {
-					//create an abstract feature for each group (could be optimized, but avoid mixing up several groups)
+					// create an abstract feature for each group (could be optimized, but avoid mixing up several groups)
 					feat = new FeatureIndent(lastFeat, countIndent, factory.createFeature(object, ""));
 					feat.getFeature().getStructure().setMandatory(true);
 					feat.getFeature().getStructure().setAbstract(true);
-					//try to generate a name that hopefully does not exist in the model
+					// try to generate a name that hopefully does not exist in the model
 					featId = lastFeat.getFeature().getName() + EMPTY___ + (lastFeat.getFeature().getStructure().getChildrenCount() + 1);
 					feat.getFeature().setName(featId);
 					feat.getFeature().getStructure().setParent(lastFeat.getFeature().getStructure());
@@ -468,8 +463,8 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 					} else {
 						throw new UnsupportedModelException(COULDNT + DETERMINE_GROUP_CARDINALITY, line);
 					}
-					//lastFeat = feat;
-					//featId = featId + "_ ";
+					// lastFeat = feat;
+					// featId = featId + "_ ";
 					line++;
 					addFeatureToModel(feat.getFeature());
 					continue;
@@ -504,7 +499,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 				lastFeat = feat;
 				line++;
 			}
-			//Check that there are only OR connections when the parent has more than one feature
+			// Check that there are only OR connections when the parent has more than one feature
 			for (final IFeature f : object.getFeatures()) {
 				if (f.getStructure().isOr() && (f.getStructure().getChildrenCount() <= 1)) {
 					f.getStructure().setAnd();
@@ -543,9 +538,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * adds Feature feat to the model
-	 * if the feature name is already taken,
-	 * a unique identifier i is added to the name (FeatureA -> FeatureA_i)
+	 * adds Feature feat to the model if the feature name is already taken, a unique identifier i is added to the name (FeatureA -> FeatureA_i)
 	 *
 	 * @param feat
 	 */
@@ -575,8 +568,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * If there are groups with a cardinality other then [1,*] or [1,1], this
-	 * function makes the necessary adjustments to the model
+	 * If there are groups with a cardinality other then [1,*] or [1,1], this function makes the necessary adjustments to the model
 	 *
 	 * @param featList List of features with arbitrary cardinalities
 	 * @throws UnsupportedModelException
@@ -605,8 +597,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Builds the propositional constraint, denoting a minimum of features has
-	 * to be selected
+	 * Builds the propositional constraint, denoting a minimum of features has to be selected
 	 *
 	 * @param list
 	 * @param length
@@ -649,8 +640,7 @@ public class SXFMFormat extends AXMLFormat<IFeatureModel> implements IFeatureMod
 	}
 
 	/**
-	 * Builds the propositional constraint, denoting a maximum of features can
-	 * be selected
+	 * Builds the propositional constraint, denoting a maximum of features can be selected
 	 *
 	 * @param list
 	 * @param length

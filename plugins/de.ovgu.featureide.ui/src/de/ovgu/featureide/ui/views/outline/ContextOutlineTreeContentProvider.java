@@ -46,6 +46,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
  * @author Sebastian Krieter
  */
 public class ContextOutlineTreeContentProvider implements ITreeContentProvider {
+
 	ProjectStructure projectStructure = null;
 	IFeatureProject featureProject = null;
 
@@ -92,8 +93,7 @@ public class ContextOutlineTreeContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {

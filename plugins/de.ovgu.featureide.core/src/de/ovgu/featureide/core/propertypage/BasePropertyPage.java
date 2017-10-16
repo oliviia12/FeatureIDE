@@ -36,8 +36,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
 
 /**
- * First FeatureIDE property page containing all other property
- * pages at the sub tree
+ * First FeatureIDE property page containing all other property pages at the sub tree
  *
  * @author Jens Meinicke
  */

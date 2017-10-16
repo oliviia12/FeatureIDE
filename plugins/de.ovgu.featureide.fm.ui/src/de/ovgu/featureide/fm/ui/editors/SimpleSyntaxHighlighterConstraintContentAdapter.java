@@ -45,6 +45,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 	}
 
 	public static class InsertionResult {
+
 		Point selection;
 		String text;
 
@@ -162,9 +163,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see org.eclipse.jface.dialogs.taskassistance.IControlContentAdapter#
-	 * getControlContents(org.eclipse.swt.widgets.Control)
+	 * @see org.eclipse.jface.dialogs.taskassistance.IControlContentAdapter# getControlContents(org.eclipse.swt.widgets.Control)
 	 */
 	@Override
 	public String getControlContents(Control control) {
@@ -173,10 +172,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.jface.fieldassist.IControlContentAdapter#setControlContents
-	 * (org.eclipse.swt.widgets.Control, java.lang.String, int)
+	 * @see org.eclipse.jface.fieldassist.IControlContentAdapter#setControlContents (org.eclipse.swt.widgets.Control, java.lang.String, int)
 	 */
 	@Override
 	public void setControlContents(Control control, String text, int cursorPosition) {
@@ -186,10 +182,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.jface.fieldassist.IControlContentAdapter#getCursorPosition
-	 * (org.eclipse.swt.widgets.Control)
+	 * @see org.eclipse.jface.fieldassist.IControlContentAdapter#getCursorPosition (org.eclipse.swt.widgets.Control)
 	 */
 	@Override
 	public int getCursorPosition(Control control) {
@@ -198,10 +191,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.jface.fieldassist.IControlContentAdapter#getInsertionBounds
-	 * (org.eclipse.swt.widgets.Control)
+	 * @see org.eclipse.jface.fieldassist.IControlContentAdapter#getInsertionBounds (org.eclipse.swt.widgets.Control)
 	 */
 	@Override
 	public Rectangle getInsertionBounds(Control control) {
@@ -214,10 +204,7 @@ public class SimpleSyntaxHighlighterConstraintContentAdapter implements IControl
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.jface.fieldassist.IControlContentAdapter#setCursorPosition
-	 * (org.eclipse.swt.widgets.Control, int)
+	 * @see org.eclipse.jface.fieldassist.IControlContentAdapter#setCursorPosition (org.eclipse.swt.widgets.Control, int)
 	 */
 	@Override
 	public void setCursorPosition(Control control, int position) {

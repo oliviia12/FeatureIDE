@@ -40,7 +40,8 @@ import de.ovgu.featureide.fm.core.functional.Functional;
  */
 public class FeatureModelJPFBDD implements IFeatureModelClass {
 
-	private final static String HEAD = "/**\r\n * Variability encoding of the feature model for JPF-BDD.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
+	private final static String HEAD =
+			"/**\r\n * Variability encoding of the feature model for JPF-BDD.\r\n * Auto-generated class.\r\n */\r\npublic class FeatureModel {\n\n";
 	private final static String FIELD_MODIFIER = "\tpublic static boolean ";
 	private final static String ANNOTATION = "\t@gov.nasa.jpf.bdd.TrackWithBDD\r\n";
 	private static final String SELECTFEATURES = "\tpublic static void select_features() {\r\n";

@@ -229,7 +229,7 @@ public class FeatureFigure extends ModelElementFigure implements GUIDefaults {
 			final IFeature feature = this.feature.getObject();
 			final FeatureModelAnalyzer analyser = FeatureModelManager.getAnalyzer(feature.getFeatureModel());
 
-			//First draw custom color
+			// First draw custom color
 			if (FeatureColorManager.getColor(feature) == FeatureColor.NO_COLOR) {
 				if (feature.getStructure().isConcrete()) {
 					toolTip.append(CONCRETE);
@@ -391,23 +391,10 @@ public class FeatureFigure extends ModelElementFigure implements GUIDefaults {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Only does so in any of the following cases:
-	 * <ul>
-	 * <li>
-	 * The new active reason is null.
-	 * This makes it possible to reset the active reason.
-	 * </li>
-	 * <li>
-	 * The old active reason is null.
-	 * After resetting, any new active reason is accepted.
-	 * </li>
-	 * <li>
-	 * The new active reason has a greater {@link Reason#getConfidence() confidence} than the old one.
-	 * This means that, in case of graphically overlapping reasons, the greatest confidence is displayed.
-	 * </li>
-	 * </ul>
-	 * </p>
+	 * <p> Only does so in any of the following cases: <ul> <li> The new active reason is null. This makes it possible to reset the active reason. </li> <li>
+	 * The old active reason is null. After resetting, any new active reason is accepted. </li> <li> The new active reason has a greater
+	 * {@link Reason#getConfidence() confidence} than the old one. This means that, in case of graphically overlapping reasons, the greatest confidence is
+	 * displayed. </li> </ul> </p>
 	 *
 	 * @param activeReason the new active reason; null to reset
 	 */

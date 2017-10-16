@@ -135,7 +135,8 @@ public class PPModelBuilder {
 				if (!featureNames.contains(featureName)) {
 					continue;
 				}
-				final FSTRole role = model.addRole(featureName, model.getAbsoluteClassName(res), res);//addRole(getFeatureName(d.getExpression()), res.getName(), res);
+				final FSTRole role = model.addRole(featureName, model.getAbsoluteClassName(res), res);// addRole(getFeatureName(d.getExpression()),
+																										// res.getName(), res);
 				role.add(d);
 				addDirectivesToModel(d.getChildrenList(), res, className);
 			}
@@ -151,8 +152,8 @@ public class PPModelBuilder {
 				for (final AbstractSignature abstractSignature : includedSig) {
 					if (abstractSignature instanceof AbstractMethodSignature) {
 						final AbstractMethodSignature tmp = (AbstractMethodSignature) abstractSignature;
-						final FSTMethod method = new FSTMethod(tmp.getName(), new LinkedList<>(tmp.getParameterTypes()), tmp.getReturnType(),
-								tmp.getModifiers()[0]);
+						final FSTMethod method =
+								new FSTMethod(tmp.getName(), new LinkedList<>(tmp.getParameterTypes()), tmp.getReturnType(), tmp.getModifiers()[0]);
 						method.setLine(tmp.getStartLine());
 
 						for (final String featureName : fstDirective.getFeatureNames()) {
@@ -231,8 +232,8 @@ public class PPModelBuilder {
 								}
 
 								if (!added) {
-									final FSTMethod method = new FSTMethod(tmp.getName(), new LinkedList<>(tmp.getParameterTypes()), tmp.getReturnType(),
-											"tetw");
+									final FSTMethod method =
+											new FSTMethod(tmp.getName(), new LinkedList<>(tmp.getParameterTypes()), tmp.getReturnType(), "tetw");
 									method.setLine(tmp.getStartLine());
 									role.getClassFragment().add(method);
 									method.add(d);
@@ -258,26 +259,20 @@ public class PPModelBuilder {
 	}
 
 	/**
-	 * This method should be implemented by preprocessor plug-ins.
-	 * Adds directives to model.
+	 * This method should be implemented by preprocessor plug-ins. Adds directives to model.
 	 *
-	 * @param currentClass
-	 *            The current class.
-	 * @param res
-	 *            The current file.
+	 * @param currentClass The current class.
+	 * @param res The current file.
 	 */
 	public LinkedList<FSTDirective> buildModelDirectivesForFile(Vector<String> lines) {
 		return new LinkedList<FSTDirective>();
 	}
 
 	/**
-	 * This method should be implemented by preprocessor plug-ins.
-	 * Return true if the file contains the feature.
+	 * This method should be implemented by preprocessor plug-ins. Return true if the file contains the feature.
 	 *
-	 * @param text
-	 *            The file text.
-	 * @param feature
-	 *            The current feature.
+	 * @param text The file text.
+	 * @param feature The current feature.
 	 */
 	protected boolean containsFeature(String text, String feature) {
 		return text.contains(feature);

@@ -122,8 +122,8 @@ public class CauseAnalysis extends AClauseAnalysis<List<CauseAnalysis.Anomalies>
 		monitor.step();
 
 		if (!remainingClauses.isEmpty()) {
-			final List<LiteralSet> newClauseList = Functional
-					.removeNull(LongRunningWrapper.runMethod(new IndependentRedundancyAnalysis(solver, remainingClauses)));
+			final List<LiteralSet> newClauseList =
+					Functional.removeNull(LongRunningWrapper.runMethod(new IndependentRedundancyAnalysis(solver, remainingClauses)));
 			remainingClauses.removeAll(newClauseList);
 		}
 		monitor.step();
@@ -152,8 +152,8 @@ public class CauseAnalysis extends AClauseAnalysis<List<CauseAnalysis.Anomalies>
 			}
 
 			if (!remainingClauses.isEmpty()) {
-				final List<LiteralSet> newClauseList = Functional
-						.removeNull(LongRunningWrapper.runMethod(new IndependentRedundancyAnalysis(solver, remainingClauses)));
+				final List<LiteralSet> newClauseList =
+						Functional.removeNull(LongRunningWrapper.runMethod(new IndependentRedundancyAnalysis(solver, remainingClauses)));
 				if (!newClauseList.isEmpty()) {
 					getAnomalies(resultList, i).setRedundantClauses(newClauseList);
 					remainingClauses.removeAll(newClauseList);

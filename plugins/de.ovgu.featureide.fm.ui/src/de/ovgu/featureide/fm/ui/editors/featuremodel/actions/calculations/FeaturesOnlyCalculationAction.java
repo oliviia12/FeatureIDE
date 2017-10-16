@@ -29,8 +29,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 
 /**
- * Action to specify feature model analysis.<br>
- * Only features will be analyzed and not constraints.
+ * Action to specify feature model analysis.<br> Only features will be analyzed and not constraints.
  *
  * @author Jens Meinicke
  * @author Marcus Pinnecke

@@ -41,6 +41,7 @@ import de.ovgu.featureide.fm.ui.FMUIPlugin;
  * @author Paul Maximilian Bittner
  */
 public class ConfigurationMapLabelProvider implements ITableLabelProvider, ITableColorProvider {
+
 	private final static String imgSelectedPath = "aselected.ico";
 	private final static String imgUnselectedPath = "adeselected.ico";
 
@@ -113,15 +114,12 @@ public class ConfigurationMapLabelProvider implements ITableLabelProvider, ITabl
 	}
 
 	@Override
-	public void addListener(ILabelProviderListener listener) {
-	}
+	public void addListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void removeListener(ILabelProviderListener listener) {
-	}
+	public void removeListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 }

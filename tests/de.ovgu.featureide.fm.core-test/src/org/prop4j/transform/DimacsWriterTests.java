@@ -40,6 +40,7 @@ import de.ovgu.featureide.fm.core.io.dimacs.DimacsWriter;
  * @author Timo G&uuml;nther
  */
 public class DimacsWriterTests {
+
 	private static final String LN = System.lineSeparator();
 
 	@Rule

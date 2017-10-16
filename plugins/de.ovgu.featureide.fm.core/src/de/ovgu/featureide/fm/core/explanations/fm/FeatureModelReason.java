@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.core.explanations.Reason;
  * @author Timo G&uuml;nther
  */
 public class FeatureModelReason extends Reason {
+
 	/** The trace of this reason. */
 	private final FeatureModelElementTrace trace;
 
@@ -63,9 +64,8 @@ public class FeatureModelReason extends Reason {
 	@Override
 	public float getConfidence() {
 		/*
-		 * TODO Provide a useful explanation count for redundant constraints.
-		 * The explanation count for redundant constraints is currently useless.
-		 * To avoid confusing the user, do not take it into account when giving confidence hints and default to 1.
+		 * TODO Provide a useful explanation count for redundant constraints. The explanation count for redundant constraints is currently useless. To avoid
+		 * confusing the user, do not take it into account when giving confidence hints and default to 1.
 		 */
 		if (getExplanation() instanceof RedundantConstraintExplanation) {
 			return 1.0f;

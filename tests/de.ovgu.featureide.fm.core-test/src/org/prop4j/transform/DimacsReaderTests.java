@@ -40,6 +40,7 @@ import de.ovgu.featureide.fm.core.io.dimacs.DimacsReader;
  * @author Timo G&uuml;nther
  */
 public class DimacsReaderTests {
+
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 

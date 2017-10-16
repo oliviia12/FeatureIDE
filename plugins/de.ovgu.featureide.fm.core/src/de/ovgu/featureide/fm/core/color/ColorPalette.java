@@ -29,6 +29,7 @@ import org.eclipse.swt.graphics.RGB;
  * @author Sebastian Krieter
  */
 public class ColorPalette {
+
 	public final static int COLOR_COUNT = 10;
 
 	private final static float[] hue = new float[COLOR_COUNT];

@@ -31,6 +31,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
  * @author Fabian Benduhn
  */
 public class Legend implements IGraphicItem {
+
 	private final IGraphicalFeatureModel model;
 	private Point pos;
 

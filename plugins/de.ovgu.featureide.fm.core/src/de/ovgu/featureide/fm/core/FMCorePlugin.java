@@ -91,9 +91,11 @@ public class FMCorePlugin extends AbstractCorePlugin {
 		ConfigFormatManager.setExtensionLoader(new EclipseExtensionLoader<>(PluginID.PLUGIN_ID, IConfigurationFormat.extensionPointID,
 				IConfigurationFormat.extensionID, IConfigurationFormat.class));
 
-		//		ConfigFormatManager.setExtensionLoader(new CoreExtensionLoader<>(new DefaultFormat(), new FeatureIDEFormat(), new EquationFormat(), new ExpressionFormat()));
-		//		FMFormatManager.setExtensionLoader(new CoreExtensionLoader<>(new XmlFeatureModelFormat(), new SimpleVelvetFeatureModelFormat(), new DIMACSFormat(), new SXFMFormat(), new GuidslFormat()));
-		//		FMFactoryManager.setExtensionLoader(new CoreExtensionLoader<>(new DefaultFeatureModelFactory(), new ExtendedFeatureModelFactory()));
+		// ConfigFormatManager.setExtensionLoader(new CoreExtensionLoader<>(new DefaultFormat(), new FeatureIDEFormat(), new EquationFormat(), new
+		// ExpressionFormat()));
+		// FMFormatManager.setExtensionLoader(new CoreExtensionLoader<>(new XmlFeatureModelFormat(), new SimpleVelvetFeatureModelFormat(), new DIMACSFormat(),
+		// new SXFMFormat(), new GuidslFormat()));
+		// FMFactoryManager.setExtensionLoader(new CoreExtensionLoader<>(new DefaultFeatureModelFactory(), new ExtendedFeatureModelFactory()));
 
 		Logger.logger = new EclipseLogger();
 		FMFactoryManager.factoryWorkspaceProvider = new EclipseFactoryWorkspaceProvider();
@@ -230,8 +232,7 @@ public class FMCorePlugin extends AbstractCorePlugin {
 	 * @param projects the list of projects
 	 * @param arguments the arguments for the job
 	 * @param autostart if {@code true} the jobs is started automatically.
-	 * @return the created job or a {@link JobSequence} if more than one project is given.
-	 *         Returns {@code null} if {@code projects} is empty.
+	 * @return the created job or a {@link JobSequence} if more than one project is given. Returns {@code null} if {@code projects} is empty.
 	 */
 	public static LongRunningMethod<?> startJobs(List<LongRunningMethod<?>> projects, String jobName, boolean autostart) {
 		LongRunningMethod<?> ret;

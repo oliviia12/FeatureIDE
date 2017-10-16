@@ -28,8 +28,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent;
 import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 
 /**
- * Operation with functionality to move Constraints. Provides undo/redo
- * functionality.
+ * Operation with functionality to move Constraints. Provides undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke

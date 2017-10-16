@@ -32,9 +32,8 @@ import de.ovgu.featureide.ui.statistics.core.composite.LazyParent;
 import de.ovgu.featureide.ui.statistics.core.composite.lazyimplementations.genericdatatypes.HashMapNode;
 
 /**
- * TreeNode who stores the number of classes, roles, fields and methods of a
- * given {@link FSTModel}.<br>
- * This node should only be used for a feature oriented project.
+ * TreeNode who stores the number of classes, roles, fields and methods of a given {@link FSTModel}.<br> This node should only be used for a feature oriented
+ * project.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
@@ -46,10 +45,8 @@ public class StatisticsProgramSize extends LazyParent {
 	/**
 	 * Constructor for a {@code ProgrammSizeNode}.
 	 *
-	 * @param description
-	 *            description of the node shown in the view
-	 * @param fstModel
-	 *            FSTModel for the calculation
+	 * @param description description of the node shown in the view
+	 * @param fstModel FSTModel for the calculation
 	 */
 	public StatisticsProgramSize(String description, FSTModel fstModel) {
 		super(description);

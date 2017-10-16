@@ -32,8 +32,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 
 /**
- * Action to specify feature model analysis.<br>
- * A manual call of the feature model analysis.
+ * Action to specify feature model analysis.<br> A manual call of the feature model analysis.
  *
  * @author Jens Meinicke
  * @author Marcus Pinnecke

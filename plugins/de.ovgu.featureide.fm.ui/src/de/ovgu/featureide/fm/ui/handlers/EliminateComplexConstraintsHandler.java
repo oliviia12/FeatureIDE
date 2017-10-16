@@ -70,16 +70,15 @@ public class EliminateComplexConstraintsHandler extends AFileHandler {
 
 		int pseudo = 0, strict = 0;
 		for (final IConstraint c : featureModel.getConstraints()) {
-			if (ComplexConstraintConverter.isSimple(c.getNode())) {
-			} else if (ComplexConstraintConverter.isPseudoComplex(c.getNode())) {
+			if (ComplexConstraintConverter.isSimple(c.getNode())) {} else if (ComplexConstraintConverter.isPseudoComplex(c.getNode())) {
 				pseudo++;
 			} else {
 				strict++;
 			}
 		}
 
-		//count number of constraints
-		//set file extension
+		// count number of constraints
+		// set file extension
 		final EliminateConstraintsWizard wizard = new EliminateConstraintsWizard(file, "Complex-constraints elimination", trivial, pseudo, strict, "xml");
 
 		final List<Option> options = new ArrayList<Option>();

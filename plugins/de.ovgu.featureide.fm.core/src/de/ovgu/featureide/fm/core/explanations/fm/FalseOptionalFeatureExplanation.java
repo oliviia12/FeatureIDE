@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
  * @author Timo G&uuml;nther
  */
 public class FalseOptionalFeatureExplanation extends FeatureModelExplanation {
+
 	/**
 	 * Constructs a new instance of this class
 	 *

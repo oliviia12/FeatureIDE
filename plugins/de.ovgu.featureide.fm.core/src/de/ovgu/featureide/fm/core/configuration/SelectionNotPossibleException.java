@@ -21,9 +21,7 @@
 package de.ovgu.featureide.fm.core.configuration;
 
 /**
- * Identifies that the user has selected or deselected a feature which is not
- * possible according the underlying feature model with current manual
- * selections.
+ * Identifies that the user has selected or deselected a feature which is not possible according the underlying feature model with current manual selections.
  *
  * @author Thomas Thuem
  */

@@ -244,10 +244,8 @@ public abstract class ComposerExtensionClass implements IComposerExtensionClass 
 	/**
 	 * Set the source path of the given <code>ClasspathEntry</code>
 	 *
-	 * @param buildPath
-	 *            The new build path
-	 * @param e
-	 *            The entry to set
+	 * @param buildPath The new build path
+	 * @param e The entry to set
 	 * @return The entry with the new source path
 	 */
 	public IClasspathEntry setSourceEntry(String buildPath, IClasspathEntry e) {
@@ -265,8 +263,7 @@ public abstract class ComposerExtensionClass implements IComposerExtensionClass 
 	}
 
 	/**
-	 * @param path
-	 *            The source path
+	 * @param path The source path
 	 * @return A default source entry with the given path
 	 */
 	public IClasspathEntry getSourceEntry(String path) {

@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.base.IConstraint;
  * @author Timo G&uuml;nther
  */
 public class RedundantConstraintExplanation extends FeatureModelExplanation {
+
 	/** True if this explanation is for an implicit constraint. */
 	private boolean implicit;
 

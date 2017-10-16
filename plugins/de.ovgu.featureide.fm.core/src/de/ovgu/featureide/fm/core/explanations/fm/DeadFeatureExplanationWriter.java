@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.explanations.ExplanationWriter;
  * @author Timo G&uuml;nther
  */
 public class DeadFeatureExplanationWriter extends FeatureModelExplanationWriter {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

@@ -64,12 +64,10 @@ import de.ovgu.featureide.ui.views.collaboration.GUIDefaults;
 public class CollaborationOutlineLabelProvider extends OutlineLabelProvider implements GUIDefaults {
 
 	@Override
-	public void addListener(ILabelProviderListener listener) {
-	}
+	public void addListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public boolean isLabelProperty(Object element, String property) {
@@ -77,8 +75,7 @@ public class CollaborationOutlineLabelProvider extends OutlineLabelProvider impl
 	}
 
 	@Override
-	public void removeListener(ILabelProviderListener listener) {
-	}
+	public void removeListener(ILabelProviderListener listener) {}
 
 	@Override
 	public Image getImage(Object element) {
@@ -253,8 +250,7 @@ public class CollaborationOutlineLabelProvider extends OutlineLabelProvider impl
 	}
 
 	/**
-	 * @return <code>true</code> if the new input does not change the old
-	 *         content.
+	 * @return <code>true</code> if the new input does not change the old content.
 	 */
 	private boolean hasSameClass(FSTClass Class, IFile oldFile, IFile currentFile) {
 		if (Class == null) {
@@ -379,6 +375,5 @@ public class CollaborationOutlineLabelProvider extends OutlineLabelProvider impl
 	}
 
 	@Override
-	public void init() {
-	}
+	public void init() {}
 }

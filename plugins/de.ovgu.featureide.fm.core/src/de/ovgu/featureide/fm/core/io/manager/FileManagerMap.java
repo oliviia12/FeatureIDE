@@ -29,8 +29,7 @@ import javax.annotation.CheckForNull;
 import de.ovgu.featureide.fm.core.base.event.IEventManager;
 
 /**
- * Responsible to load and save all information from / to a file.<br/>
- * To get an instance use the {@link FileManagerMap}.
+ * Responsible to load and save all information from / to a file.<br/> To get an instance use the {@link FileManagerMap}.
  *
  * @author Sebastian Krieter
  */
@@ -96,8 +95,8 @@ public abstract class FileManagerMap<T> implements IFileManager<T>, IEventManage
 	}
 
 	/**
-	 * Adds a new {@link IFileManager file manager} instance to the map,
-	 * unless the file of the given file manager is already associated with another file manager.
+	 * Adds a new {@link IFileManager file manager} instance to the map, unless the file of the given file manager is already associated with another file
+	 * manager.
 	 *
 	 * @param instance the file manager
 	 */

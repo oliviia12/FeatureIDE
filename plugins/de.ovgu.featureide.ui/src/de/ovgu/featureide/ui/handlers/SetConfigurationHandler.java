@@ -30,8 +30,7 @@ import de.ovgu.featureide.fm.ui.handlers.base.AFileHandler;
 import de.ovgu.featureide.ui.UIPlugin;
 
 /**
- * This class handles the event that is triggered when you select a
- * configuration file with the context menu.
+ * This class handles the event that is triggered when you select a configuration file with the context menu.
  *
  * @author Tom Brosch
  * @author Sebastian Krieter

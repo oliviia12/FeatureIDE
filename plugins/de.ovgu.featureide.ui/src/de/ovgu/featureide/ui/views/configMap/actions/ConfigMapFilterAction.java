@@ -33,6 +33,7 @@ import de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilterable;
  * @author Antje Moench
  */
 public class ConfigMapFilterAction extends Action {
+
 	private final IConfigurationMapFilter filter;
 	private final IConfigurationMapFilterable filterable;
 

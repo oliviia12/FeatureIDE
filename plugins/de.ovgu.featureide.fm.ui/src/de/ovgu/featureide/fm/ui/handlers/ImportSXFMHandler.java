@@ -32,6 +32,7 @@ import de.ovgu.featureide.fm.ui.handlers.base.AbstractFMImportHandler;
  * @author Marcus Pinnecke
  */
 public class ImportSXFMHandler extends AbstractFMImportHandler {
+
 	@Override
 	protected IFeatureModelFormat setModelReader() {
 		return new SXFMFormat();

@@ -23,8 +23,7 @@ package de.ovgu.featureide.fm.ui.wizards;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 
 /**
- * A wizard to show a sub feature model and its implicit dependencies. The sub feature model is read-only
- * and not persistent.
+ * A wizard to show a sub feature model and its implicit dependencies. The sub feature model is read-only and not persistent.
  *
  * @author "Ananieva Sofia"
  */

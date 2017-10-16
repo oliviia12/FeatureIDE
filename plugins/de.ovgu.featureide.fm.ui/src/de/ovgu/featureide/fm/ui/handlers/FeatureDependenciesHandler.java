@@ -62,6 +62,7 @@ public class FeatureDependenciesHandler extends AFileHandler {
 
 		final FeatureModelManager instance = FeatureModelManager.getInstance(Paths.get(inputFile.getLocationURI()));
 		final Job job = new Job(CALCULATING_FEATURE_DEPENDENCIES) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				final IModalImplicationGraph modalImplicationGraph = instance.getSnapshot().getFormula().getElement(new ModalImplicationGraphCreator());

@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A constraint that is true iff the left child is false or the right child is
- * true.
+ * A constraint that is true iff the left child is false or the right child is true.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke (Feature Interface)

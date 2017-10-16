@@ -27,8 +27,7 @@ import java.util.LinkedList;
 import de.ovgu.featureide.fm.core.analysis.cnf.manipulator.remove.DeprecatedFeature;
 
 /**
- * Implementation of {@link AFeatureOrderHeuristic}.
- * Returns features dependent on the current clauses in the formula.
+ * Implementation of {@link AFeatureOrderHeuristic}. Returns features dependent on the current clauses in the formula.
  *
  * @author Sebastian Krieter
  */
@@ -45,6 +44,7 @@ public class StaticSubsetClauseHeuristic extends AFeatureOrderHeuristic {
 			}
 		}
 		Collections.sort(order, new Comparator<Integer>() {
+
 			@Override
 			public int compare(Integer o1, Integer o2) {
 				final DeprecatedFeature f1 = map[o1];

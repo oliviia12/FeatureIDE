@@ -39,10 +39,8 @@ import org.prop4j.Node;
 import de.ovgu.featureide.fm.core.explanations.fm.FeatureModelExplanationCreator;
 
 /**
- * <p>
- * The class LTMS (logic truth maintenance system) records proofs for implications and constructs explanations.
- * Uses BCP (boolean constraint propagation) for managing logical implications.
- * BCP expects two parameters: initial truth values (premises) and a propositional formula in CNF (conjunctive normal form).
+ * <p> The class LTMS (logic truth maintenance system) records proofs for implications and constructs explanations. Uses BCP (boolean constraint propagation)
+ * for managing logical implications. BCP expects two parameters: initial truth values (premises) and a propositional formula in CNF (conjunctive normal form).
  * </p>
  *
  * @author Sofia Ananieva
@@ -50,18 +48,17 @@ import de.ovgu.featureide.fm.core.explanations.fm.FeatureModelExplanationCreator
  * @see {@link FeatureModelExplanationCreator} for using the LTMS with feature models
  */
 public class Ltms {
+
 	/**
 	 * A feature model transformed into a propositional formula in conjunctive normal form for easier reasoning.
 	 */
 	private final Node cnf;
 	/**
-	 * Nodes mapped to the literals they contain.
-	 * Redundant map for the sake of performance.
+	 * Nodes mapped to the literals they contain. Redundant map for the sake of performance.
 	 */
 	private final Map<Node, Set<Literal>> clauseLiterals = new LinkedHashMap<>();
 	/**
-	 * Variables mapped to the clauses they are contained in.
-	 * Redundant map for the sake of performance.
+	 * Variables mapped to the clauses they are contained in. Redundant map for the sake of performance.
 	 */
 	private final Map<Object, Set<Node>> variableClauses = new LinkedHashMap<>();
 	/**
@@ -69,15 +66,13 @@ public class Ltms {
 	 */
 	private final Map<Object, Boolean> premises = new LinkedHashMap<>();
 	/**
-	 * The truth value assignments of the variables.
-	 * If the truth value is true, all positive literals containing the variable evaluate to true and negated ones to false.
-	 * If the truth value is false, all positive literals containing the variable evaluate to false and negated ones to true.
-	 * If the variable is not contained in this map, its truth value is considered unknown.
+	 * The truth value assignments of the variables. If the truth value is true, all positive literals containing the variable evaluate to true and negated ones
+	 * to false. If the truth value is false, all positive literals containing the variable evaluate to false and negated ones to true. If the variable is not
+	 * contained in this map, its truth value is considered unknown.
 	 */
 	private final Map<Object, Boolean> variableValues = new LinkedHashMap<>();
 	/**
-	 * The reason for a derived truth value, represented by a node (which is clause in CNF).
-	 * The literals of this clause are the antecedents of the variable.
+	 * The reason for a derived truth value, represented by a node (which is clause in CNF). The literals of this clause are the antecedents of the variable.
 	 * The antecedents are the literals whose values were referenced when deriving a new truth value.
 	 */
 	private final Map<Object, Node> reasons = new LinkedHashMap<>();
@@ -152,8 +147,7 @@ public class Ltms {
 	}
 
 	/**
-	 * Adds the given variable as a premise with the given truth value.
-	 * This premise is used later to arrive at the contradiction.
+	 * Adds the given variable as a premise with the given truth value. This premise is used later to arrive at the contradiction.
 	 *
 	 * @param variable variable to be added as a premise
 	 * @param value truth value of the variable
@@ -172,36 +166,34 @@ public class Ltms {
 	}
 
 	/**
-	 * Returns multiple explanations why the premises lead to a contradiction in the conjunctive normal form.
-	 * This is done by propagating the truth values until a contradiction is found.
-	 * Then, the proofs for the implications are recalled.
-	 * This is repeated several times to find multiple explanations, some of which might be shorter than others.
+	 * Returns multiple explanations why the premises lead to a contradiction in the conjunctive normal form. This is done by propagating the truth values until
+	 * a contradiction is found. Then, the proofs for the implications are recalled. This is repeated several times to find multiple explanations, some of which
+	 * might be shorter than others.
 	 *
 	 * @return multiple explanations why the premises lead to a contradiction in the conjunctive normal form
 	 */
 	public List<Set<Integer>> getExplanations() {
 		reset();
 		final List<Set<Integer>> explanations = new LinkedList<>();
-		if (isContradicted()) { //If the initial truth values already lead to a contradiction...
-			explanations.add(getContradictionExplanation()); //... explain immediately.
+		if (isContradicted()) { // If the initial truth values already lead to a contradiction...
+			explanations.add(getContradictionExplanation()); // ... explain immediately.
 			return explanations;
 		}
 		unitOpenClauses.clear();
-		pushUnitOpenClauses(); //Start iterating over the first unit-open clauses using the initial truth value assumptions.
+		pushUnitOpenClauses(); // Start iterating over the first unit-open clauses using the initial truth value assumptions.
 		while (!unitOpenClauses.isEmpty()) {
 			derivedClause = unitOpenClauses.removeLast();
 			derivedLiteral = getUnboundLiteral(derivedClause);
-			if (derivedLiteral == null) { //not actually unit-open
+			if (derivedLiteral == null) { // not actually unit-open
 				continue;
 			}
-			propagate(); //Propagate the truth values by deriving a new truth value.
+			propagate(); // Propagate the truth values by deriving a new truth value.
 			pushUnitOpenClauses();
-			if (isContradicted()) { //If the propagation lead to a contradiction...
-				explanations.add(getContradictionExplanation()); //... explain the reason for the contradiction.
+			if (isContradicted()) { // If the propagation lead to a contradiction...
+				explanations.add(getContradictionExplanation()); // ... explain the reason for the contradiction.
 				/*
-				 * At this point, the found explanation could already be returned.
-				 * Instead, keep generating new explanations as there might be a shorter one among them.
-				 * To this end, reset the derived truth values (but not the premises) and keep iterating.
+				 * At this point, the found explanation could already be returned. Instead, keep generating new explanations as there might be a shorter one
+				 * among them. To this end, reset the derived truth values (but not the premises) and keep iterating.
 				 */
 				reset();
 			}
@@ -210,8 +202,7 @@ public class Ltms {
 	}
 
 	/**
-	 * Clears the internal state for a new explanation.
-	 * Adds the premises to the variable values.
+	 * Clears the internal state for a new explanation. Adds the premises to the variable values.
 	 */
 	private void reset() {
 		variableValues.clear();
@@ -244,8 +235,7 @@ public class Ltms {
 	}
 
 	/**
-	 * Returns true iff the given clause is unit-open.
-	 * A CNF clause is unit-open iff one of the contained literals evaluates to unknown and all others to false.
+	 * Returns true iff the given clause is unit-open. A CNF clause is unit-open iff one of the contained literals evaluates to unknown and all others to false.
 	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return true iff the given clause is unit-open
@@ -255,9 +245,8 @@ public class Ltms {
 	}
 
 	/**
-	 * Returns the unbound literal in the given clause or null if no such literal exists.
-	 * A literal is unbound iff it evaluates to unknown while all other literals in the same CNF clause evaluate to false.
-	 * Such a literal is critical for the satisfiability of the clause and as such the entire CNF.
+	 * Returns the unbound literal in the given clause or null if no such literal exists. A literal is unbound iff it evaluates to unknown while all other
+	 * literals in the same CNF clause evaluate to false. Such a literal is critical for the satisfiability of the clause and as such the entire CNF.
 	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return the unbound literal in the given clause or null if no such literal exists
@@ -265,24 +254,23 @@ public class Ltms {
 	private Literal getUnboundLiteral(Node cnfClause) {
 		Literal unboundLiteral = null;
 		for (final Literal literal : clauseLiterals.get(cnfClause)) {
-			if (!variableValues.containsKey(literal.var)) { //unknown value
+			if (!variableValues.containsKey(literal.var)) { // unknown value
 				if (unboundLiteral == null) {
 					unboundLiteral = literal;
-				} else { //more than one unknown literal found, thus actually a non-unit-open clause
+				} else { // more than one unknown literal found, thus actually a non-unit-open clause
 					return null;
 				}
-			} else if (literal.getValue(variableValues)) { //true value
+			} else if (literal.getValue(variableValues)) { // true value
 				return null;
-			} else { //false value
-				//irrelevant
+			} else { // false value
+				// irrelevant
 			}
 		}
 		return unboundLiteral;
 	}
 
 	/**
-	 * Returns true iff the conjunctive normal form evaluates to false.
-	 * A CNF evaluates to false iff any of its clauses evaluates to false.
+	 * Returns true iff the conjunctive normal form evaluates to false. A CNF evaluates to false iff any of its clauses evaluates to false.
 	 *
 	 * @return true iff the conjunctive normal form evaluates to false
 	 */
@@ -298,29 +286,27 @@ public class Ltms {
 	}
 
 	/**
-	 * Returns true iff the given CNF clause evaluates to false.
-	 * A CNF clause evaluates to false iff all of its literals evaluate to false.
+	 * Returns true iff the given CNF clause evaluates to false. A CNF clause evaluates to false iff all of its literals evaluate to false.
 	 *
 	 * @param cnfClause clause in conjunctive normal form
 	 * @return true iff the given CNF clause evaluates to false
 	 */
 	private boolean isViolatedClause(Node cnfClause) {
 		for (final Literal literal : clauseLiterals.get(cnfClause)) {
-			if (!variableValues.containsKey(literal.var)) { //unknown value
+			if (!variableValues.containsKey(literal.var)) { // unknown value
 				return false;
-			} else if (literal.getValue(variableValues)) { //true value
+			} else if (literal.getValue(variableValues)) { // true value
 				return false;
-			} else { //false value
-				//irrelevant
+			} else { // false value
+				// irrelevant
 			}
 		}
 		return true;
 	}
 
 	/**
-	 * Does one iteration of BCP.
-	 * Changes the assignment of a literal's variable from unknown to whatever makes it evaluate to true in the current clause.
-	 * Also sets its reason and antecedents.
+	 * Does one iteration of BCP. Changes the assignment of a literal's variable from unknown to whatever makes it evaluate to true in the current clause. Also
+	 * sets its reason and antecedents.
 	 */
 	private void propagate() {
 		deriveValue();
@@ -352,11 +338,11 @@ public class Ltms {
 	private Set<Integer> getContradictionExplanation() {
 		final Set<Integer> explanation = new TreeSet<>();
 
-		//Include literals from the violated clause so it shows up in the explanation.
+		// Include literals from the violated clause so it shows up in the explanation.
 		explanation.add(getClauseIndex(violatedClause));
 
-		//Get all antecedents of the derived literal.
-		if (derivedLiteral == null) { //immediate contradiction, thus no propagations, thus no antecedents
+		// Get all antecedents of the derived literal.
+		if (derivedLiteral == null) { // immediate contradiction, thus no propagations, thus no antecedents
 			return explanation;
 		}
 		final Map<Literal, Node> allAntecedents = new LinkedHashMap<>();
@@ -368,13 +354,13 @@ public class Ltms {
 			}
 		}
 
-		//Explain every antecedent and its reason.
+		// Explain every antecedent and its reason.
 		for (final Entry<Literal, Node> e : allAntecedents.entrySet()) {
 			final Literal antecedentLiteral = e.getKey();
 			final Node antecedentClause = e.getValue();
 			explanation.add(getClauseIndex(antecedentClause));
 			final Node reason = reasons.get(antecedentLiteral.var);
-			if (reason == null) { //premise, thus no reason to explain
+			if (reason == null) { // premise, thus no reason to explain
 				continue;
 			}
 			explanation.add(getClauseIndex(reason));

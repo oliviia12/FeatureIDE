@@ -48,8 +48,7 @@ public abstract class FeatureModelEditorPage extends EditorPart implements IFeat
 	protected IEditorSite site;
 
 	/**
-	 * @param featureModelEditor
-	 *            the featureModelEditor to set
+	 * @param featureModelEditor the featureModelEditor to set
 	 */
 	@Override
 	public void setFeatureModelEditor(FeatureModelEditor featureModelEditor) {
@@ -109,8 +108,7 @@ public abstract class FeatureModelEditorPage extends EditorPart implements IFeat
 	}
 
 	@Override
-	public void initEditor() {
-	}
+	public void initEditor() {}
 
 	@Override
 	public IFeatureModelEditorPage getPage(Composite container) {

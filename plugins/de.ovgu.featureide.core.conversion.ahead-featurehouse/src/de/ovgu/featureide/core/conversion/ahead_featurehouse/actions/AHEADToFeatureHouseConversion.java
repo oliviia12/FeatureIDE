@@ -55,6 +55,7 @@ public class AHEADToFeatureHouseConversion extends ComposerConversion {
 		}
 		AheadCorePlugin.getDefault().logInfo(CHANGE_THE_COMPOSER_OF_PROJECT + featureProject.getProjectName() + FROM_AHEAD_TO_FEATUREHOUSE_);
 		final Job job = new Job(CHANGE_COMPOSER_) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				startProjectConversion(featureProject);
@@ -77,9 +78,8 @@ public class AHEADToFeatureHouseConversion extends ComposerConversion {
 	}
 
 	/**
-	 * Replaces <code>Super().methodName()</code> by <code>original()</code>.<br>
-	 * Removes <code>refines</code> from classes that refine.<br>
-	 * Removes <code>layer feature;</code> declaration.
+	 * Replaces <code>Super().methodName()</code> by <code>original()</code>.<br> Removes <code>refines</code> from classes that refine.<br> Removes <code>layer
+	 * feature;</code> declaration.
 	 */
 	@Override
 	public String changeFile(String fileText, IFile file) {

@@ -51,6 +51,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
  * @author Marcus Pinnecke
  */
 public class AdvancedConfigurationPage extends ConfigurationTreeEditorPage implements GUIDefaults {
+
 	private static final String PAGE_TEXT = ADVANCED_CONFIGURATION;
 	private static final String ID = FMUIPlugin.PLUGIN_ID + "AdvancedConfigurationPage";
 
@@ -134,6 +135,7 @@ public class AdvancedConfigurationPage extends ConfigurationTreeEditorPage imple
 	protected void createUITree(Composite parent) {
 		tree = new Tree(parent, SWT.NONE);
 		tree.addMouseListener(new MouseListener() {
+
 			@Override
 			public void mouseUp(MouseEvent e) {
 				if ((e.button == 1) || (e.button == 3)) {
@@ -154,14 +156,13 @@ public class AdvancedConfigurationPage extends ConfigurationTreeEditorPage imple
 			}
 
 			@Override
-			public void mouseDown(MouseEvent e) {
-			}
+			public void mouseDown(MouseEvent e) {}
 
 			@Override
-			public void mouseDoubleClick(MouseEvent e) {
-			}
+			public void mouseDoubleClick(MouseEvent e) {}
 		});
 		tree.addKeyListener(new KeyListener() {
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.character == ' ') {
@@ -183,8 +184,7 @@ public class AdvancedConfigurationPage extends ConfigurationTreeEditorPage imple
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) {
-			}
+			public void keyReleased(KeyEvent e) {}
 		});
 	}
 

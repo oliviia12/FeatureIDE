@@ -29,8 +29,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- * Represents a class at the {@link FSTModel}.<br>
- * Contains {@link FSTRole}s with their corresponding {@link FSTFeature}.
+ * Represents a class at the {@link FSTModel}.<br> Contains {@link FSTRole}s with their corresponding {@link FSTFeature}.
  *
  * @author Jens Meinicke
  */

@@ -32,6 +32,7 @@ import de.ovgu.featureide.fm.ui.handlers.base.AbstractFMImportHandler;
  * @author Sebastian Krieter
  */
 public class ImportDIMACSHandler extends AbstractFMImportHandler {
+
 	@Override
 	protected IFeatureModelFormat setModelReader() {
 		return new DIMACSFormat();

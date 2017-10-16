@@ -89,16 +89,13 @@ public class FrameworkModelBuilder {
 		if (model == null) {
 			model = new FSTModel(featureProject);
 		}
-		//		featureProject.setFSTModel(model);
+		// featureProject.setFSTModel(model);
 		this.featureProject = featureProject;
 	}
 
 	/**
-	 * Will build model depending on <code>info.xml</code> inside feature folders<br>
-	 * <ul>
-	 * <li>May take a moment
-	 * <li>Only referenced interfaces inside <code>info.xml</code> will be noted
-	 * </ul>
+	 * Will build model depending on <code>info.xml</code> inside feature folders<br> <ul> <li>May take a moment <li>Only referenced interfaces inside
+	 * <code>info.xml</code> will be noted </ul>
 	 *
 	 * @throws CoreException
 	 */
@@ -164,7 +161,7 @@ public class FrameworkModelBuilder {
 			interfaceVisitor = new MyASTVisitor(true);
 			interfaceUnit.accept(interfaceVisitor);
 		} catch (final IOException e) {
-			//Interface not found
+			// Interface not found
 			FrameworkCorePlugin.getDefault().logWarning(e.getMessage());
 			return;
 		}
@@ -206,6 +203,7 @@ public class FrameworkModelBuilder {
 
 				final boolean isRefinement = calculateRefinement(parameterTypes, interfaceVisitor.getMethodSignature(m));
 				final FSTMethod met = new FSTMethod(m.getElementName(), parameterTypes, Signature.toString(m.getReturnType()), getModifiers(m)) {
+
 					/**
 					 * Returns true, if method is from interface or abstract class
 					 */
@@ -394,6 +392,7 @@ public class FrameworkModelBuilder {
 	 * @author Daniel Hohmann
 	 */
 	private class MyASTVisitor extends ASTVisitor {
+
 		Map<String, Block> methods;
 		Map<String, Integer> fields;
 		Map<String, List<String>> interfaceMethods;
@@ -419,11 +418,8 @@ public class FrameworkModelBuilder {
 		}
 
 		/**
-		 * Visit methods depending on ast node structure
-		 * <ul>
-		 * <li>if structure is java structure, it will save body of method
-		 * <li>if structure is interface structure, it will save parameters
-		 * </ul>
+		 * Visit methods depending on ast node structure <ul> <li>if structure is java structure, it will save body of method <li>if structure is interface
+		 * structure, it will save parameters </ul>
 		 */
 		@Override
 		public boolean visit(MethodDeclaration node) {
@@ -482,7 +478,7 @@ public class FrameworkModelBuilder {
 		 */
 		public List<String> getMethodSignature(IMethod m) {
 			if (!iterateOverInterface) {
-				return Collections.<String> emptyList();
+				return Collections.<String>emptyList();
 			}
 			return interfaceMethods.get(m.getElementName());
 		}

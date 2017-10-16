@@ -25,6 +25,7 @@ package de.ovgu.featureide.fm.core;
  * @author Sebastian Krieter
  */
 public interface IGraphicItem {
+
 	public static enum GraphicItem {
 		Feature, Connection, Constraint, Legend, Model
 	}

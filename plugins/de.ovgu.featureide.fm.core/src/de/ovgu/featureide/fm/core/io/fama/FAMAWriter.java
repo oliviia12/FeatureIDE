@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.core.io.AbstractFeatureModelWriter;
  */
 @Deprecated
 public class FAMAWriter extends AbstractFeatureModelWriter {
+
 	/**
 	 *
 	 * @param feature
@@ -102,7 +103,8 @@ public class FAMAWriter extends AbstractFeatureModelWriter {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.core.io.AbstractObjectWriter#writeToString()
 	 */
 	@Override

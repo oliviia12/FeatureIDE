@@ -95,9 +95,7 @@ public class NewFeatureIDEFileWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in
-	 * the wizard. We will create an operation and run it
-	 * using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
@@ -115,6 +113,7 @@ public class NewFeatureIDEFileWizard extends Wizard implements INewWizard {
 		}
 		createFolder(page.getPackage(), sourceFolder);
 		final IRunnableWithProgress op = new IRunnableWithProgress() {
+
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
@@ -156,9 +155,7 @@ public class NewFeatureIDEFileWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * The worker method. It will find the container, create the
-	 * file if missing or just replace its contents, and open
-	 * the editor on the newly created file.
+	 * The worker method. It will find the container, create the file if missing or just replace its contents, and open the editor on the newly created file.
 	 *
 	 * @param packageName
 	 */
@@ -176,18 +173,17 @@ public class NewFeatureIDEFileWizard extends Wizard implements INewWizard {
 				file.create(stream, true, monitor);
 			}
 			stream.close();
-		} catch (final IOException e) {
-		}
+		} catch (final IOException e) {}
 		monitor.worked(1);
 		monitor.setTaskName(OPENING_FILE_FOR_EDITING___);
 		getShell().getDisplay().asyncExec(new Runnable() {
+
 			@Override
 			public void run() {
 				final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 				try {
 					IDE.openEditor(page, file, true);
-				} catch (final PartInitException e) {
-				}
+				} catch (final PartInitException e) {}
 			}
 		});
 		monitor.worked(1);
@@ -204,8 +200,7 @@ public class NewFeatureIDEFileWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * We will accept the selection in the workbench to see if
-	 * we can initialize from it.
+	 * We will accept the selection in the workbench to see if we can initialize from it.
 	 *
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */

@@ -23,21 +23,10 @@ package de.ovgu.featureide.fm.core.base.event;
 import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 
 /**
- * Event triggered by changes to a feature model or its elements.
- * <br/>
- * <br/>
- * Each event contains the following information:
- * <ul>
- * <li>an event type which determine the kind of event</li>
- * <li>the sender (source) of this event, i.e., which object fired this event</li>
- * <li>the old value (if available), and the new value</li>
- * </ul>
- * <br/>
- * <br/>
- * This events are intended to be processed by {@link IEventListener} instances.
- * <br/>
- * <br/>
- * For usage to fire <code>FeatureIDEEvent</code>s, see {@link FeatureModel#fireEvent(FeatureIDEEvent)}.
+ * Event triggered by changes to a feature model or its elements. <br/> <br/> Each event contains the following information: <ul> <li>an event type which
+ * determine the kind of event</li> <li>the sender (source) of this event, i.e., which object fired this event</li> <li>the old value (if available), and the
+ * new value</li> </ul> <br/> <br/> This events are intended to be processed by {@link IEventListener} instances. <br/> <br/> For usage to fire
+ * <code>FeatureIDEEvent</code>s, see {@link FeatureModel#fireEvent(FeatureIDEEvent)}.
  *
  * @author Sebastian Krieter
  * @author Marcus Pinnecke
@@ -45,8 +34,7 @@ import de.ovgu.featureide.fm.core.base.impl.FeatureModel;
 public class FeatureIDEEvent {
 
 	/**
-	 * Typing of the event instance. This type have to be used in order to
-	 * distinguish of the event kind.
+	 * Typing of the event instance. This type have to be used in order to distinguish of the event kind.
 	 */
 	public enum EventType {
 		/**
@@ -149,10 +137,10 @@ public class FeatureIDEEvent {
 		 * The model data was saved to file.
 		 */
 		MODEL_DATA_SAVED,
-		//		/**
-		//		 * The model data was loaded from file.
-		//		 */
-		//		MODEL_DATA_LOADED,
+		// /**
+		// * The model data was loaded from file.
+		// */
+		// MODEL_DATA_LOADED,
 		/**
 		 * The model data loaded from a file has overridden the internal model instance.
 		 */
@@ -178,11 +166,10 @@ public class FeatureIDEEvent {
 		 */
 		ACTIVE_EXPLANATION_CHANGED,
 		/**
-		 * The active reason changed.
-		 * Events of this type are fired for feature model elements when the active explanation has changed.
-		 * It would be possible to instead simply notify each affected feature model element of the new active explanation.
-		 * However, this would lead to a negative performance impact as each feature model would have to search the explanation for the relevant reason again.
-		 * As such, each event of this type carries the respective reason so the feature model element does not have to look for it itself.
+		 * The active reason changed. Events of this type are fired for feature model elements when the active explanation has changed. It would be possible to
+		 * instead simply notify each affected feature model element of the new active explanation. However, this would lead to a negative performance impact as
+		 * each feature model would have to search the explanation for the relevant reason again. As such, each event of this type carries the respective reason
+		 * so the feature model element does not have to look for it itself.
 		 */
 		ACTIVE_REASON_CHANGED,
 		/**

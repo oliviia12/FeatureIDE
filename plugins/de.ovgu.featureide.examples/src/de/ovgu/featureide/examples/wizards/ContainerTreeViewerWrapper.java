@@ -51,6 +51,7 @@ public class ContainerTreeViewerWrapper implements ICheckable {
 	private ContainerCheckedTreeViewer selectedViewer;
 
 	class ParentCheckStateChangedEvent extends CheckStateChangedEvent {
+
 		private static final long serialVersionUID = 3615026101952835765L;
 		private boolean onlyRefresh = false;
 
@@ -68,6 +69,7 @@ public class ContainerTreeViewerWrapper implements ICheckable {
 	}
 
 	private class WrappedContainerCheckedTreeViewer extends ContainerCheckedTreeViewer {
+
 		public WrappedContainerCheckedTreeViewer(Composite parent, int style) {
 			super(parent, style);
 		}
@@ -158,7 +160,7 @@ public class ContainerTreeViewerWrapper implements ICheckable {
 		return ret.toArray();
 	}
 
-	//necessary to determine finish
+	// necessary to determine finish
 	public boolean isProjectSelected() {
 		for (final ContainerCheckedTreeViewer containerCheckedTreeViewer : listOfTreeViewer) {
 			final Object[] checkedElements = containerCheckedTreeViewer.getCheckedElements();
@@ -216,8 +218,7 @@ public class ContainerTreeViewerWrapper implements ICheckable {
 	}
 
 	@Override
-	public void addCheckStateListener(ICheckStateListener listener) {
-	}
+	public void addCheckStateListener(ICheckStateListener listener) {}
 
 	@Override
 	public boolean getChecked(Object element) {
@@ -225,7 +226,6 @@ public class ContainerTreeViewerWrapper implements ICheckable {
 	}
 
 	@Override
-	public void removeCheckStateListener(ICheckStateListener listener) {
-	}
+	public void removeCheckStateListener(ICheckStateListener listener) {}
 
 }

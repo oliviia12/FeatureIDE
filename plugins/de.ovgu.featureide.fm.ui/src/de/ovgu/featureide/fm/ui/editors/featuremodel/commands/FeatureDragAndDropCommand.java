@@ -35,8 +35,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.FeatureOperation
 import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.MoveFeatureOperation;
 
 /**
- * This command allows the user to move features at the feature diagram using
- * drag and drop.
+ * This command allows the user to move features at the feature diagram using drag and drop.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -118,7 +117,7 @@ public class FeatureDragAndDropCommand extends Command {
 	public void execute() {
 		final FeatureOperationData data = new FeatureOperationData(feature, oldParent, newParent, newIndex, oldIndex);
 		final MoveFeatureOperation op = new MoveFeatureOperation(data, editPart.getViewer(), newLocation, feature.getLocation().getCopy(), feature.getObject());
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 
 		try {
 			PlatformUI.getWorkbench().getOperationSupport().getOperationHistory().execute(op, null, null);

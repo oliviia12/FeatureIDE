@@ -31,6 +31,7 @@ import org.prop4j.NodeWriter.Notation;
  * @author Timo G&uuml;nther
  */
 public class NodeWriterTests {
+
 	@Test
 	public void testSimple() {
 		testEquals(new And(new Or("A", new Not("B")), new Or("C", "B", new Not("A"))), "(A | -B) & (C | B | -A)");
@@ -94,9 +95,8 @@ public class NodeWriterTests {
 	@Test
 	public void testNestedNotLiteral() {
 		/*
-		 * Technically, this is just a negated literal that happens to be using another literal as variable.
-		 * Since a literal has no children and its variable is not interpreted as a node,
-		 * this is not the same as nested negations.
+		 * Technically, this is just a negated literal that happens to be using another literal as variable. Since a literal has no children and its variable is
+		 * not interpreted as a node, this is not the same as nested negations.
 		 */
 		testEquals(new Literal(new Literal(new Literal("A", false), false), false), "---A");
 	}

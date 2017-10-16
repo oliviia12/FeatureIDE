@@ -166,7 +166,7 @@ public class AdvancedSatSolver extends SimpleSatSolver implements ISatSolver {
 	public SatResult hasSolution() {
 		try {
 			if (solver.isSatisfiable(assignment, globalTimeout)) {
-				//				solutionList.add(solver.model());
+				// solutionList.add(solver.model());
 				return SatResult.TRUE;
 			} else {
 				return SatResult.FALSE;
@@ -178,9 +178,7 @@ public class AdvancedSatSolver extends SimpleSatSolver implements ISatSolver {
 	}
 
 	/**
-	 * {@inheritDoc}<br/>
-	 * <br/>
-	 * Does only consider the given {@code assignment} and <b>not</b> the global assignment variable of the solver.
+	 * {@inheritDoc}<br/> <br/> Does only consider the given {@code assignment} and <b>not</b> the global assignment variable of the solver.
 	 */
 	@Override
 	public SatResult hasSolution(int... assignment) {
@@ -188,10 +186,10 @@ public class AdvancedSatSolver extends SimpleSatSolver implements ISatSolver {
 		System.arraycopy(internalMapping.convertToInternal(assignment), 0, unitClauses, 0, unitClauses.length);
 
 		try {
-			//TODO why is this necessary?
+			// TODO why is this necessary?
 			solver.setKeepSolverHot(true);
 			if (solver.isSatisfiable(new VecInt(unitClauses), globalTimeout)) {
-				//				solutionList.add(solver.model());
+				// solutionList.add(solver.model());
 				return SatResult.TRUE;
 			} else {
 				return SatResult.FALSE;

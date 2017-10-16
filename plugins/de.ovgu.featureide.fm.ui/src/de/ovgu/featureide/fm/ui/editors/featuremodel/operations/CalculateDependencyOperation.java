@@ -93,8 +93,8 @@ public class CalculateDependencyOperation extends AbstractFeatureModelOperation 
 	}
 
 	/**
-	 * Executes operation by calling feature model slicing and replacing the new root with the selected
-	 * feature. A wizard page presents the sub feature model and implicit constraints.
+	 * Executes operation by calling feature model slicing and replacing the new root with the selected feature. A wizard page presents the sub feature model
+	 * and implicit constraints.
 	 */
 	@Override
 	protected FeatureIDEEvent operation() {

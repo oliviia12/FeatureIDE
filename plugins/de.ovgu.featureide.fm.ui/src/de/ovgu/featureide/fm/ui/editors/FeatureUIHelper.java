@@ -40,8 +40,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ConnectionEditPart;
 
 /**
- * this is a hack to quickly associate features with dimension and size (which
- * is not available in the model). luckily these informations do not need to be
+ * this is a hack to quickly associate features with dimension and size (which is not available in the model). luckily these informations do not need to be
  * stored persistently.
  *
  * @author Christian Kaestner
@@ -131,8 +130,7 @@ public class FeatureUIHelper {
 	}
 
 	/**
-	 * @param zoomFactor
-	 *            the zoomFactor to set
+	 * @param zoomFactor the zoomFactor to set
 	 */
 	public static void setZoomFactor(double zoomFactor) {
 		FeatureUIHelper.zoomFactor = zoomFactor;
@@ -147,6 +145,7 @@ public class FeatureUIHelper {
 			return;
 		}
 		zoomManager.addZoomListener(new ZoomListener() {
+
 			@Override
 			public void zoomChanged(double newZoomFactor) {
 				FeatureUIHelper.zoomFactor = newZoomFactor;
@@ -215,8 +214,9 @@ public class FeatureUIHelper {
 	}
 
 	public static Point getSourceLocation(IGraphicalFeature feature) {
-		/* Checks if the feature is hidden or has a hidden parent and hidden features should not be shown or if the feature
-		 * has a collapsed parent and should therefore not be shown.
+		/*
+		 * Checks if the feature is hidden or has a hidden parent and hidden features should not be shown or if the feature has a collapsed parent and should
+		 * therefore not be shown.
 		 */
 		if ((feature.getObject().getStructure().hasHiddenParent() && !feature.getGraphicalModel().getLayout().showHiddenFeatures())
 				|| feature.hasCollapsedParent()) {

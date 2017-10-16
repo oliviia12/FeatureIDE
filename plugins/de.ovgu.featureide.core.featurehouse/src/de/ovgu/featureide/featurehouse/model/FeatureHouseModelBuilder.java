@@ -47,8 +47,7 @@ import de.ovgu.featureide.featurehouse.FeatureHouseCorePlugin;
 import de.ovgu.featureide.fm.core.base.FeatureUtils;
 
 /**
- * This builder builds the {@link FSTModel} for FeatureHouse projects, by
- * parsing the FeatureHouse internal FSTModel.
+ * This builder builds the {@link FSTModel} for FeatureHouse projects, by parsing the FeatureHouse internal FSTModel.
  *
  * @author Jens Meinicke
  * @author Marcus Pinnecke (Feature Interface)
@@ -97,11 +96,8 @@ public class FeatureHouseModelBuilder implements FHNodeTypes {
 	/**
 	 * Builds the model out of the FSTNodes of the FeatureHouse composer
 	 *
-	 * @param nodes
-	 *            The fstNodes
-	 * @param completeModel
-	 *            <code>true</code> for completions mode: old methods will not
-	 *            be overwritten
+	 * @param nodes The fstNodes
+	 * @param completeModel <code>true</code> for completions mode: old methods will not be overwritten
 	 */
 	@SuppressWarnings("unchecked")
 	public void buildModel(ArrayList<FSTNode> nodes, boolean completeModel) {
@@ -161,6 +157,7 @@ public class FeatureHouseModelBuilder implements FHNodeTypes {
 
 	private void caseCompileUnit(FSTNode node) {
 		node.accept(new FSTVisitor() {
+
 			@Override
 			public boolean visit(FSTTerminal terminal) {
 				if (JAVA_NODE_IMPORTDECLARATION.equals(terminal.getType())) {
@@ -183,7 +180,7 @@ public class FeatureHouseModelBuilder implements FHNodeTypes {
 			return;
 		}
 		currentRole = model.addRole(currentFeature.getName(), model.getAbsoluteClassName(currentFile), currentFile);
-		//create directives?? class added ppmodelbuilder
+		// create directives?? class added ppmodelbuilder
 		classFragmentStack.clear();
 		classFragmentStack.push(currentRole.getClassFragment());
 	}

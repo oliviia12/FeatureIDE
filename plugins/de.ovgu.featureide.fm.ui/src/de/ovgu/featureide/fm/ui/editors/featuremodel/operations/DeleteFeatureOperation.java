@@ -92,7 +92,7 @@ public class DeleteFeatureOperation extends AbstractFeatureModelOperation {
 			deleted = featureModel.deleteFeature(feature);
 		}
 
-		//Replace feature name in constraints
+		// Replace feature name in constraints
 		if (replacement != null) {
 			for (final IConstraint c : featureModel.getConstraints()) {
 				if (c.getContainedFeatures().contains(feature)) {
@@ -101,7 +101,7 @@ public class DeleteFeatureOperation extends AbstractFeatureModelOperation {
 			}
 		}
 
-		//make sure after delete the group type of the parent is set to and if there is only one child left
+		// make sure after delete the group type of the parent is set to and if there is only one child left
 		if (oldParent != null) {
 			or = oldParent.getStructure().isOr();
 			alternative = oldParent.getStructure().isAlternative();
@@ -144,7 +144,7 @@ public class DeleteFeatureOperation extends AbstractFeatureModelOperation {
 			}
 			featureModel.addFeature(feature);
 
-			//Replace feature name in Constraints
+			// Replace feature name in Constraints
 			if (replacement != null) {
 				for (final IConstraint c : featureModel.getConstraints()) {
 					if (c.getContainedFeatures().contains(replacement)) {
@@ -153,7 +153,7 @@ public class DeleteFeatureOperation extends AbstractFeatureModelOperation {
 				}
 			}
 
-			//When deleting a child and leaving one child behind the group type will be changed to and. reverse to old group type
+			// When deleting a child and leaving one child behind the group type will be changed to and. reverse to old group type
 			if ((oldParent != null) && or) {
 				oldParent.getStructure().changeToOr();
 			} else if ((oldParent != null) && alternative) {

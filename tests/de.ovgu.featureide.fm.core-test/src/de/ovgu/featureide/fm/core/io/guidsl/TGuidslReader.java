@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
  * @author Fabian Benduhn
  */
 public class TGuidslReader {
+
 	protected static String AND_GROUP_ALL_OPTIONAL = "Root : [Base] :: _Root ; Base : [A] [B] [C] :: _Base ;";
 	protected static String AND_GROUP_A_MANDATORY = "Root : [Base] :: _Root ; Base : A [B] [C] :: _Base ;";
 	protected static String OR_GROUP = "Root : Base* :: _Root ;Base : A	| B	| C ;";

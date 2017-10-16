@@ -78,9 +78,8 @@ public class TreeClickListener implements IDoubleClickListener {
 	}
 
 	/**
-	 * Performs actions depending on the type of the clicked note e.g. opening a
-	 * dialog for {@link ConfigParentNode.ConfigNode} or
-	 * expanding/collapsing nodes(default operation).
+	 * Performs actions depending on the type of the clicked note e.g. opening a dialog for {@link ConfigParentNode.ConfigNode} or expanding/collapsing
+	 * nodes(default operation).
 	 *
 	 */
 	@Override
@@ -96,6 +95,7 @@ public class TreeClickListener implements IDoubleClickListener {
 						|| (selected instanceof MethodNodeParent) || sortNode.isSortByValue()));
 
 				final UIJob job = new UIJob(RESORT_NODE) {
+
 					@Override
 					public IStatus runInUIThread(IProgressMonitor monitor) {
 						view.refresh(sortNode);
@@ -134,8 +134,7 @@ public class TreeClickListener implements IDoubleClickListener {
 	}
 
 	/**
-	 * Opens a dialog to start the calculation corresponding to the clicked
-	 * config-node - but only if their isn't already a calculation in progress.
+	 * Opens a dialog to start the calculation corresponding to the clicked config-node - but only if their isn't already a calculation in progress.
 	 *
 	 */
 	private void handleStatisticsSemanticalNodes(DoubleClickEvent event, Object selected) {
@@ -158,8 +157,7 @@ public class TreeClickListener implements IDoubleClickListener {
 			IRegion lineInfo = null;
 			try {
 				lineInfo = document.getLineInformation(lineNumber - 1);
-			} catch (final BadLocationException e) {
-			}
+			} catch (final BadLocationException e) {}
 			if (lineInfo != null) {
 				editor.selectAndReveal(lineInfo.getOffset(), lineInfo.getLength());
 			}
@@ -173,8 +171,8 @@ public class TreeClickListener implements IDoubleClickListener {
 		IContentDescription description;
 		try {
 			description = iFile.getContentDescription();
-			final IEditorDescriptor desc = workbench.getEditorRegistry().getDefaultEditor(iFile.getName(),
-					(description != null) ? description.getContentType() : null);
+			final IEditorDescriptor desc =
+					workbench.getEditorRegistry().getDefaultEditor(iFile.getName(), (description != null) ? description.getContentType() : null);
 			editorPart = activePage.openEditor(new FileEditorInput(iFile), (desc != null) ? desc.getId() : "org.eclipse.ui.DefaultTextEditor");
 			scrollToLine(editorPart, line);
 		} catch (final CoreException e) {

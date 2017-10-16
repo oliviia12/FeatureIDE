@@ -99,6 +99,7 @@ import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
  * @author Reimar Schroeter
  */
 public class VelvetFeatureModelFormat implements IFeatureModelFormat {
+
 	public static boolean IS_USED_AS_API = false;
 	public static final String ID = PluginID.PLUGIN_ID + ".format.fm." + VelvetFeatureModelFormat.class.getSimpleName();
 
@@ -340,6 +341,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 	}
 
 	private static class ConstraintNode {
+
 		private final Node computedNode;
 		private final Tree rawNode;
 
@@ -351,8 +353,8 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 
 	private static final ExtendedFeatureModelFactory factory = ExtendedFeatureModelFactory.getInstance();
 
-	private static final int[] binaryOperators = { VelvetParser.OP_OR, VelvetParser.OP_AND, VelvetParser.OP_XOR, VelvetParser.OP_IMPLIES,
-			VelvetParser.OP_EQUIVALENT };
+	private static final int[] binaryOperators =
+			{ VelvetParser.OP_OR, VelvetParser.OP_AND, VelvetParser.OP_XOR, VelvetParser.OP_IMPLIES, VelvetParser.OP_EQUIVALENT };
 	private static final String[] paths = { "%s.velvet", "%s.xml", "MPL/%s.velvet", "MPL/%s.xml" };
 
 	private final LinkedList<Tree> atrributeConstraintNodes = new LinkedList<>();
@@ -360,7 +362,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 	private final LinkedList<ConstraintNode> constraintNodeList = new LinkedList<>();
 	private final HashSet<String> usedVariables = new HashSet<>();
 
-	//TODO
+	// TODO
 	private final boolean velvetImport = false;
 
 	private ModelMarkerHandler<IResource> modelMarkerHandler;
@@ -371,8 +373,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 	/**
 	 * Reads external model with the right FeatureModelReader.
 	 *
-	 * @param file
-	 *            file of feature model
+	 * @param file file of feature model
 	 * @return the feature model or null if error occurred
 	 */
 	private IFeatureModel readExternalModelFile(File file) {
@@ -465,11 +466,11 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 			if (literal.var.equals(rootName)) {
 				literal.var = parentModelname;
 			} else {
-				//if fully qualified name
+				// if fully qualified name
 
 				IFeature feature = targetModel.getFeature(literal.var.toString().replace(rootName, parentModelname));
 				if (feature == null) {
-					//else
+					// else
 					feature = targetModel.getFeature(parentModelname + "." + literal.var.toString());
 				}
 				literal.var = feature.getName();
@@ -600,14 +601,8 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 	}
 
 	/**
-	 * Search for the right File to include etc. The following search path is
-	 * used:
-	 * <ol>
-	 * <li>./NAME.velvet</li>
-	 * <li>./NAME.xml</li>
-	 * <li>./MPL/NAME.velvet</li>
-	 * <li>/NAME_AS_PROJECT/model.xml</li>
-	 * </ol>
+	 * Search for the right File to include etc. The following search path is used: <ol> <li>./NAME.velvet</li> <li>./NAME.xml</li> <li>./MPL/NAME.velvet</li>
+	 * <li>/NAME_AS_PROJECT/model.xml</li> </ol>
 	 *
 	 * @param name the name of file or project
 	 * @return File object if found else null
@@ -695,6 +690,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 			final File searchDir = new File(featureModelFile.getParentFile(), "MPL");
 			if (searchDir != null) {
 				final File[] files = searchDir.listFiles(new FilenameFilter() {
+
 					@Override
 					public boolean accept(File dir, String fileName) {
 						final int index = fileName.lastIndexOf('.');
@@ -710,8 +706,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 	}
 
 	/**
-	 * Returns the eclipse project of the file with the textual representation
-	 * of the feature model
+	 * Returns the eclipse project of the file with the textual representation of the feature model
 	 *
 	 * @return the project of the file or null if not known
 	 */
@@ -745,9 +740,9 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 		usedVariables.clear();
 
 		extFeatureModel.reset();
-		//TODO Layout
-		//		extFeatureModel.getLayout().showHiddenFeatures(true);
-		//		extFeatureModel.getLayout().verticalLayout(false);
+		// TODO Layout
+		// extFeatureModel.getLayout().showHiddenFeatures(true);
+		// extFeatureModel.getLayout().verticalLayout(false);
 		if (getProject() != null) {
 			modelMarkerHandler = new ModelMarkerHandler<IResource>(getProject().getFile(featureModelFile.getName()));
 			modelMarkerHandler.deleteAllModelMarkers();
@@ -1013,7 +1008,7 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 		final LinkedList<Tree> nodeList = getChildren(root);
 
 		final IFeature parentFeature = parentStack.pop();
-		//		parentFeature.getStructure().setAnd();
+		// parentFeature.getStructure().setAnd();
 
 		while (!nodeList.isEmpty()) {
 			final Tree curNode = nodeList.poll();
@@ -1274,8 +1269,8 @@ public class VelvetFeatureModelFormat implements IFeatureModelFormat {
 					rootFeature.addChild(parameterFeature);
 
 					for (final String projectName : possibleProjects) {
-						final IFeatureStructure projectFeature = mappingModelFactory
-								.createFeature(mappingModel, parameterFeature.getFeature().getName() + "." + projectName).getStructure();
+						final IFeatureStructure projectFeature =
+								mappingModelFactory.createFeature(mappingModel, parameterFeature.getFeature().getName() + "." + projectName).getStructure();
 						projectFeature.setAbstract(false);
 						projectFeature.setMandatory(false);
 						parameterFeature.addChild(projectFeature);

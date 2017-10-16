@@ -55,7 +55,8 @@ public class OpenFileAction extends Action {
 		this.file = file;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
 	@Override

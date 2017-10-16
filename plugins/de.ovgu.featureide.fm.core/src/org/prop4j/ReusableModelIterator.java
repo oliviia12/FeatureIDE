@@ -64,8 +64,7 @@ public class ReusableModelIterator implements Iterator<int[]> {
 	}
 
 	public long count() {
-		while (findNext()) {
-		}
+		while (findNext()) {}
 		final long result = timeout ? -count : count;
 		reset();
 		return result;
@@ -118,8 +117,7 @@ public class ReusableModelIterator implements Iterator<int[]> {
 	}
 
 	@Override
-	public void remove() {
-	}
+	public void remove() {}
 
 	public IVecInt getAssumptions() {
 		return assumptions;

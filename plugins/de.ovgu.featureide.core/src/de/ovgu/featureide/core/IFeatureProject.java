@@ -70,8 +70,8 @@ public interface IFeatureProject extends IBuilderMarkerHandler {
 	QualifiedName configConfigID = new QualifiedName("featureproject.configs", "currentEquation");
 
 	QualifiedName javaClassPathID = new QualifiedName("featureproject.configs", "javaClassPath");
-	QualifiedName contractCompositionID = new QualifiedName(IFeatureProject.class.getName() + "#ContractComposition",
-			IFeatureProject.class.getName() + "#ContractComposition");
+	QualifiedName contractCompositionID =
+			new QualifiedName(IFeatureProject.class.getName() + "#ContractComposition", IFeatureProject.class.getName() + "#ContractComposition");
 
 	String MARKER_UNUSED = "Unused: ";
 	String MARKER_FALSE_OPTIONAL = "False optional: ";
@@ -124,8 +124,7 @@ public interface IFeatureProject extends IBuilderMarkerHandler {
 	String[] getAdditionalJavaClassPath();
 
 	/**
-	 * Returns the name of the feature this resource belongs to, or <code>null</code> if the resource
-	 * does not belong to any feature in this project
+	 * Returns the name of the feature this resource belongs to, or <code>null</code> if the resource does not belong to any feature in this project
 	 */
 	String getFeatureName(IResource resource);
 
@@ -166,11 +165,8 @@ public interface IFeatureProject extends IBuilderMarkerHandler {
 	/**
 	 * Gets the current composer.
 	 *
-	 * @return The composer, specified for this project or <code>null</code> if the composerID is unknown
-	 *         <br>
-	 *         - The composer is now a property of the project and not
-	 *         specified by the nature or builder (every project has the same nature
-	 *         and builder, which can be extended by other eclipse plug-ins)
+	 * @return The composer, specified for this project or <code>null</code> if the composerID is unknown <br> - The composer is now a property of the project
+	 *         and not specified by the nature or builder (every project has the same nature and builder, which can be extended by other eclipse plug-ins)
 	 */
 	@CheckForNull
 	IComposerExtensionClass getComposer();

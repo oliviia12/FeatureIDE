@@ -45,16 +45,15 @@ import de.ovgu.featureide.ui.UIPlugin;
 import de.ovgu.featureide.ui.statistics.core.composite.LazyParent;
 
 /**
- * TreeNode who stores the number of classes, roles, fields and methods of a
- * given {@link FSTModel}.<br>
- * This node should only be used for a feature oriented project.
+ * TreeNode who stores the number of classes, roles, fields and methods of a given {@link FSTModel}.<br> This node should only be used for a feature oriented
+ * project.
  *
  * @author Schleicher Miro
  */
 public class StatisticsProgramSizeNew extends LazyParent {
 
-	private final static String[] ignoredExtensions = { "jpg", "jpeg", "raw", "hdr", "tiff", "bmp", "jpe", "dib", "gif", "pdf", "png", "zip", "wav", "mp3",
-			"avi", "flv", "midi" };
+	private final static String[] ignoredExtensions =
+			{ "jpg", "jpeg", "raw", "hdr", "tiff", "bmp", "jpe", "dib", "gif", "pdf", "png", "zip", "wav", "mp3", "avi", "flv", "midi" };
 
 	private final HashMap<String, Integer> featureExtensionLOCList = new HashMap<String, Integer>();
 	private final FSTModel fstModel;
@@ -138,7 +137,7 @@ public class StatisticsProgramSizeNew extends LazyParent {
 
 					if (!isIgnoredExtension(file.getFileExtension())) {
 						switch (file.getFileExtension()) {
-						//TODO complete for all extensions
+						// TODO complete for all extensions
 						case "java":
 						case "c":
 						case "h":
@@ -153,12 +152,12 @@ public class StatisticsProgramSizeNew extends LazyParent {
 							moreLineStart = "/*";
 							moreLineEnd = "*/";
 							break;
-						//	TODO Haskell comments
-						//	case "hs":
-						//	oneLineComment = "--";
-						//	moreLineStart = "{-";
-						//	moreLineEnd = "-}";
-						//	break;
+						// TODO Haskell comments
+						// case "hs":
+						// oneLineComment = "--";
+						// moreLineStart = "{-";
+						// moreLineEnd = "-}";
+						// break;
 						case "als":
 						case "xmi":
 							break;
@@ -170,7 +169,7 @@ public class StatisticsProgramSizeNew extends LazyParent {
 						}
 
 						try {
-							numberOfLinesInThisFile = countLOC(file, oneLineComment, moreLineStart, moreLineEnd/*, nested, nestedCounter*/);
+							numberOfLinesInThisFile = countLOC(file, oneLineComment, moreLineStart, moreLineEnd/* , nested, nestedCounter */);
 
 						} catch (final FileNotFoundException e) {
 							e.printStackTrace();

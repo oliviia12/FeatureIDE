@@ -60,8 +60,7 @@ public class VerticalLayout extends FeatureDiagramLayoutManager {
 	}
 
 	/**
-	 * positions of features that have children are now set from right to left (for each level)
-	 * (centered by their children's positions
+	 * positions of features that have children are now set from right to left (for each level) (centered by their children's positions
 	 */
 	private int centerOther(IGraphicalFeature parent, int level) {
 		final Iterable<? extends IGraphicalFeature> children = getChildren(parent);

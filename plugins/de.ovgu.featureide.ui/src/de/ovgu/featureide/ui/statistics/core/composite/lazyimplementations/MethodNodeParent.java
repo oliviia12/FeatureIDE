@@ -54,7 +54,6 @@ public class MethodNodeParent extends AbstractSortModeNode {
 	}
 
 	@Override
-	protected void initChildren() {
-	}
+	protected void initChildren() {}
 
 }

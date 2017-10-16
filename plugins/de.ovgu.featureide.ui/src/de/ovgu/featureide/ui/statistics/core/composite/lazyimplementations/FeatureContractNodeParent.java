@@ -42,8 +42,7 @@ public class FeatureContractNodeParent extends AbstractSortModeNode {
 	}
 
 	@Override
-	protected void initChildren() {
-	}
+	protected void initChildren() {}
 
 	public int countFeature(LinkedList<FSTMethod> methods) {
 

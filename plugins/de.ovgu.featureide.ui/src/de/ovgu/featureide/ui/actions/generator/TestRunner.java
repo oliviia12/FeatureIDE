@@ -213,6 +213,7 @@ public class TestRunner {
 	private static final NoExitSecurityManager NO_EXIT_MANAGER = new NoExitSecurityManager();
 
 	private static class NoExitSecurityManager extends SecurityManager {
+
 		@Override
 		public void checkPermission(Permission perm) {
 			// allow anything.
@@ -232,6 +233,7 @@ public class TestRunner {
 
 	@SuppressWarnings(SERIAL)
 	private static class SystemExitException extends RuntimeException {
+
 		public SystemExitException(int status) {
 			super("Systen.exit: " + status);
 		}

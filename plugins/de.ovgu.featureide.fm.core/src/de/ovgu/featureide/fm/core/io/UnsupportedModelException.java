@@ -21,8 +21,7 @@
 package de.ovgu.featureide.fm.core.io;
 
 /**
- * This Exception is thrown if the grammar has some errors. See message for
- * details.
+ * This Exception is thrown if the grammar has some errors. See message for details.
  *
  * @author Thomas Thuem
  */

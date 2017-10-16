@@ -23,12 +23,13 @@ package de.ovgu.featureide.fm.core.explanations.config;
 import de.ovgu.featureide.fm.core.configuration.SelectableFeature;
 
 /**
- * Generates explanations for automatic selections in configurations.
- * These detail why a given feature must be selected or unselected given the other feature selections.
+ * Generates explanations for automatic selections in configurations. These detail why a given feature must be selected or unselected given the other feature
+ * selections.
  *
  * @author Timo G&uuml;nther
  */
 public interface AutomaticSelectionExplanationCreator extends ConfigurationExplanationCreator {
+
 	/**
 	 * Returns the automatic selection to explain.
 	 *

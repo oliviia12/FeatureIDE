@@ -23,13 +23,7 @@ package de.ovgu.featureide.ui.views.configMap.header;
 /**
  * A Parallelogram Hitbox.
  *
- * <pre>
- *                    skew
- *           ________|___
- *          /        |  /
- * height  /         | /
- *        /__________|/
- *     x/y    width
+ * <pre> skew ________|___ / | / height / | / /__________|/ x/y width
  *
  * </pre>
  *
@@ -37,6 +31,7 @@ package de.ovgu.featureide.ui.views.configMap.header;
  * @author Antje Moench
  */
 public class Parallelogram {
+
 	private float width, height, skew, x, y;
 
 	public Parallelogram() {

@@ -32,8 +32,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to set all siblings to collapsed. Enables
- * undo/redo functionality.
+ * Operation with functionality to set all siblings to collapsed. Enables undo/redo functionality.
  *
  * @author Maximilian Kühl
  */
@@ -44,10 +43,8 @@ public class SetSiblingsToCollapsedOperation extends AbstractFeatureModelOperati
 	private final LinkedList<Boolean> collapseStates = new LinkedList<Boolean>();
 
 	/**
-	 * @param label
-	 *            Description of this operation to be used in the menu
-	 * @param feature
-	 *            feature on which this operation will be executed
+	 * @param label Description of this operation to be used in the menu
+	 * @param feature feature on which this operation will be executed
 	 *
 	 */
 	public SetSiblingsToCollapsedOperation(IFeature feature, IGraphicalFeatureModel graphicalFeatureModel) {

@@ -40,9 +40,7 @@ import de.ovgu.featureide.fm.core.color.ColorPalette;
 import de.ovgu.featureide.ui.UIPlugin;
 
 /**
- * draws the images for the ProjectExplorer.
- * The image includes the file-, folder- or package - image
- * and the color of the feature.
+ * draws the images for the ProjectExplorer. The image includes the file-, folder- or package - image and the color of the feature.
  *
  *
  * @author Jonas Weigt
@@ -229,8 +227,7 @@ public class DrawImageForProjectExplorer {
 
 	/**
 	 * @param colorID gets a list of Integer to create an Image with the colors in the list
-	 * @return a colored image with the original colors from
-	 *         de.ovgu.featureide.fm.core.annotation.ColorPalette
+	 * @return a colored image with the original colors from de.ovgu.featureide.fm.core.annotation.ColorPalette
 	 */
 	private static Image getColorImage(int colorID) {
 		return COLOR_IMAGES.get(colorID);

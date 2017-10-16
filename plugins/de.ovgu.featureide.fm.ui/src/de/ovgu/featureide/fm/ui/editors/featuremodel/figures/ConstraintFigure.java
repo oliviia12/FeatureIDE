@@ -172,8 +172,8 @@ public class ConstraintFigure extends ModelElementFigure implements GUIDefaults 
 			break;
 		case FALSE_OPTIONAL:
 			if (!constraintProperties.getFalseOptionalFeatures().isEmpty()) {
-				final List<String> falseOptionalFeatures = Functional.mapToList(constraintProperties.getFalseOptionalFeatures(),
-						new Functional.ToStringFunction<IFeature>());
+				final List<String> falseOptionalFeatures =
+						Functional.mapToList(constraintProperties.getFalseOptionalFeatures(), new Functional.ToStringFunction<IFeature>());
 				Collections.sort(falseOptionalFeatures, String.CASE_INSENSITIVE_ORDER);
 
 				String s = FALSE_OPTIONAL;

@@ -30,6 +30,7 @@ import de.ovgu.featureide.fm.core.editing.NodeCreator;
  * @author Sebastian Krieter
  */
 public class LiteralComparator implements Comparator<Literal> {
+
 	@Override
 	public int compare(Literal arg0, Literal arg1) {
 		if (arg0.positive == arg1.positive) {

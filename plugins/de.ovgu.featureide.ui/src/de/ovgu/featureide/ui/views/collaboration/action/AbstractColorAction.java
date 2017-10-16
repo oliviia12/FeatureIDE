@@ -36,6 +36,7 @@ import de.ovgu.featureide.ui.views.collaboration.editparts.CollaborationEditPart
  * @author Sebastian Krieter
  */
 public abstract class AbstractColorAction extends Action {
+
 	private GraphicalViewerImpl viewer;
 	protected CollaborationView collaborationView;
 	protected int index;

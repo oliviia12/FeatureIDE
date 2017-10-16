@@ -56,23 +56,18 @@ import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 import de.ovgu.featureide.fm.ui.FMUIPlugin;
 
 /**
- * Class which contains several tests for {@link ConstraintDialog} text field,
- * which contains user written constraints.
+ * Class which contains several tests for {@link ConstraintDialog} text field, which contains user written constraints.
  *
  * @author Marcus Pinnecke
  */
 public final class ConstraintTextValidator {
 
 	/**
-	 * returns a List of all features that are caused to be dead by the
-	 * constraint input
+	 * returns a List of all features that are caused to be dead by the constraint input
 	 *
-	 * @param input
-	 *            constraint to be evaluated
-	 * @param model
-	 *            the feature model
-	 * @return List of all dead Features, empty if no feature is caused to be
-	 *         dead
+	 * @param input constraint to be evaluated
+	 * @param model the feature model
+	 * @return List of all dead Features, empty if no feature is caused to be dead
 	 */
 	private SortedSet<IFeature> getDeadFeatures(IConstraint constraint, String input, IFeatureModel model) {
 		Collection<IFeature> deadFeaturesBefore = null;
@@ -103,11 +98,9 @@ public final class ConstraintTextValidator {
 	}
 
 	/**
-	 * returns a String to be displayed in the dialog header contains the list
-	 * of dead features
+	 * returns a String to be displayed in the dialog header contains the list of dead features
 	 *
-	 * @param deadFeatures
-	 *            List of dead Features
+	 * @param deadFeatures List of dead Features
 	 **/
 	private String getDeadFeatureString(Set<IFeature> deadFeatures) {
 		final StringBuilder featureString = new StringBuilder();
@@ -182,8 +175,7 @@ public final class ConstraintTextValidator {
 	/**
 	 * Tests if the {@link IConstraint} will change the product line.
 	 *
-	 * @param constraint
-	 *            The actual {@link IConstraint}
+	 * @param constraint The actual {@link IConstraint}
 	 * @return <code>true</code> if the {@link IConstraint} is redundant
 	 */
 	private boolean isRedundant(IConstraint constraint, final IFeatureModel featureModel, String input, final int timeOut) {
@@ -216,10 +208,8 @@ public final class ConstraintTextValidator {
 	/**
 	 * returns true if constraint is satisfiable otherwise false
 	 *
-	 * @param constraint
-	 *            the constraint to be evaluated
-	 * @param timeout
-	 *            timeout in ms
+	 * @param constraint the constraint to be evaluated
+	 * @param timeout timeout in ms
 	 */
 	public static boolean isSatisfiable(String constraint, int timeout) {
 		final NodeReader nodeReader = new NodeReader();
@@ -236,10 +226,8 @@ public final class ConstraintTextValidator {
 	/**
 	 * returns true if the constraint is always true
 	 *
-	 * @param constraint
-	 *            the constraint to be evaluated
-	 * @param timeout
-	 *            timeout in ms
+	 * @param constraint the constraint to be evaluated
+	 * @param timeout timeout in ms
 	 *
 	 */
 	private boolean isTautology(String constraint, int timeout) {
@@ -263,6 +251,7 @@ public final class ConstraintTextValidator {
 	 * @author Marcus Pinnecke
 	 */
 	public static class ValidationMessage {
+
 		final ValidationResult validationResult;
 		final String details;
 
@@ -299,6 +288,7 @@ public final class ConstraintTextValidator {
 	}
 
 	public abstract class ValidationJob extends Job {
+
 		public ValidationJob(String name) {
 			super(name);
 		}
@@ -312,8 +302,8 @@ public final class ConstraintTextValidator {
 	}
 
 	/**
-	 * Runs tests not blocking the current GUI thread. The result will be returned each test's result and a separate notification
-	 * before the first tests starts and (in case of all test has passed) when the entire series has ended.
+	 * Runs tests not blocking the current GUI thread. The result will be returned each test's result and a separate notification before the first tests starts
+	 * and (in case of all test has passed) when the entire series has ended.
 	 *
 	 * @param constraint Constraint
 	 * @param timeOut Timeout
@@ -410,6 +400,7 @@ public final class ConstraintTextValidator {
 			private void updateUI(final IConsumer<ValidationMessage> consumer, final String message) {
 				if (!canceled) {
 					new UIJob("Updating ConstraintDialog Message") {
+
 						@Override
 						public IStatus runInUIThread(IProgressMonitor monitor) {
 							if (!canceled) {
@@ -441,15 +432,12 @@ public final class ConstraintTextValidator {
 	}
 
 	/**
-	 * returns true if the constraint causes the feature model to be void
-	 * otherwise false
+	 * returns true if the constraint causes the feature model to be void otherwise false
 	 *
-	 * @param input
-	 *            constraint to be evaluated
-	 * @param model
-	 *            the feature model
+	 * @param input constraint to be evaluated
+	 * @param model the feature model
 	 *
-	 *            * @throws TimeoutException
+	 *        * @throws TimeoutException
 	 */
 	private boolean voidsModel(final IConstraint constraint, String input, IFeatureModel model) throws TimeoutException {
 		if (!FeatureModelManager.getAnalyzer(model).isValid()) {

@@ -33,6 +33,7 @@ import de.ovgu.featureide.ui.views.configMap.ConfigurationMapFilter;
  * @author Antje Moench
  */
 public class DeadFeatureFilter extends ConfigurationMapFilter {
+
 	private List<IFeature> deadFeatures;
 	private IFeatureModel featureModelFilterIsInitializedFor;
 

@@ -42,6 +42,7 @@ public class LegendLayoutAction extends Action {
 	private final IGraphicalFeatureModel featureModel;
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

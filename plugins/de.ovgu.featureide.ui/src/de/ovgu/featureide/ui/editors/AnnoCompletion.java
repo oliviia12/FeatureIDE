@@ -58,8 +58,7 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 	 */
 	private static final Image FEATURE_ICON = UIPlugin.getImage("FeatureIconSmall.ico");
 
-	public AnnoCompletion() {
-	}
+	public AnnoCompletion() {}
 
 	@Override
 	public List<IContextInformation> computeContextInformation(ContentAssistInvocationContext arg0, IProgressMonitor arg1) {
@@ -77,8 +76,7 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 	}
 
 	@Override
-	public void sessionStarted() {
-	}
+	public void sessionStarted() {}
 
 	public List<CompletionProposal> getCompl(final IFeatureProject featureProject, final CharSequence prefix) {
 		final LinkedList<CompletionProposal> ret_List = new LinkedList<CompletionProposal>();
@@ -105,8 +103,8 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 			context = (JavaContentAssistInvocationContext) arg0;
 		}
 
-		final IFile file = ((IFileEditorInput) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput())
-				.getFile();
+		final IFile file =
+				((IFileEditorInput) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput()).getFile();
 		final IFeatureProject featureProject = CorePlugin.getFeatureProject(file);
 
 		if ((context == null) || (file == null) || (featureProject == null)) {
@@ -131,7 +129,7 @@ public class AnnoCompletion implements IJavaCompletionProposalComputer {
 
 			final LazyJavaCompletionProposal curFeature = new LazyJavaCompletionProposal(prop, context);
 			curFeature.setImage(FEATURE_ICON);
-			//			curFeature.setReplacementLength(prop.getCompletion().length - prefix.length());
+			// curFeature.setReplacementLength(prop.getCompletion().length - prefix.length());
 			curFeature.setReplacementString(new String(prop.getCompletion()).replace(prefix, ""));
 			curFeature.setReplacementOffset(context.getInvocationOffset());
 

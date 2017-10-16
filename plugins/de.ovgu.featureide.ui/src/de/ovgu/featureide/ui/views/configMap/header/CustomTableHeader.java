@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.Display;
  * @author Antje Moench
  */
 public class CustomTableHeader extends Canvas implements PaintListener, MouseListener, ISelectionProvider {
+
 	private List<CustomColumnStyle> columnStyles;
 	private Transform transform;
 	private final Parallelogram hitbox;
@@ -217,7 +218,8 @@ public class CustomTableHeader extends Canvas implements PaintListener, MouseLis
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.swt.events.PaintListener#paintControl(org.eclipse.swt.events.PaintEvent)
 	 */
 	@Override
@@ -312,7 +314,7 @@ public class CustomTableHeader extends Canvas implements PaintListener, MouseLis
 
 				columnOffset += width;
 
-				//draw line
+				// draw line
 				if (drawLines && col.isDrawingLine()) {
 					transform.identity();
 					gc.setTransform(transform);
@@ -328,12 +330,12 @@ public class CustomTableHeader extends Canvas implements PaintListener, MouseLis
 		return (Math.PI * degrees) / 180.0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
 	 */
 	@Override
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-	}
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {}
 
 	@Override
 	public ISelection getSelection() {
@@ -341,10 +343,8 @@ public class CustomTableHeader extends Canvas implements PaintListener, MouseLis
 	}
 
 	@Override
-	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-	}
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {}
 
 	@Override
-	public void setSelection(ISelection selection) {
-	}
+	public void setSelection(ISelection selection) {}
 }

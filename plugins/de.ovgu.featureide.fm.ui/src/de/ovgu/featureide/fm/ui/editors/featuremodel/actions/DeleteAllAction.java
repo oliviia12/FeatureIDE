@@ -70,10 +70,7 @@ public class DeleteAllAction extends SingleSelectionAction {
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.ovgu.featureide.fm.ui.editors.featuremodel.actions.SingleSelectionAction
-	 * #updateProperties()
+	 * @see de.ovgu.featureide.fm.ui.editors.featuremodel.actions.SingleSelectionAction #updateProperties()
 	 */
 	@Override
 	protected void updateProperties() {

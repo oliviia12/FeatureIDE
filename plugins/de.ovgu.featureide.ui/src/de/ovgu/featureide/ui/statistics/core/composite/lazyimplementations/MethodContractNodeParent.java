@@ -55,7 +55,6 @@ public class MethodContractNodeParent extends AbstractSortModeNode {
 	}
 
 	@Override
-	protected void initChildren() {
-	}
+	protected void initChildren() {}
 
 }

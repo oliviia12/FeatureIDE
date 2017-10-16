@@ -77,25 +77,22 @@ public class JobDoneListener implements IJobChangeListener {
 	/**
 	 * Private constructor for singleton-pattern.
 	 */
-	private JobDoneListener() {
-	}
+	private JobDoneListener() {}
 
 	@Override
-	public void aboutToRun(IJobChangeEvent event) {
-	}
+	public void aboutToRun(IJobChangeEvent event) {}
 
 	@Override
-	public void awake(IJobChangeEvent event) {
-	}
+	public void awake(IJobChangeEvent event) {}
 
 	/**
-	 * Reverses the actions of
-	 * {@link JobDoneListener#scheduled(IJobChangeEvent)}
+	 * Reverses the actions of {@link JobDoneListener#scheduled(IJobChangeEvent)}
 	 */
 	@Override
 	public void done(final IJobChangeEvent event) {
 		if ((event.getResult() == Status.OK_STATUS) || (event.getResult() == Status.CANCEL_STATUS)) {
 			final UIJob refreshJob = new UIJob(REFRESH_STATISTICS_VIEW) {
+
 				@Override
 				public IStatus runInUIThread(IProgressMonitor monitor) {
 					final Job job = event.getJob();
@@ -125,16 +122,15 @@ public class JobDoneListener implements IJobChangeListener {
 	}
 
 	@Override
-	public void running(IJobChangeEvent event) {
-	}
+	public void running(IJobChangeEvent event) {}
 
 	/**
-	 * Adds the scheduled job to the list of running jobs and gives the user
-	 * optical feedback that the requested node is being calculated.
+	 * Adds the scheduled job to the list of running jobs and gives the user optical feedback that the requested node is being calculated.
 	 */
 	@Override
 	public void scheduled(final IJobChangeEvent event) {
 		final UIJob refreshJob = new UIJob(REFRESH_STATISTICS_VIEW) {
+
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
 				final Job job = event.getJob();
@@ -158,8 +154,7 @@ public class JobDoneListener implements IJobChangeListener {
 	}
 
 	@Override
-	public void sleeping(IJobChangeEvent event) {
-	}
+	public void sleeping(IJobChangeEvent event) {}
 
 	public void cancelAllRunningTreeJobs() {
 		for (final IJob<?> job : runningJobs) {

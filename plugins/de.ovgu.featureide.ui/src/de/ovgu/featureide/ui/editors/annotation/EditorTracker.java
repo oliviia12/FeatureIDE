@@ -48,17 +48,18 @@ import de.ovgu.featureide.core.builder.IComposerExtensionClass;
 import de.ovgu.featureide.ui.UIPlugin;
 
 /**
- * Listens for an editorpart to attach the color annotation model and renaming
- * of titel for java editor
+ * Listens for an editorpart to attach the color annotation model and renaming of titel for java editor
  *
  * @author Sebastian Krieter
  */
 public class EditorTracker {
+
 	private static final Image TITLE_IMAGE = UIPlugin.getImage("JakFileIcon.png");
 	private final IWorkbench workbench;
 	private final HashSet<IWorkbenchPartReference> annotatedPartrefSet = new HashSet<IWorkbenchPartReference>();
 
 	private final IWindowListener windowListener = new IWindowListener() {
+
 		@Override
 		public void windowOpened(IWorkbenchWindow window) {
 			window.getPartService().addPartListener(partListener);
@@ -70,35 +71,34 @@ public class EditorTracker {
 		}
 
 		@Override
-		public void windowActivated(IWorkbenchWindow window) {
-		}
+		public void windowActivated(IWorkbenchWindow window) {}
 
 		@Override
-		public void windowDeactivated(IWorkbenchWindow window) {
-		}
+		public void windowDeactivated(IWorkbenchWindow window) {}
 	};
 
 	private final IPartListener2 partListener = new IPartListener2() {
+
 		@Override
 		public void partOpened(IWorkbenchPartReference partref) {
-			//System.out.println(OPENED+partref.getTitle());
+			// System.out.println(OPENED+partref.getTitle());
 
 		}
 
 		@Override
 		public void partActivated(IWorkbenchPartReference partref) {
-			//	System.out.println(ACTIVATED  +partref.getTitle());
+			// System.out.println(ACTIVATED +partref.getTitle());
 			annotateEditor(partref);
 		}
 
 		@Override
 		public void partBroughtToTop(IWorkbenchPartReference partref) {
-			//	System.out.println(TOTOP  +partref.getTitle());
+			// System.out.println(TOTOP +partref.getTitle());
 		}
 
 		@Override
 		public void partVisible(IWorkbenchPartReference partref) {
-			//System.out.println(VISIBLE  +partref.getTitle());
+			// System.out.println(VISIBLE +partref.getTitle());
 			try {
 				if (annotatedPartrefSet.contains(partref)) {
 					updateEditor(partref);
@@ -110,20 +110,16 @@ public class EditorTracker {
 		}
 
 		@Override
-		public void partInputChanged(IWorkbenchPartReference partref) {
-		}
+		public void partInputChanged(IWorkbenchPartReference partref) {}
 
 		@Override
-		public void partClosed(IWorkbenchPartReference partref) {
-		}
+		public void partClosed(IWorkbenchPartReference partref) {}
 
 		@Override
-		public void partDeactivated(IWorkbenchPartReference partref) {
-		}
+		public void partDeactivated(IWorkbenchPartReference partref) {}
 
 		@Override
-		public void partHidden(IWorkbenchPartReference partref) {
-		}
+		public void partHidden(IWorkbenchPartReference partref) {}
 	};
 
 	public EditorTracker(IWorkbench workbench) {
@@ -191,14 +187,10 @@ public class EditorTracker {
 	/**
 	 * Invokes a method using reflection
 	 *
-	 * @param obj
-	 *            object that is used to call the method
-	 * @param methodname
-	 *            name of the method
-	 * @param paramtype
-	 *            type of parameter
-	 * @param parameter
-	 *            object of parameter
+	 * @param obj object that is used to call the method
+	 * @param methodname name of the method
+	 * @param paramtype type of parameter
+	 * @param parameter object of parameter
 	 * @throws NoSuchMethodException
 	 * @throws IllegalAccessException
 	 * @throws InvocationTargetException
@@ -253,12 +245,10 @@ public class EditorTracker {
 	}
 
 	/**
-	 * Looks for the corresponding configuration file<br>
-	 * Necessary for generated products
+	 * Looks for the corresponding configuration file<br> Necessary for generated products
 	 *
 	 * @param parent
-	 * @return The name of the configuration or <code>null</code> if there is
-	 *         none
+	 * @return The name of the configuration or <code>null</code> if there is none
 	 */
 	private String getConfiguration(IContainer parent) {
 		try {
@@ -282,8 +272,7 @@ public class EditorTracker {
 	/**
 	 * @param parent
 	 * @param buildFolder
-	 * @return <code>true</code> if the build folder is a parent of the given
-	 *         file
+	 * @return <code>true</code> if the build folder is a parent of the given file
 	 */
 	private boolean isComposedFile(IContainer parent, IFolder buildFolder) {
 		if (parent != null) {

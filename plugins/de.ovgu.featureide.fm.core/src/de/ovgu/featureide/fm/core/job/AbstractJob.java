@@ -46,6 +46,7 @@ public abstract class AbstractJob<T> extends Job implements IJob<T> {
 
 	@SuppressWarnings("rawtypes")
 	private class JobFL extends JobChangeAdapter {
+
 		private final JobFinishListener listener;
 
 		public JobFL(JobFinishListener listener) {
@@ -145,19 +146,15 @@ public abstract class AbstractJob<T> extends Job implements IJob<T> {
 	}
 
 	/**
-	 * This method is called after {@link #work()} is finished regardless whether it succeeded or not.
-	 * The default method is empty.
+	 * This method is called after {@link #work()} is finished regardless whether it succeeded or not. The default method is empty.
 	 *
 	 * @param success {@code true} if the execution of {@link #work()} was complete and successful, {@code false} otherwise
 	 */
-	protected void finalWork() {
-	}
+	protected void finalWork() {}
 
 	/**
-	 * In this method all the work of the job is done.</br>
-	 * Use the {@link #workMonitor} field for progress monitoring and calling intermediate functions.</br>
-	 * </br>
-	 * Implementing jobs should continuously call {@link IMonitor#checkCancel()}.
+	 * In this method all the work of the job is done.</br> Use the {@link #workMonitor} field for progress monitoring and calling intermediate functions.</br>
+	 * </br> Implementing jobs should continuously call {@link IMonitor#checkCancel()}.
 	 *
 	 * @return {@code true} if no error occurred during the process
 	 * @throws Exception any exception (will be catched by the parent class)

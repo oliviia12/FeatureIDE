@@ -34,8 +34,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to set a feature to collapsed. Enables
- * undo/redo functionality.
+ * Operation with functionality to set a feature to collapsed. Enables undo/redo functionality.
  *
  * @author Joshua Sprey
  * @author Enis Belli
@@ -48,10 +47,8 @@ public class SetFeatureToCollapseOperation extends AbstractFeatureModelOperation
 	private List<FeatureConnection> targetConnections = new ArrayList<>();
 
 	/**
-	 * @param label
-	 *            Description of this operation to be used in the menu
-	 * @param feature
-	 *            feature on which this operation will be executed
+	 * @param label Description of this operation to be used in the menu
+	 * @param feature feature on which this operation will be executed
 	 *
 	 */
 	public SetFeatureToCollapseOperation(IFeature feature, IGraphicalFeatureModel graphicalFeatureModel) {

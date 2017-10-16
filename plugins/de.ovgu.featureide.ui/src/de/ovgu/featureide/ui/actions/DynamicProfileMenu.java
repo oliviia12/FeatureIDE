@@ -59,6 +59,7 @@ import de.ovgu.featureide.ui.UIPlugin;
 
 @SuppressWarnings({ "restriction" })
 public class DynamicProfileMenu extends ContributionItem {
+
 	private AddProfileColorSchemeAction addProfileSchemeAction;
 	private RenameProfileColorSchemeAction renameProfileSchemeAction;
 	private DeleteProfileColorSchemeAction deleteProfileSchemeAction;
@@ -69,8 +70,7 @@ public class DynamicProfileMenu extends ContributionItem {
 	}
 	private final boolean multipleSelected = isMultipleSelection();
 
-	public DynamicProfileMenu() {
-	}
+	public DynamicProfileMenu() {}
 
 	public DynamicProfileMenu(String id) {
 		super(id);
@@ -86,6 +86,7 @@ public class DynamicProfileMenu extends ContributionItem {
 		}
 		final MenuManager man = new MenuManager("Color Scheme Menu", UIPlugin.getDefault().getImageDescriptor("icons/FeatureColorIcon.gif"), "");
 		man.addMenuListener(new IMenuListener() {
+
 			@Override
 			public void menuAboutToShow(IMenuManager m) {
 				fillContextMenu(m);

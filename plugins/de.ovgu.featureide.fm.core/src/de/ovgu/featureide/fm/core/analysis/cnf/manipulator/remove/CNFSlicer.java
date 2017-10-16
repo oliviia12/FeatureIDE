@@ -365,7 +365,7 @@ public class CNFSlicer extends AbstractManipulator {
 		first = true;
 		try {
 			newSolver = new SimpleSatSolver(cnfCopy);
-			//		newSolver.addClauses(cleanClauseList);
+			// newSolver.addClauses(cleanClauseList);
 		} catch (final RuntimeContradictionException e) {
 			return false;
 		}

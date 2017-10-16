@@ -116,12 +116,12 @@ public class ExampleNewWizard extends Wizard implements INewWizard, IOverwriteQu
 	/**
 	 * Create the selected projects
 	 *
-	 * @return boolean <code>true</code> if all project creations were
-	 *         successful.
+	 * @return boolean <code>true</code> if all project creations were successful.
 	 */
 	public boolean createProjects() {
 		final Object[] selected = mainPage.getCheckedProjects();
 		final WorkspaceModifyOperation op = new WorkspaceModifyOperation() {
+
 			@Override
 			protected void execute(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 				try {
@@ -250,8 +250,8 @@ public class ExampleNewWizard extends Wizard implements INewWizard, IOverwriteQu
 	}
 
 	/**
-	 * The <code>WizardDataTransfer</code> implementation of this <code>IOverwriteQuery</code> method asks the user whether the existing
-	 * resource at the given path should be overwritten.
+	 * The <code>WizardDataTransfer</code> implementation of this <code>IOverwriteQuery</code> method asks the user whether the existing resource at the given
+	 * path should be overwritten.
 	 *
 	 * @param pathString
 	 * @return the user's reply: one of <code>"YES"</code>, <code>"NO"</code>, <code>"ALL"</code>, or <code>"CANCEL"</code>
@@ -269,14 +269,16 @@ public class ExampleNewWizard extends Wizard implements INewWizard, IOverwriteQu
 			messageString = OVERWRITE + path.lastSegment() + IN_FOLDER + path.removeLastSegments(1).toOSString() + " ?";
 		}
 
-		final MessageDialog dialog = new MessageDialog(getContainer().getShell(), QUESTION, null, messageString, MessageDialog.QUESTION,
-				new String[] { IDialogConstants.YES_LABEL, IDialogConstants.YES_TO_ALL_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.NO_TO_ALL_LABEL,
-						IDialogConstants.CANCEL_LABEL },
-				0);
+		final MessageDialog dialog =
+				new MessageDialog(
+						getContainer().getShell(), QUESTION, null, messageString, MessageDialog.QUESTION, new String[] { IDialogConstants.YES_LABEL,
+								IDialogConstants.YES_TO_ALL_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.NO_TO_ALL_LABEL, IDialogConstants.CANCEL_LABEL },
+						0);
 
 		// run in syncExec because callback is from an operation,
 		// which is probably not running in the UI thread.
 		mainPage.getControl().getDisplay().syncExec(new Runnable() {
+
 			@Override
 			public void run() {
 				dialog.open();

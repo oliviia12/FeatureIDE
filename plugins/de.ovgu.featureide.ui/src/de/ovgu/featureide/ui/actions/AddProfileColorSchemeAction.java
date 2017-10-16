@@ -55,9 +55,7 @@ public class AddProfileColorSchemeAction extends Action {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.jface.action.Action#run()
-	 *
-	 * this Method calls the Wizard and saves the configuration
+	 * @see org.eclipse.jface.action.Action#run() this Method calls the Wizard and saves the configuration
 	 */
 	@Override
 	public void run() {

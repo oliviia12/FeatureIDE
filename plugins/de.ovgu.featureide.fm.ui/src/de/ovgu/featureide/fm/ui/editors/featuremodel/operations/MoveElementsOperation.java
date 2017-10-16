@@ -47,10 +47,10 @@ public class MoveElementsOperation extends AbstractFeatureModelOperation impleme
 		super(featureModel, DELETE);
 	}
 
-	//	@Override
-	//	public IStatus execute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-	//		return Status.OK_STATUS;
-	//	}
+	// @Override
+	// public IStatus execute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+	// return Status.OK_STATUS;
+	// }
 
 	@Override
 	protected FeatureIDEEvent operation() {

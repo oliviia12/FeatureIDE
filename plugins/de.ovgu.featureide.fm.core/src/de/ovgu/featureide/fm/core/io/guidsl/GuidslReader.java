@@ -97,8 +97,7 @@ import guidsl.VarStmt;
 public class GuidslReader {
 
 	/**
-	 * Needed because the GUIDSL parser uses static variables and should not
-	 * be used by different threads at the same time.
+	 * Needed because the GUIDSL parser uses static variables and should not be used by different threads at the same time.
 	 */
 	private static Object lock = new Object();
 
@@ -349,8 +348,7 @@ public class GuidslReader {
 				if (!new SatSolver(node.clone(), 250).hasSolution()) {
 					warnings.add(new Problem(CONSTRAINT_IS_NOT_SATISFIABLE_, line));
 				}
-			} catch (final Exception e) {
-			}
+			} catch (final Exception e) {}
 			featureModel.addConstraint(new Constraint(featureModel, node));
 			astListNode = (AstListNode) astListNode.right;
 		} while (astListNode != null);
@@ -364,7 +362,7 @@ public class GuidslReader {
 			if (featureModel.getFeature(var) == null) {
 				throw new UnsupportedModelException(THE_FEATURE_ + var + "' does not occur in the grammar!", token.lineNum());
 			}
-			//return new Literal(featureModel.getFeature(var));
+			// return new Literal(featureModel.getFeature(var));
 			return new Literal(var);
 		}
 		if (expr instanceof Paren) {
@@ -408,7 +406,7 @@ public class GuidslReader {
 	}
 
 	private void readVar(Var var) {
-		//TODO #31: reading annotations not yet implemented
+		// TODO #31: reading annotations not yet implemented
 	}
 
 	public Collection<? extends Problem> getWarnings() {

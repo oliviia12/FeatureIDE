@@ -148,7 +148,7 @@ public abstract class Generator {
 			}
 			final int r = random.nextInt(3);
 			if (r == 0) {
-				//Alternative to Or+Constraint
+				// Alternative to Or+Constraint
 				for (final IFeature feature : randomizedList) {
 					if ((feature.getStructure().getChildrenCount() > 1) && feature.getStructure().isAlternative()) {
 						feature.getStructure().changeToOr();
@@ -161,7 +161,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 1) {
-				//Mandatory to Optional+Constraint
+				// Mandatory to Optional+Constraint
 				for (final IFeature feature : randomizedList) {
 					final IFeatureStructure parent = feature.getStructure().getParent();
 					if ((parent != null) && parent.isAnd() && !parent.isFirstChild(feature.getStructure()) && feature.getStructure().isMandatory()) {
@@ -171,7 +171,7 @@ public abstract class Generator {
 					}
 				}
 			} else {
-				//move feature to parent's parent
+				// move feature to parent's parent
 				for (final IFeature child : randomizedList) {
 					final IFeatureStructure feature = child.getStructure().getParent();
 					if ((feature != null) && feature.isMandatory() && feature.isAnd() && !feature.isFirstChild(child.getStructure())) {
@@ -201,7 +201,7 @@ public abstract class Generator {
 			}
 			final int r = 1 + random.nextInt(9);
 			if (r == 1) {
-				//Alternative to Or
+				// Alternative to Or
 				for (final IFeature feature : randomizedList) {
 					if ((feature.getStructure().getChildrenCount() > 1) && feature.getStructure().isAlternative()) {
 						feature.getStructure().changeToOr();
@@ -209,7 +209,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 2) {
-				//move Optional into Or
+				// move Optional into Or
 				r2: for (final IFeature feature : randomizedList) {
 					final IFeatureStructure parent = feature.getStructure().getParent();
 					if ((parent != null) && parent.isAnd() && feature.getStructure().isMandatory() && feature.getStructure().isOr()) {
@@ -223,7 +223,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 3) {
-				//And to Or
+				// And to Or
 				for (final IFeature feature : randomizedList) {
 					if ((feature.getStructure().getChildrenCount() > 1) && feature.getStructure().isAnd()) {
 						feature.getStructure().changeToOr();
@@ -231,7 +231,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 4) {
-				//new feature in Alternative
+				// new feature in Alternative
 				for (final IFeature feature : randomizedList) {
 					if (feature.getStructure().hasChildren() && feature.getStructure().isAlternative()) {
 						int j = 1;
@@ -244,7 +244,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 5) {
-				//Or to And
+				// Or to And
 				for (final IFeature feature : randomizedList) {
 					if ((feature.getStructure().getChildrenCount() > 1) && feature.getStructure().isOr()) {
 						final IFeatureStructure parent = feature.getStructure().getParent();
@@ -259,7 +259,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 6) {
-				//Mandatory to Optional
+				// Mandatory to Optional
 				for (final IFeature feature : randomizedList) {
 					final IFeatureStructure parent = feature.getStructure().getParent();
 					if ((parent != null) && parent.isAnd() && !parent.isFirstChild(feature.getStructure()) && feature.getStructure().isMandatory()) {
@@ -269,7 +269,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 7) {
-				//Alternative to And
+				// Alternative to And
 				for (final IFeature feature : randomizedList) {
 					if ((feature.getStructure().getChildrenCount() > 1) && feature.getStructure().isAlternative()) {
 						final IFeatureStructure parent = feature.getStructure().getParent();
@@ -284,7 +284,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 8) {
-				//new Optional in And
+				// new Optional in And
 				for (final IFeature feature : randomizedList) {
 					if (feature.getStructure().hasChildren() && feature.getStructure().isAnd()) {
 						int j = 1;
@@ -298,7 +298,7 @@ public abstract class Generator {
 					}
 				}
 			} else {
-				//remove Constraint
+				// remove Constraint
 				final List<Node> nodes = Functional.toList(FeatureUtils.getPropositionalNodes(fm.getConstraints()));
 				if (!nodes.isEmpty()) {
 					final int index = random.nextInt(nodes.size());
@@ -325,7 +325,7 @@ public abstract class Generator {
 			}
 			final int r = 1 + random.nextInt(5);
 			if (r == 1) {
-				//delete or add feature
+				// delete or add feature
 				if (random.nextBoolean()) {
 					for (final IFeature feature : randomizedList) {
 						final IFeatureStructure parent = feature.getStructure().getParent();
@@ -348,7 +348,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 2) {
-				//alter group type
+				// alter group type
 				for (final IFeature feature : randomizedList) {
 					if (feature.getStructure().hasChildren()) {
 						if (feature.getStructure().isAlternative()) {
@@ -372,7 +372,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 3) {
-				//change mandatory/optional
+				// change mandatory/optional
 				for (final IFeature feature : randomizedList) {
 					final IFeatureStructure parent = feature.getStructure().getParent();
 					if ((parent != null) && parent.isAnd() && !parent.isFirstChild(feature.getStructure())) {
@@ -381,7 +381,7 @@ public abstract class Generator {
 					}
 				}
 			} else if (r == 4) {
-				//move a concrete feature to another branch
+				// move a concrete feature to another branch
 				for (final IFeature feature : randomizedList) {
 					final IFeatureStructure parent = feature.getStructure().getParent();
 					if (!feature.getStructure().hasChildren() && (parent != null) && !parent.isFirstChild(feature.getStructure())) {
@@ -397,7 +397,7 @@ public abstract class Generator {
 					}
 				}
 			} else {
-				//delete or add constraint
+				// delete or add constraint
 				if ((fm.getConstraints().size() > 0) && random.nextBoolean()) {
 					final int index = random.nextInt(fm.getConstraints().size());
 					fm.removeConstraint(index);

@@ -40,14 +40,14 @@ public class XMLMandatoryOmitTest {
 	public void testOmmitingMandatoryAttribute() {
 		final XmlFeatureModelFormat format = new XmlFeatureModelFormat();
 
-		//Create new Feature Model
+		// Create new Feature Model
 		final IFeatureModel fm = new FeatureModel("OmitTest");
 
-		//Create root
+		// Create root
 		final IFeature root = new Feature(fm, "Root");
 		fm.getStructure().setRoot(root.getStructure());
 
-		//Create Or Group
+		// Create Or Group
 		final IFeature or = new Feature(fm, "OrGroup");
 		root.getStructure().addChild(or.getStructure());
 
@@ -58,10 +58,10 @@ public class XMLMandatoryOmitTest {
 		orTwo.getStructure().setMandatory(true);
 		or.getStructure().addChild(orTwo.getStructure());
 
-		//Change or feature to group mode OR
+		// Change or feature to group mode OR
 		or.getStructure().changeToOr();
 
-		//Create Alternative Group
+		// Create Alternative Group
 		final IFeature alt = new Feature(fm, "AlternativeGroup");
 		root.getStructure().addChild(alt.getStructure());
 
@@ -72,16 +72,16 @@ public class XMLMandatoryOmitTest {
 		altTwo.getStructure().setMandatory(true);
 		alt.getStructure().addChild(altTwo.getStructure());
 
-		//Change alternative feature to group mode ALTERNATIVE
+		// Change alternative feature to group mode ALTERNATIVE
 		alt.getStructure().changeToAlternative();
 
-		//Create XML from feature model
+		// Create XML from feature model
 		String ausgabe = format.write(fm);
 
-		//Replace roots mandatory
+		// Replace roots mandatory
 		ausgabe = ausgabe.replaceFirst("mandatory=\"true\"", "");
 
-		//Check if mandatory = true is present in current xml
+		// Check if mandatory = true is present in current xml
 		final boolean isMandantoryPresent = ausgabe.contains("mandatory=\"true\"");
 
 		assertEquals(isMandantoryPresent, false);

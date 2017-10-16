@@ -232,6 +232,7 @@ public class SimpleVelvetFeatureModelFormat implements IFeatureModelFormat {
 	}
 
 	private static class ConstraintNode {
+
 		private final Node computedNode;
 		private final Tree rawNode;
 
@@ -243,8 +244,8 @@ public class SimpleVelvetFeatureModelFormat implements IFeatureModelFormat {
 
 	private static final ExtendedFeatureModelFactory factory = ExtendedFeatureModelFactory.getInstance();
 
-	private static final int[] binaryOperators = { VelvetParser.OP_OR, VelvetParser.OP_AND, VelvetParser.OP_XOR, VelvetParser.OP_IMPLIES,
-			VelvetParser.OP_EQUIVALENT };
+	private static final int[] binaryOperators =
+			{ VelvetParser.OP_OR, VelvetParser.OP_AND, VelvetParser.OP_XOR, VelvetParser.OP_IMPLIES, VelvetParser.OP_EQUIVALENT };
 
 	private final LinkedList<Tree> atrributeConstraintNodes = new LinkedList<>();
 	private final LinkedList<IFeature> parentStack = new LinkedList<>();

@@ -27,14 +27,14 @@ package de.ovgu.featureide.fm.core.explanations;
  * @author Sofia Ananieva
  */
 public abstract class Reason implements Cloneable {
+
 	/** The containing explanation. */
 	private Explanation explanation;
 
 	/**
 	 * Constructs a new instance of this class.
 	 */
-	public Reason() {
-	}
+	public Reason() {}
 
 	/**
 	 * Constructs a new instance of this class.
@@ -55,8 +55,7 @@ public abstract class Reason implements Cloneable {
 	}
 
 	/**
-	 * Sets the containing explanation.
-	 * Does not actually add this reason to the given explanation.
+	 * Sets the containing explanation. Does not actually add this reason to the given explanation.
 	 *
 	 * @param explanation the containing explanation; not null
 	 */
@@ -65,15 +64,13 @@ public abstract class Reason implements Cloneable {
 	}
 
 	/**
-	 * Returns the confidence of this reason.
-	 * This is the likelihood with which this is causing the defect.
-	 * Should be a value between 0 and 1.
+	 * Returns the confidence of this reason. This is the likelihood with which this is causing the defect. Should be a value between 0 and 1.
 	 *
 	 * @return the confidence of this reason
 	 */
 	public float getConfidence() {
 		float confidence = (float) explanation.getReasonCounts().get(this) / explanation.getExplanationCount();
-		confidence = Math.max(0.0f, Math.min(1.0f, confidence)); //Clamp between 0 and 1 (just in case).
+		confidence = Math.max(0.0f, Math.min(1.0f, confidence)); // Clamp between 0 and 1 (just in case).
 		return confidence;
 	}
 

@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.AdjustModelToEdi
  * @author Joshua Sprey
  */
 public class AdjustModelToEditorSizeAction extends Action {
+
 	public static final String ID = "de.ovgu.featureide.adjustmodeltoeditor";
 
 	private FeatureDiagramEditor editor;

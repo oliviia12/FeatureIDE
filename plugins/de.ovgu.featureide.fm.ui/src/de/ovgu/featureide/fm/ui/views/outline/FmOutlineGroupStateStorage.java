@@ -29,6 +29,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
  * @author Marcus Pinnecke
  */
 public class FmOutlineGroupStateStorage {
+
 	private final IFeature feature;
 	private final boolean isOrGroup;
 
@@ -47,7 +48,6 @@ public class FmOutlineGroupStateStorage {
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -60,7 +60,6 @@ public class FmOutlineGroupStateStorage {
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

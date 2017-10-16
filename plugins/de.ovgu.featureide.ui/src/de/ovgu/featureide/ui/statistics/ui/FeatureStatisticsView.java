@@ -63,6 +63,7 @@ import de.ovgu.featureide.ui.statistics.ui.helper.TreeLabelProvider;
  * @author Patrick Haese
  */
 public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
+
 	private TreeViewer viewer;
 	private ContentProvider contentProvider;
 	private IEditorPart currentEditor;
@@ -96,6 +97,7 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 		final IToolBarManager toolBarManager = getViewSite().getActionBars().getToolBarManager();
 
 		final Action checkBoxer = new Action() {
+
 			@Override
 			public void run() {
 				final CheckBoxTreeViewDialog dial = new CheckBoxTreeViewDialog(viewer.getControl().getShell(), contentProvider.godfather, viewer);
@@ -104,6 +106,7 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 		};
 
 		final Action refresher = new Action() {
+
 			@Override
 			public void run() {
 				FeatureStatisticsView.this.refresh(true);
@@ -122,12 +125,10 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 	private final IPartListener editorListener = new IPartListener() {
 
 		@Override
-		public void partOpened(IWorkbenchPart part) {
-		}
+		public void partOpened(IWorkbenchPart part) {}
 
 		@Override
-		public void partDeactivated(IWorkbenchPart part) {
-		}
+		public void partDeactivated(IWorkbenchPart part) {}
 
 		@Override
 		public void partClosed(IWorkbenchPart part) {
@@ -161,6 +162,7 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 	 * Listener that refreshes the view every time the model has been edited.
 	 */
 	private final IEventListener modelListener = new IEventListener() {
+
 		@Override
 		public void propertyChange(FeatureIDEEvent evt) {
 			if (EventType.MODEL_LAYOUT_CHANGED != evt.getEventType()) {
@@ -181,10 +183,10 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 		}
 
 		/*
-		 * This job waits for the calculation job to finish and starts
-		 * immediately a new one
+		 * This job waits for the calculation job to finish and starts immediately a new one
 		 */
 		final Job waiter = new Job(UPDATING_FEATURESTATISTICSVIEW) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
@@ -201,13 +203,14 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 				}
 
 				job = new Job(UPDATING_FEATURESTATISTICSVIEW) {
+
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						if (currentEditor == null) {
 							contentProvider.defaultContent();
 						} else {
 							final IResource anyFile = ResourceUtil.getResource(currentEditor.getEditorInput());
-							//TODO is refresh really necessary? -> true?
+							// TODO is refresh really necessary? -> true?
 
 							if (force || (currentInput == null) || !anyFile.getProject().equals(currentInput.getProject())) {
 								contentProvider.calculateContent(anyFile, true);
@@ -241,8 +244,7 @@ public class FeatureStatisticsView extends ViewPart implements GUIDefaults {
 	}
 
 	/**
-	 * Watches changes in the feature model if the selected editor is an
-	 * instance of @{link FeatureModelEditor}
+	 * Watches changes in the feature model if the selected editor is an instance of @{link FeatureModelEditor}
 	 */
 	private void setEditor(IEditorPart newEditor) {
 		if (currentEditor != null) {

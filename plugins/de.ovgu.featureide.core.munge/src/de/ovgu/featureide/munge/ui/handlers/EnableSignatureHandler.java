@@ -27,7 +27,8 @@ import de.ovgu.featureide.ui.handlers.base.AFeatureProjectHandler;
 
 public class EnableSignatureHandler extends AFeatureProjectHandler {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.ui.handlers.base.AFeatureProjectHandler#singleAction(de.ovgu.featureide.core.IFeatureProject)
 	 */
 	@Override

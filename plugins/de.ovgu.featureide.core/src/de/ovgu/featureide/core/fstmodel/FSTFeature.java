@@ -31,8 +31,7 @@ import de.ovgu.featureide.fm.core.color.FeatureColor;
 import de.ovgu.featureide.fm.core.color.FeatureColorManager;
 
 /**
- * Represents a feature at the {@link FSTModel}.<br>
- * Contains {@link FSTRole}s with their corresponding {@link FSTClass}.
+ * Represents a feature at the {@link FSTModel}.<br> Contains {@link FSTRole}s with their corresponding {@link FSTClass}.
  *
  * @author Jens Meinicke
  * @author Marcus Pinnecke (Feature Interface)

@@ -36,12 +36,13 @@ import de.ovgu.featureide.fm.core.base.IConstraint;
  * @author Alexander Knueppel
  */
 public class CNFConverter extends NNFConverter {
+
 	/**
 	 * Constructor
 	 */
 	public CNFConverter() {
 		super();
-		//continues number + level
+		// continues number + level
 		naming.put(Or.class, "Clause%d");
 		topName = "SubtreeCNF";
 	}

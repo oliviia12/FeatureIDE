@@ -34,6 +34,7 @@ import de.ovgu.featureide.fm.core.PluginID;
  * @author Jens Meinicke
  */
 public class FMPropertyManagerDefaults {
+
 	static final QualifiedName QN_HIDE_LEGEND = createName("hidelegend");
 	static final QualifiedName QN_LEGEND_FORGOUND = createName("legendforground");
 	static final QualifiedName QN_LEGEND_BACKGROUND = createName("legendbackground");

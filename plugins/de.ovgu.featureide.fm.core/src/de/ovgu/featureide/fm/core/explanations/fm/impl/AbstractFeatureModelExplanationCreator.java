@@ -39,22 +39,20 @@ import de.ovgu.featureide.fm.core.explanations.fm.FeatureModelReason;
  * @author Timo G&uuml;nther
  */
 public abstract class AbstractFeatureModelExplanationCreator implements FeatureModelExplanationCreator {
+
 	/** The feature model context. */
 	private IFeatureModel fm;
 	/**
-	 * Creates the CNF from the feature model.
-	 * Created and reset together with the feature model.
+	 * Creates the CNF from the feature model. Created and reset together with the feature model.
 	 */
 	private AdvancedNodeCreator nodeCreator;
 	/**
-	 * A formula representation of the feature model in CNF (conjunctive normal form).
-	 * The CNF is created lazily when needed and reset when the feature model changes.
-	 * This makes it possible to reuse the CNF for different defects of the same type in the same feature model.
+	 * A formula representation of the feature model in CNF (conjunctive normal form). The CNF is created lazily when needed and reset when the feature model
+	 * changes. This makes it possible to reuse the CNF for different defects of the same type in the same feature model.
 	 */
 	private Node cnf;
 	/**
-	 * The trace model.
-	 * Created and reset together with the CNF.
+	 * The trace model. Created and reset together with the CNF.
 	 */
 	private FeatureModelToNodeTraceModel traceModel;
 
@@ -87,8 +85,7 @@ public abstract class AbstractFeatureModelExplanationCreator implements FeatureM
 	}
 
 	/**
-	 * Returns the node creator.
-	 * Creates it first if necessary.
+	 * Returns the node creator. Creates it first if necessary.
 	 *
 	 * @return the node creator
 	 */
@@ -121,8 +118,7 @@ public abstract class AbstractFeatureModelExplanationCreator implements FeatureM
 	}
 
 	/**
-	 * Returns a formula representation of the feature model in CNF (conjunctive normal form).
-	 * Creates it first if necessary.
+	 * Returns a formula representation of the feature model in CNF (conjunctive normal form). Creates it first if necessary.
 	 *
 	 * @return a formula representation of the feature model in CNF; not null
 	 * @throws IllegalStateException if the CNF could not be created

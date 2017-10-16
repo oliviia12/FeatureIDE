@@ -65,17 +65,17 @@ public class Configuration implements Cloneable {
 	 * @param configuration the old configuration.
 	 * @param featureModel the underlying feature model. The model can be different from the model of the old configuration.
 	 */
-	//	public Configuration(Configuration configuration, IFeatureModel featureModel) {
-	//		this.featureModel = featureModel;
-	//		this.root = initRoot();
+	// public Configuration(Configuration configuration, IFeatureModel featureModel) {
+	// this.featureModel = featureModel;
+	// this.root = initRoot();
 	//
-	//		for (SelectableFeature oldFeature : configuration.features) {
-	//			final SelectableFeature newFeature = table.get(oldFeature.getName());
-	//			if (newFeature != null) {
-	//				newFeature.setManual(oldFeature.getManual());
-	//			}
-	//		}
-	//	}
+	// for (SelectableFeature oldFeature : configuration.features) {
+	// final SelectableFeature newFeature = table.get(oldFeature.getName());
+	// if (newFeature != null) {
+	// newFeature.setManual(oldFeature.getManual());
+	// }
+	// }
+	// }
 
 	public Configuration(IFeatureModel featureModel) {
 		this.featureModel = featureModel;

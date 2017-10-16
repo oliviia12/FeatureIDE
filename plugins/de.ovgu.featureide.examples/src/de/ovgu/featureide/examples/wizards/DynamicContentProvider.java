@@ -103,12 +103,10 @@ public class DynamicContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-	}
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
 
 	// TODO read XML only once
 	private void computeHashtable() {

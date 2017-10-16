@@ -55,8 +55,7 @@ public abstract class AProjectJobHandler extends ASelectionHandler {
 	}
 
 	@Override
-	protected void singleAction(Object element) {
-	}
+	protected void singleAction(Object element) {}
 
 	protected abstract AbstractWizard instantiateWizard();
 

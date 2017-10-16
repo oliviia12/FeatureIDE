@@ -44,9 +44,8 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
 
 /**
- * A general builder used to build every <code>FeatureProject</code>. Using an
- * extension point the real composition algorithm is given, that builds the
- * compiled files.
+ * A general builder used to build every <code>FeatureProject</code>. Using an extension point the real composition algorithm is given, that builds the compiled
+ * files.
  *
  * @author Tom Brosch
  * @author Thomas Thuem

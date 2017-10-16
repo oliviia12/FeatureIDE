@@ -69,6 +69,7 @@ public class ModelTree<M, E> implements Iterable<E> {
 	}
 
 	private static final class Converter<M, E> implements Functional.IFunction<ModelTree<M, E>, E> {
+
 		@Override
 		public E invoke(ModelTree<M, E> tree) {
 			return tree.object;

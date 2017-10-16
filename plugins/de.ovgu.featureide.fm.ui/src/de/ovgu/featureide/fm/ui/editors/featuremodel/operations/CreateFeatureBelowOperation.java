@@ -31,8 +31,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 import de.ovgu.featureide.fm.core.base.impl.Feature;
 
 /**
- * Operation with functionality to create a layer feature. Enables
- * undo/redo functionality.
+ * Operation with functionality to create a layer feature. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Sebastian Krieter

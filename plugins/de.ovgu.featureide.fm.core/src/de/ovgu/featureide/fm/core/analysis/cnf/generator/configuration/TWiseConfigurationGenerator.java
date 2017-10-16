@@ -80,6 +80,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 	private int dpNumber, acNumber;
 
 	protected final MonitorThread monitorThread = new MonitorThread(new Runnable() {
+
 		@Override
 		public void run() {
 			final double percent = 1 - (((double) count) / numberOfCombinations);
@@ -128,7 +129,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 
 	protected Iterator<int[]> getIterator(int t) {
 		return new LexicographicIterator(t, nodeArray.length);
-		//				return new ChaseIterator(t, nodeArray.length);
+		// return new ChaseIterator(t, nodeArray.length);
 	}
 
 	protected void init() {
@@ -154,7 +155,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 				nodeArray = newNodeList.toArray(new LiteralSet[0]);
 			}
 			solver.setSelectionStrategy(SelectionStrategy.RANDOM);
-			//			solver.assignmentPushAll(coreDeadFeature.getLiterals());
+			// solver.assignmentPushAll(coreDeadFeature.getLiterals());
 
 			dpNumber = (int) (0.6 * nodeArray.length);
 			acNumber = (int) (0.1 * nodeArray.length);
@@ -190,6 +191,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 				}
 			}
 			final Integer[] index = Functional.getSortedIndex(edgeCount, new Comparator<Double>() {
+
 				@Override
 				public int compare(Double o1, Double o2) {
 					return (int) Math.signum(o2 - o1);
@@ -229,7 +231,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 
 	@SuppressWarnings("unused")
 	protected void coverCombinations() {
-		//		final BitSet covered = new BitSet(Math.toIntExact(numberOfCombinations));
+		// final BitSet covered = new BitSet(Math.toIntExact(numberOfCombinations));
 		final BitSet invalid = new BitSet(Math.toIntExact(numberOfCombinations));
 		try {
 			monitorThread.start();
@@ -267,7 +269,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 						}
 						continue comboLoop;
 					}
-					//Collections.sort(incompleteSolutionList);
+					// Collections.sort(incompleteSolutionList);
 
 					final boolean[] selectionPossible = new boolean[incompleteSolutionList.size()];
 
@@ -880,7 +882,7 @@ public class TWiseConfigurationGenerator extends AConfigurationGenerator {
 				}
 				return true;
 			}
-			//TODO necessary with mig?
+			// TODO necessary with mig?
 			solverSolutionLoop: for (final int[] s : solverSolutions) {
 				for (final int i : indexArray) {
 					for (final int literal : nodeArray[i].getLiterals()) {

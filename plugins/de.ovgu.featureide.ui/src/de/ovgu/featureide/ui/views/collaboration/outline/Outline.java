@@ -113,8 +113,7 @@ import de.ovgu.featureide.ui.views.outline.ContextOutlineLabelProvider;
 import de.ovgu.featureide.ui.views.outline.ContextOutlineTreeContentProvider;
 
 /**
- * Another outline view displaying the same information as the collaboration
- * diagram
+ * Another outline view displaying the same information as the collaboration diagram
  *
  * @author Jan Wedding
  * @author Melanie Pflaume
@@ -123,17 +122,17 @@ import de.ovgu.featureide.ui.views.outline.ContextOutlineTreeContentProvider;
  * @author Daniel Psche
  */
 /*
- * TODO #404 fix bug: do not close the tree if a corresponding file was opened
- * with an other way e.g. via collaboration diagram
- *
- * TODO Sometimes the outline has no content -> display a warning / message
+ * TODO #404 fix bug: do not close the tree if a corresponding file was opened with an other way e.g. via collaboration diagram TODO Sometimes the outline has
+ * no content -> display a warning / message
  */
 public class Outline extends ViewPart implements ICurrentBuildListener, IPropertyChangeListener {
+
 	private static final String OUTLINE_ID = "de.ovgu.featureide.ui.views.outline";
 
 	private static int selectedOutlineType;
 
 	private final IEventListener colorChangedListener = new IEventListener() {
+
 		@Override
 		public void propertyChange(FeatureIDEEvent event) {
 			update(iFile);
@@ -190,8 +189,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		}
 
 		@Override
-		public void partDeactivated(IWorkbenchPart part) {
-		}
+		public void partDeactivated(IWorkbenchPart part) {}
 
 		@Override
 		public void partClosed(IWorkbenchPart part) {
@@ -217,15 +215,15 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	};
 
 	/**
-	 * triggers a scrolling action to the selected field/method in the current
-	 * editor
+	 * triggers a scrolling action to the selected field/method in the current editor
 	 */
 	private final ISelectionChangedListener selectionChangedListener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			if (iFile != null) {
-				//if a method or field is selected, the selection's FSTRole is always the first role of the first feature in the respective expandable
-				//list in the outline no matter if the currently opened file contains the method.
+				// if a method or field is selected, the selection's FSTRole is always the first role of the first feature in the respective expandable
+				// list in the outline no matter if the currently opened file contains the method.
 				Object selection = ((IStructuredSelection) viewer.getSelection()).getFirstElement();
 				FSTRole r = null;
 				boolean fileAlreadyOpen = false;
@@ -396,6 +394,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 
 	private void executeExtension(final ITreeContentProvider contentProv, final OutlineLabelProvider labelProv) {
 		final ISafeRunnable runnable = new ISafeRunnable() {
+
 			@Override
 			public void handleException(Throwable e) {
 				UIPlugin.getDefault().logError(e);
@@ -415,6 +414,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		labelProv.initTreeViewer(Outline.this.viewer);
 
 		final ProviderAction provAct = new ProviderAction(labelProv.getLabelProvName(), labelProv.getOutlineType(), contentProv, labelProv) {
+
 			@Override
 			public void run() {
 				if ((curContentProvider != getTreeContentProvider()) || (curClabel != getLabelProvider())) {
@@ -429,6 +429,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	}
 
 	private final Action dropDownAction = new Action(OUTLINE_SELECTION, Action.AS_DROP_DOWN_MENU) {
+
 		{
 			setImageDescriptor(ImageDescriptor.createFromImage(GUIDefaults.REFESH_TAB_IMAGE));
 		}
@@ -497,6 +498,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	}
 
 	private final IPropertyListener plistener = new IPropertyListener() {
+
 		@Override
 		public void propertyChanged(Object source, int propId) {
 			update(iFile);
@@ -546,6 +548,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	 */
 	private void fillLocalToolBar(IToolBarManager manager) {
 		dropDownAction.setMenuCreator(new IMenuCreator() {
+
 			Menu fMenu = null;
 
 			@Override
@@ -602,6 +605,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 
 					if ((uiJob == null) || (uiJob.getState() == Job.NONE)) {
 						uiJob = new UIJob(UPDATE_OUTLINE_VIEW) {
+
 							@Override
 							public IStatus runInUIThread(IProgressMonitor monitor) {
 								if (viewer != null) {
@@ -612,7 +616,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 										viewer.setLabelProvider(curClabel);
 										if (iFile != null) {
 											if ("xml".equalsIgnoreCase(iFile.getFileExtension()) && (active_editor instanceof FeatureModelEditor)) {
-												//Remove and add again else it will create a sync loop
+												// Remove and add again else it will create a sync loop
 												viewer.removeTreeListener(treeListener);
 												viewer.setInput(((FeatureModelEditor) active_editor).getFeatureModel());
 												viewer.addTreeListener(treeListener);
@@ -631,7 +635,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 															}
 														}
 														expandedElements.add("Constraints");
-														//														viewer.setExpandedElements(expandedElements.toArray());
+														// viewer.setExpandedElements(expandedElements.toArray());
 													}
 												}
 												syncCollapsedFeatures.setEnabled(true);
@@ -712,6 +716,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 
 	// create Action to hide all fields
 	private final Action hideAllFields = new Action("", Action.AS_CHECK_BOX) {
+
 		private final HideAllFields filter = new HideAllFields();
 
 		@Override
@@ -734,6 +739,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 
 	// create Action to hide all methods
 	private final Action hideAllMethods = new Action("", Action.AS_CHECK_BOX) {
+
 		private final HideAllMethods filter = new HideAllMethods();
 
 		@Override
@@ -800,6 +806,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	 */
 	public void addToolbar(IToolBarManager iToolBarManager) {
 		final Action collapseAllAction = new Action() {
+
 			@Override
 			public void run() {
 				viewer.collapseAll();
@@ -822,6 +829,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		collapseAllAction.setImageDescriptor(IMG_COLLAPSE);
 
 		final Action expandAllAction = new Action() {
+
 			@Override
 			public void run() {
 				viewer.expandAll();
@@ -876,8 +884,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 			IRegion lineInfo = null;
 			try {
 				lineInfo = document.getLineInformation(lineNumber - 1);
-			} catch (final BadLocationException e) {
-			}
+			} catch (final BadLocationException e) {}
 			if (lineInfo != null) {
 				editor.selectAndReveal(lineInfo.getOffset(), lineInfo.getLength());
 			}
@@ -888,14 +895,10 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	 * Highlights the whole if-Block for a FSTDirective
 	 *
 	 * @param editorPart
-	 * @param startLine
-	 *            the first line of a directive
-	 * @param endLine
-	 *            the last line of a directive
-	 * @param startOffset
-	 *            characters before the statement starts
-	 * @param endOffset
-	 *            length of the last line
+	 * @param startLine the first line of a directive
+	 * @param endLine the last line of a directive
+	 * @param startOffset characters before the statement starts
+	 * @param endOffset length of the last line
 	 */
 	public static void scrollToLine(IEditorPart editorPart, int startLine, int endLine, int startOffset, int endOffset) {
 		if (!(editorPart instanceof ITextEditor) || (startLine < 0) || (endLine < 0)) {
@@ -907,8 +910,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 			try {
 				final int offset = document.getLineOffset(startLine) + startOffset;
 				editor.selectAndReveal(offset, (document.getLineOffset(endLine) - (offset)) + endOffset);
-			} catch (final BadLocationException e) {
-			}
+			} catch (final BadLocationException e) {}
 		}
 	}
 
@@ -966,12 +968,10 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		}
 
 		@Override
-		public void addListener(ILabelProviderListener listener) {
-		}
+		public void addListener(ILabelProviderListener listener) {}
 
 		@Override
-		public void dispose() {
-		}
+		public void dispose() {}
 
 		@Override
 		public boolean isLabelProperty(Object element, String property) {
@@ -979,8 +979,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		}
 
 		@Override
-		public void removeListener(ILabelProviderListener listener) {
-		}
+		public void removeListener(ILabelProviderListener listener) {}
 
 		@Override
 		public int getOutlineType() {
@@ -988,12 +987,10 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 		}
 
 		@Override
-		public void colorizeItems(TreeItem[] treeItems, IFile file) {
-		}
+		public void colorizeItems(TreeItem[] treeItems, IFile file) {}
 
 		@Override
-		public void setForeground(TreeItem item, IFile file) {
-		}
+		public void setForeground(TreeItem item, IFile file) {}
 
 		@Override
 		public String getLabelProvName() {
@@ -1007,10 +1004,7 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 
 		/*
 		 * (non-Javadoc)
-		 *
-		 * @see
-		 * de.ovgu.featureide.ui.views.collaboration.outline.OutlineLabelProvider
-		 * #init()
+		 * @see de.ovgu.featureide.ui.views.collaboration.outline.OutlineLabelProvider #init()
 		 */
 		@Override
 		public void init() {
@@ -1022,12 +1016,10 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 	private class NotAvailableContentProv implements ITreeContentProvider {
 
 		@Override
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		}
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
 
 		@Override
-		public void dispose() {
-		}
+		public void dispose() {}
 
 		@Override
 		public boolean hasChildren(Object element) {
@@ -1086,7 +1078,8 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 			graphicalFeatureModel = fm;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
 		 * @see org.eclipse.jface.viewers.ITreeViewerListener#treeCollapsed(org.eclipse.jface.viewers.TreeExpansionEvent)
 		 */
 		@Override
@@ -1098,15 +1091,15 @@ public class Outline extends ViewPart implements ICurrentBuildListener, IPropert
 			}
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
 		 * @see org.eclipse.jface.viewers.ITreeViewerListener#treeExpanded(org.eclipse.jface.viewers.TreeExpansionEvent)
 		 */
 		@Override
 		public void treeExpanded(TreeExpansionEvent event) {
 			if (viewer.getLabelProvider() instanceof OutlineLabelProvider) {
 				/**
-				 * colors the tree in case a treeItem has been expanded (because the
-				 * children are lazily loaded)
+				 * colors the tree in case a treeItem has been expanded (because the children are lazily loaded)
 				 */
 				((OutlineLabelProvider) viewer.getLabelProvider()).colorizeItems(viewer.getTree().getItems(), iFile);
 			}

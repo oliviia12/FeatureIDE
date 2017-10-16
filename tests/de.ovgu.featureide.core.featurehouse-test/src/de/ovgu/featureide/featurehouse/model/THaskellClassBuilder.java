@@ -33,6 +33,7 @@ import org.junit.Test;
  * @author Jens Meinicke
  */
 public class THaskellClassBuilder {
+
 	private final HaskellClassBuilder builder = new HaskellClassBuilder(null);
 
 	// METHOD TEST 1

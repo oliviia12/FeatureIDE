@@ -61,8 +61,7 @@ public class LegendDragAndDropCommand extends Command {
 	/**
 	 * Checks whether the movement is valid.
 	 *
-	 * @returns
-	 * 			{@code false} if the legend overlaps with a feature or constraint, {@code true} otherwise
+	 * @returns {@code false} if the legend overlaps with a feature or constraint, {@code true} otherwise
 	 */
 	@Override
 	public boolean canExecute() {
@@ -101,7 +100,7 @@ public class LegendDragAndDropCommand extends Command {
 		}
 
 		final LegendMoveOperation op = new LegendMoveOperation(model, newLocation, legendFigure);
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 		op.addContext((IUndoContext) model.getFeatureModel().getUndoContext());
 
 		try {

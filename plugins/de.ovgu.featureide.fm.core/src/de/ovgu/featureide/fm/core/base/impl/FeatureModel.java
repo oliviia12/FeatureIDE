@@ -48,8 +48,7 @@ import de.ovgu.featureide.fm.core.filter.ConcreteFeatureFilter;
 import de.ovgu.featureide.fm.core.functional.Functional;
 
 /**
- * The model representation of the feature tree that notifies listeners of
- * changes in the tree.
+ * The model representation of the feature tree that notifies listeners of changes in the tree.
  *
  * @author Thomas Thuem
  * @author Florian Proksch
@@ -79,8 +78,7 @@ public class FeatureModel implements IFeatureModel {
 	protected final List<IConstraint> constraints = new ArrayList<>();
 
 	/**
-	 * A list containing the feature names in their specified order will be
-	 * initialized in XmlFeatureModelReader.
+	 * A list containing the feature names in their specified order will be initialized in XmlFeatureModelReader.
 	 */
 	protected final List<String> featureOrderList;
 	protected boolean featureOrderUserDefined;

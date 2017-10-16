@@ -63,7 +63,7 @@ public abstract class ADocumentationCommentMerger implements Comparator<BlockTag
 	}
 
 	public String merge(List<BlockTag> generalTags, List<BlockTag> featureTags) {
-		//		Filter.filter(generalTags, filterList);
+		// Filter.filter(generalTags, filterList);
 		Filter.filter(featureTags, filterList);
 
 		sortFeatureList(featureTags);

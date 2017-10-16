@@ -54,6 +54,7 @@ public class GEFImageWriter {
 
 	public static void writeToFile(final GraphicalViewerImpl graphicalViewer, final File file) {
 		final UIJob job = new UIJob(SAVE_IMAGE) {
+
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
 				saveEditorContentsAsImage(graphicalViewer, file.toString());

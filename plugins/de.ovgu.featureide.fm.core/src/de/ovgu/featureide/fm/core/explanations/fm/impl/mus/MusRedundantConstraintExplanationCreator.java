@@ -40,6 +40,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.RedundantConstraintExplanation
  * @author Timo G&uuml;nther
  */
 public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExplanationCreator implements RedundantConstraintExplanationCreator {
+
 	/** The redundant constraint in the feature model. */
 	private IConstraint redundantConstraint;
 
@@ -83,11 +84,8 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Does not include any of the constraints.
-	 * The constraints are only added later during explaining.
-	 * This is faster than creating the complete CNF and repeatedly removing the redundant constraints from it.
-	 * </p>
+	 * <p> Does not include any of the constraints. The constraints are only added later during explaining. This is faster than creating the complete CNF and
+	 * repeatedly removing the redundant constraints from it. </p>
 	 */
 	@Override
 	protected AdvancedNodeCreator createNodeCreator() {
@@ -104,7 +102,7 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 		oracle.push();
 		int constraintClauseCount = 0;
 		try {
-			//Add each constraint but the redundant one.
+			// Add each constraint but the redundant one.
 			final AdvancedNodeCreator nc = getNodeCreator();
 			for (final IConstraint constraint : getFeatureModel().getConstraints()) {
 				if (constraint == getRedundantConstraint()) {
@@ -115,7 +113,7 @@ public class MusRedundantConstraintExplanationCreator extends MusFeatureModelExp
 				oracle.addFormula(constraintNode);
 			}
 
-			//Explain each contradicting assignment of the redundant constraint.
+			// Explain each contradicting assignment of the redundant constraint.
 			for (final Map<Object, Boolean> assignment : getRedundantConstraint().getNode().getContradictingAssignments()) {
 				oracle.push();
 				try {

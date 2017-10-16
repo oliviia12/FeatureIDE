@@ -39,6 +39,7 @@ import static de.ovgu.featureide.fm.core.localization.StringTable.VERTICALLY_SPA
  * @author Jens Meinicke
  */
 public interface IFMPropertyPage {
+
 	static final String DESCRIPTION = "At this page you can define settings for the \"Feature Model Editor\".";
 
 	/**************************************************************
@@ -74,8 +75,7 @@ public interface IFMPropertyPage {
 	static final String SPACES_TIP_CONSTRIANT = SPACE_BETWEEN_THE_MODEL_AND_THE_FIRST_CONSTRAINT;
 
 	/*
-	 *  with this values adjusting the shown spaces,
-	 *  it is more logical for the user
+	 * with this values adjusting the shown spaces, it is more logical for the user
 	 */
 	static final int SPECES_FEATURE_X_ADJUST = 20;
 	static final int SPECES_CONSTRAIT_ADJUST = 21;
@@ -88,7 +88,7 @@ public interface IFMPropertyPage {
 	static final String COLOR_DIAGRAM_LABEL = "Diagram background:";
 	static final String COLOR_CONCRETE_LABEL = "Concrete feature color:";
 	static final String COLOR_ABSTRACT_LABEL = "Abstract feature color:";
-	//	static final String COLOR_HIDDEN = "Hidden feature background color:";
+	// static final String COLOR_HIDDEN = "Hidden feature background color:";
 	static final String COLOR_ERROR = "Error color:";
 	static final String COLOR_CONSTRAINT = "Constraint color:";
 	static final String COLOR_WARNING = "Warning color:";
@@ -97,7 +97,7 @@ public interface IFMPropertyPage {
 	static final String COLOR_BORDER = "Feature border color:";
 
 	/* color group tool tips: */
-	//	static final String COLOR_HIDDEN_TIP = "";
+	// static final String COLOR_HIDDEN_TIP = "";
 	static final String COLOR_DEAD_TIP = "";
 	static final String COLOR_CONNECTION_TIP = "";
 	static final String COLOR_CONSTRAINT_TIP = "";

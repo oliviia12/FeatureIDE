@@ -162,7 +162,7 @@ public abstract class AXMLFormat<T> implements IPersistentFormat<T>, XMLFeatureM
 	@Override
 	public String write(T object) {
 		this.object = object;
-		//Create Empty DOM Document
+		// Create Empty DOM Document
 		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		dbf.setIgnoringComments(true);
@@ -176,10 +176,10 @@ public abstract class AXMLFormat<T> implements IPersistentFormat<T>, XMLFeatureM
 			Logger.logError(pce);
 		}
 		final Document doc = db.newDocument();
-		//Create the XML Representation
+		// Create the XML Representation
 		writeDocument(doc);
 
-		//Transform the XML Representation into a String
+		// Transform the XML Representation into a String
 		Transformer transfo = null;
 		try {
 			transfo = TransformerFactory.newInstance().newTransformer();

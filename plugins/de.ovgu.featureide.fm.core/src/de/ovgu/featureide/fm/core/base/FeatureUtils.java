@@ -102,6 +102,7 @@ public final class FeatureUtils {
 	};
 
 	public static final IFunction<IFeature, String> GET_FEATURE_NAME = new IFunction<IFeature, String>() {
+
 		@Override
 		public String invoke(IFeature t) {
 			return t.getName();
@@ -109,6 +110,7 @@ public final class FeatureUtils {
 	};
 
 	public static final IFunction<IFeature, String> GET_OLD_FEATURE_NAME = new IFunction<IFeature, String>() {
+
 		@Override
 		public String invoke(IFeature t) {
 			return t.getFeatureModel().getRenamingsManager().getOldName(t.getName());
@@ -175,15 +177,15 @@ public final class FeatureUtils {
 	}
 
 	public static final void addListener(IConstraint constraint, PropertyChangeListener listener) {
-		//		constraint.addListener(listener);
+		// constraint.addListener(listener);
 	}
 
 	public static final void addListener(IFeature feature, PropertyChangeListener listener) {
-		//		feature.addListener(listener);
+		// feature.addListener(listener);
 	}
 
 	public static final void addListener(IFeatureModel featureModel, PropertyChangeListener listener) {
-		//		featureModel.addListener(listener);
+		// featureModel.addListener(listener);
 	}
 
 	public static final void addPropositionalNode(IFeatureModel featureModel, Node node) {
@@ -201,7 +203,7 @@ public final class FeatureUtils {
 	}
 
 	public static final void addTargetConnection(IFeature feature, FeatureConnection connection) {
-		//		feature.getStructure().addTargetConnection(connection);
+		// feature.getStructure().addTargetConnection(connection);
 	}
 
 	public static final void changeToAlternative(IFeature feature) {
@@ -317,14 +319,11 @@ public final class FeatureUtils {
 
 	/**
 	 * Extracts all concrete features from an object that yields features. Basically, an invocation of this method on <b>features</b> will return an iterable
-	 * object that
-	 * yields a feature <i>f</i> from <b>features</b> if and only if <i>f</i> is concrete. Since the implementation based on iterators, it is a lazy filtering
-	 * without
-	 * modification of <b>features</b>.
+	 * object that yields a feature <i>f</i> from <b>features</b> if and only if <i>f</i> is concrete. Since the implementation based on iterators, it is a lazy
+	 * filtering without modification of <b>features</b>.
 	 *
-	 * <br/>
-	 * <br/>
-	 * The extraction is done via {@link de.ovgu.featureide.fm.core.base.util.Functional#filter(Iterable, de.ovgu.featureide.fm.core.filter.base.IFilter)}
+	 * <br/> <br/> The extraction is done via
+	 * {@link de.ovgu.featureide.fm.core.base.util.Functional#filter(Iterable, de.ovgu.featureide.fm.core.filter.base.IFilter)}
 	 *
 	 * @since 3.0
 	 * @param features An iterable object providing features
@@ -372,14 +371,14 @@ public final class FeatureUtils {
 	}
 
 	public static final void fire(IConstraint constraint, PropertyChangeEvent event) {
-		//		constraint.fireEvent(event);
+		// constraint.fireEvent(event);
 	}
 
 	public static final void fire(IFeature feature, PropertyChangeEvent event) {
 		requireNonNull(feature);
 		requireNonNull(event);
 
-		//		feature.fireEvent(event);
+		// feature.fireEvent(event);
 	}
 
 	public static final FeatureModelAnalyzer getAnalyser(IFeatureModel featureModel) {
@@ -414,12 +413,12 @@ public final class FeatureUtils {
 	}
 
 	public static final ColorList getColorList(IFeature feature) {
-		//		return feature.getGraphicRepresenation().getColorList();
+		// return feature.getGraphicRepresenation().getColorList();
 		return null;
 	}
 
 	public static final ColorschemeTable getColorschemeTable(IFeatureModel featureModel) {
-		//		return featureModel.getGraphicRepresenation().getColorschemeTable();
+		// return featureModel.getGraphicRepresenation().getColorschemeTable();
 		return null;
 	}
 
@@ -631,17 +630,17 @@ public final class FeatureUtils {
 	}
 
 	public static final GraphicItem getItemType(IConstraint constraint) {
-		//		return constraint.getGraphicRepresenation().getItemType();
+		// return constraint.getGraphicRepresenation().getItemType();
 		return null;
 	}
 
 	public static final GraphicItem getItemType(IFeature feature) {
-		//		return feature.getGraphicRepresenation().getItemType();
+		// return feature.getGraphicRepresenation().getItemType();
 		return null;
 	}
 
 	public static final GraphicItem getItemType(IFeatureModel featureModel) {
-		//		return featureModel.getGraphicRepresenation().getItemType();
+		// return featureModel.getGraphicRepresenation().getItemType();
 		return null;
 	}
 
@@ -652,7 +651,7 @@ public final class FeatureUtils {
 	}
 
 	public static final IFeatureModelLayout getLayout(IFeatureModel featureModel) {
-		//		return featureModel.getLayout();
+		// return featureModel.getLayout();
 		return null;
 	}
 
@@ -742,17 +741,17 @@ public final class FeatureUtils {
 	}
 
 	public static final Iterable<FeatureConnection> getSourceConnections(IFeature feature) {
-		//		return feature.getStructure().getSourceConnections();
+		// return feature.getStructure().getSourceConnections();
 		return null;
 	}
 
 	public static final Iterable<FeatureConnection> getTargetConnections(IFeature feature) {
-		//		return feature.getStructure().getTargetConnections();
+		// return feature.getStructure().getTargetConnections();
 		return null;
 	}
 
 	public static final void handleLegendLayoutChanged(IFeatureModel featureModel) {
-		//		featureModel.getGraphicRepresenation().handleLegendLayoutChanged();
+		// featureModel.getGraphicRepresenation().handleLegendLayoutChanged();
 	}
 
 	public static final void handleModelDataChanged(IFeatureModel featureModel) {
@@ -761,14 +760,14 @@ public final class FeatureUtils {
 		featureModel.handleModelDataChanged();
 	}
 
-	//	public static final void handleModelDataLoaded(IFeatureModel featureModel) {
-	//		requireNonNull(featureModel);
+	// public static final void handleModelDataLoaded(IFeatureModel featureModel) {
+	// requireNonNull(featureModel);
 	//
-	//		featureModel.handleModelDataLoaded();
-	//	}
+	// featureModel.handleModelDataLoaded();
+	// }
 
 	public static final void handleModelLayoutChanged(IFeatureModel featureModel) {
-		//		featureModel.getGraphicRepresenation().handleModelLayoutChanged();
+		// featureModel.getGraphicRepresenation().handleModelLayoutChanged();
 	}
 
 	public static final boolean hasAbstract(IFeatureModel featureModel) {
@@ -1050,11 +1049,11 @@ public final class FeatureUtils {
 	}
 
 	public static final void redrawDiagram(IFeatureModel featureModel) {
-		//		featureModel.getGraphicRepresenation().redrawDiagram();
+		// featureModel.getGraphicRepresenation().redrawDiagram();
 	}
 
 	public static final void refreshContextMenu(IFeatureModel featureModel) {
-		//		featureModel.getGraphicRepresenation().refreshContextMenu();
+		// featureModel.getGraphicRepresenation().refreshContextMenu();
 	}
 
 	public static final void removeChild(IFeature feature, IFeature child) {
@@ -1086,15 +1085,15 @@ public final class FeatureUtils {
 	}
 
 	public static final void removeListener(IConstraint constraint, PropertyChangeListener listener) {
-		//		constraint.removeListener(listener);
+		// constraint.removeListener(listener);
 	}
 
 	public static final void removeListener(IFeature feature, PropertyChangeListener listener) {
-		//		feature.removeListener(listener);
+		// feature.removeListener(listener);
 	}
 
 	public static final void removeListener(IFeatureModel featureModel, PropertyChangeListener listener) {
-		//		featureModel.removeListener(listener);
+		// featureModel.removeListener(listener);
 	}
 
 	public static final void removePropositionalNode(IFeatureModel featureModel, Node node) {
@@ -1113,7 +1112,7 @@ public final class FeatureUtils {
 	}
 
 	public static final boolean removeTargetConnection(IFeature feature, FeatureConnection connection) {
-		//		return feature.getStructure().removeTargetConnection(connection);
+		// return feature.getStructure().removeTargetConnection(connection);
 		return false;
 	}
 
@@ -1142,7 +1141,7 @@ public final class FeatureUtils {
 	public static final void requireNonNull(Object object) {
 		// TODO check unnecessary null checks, may cuase defect itself
 		// or move to constructors
-		//		java.util.Objects.requireNonNull(object, StringTable.PARAMETER_IS_EXPECTED_TO_BE_NON_NULL);
+		// java.util.Objects.requireNonNull(object, StringTable.PARAMETER_IS_EXPECTED_TO_BE_NON_NULL);
 	}
 
 	public static final void reset(IFeatureModel featureModel) {
@@ -1163,13 +1162,13 @@ public final class FeatureUtils {
 		feature.getStructure().setAlternative();
 	}
 
-	//	public static final void setUndoContext(IFeatureModel featureModel, Object undoContext) {
-	//		featureModel.getUndoContext(undoContext);
-	//	}
+	// public static final void setUndoContext(IFeatureModel featureModel, Object undoContext) {
+	// featureModel.getUndoContext(undoContext);
+	// }
 	//
-	//	public static final Object getUndoContext(IFeatureModel featureModel) {
-	//		return featureModel.getUndoContext();
-	//	}
+	// public static final Object getUndoContext(IFeatureModel featureModel) {
+	// return featureModel.getUndoContext();
+	// }
 
 	public static final void setAnd(IFeature feature) {
 		requireNonNull(feature);
@@ -1195,13 +1194,13 @@ public final class FeatureUtils {
 		feature.getStructure().setChildren(Functional.toList(Functional.map(children, FEATURE_TO_STRUCTURE)));
 	}
 
-	//	public static final boolean isFeatureOrderInXML(IFeatureModel featureModel) {
-	//		return featureModel.isFeatureOrderInXML();
-	//	}
+	// public static final boolean isFeatureOrderInXML(IFeatureModel featureModel) {
+	// return featureModel.isFeatureOrderInXML();
+	// }
 	//
-	//	public static final void setFeatureOrderInXML(IFeatureModel featureModel, boolean featureOrderInXML) {
-	//		featureModel.setFeatureOrderInXML(featureModel, featureOrderInXML);
-	//	}
+	// public static final void setFeatureOrderInXML(IFeatureModel featureModel, boolean featureOrderInXML) {
+	// featureModel.setFeatureOrderInXML(featureModel, featureOrderInXML);
+	// }
 
 	@Deprecated
 	public static final void setConstraintAttribute(IConstraint constraint, ConstraintAttribute attri, boolean fire) {
@@ -1405,8 +1404,7 @@ public final class FeatureUtils {
 		}
 	}
 
-	private FeatureUtils() {
-	}
+	private FeatureUtils() {}
 
 	public CharSequence createValidJavaIdentifierFromString(CharSequence s) {
 		requireNonNull(s);

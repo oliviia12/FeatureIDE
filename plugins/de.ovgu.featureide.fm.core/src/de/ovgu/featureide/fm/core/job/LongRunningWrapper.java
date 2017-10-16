@@ -33,8 +33,7 @@ public final class LongRunningWrapper {
 
 	public static LongRunningCore INSTANCE = new LongRunningCore();
 
-	private LongRunningWrapper() {
-	}
+	private LongRunningWrapper() {}
 
 	public static <T> T runMethod(LongRunningMethod<T> method) {
 		return runMethod(method, null);

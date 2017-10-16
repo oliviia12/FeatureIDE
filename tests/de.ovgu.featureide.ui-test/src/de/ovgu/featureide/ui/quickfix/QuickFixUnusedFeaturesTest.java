@@ -67,7 +67,7 @@ public class QuickFixUnusedFeaturesTest {
 
 	@Parameters
 	public static Collection<Object[]> getModels() throws FileNotFoundException, UnsupportedModelException {
-		//first tries the location on build server, if this fails tries to use local location
+		// first tries the location on build server, if this fails tries to use local location
 		if (!MODEL_FILE_FOLDER.canRead()) {
 			MODEL_FILE_FOLDER = new File(ClassLoader.getSystemResource("models").getPath());
 		}
@@ -86,6 +86,7 @@ public class QuickFixUnusedFeaturesTest {
 
 	private final static FileFilter getFileFilter(final String s) {
 		final FileFilter filter = new FileFilter() {
+
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getName().endsWith(s);

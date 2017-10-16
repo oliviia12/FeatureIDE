@@ -60,8 +60,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testVoidModel() {
-		final IFeatureModel fm = loadXML("<and mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"a\"/></and>",
-				"<rule><not><var>a</var></not></rule>");
+		final IFeatureModel fm =
+				loadXML("<and mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"a\"/></and>", "<rule><not><var>a</var></not></rule>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		final CountSolutionsMethod number = c.number(1000);
@@ -95,18 +95,18 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testOnlyOrGroup() {
-		final IFeatureModel fm = loadXML(
-				"<or mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"A\"/><feature mandatory=\"true\" name=\"B\"/></or>");
+		final IFeatureModel fm =
+				loadXML("<or mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"A\"/><feature mandatory=\"true\" name=\"B\"/></or>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(3L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
 	}
 
-	//mandatory true/false shouldnt matter in OR group
+	// mandatory true/false shouldnt matter in OR group
 	@Test
 	public void testOnlyOrGroup2() {
-		final IFeatureModel fm = loadXML(
-				"<or mandatory=\"true\" name=\"S\"><feature mandatory=\"false\" name=\"A\"/><feature mandatory=\"false\" name=\"B\"/></or>");
+		final IFeatureModel fm =
+				loadXML("<or mandatory=\"true\" name=\"S\"><feature mandatory=\"false\" name=\"A\"/><feature mandatory=\"false\" name=\"B\"/></or>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(3L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -114,8 +114,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testAlternativeGroup() {
-		final IFeatureModel fm = loadXML(
-				"<alt mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"A\"/><feature mandatory=\"true\" name=\"B\"/></alt>");
+		final IFeatureModel fm =
+				loadXML("<alt mandatory=\"true\" name=\"S\"><feature mandatory=\"true\" name=\"A\"/><feature mandatory=\"true\" name=\"B\"/></alt>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(2L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -148,8 +148,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testAbstract3() {
-		final IFeatureModel fm = loadXML(
-				"<and mandatory=\"true\" name=\"S\"><feature abstract=\"true\" name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/></and>");
+		final IFeatureModel fm =
+				loadXML("<and mandatory=\"true\" name=\"S\"><feature abstract=\"true\" name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/></and>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, false);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(4L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -157,18 +157,18 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testAbstract4() {
-		final IFeatureModel fm = loadXML(
-				"<and mandatory=\"true\" name=\"S\"><feature abstract=\"true\" name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/></and>");
+		final IFeatureModel fm =
+				loadXML("<and mandatory=\"true\" name=\"S\"><feature abstract=\"true\" name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/></and>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, false);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(4L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
 	}
 
-	//TODO: replace selection strategy for hidden features
+	// TODO: replace selection strategy for hidden features
 	@Test
 	public void testHidden() {
-		final IFeatureModel fm = loadXML(
-				"<and mandatory=\"true\" name=\"S\"><feature mandatory=\"false\" name=\"A\"/><feature hidden=\"true\" name=\"B\"/></and>");
+		final IFeatureModel fm =
+				loadXML("<and mandatory=\"true\" name=\"S\"><feature mandatory=\"false\" name=\"A\"/><feature hidden=\"true\" name=\"B\"/></and>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(2L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -210,9 +210,9 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testWithComplexConstraints() {
-		final IFeatureModel fm = loadXML(
-				"<and mandatory=\"true\" name=\"S\"><feature name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/><feature name=\"D\"/></and>",
-				"<rule><disj><var>A</var><imp><var>B</var><eq><var>C</var><not><var>D</var></not></eq></imp></disj></rule>");
+		final IFeatureModel fm =
+				loadXML("<and mandatory=\"true\" name=\"S\"><feature name=\"A\"/><feature name=\"B\"/><feature name=\"C\"/><feature name=\"D\"/></and>",
+						"<rule><disj><var>A</var><imp><var>B</var><eq><var>C</var><not><var>D</var></not></eq></imp></disj></rule>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(14L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -220,8 +220,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testCombination1() {
-		final IFeatureModel fm = loadXML(
-				"<and name=\"S\">" + "<feature name=\"A\"/>" + "<feature mandatory=\"true\" name=\"B\"/>" + "<feature name=\"C\"/>" + "</and>");
+		final IFeatureModel fm =
+				loadXML("<and name=\"S\">" + "<feature name=\"A\"/>" + "<feature mandatory=\"true\" name=\"B\"/>" + "<feature name=\"C\"/>" + "</and>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(4L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -254,8 +254,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testCombination5() {
-		final IFeatureModel fm = loadXML(
-				"<or name=\"S\">" + "<feature name=\"A\"/>" + "<feature name=\"B\"/>" + "<feature abstract=\"true\" name=\"C\"/>" + "</or>");
+		final IFeatureModel fm =
+				loadXML("<or name=\"S\">" + "<feature name=\"A\"/>" + "<feature name=\"B\"/>" + "<feature abstract=\"true\" name=\"C\"/>" + "</or>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, false);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(4L, LongRunningWrapper.runMethod(c.number(1000)).longValue());
@@ -263,8 +263,8 @@ public class TNumberOfConfigurations extends AbstractConfigurationTest {
 
 	@Test
 	public void testCombination6() {
-		final IFeatureModel fm = loadXML(
-				"<alt name=\"S\">" + "<feature name=\"A\"/>" + "<feature name=\"B\"/>" + "<feature abstract=\"true\" name=\"C\"/>" + "</alt>");
+		final IFeatureModel fm =
+				loadXML("<alt name=\"S\">" + "<feature name=\"A\"/>" + "<feature name=\"B\"/>" + "<feature abstract=\"true\" name=\"C\"/>" + "</alt>");
 		final ConfigurationPropagator c = FeatureModelManager.getPropagator(fm, true);
 		LongRunningWrapper.runMethod(c.update());
 		assertEquals(3L, LongRunningWrapper.runMethod(c.number(1000)).longValue());

@@ -33,6 +33,7 @@ import de.ovgu.featureide.ui.views.configMap.ConfigurationMapFilter;
  * @author Antje Moench
  */
 public class CoreFeatureFilter extends ConfigurationMapFilter {
+
 	private List<IFeature> coreFeatures;
 	private IFeatureModel featureModelFilterIsInitializedFor;
 

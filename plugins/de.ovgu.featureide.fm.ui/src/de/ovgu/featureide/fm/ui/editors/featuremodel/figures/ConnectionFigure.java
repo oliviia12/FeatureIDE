@@ -31,6 +31,7 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
  * @author Timo G&uuml;nther
  */
 public class ConnectionFigure extends PolylineConnection {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

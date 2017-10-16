@@ -38,6 +38,7 @@ import org.prop4j.Or;
  * @author Timo G&uuml;nther
  */
 public abstract class MusExtractorTests extends MutableSatSolverTests {
+
 	@Test
 	public void testMus() {
 		final MusExtractor solver = getInstance();

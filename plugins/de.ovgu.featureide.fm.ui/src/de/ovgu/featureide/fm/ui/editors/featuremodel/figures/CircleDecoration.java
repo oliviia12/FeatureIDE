@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
  * @author Jens Meinicke
  */
 public class CircleDecoration extends ConnectionDecoration implements GUIDefaults {
+
 	private final boolean fill;
 
 	public CircleDecoration(boolean fill) {
@@ -72,6 +73,5 @@ public class CircleDecoration extends ConnectionDecoration implements GUIDefault
 	}
 
 	@Override
-	public void setReferencePoint(Point p) {
-	}
+	public void setReferencePoint(Point p) {}
 }

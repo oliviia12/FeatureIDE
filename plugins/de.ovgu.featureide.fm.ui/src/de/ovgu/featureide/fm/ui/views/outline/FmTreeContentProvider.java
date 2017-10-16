@@ -35,8 +35,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * This class is part of the outline. It provides the content that should be
- * displayed. Therefore it maps the information provided by the fmProject to the
+ * This class is part of the outline. It provides the content that should be displayed. Therefore it maps the information provided by the fmProject to the
  * methods of the ITreeContentProvider interface.
  *
  * @author Jan Wedding
@@ -49,8 +48,7 @@ public class FmTreeContentProvider implements ITreeContentProvider {
 	private IGraphicalFeatureModel graphicalFeatureModel;
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -122,8 +120,7 @@ public class FmTreeContentProvider implements ITreeContentProvider {
 	/**
 	 * converts a list of Features into an Array
 	 *
-	 * @param f
-	 *            FeatureList
+	 * @param f FeatureList
 	 * @return Array of Features
 	 */
 	private IFeature[] featureListToArray(List<IFeature> f) {

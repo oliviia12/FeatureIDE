@@ -55,11 +55,12 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 	private static final String COMBO_COMB_LABEL = "Combined Method";
 
 	private static final String PRESERVE_CONFIGS_LABEL = "Preserve configurations:";
-	private static final String PRESERVE_CONFIGS_TOOLTIP = "Whether to preserve the exact number of configurations. May result in large number of additional features and constraints.";
+	private static final String PRESERVE_CONFIGS_TOOLTIP =
+			"Whether to preserve the exact number of configurations. May result in large number of additional features and constraints.";
 
 	private static final String REDUNDANT_LABEL = "Remove redundant constraints:";
-	private static final String REDUNDANT_TOOLTIP = "Whether to remove redundant and tautological constraints. Requires SAT-analysis and "
-			+ "and can therefore be time consuming.";
+	private static final String REDUNDANT_TOOLTIP =
+			"Whether to remove redundant and tautological constraints. Requires SAT-analysis and " + "and can therefore be time consuming.";
 
 	private final IFile inputModelFile;
 	private Combo methodCombo;
@@ -86,7 +87,8 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 		this.fileExtension = fileExtension;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -129,6 +131,7 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 			browseButton.setText("Browse...");
 
 			browseButton.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 				@Override
 				public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 					final String selectedPath = openFileDialog();
@@ -163,6 +166,7 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 
 		// Add listeners
 		methodCombo.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				final ConversionMethod[] methods = new ConversionMethod[] { ConversionMethod.COMBINED, ConversionMethod.NNF, ConversionMethod.CNF };
@@ -175,6 +179,7 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 		});
 
 		fileName.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				if (checkFileName()) {
@@ -184,6 +189,7 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 		});
 
 		preserveConfigsButton.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				preserveConfigurations = preserveConfigsButton.getSelection();
@@ -191,19 +197,18 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		redundantButton.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				removeRedundancy = redundantButton.getSelection();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		setControl(composite);
@@ -226,12 +231,12 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 			updateErrorMessage("Exported model file must have " + fileExtension + " as file extension.");
 			return false;
 		}
-		//		if (path.toFile().exists()) {
-		//			updateStatusMessage("Selected file already exists. File will be overwritten.");
-		//			return false;
-		//		}
+		// if (path.toFile().exists()) {
+		// updateStatusMessage("Selected file already exists. File will be overwritten.");
+		// return false;
+		// }
 		updateErrorMessage(null);
-		//updateStatusMessage(null);
+		// updateStatusMessage(null);
 
 		return true;
 	}
@@ -241,10 +246,10 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 		setPageComplete(message == null);
 	}
 
-	//	private void updateStatusMessage(String message) {
-	//		setMessage(message);
-	//		setPageComplete(true);
-	//	}
+	// private void updateStatusMessage(String message) {
+	// setMessage(message);
+	// setPageComplete(true);
+	// }
 
 	private String openFileDialog() {
 		final FileDialog fileDialog = new FileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.MULTI);
@@ -256,7 +261,8 @@ public class EliminateConstraintsPage extends AbstractWizardPage {
 		return fileDialog.open();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.wizards.AbstractWizardPage#putData()
 	 */
 	@Override

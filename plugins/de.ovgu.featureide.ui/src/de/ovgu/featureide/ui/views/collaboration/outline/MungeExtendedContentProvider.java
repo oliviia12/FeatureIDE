@@ -72,8 +72,7 @@ public class MungeExtendedContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -85,7 +84,9 @@ public class MungeExtendedContentProvider implements ITreeContentProvider {
 
 			if (viewer instanceof StructuredViewer) {
 				((StructuredViewer) viewer).setSorter(new ViewerSorter() {
-					/* (non-Javadoc)
+
+					/*
+					 * (non-Javadoc)
 					 * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					@Override
@@ -220,7 +221,7 @@ public class MungeExtendedContentProvider implements ITreeContentProvider {
 				final List<FSTDirective> dirs = new ArrayList<>();
 				for (final FSTRole role : roleList) {
 					if (role.getMethods().contains(parentElement)) {
-						//equals works correct?
+						// equals works correct?
 						for (final FSTMethod method : role.getMethods()) {
 							if (method.equals(parentElement)) {
 								dirs.addAll(method.getFSTDirectives());
@@ -289,17 +290,17 @@ public class MungeExtendedContentProvider implements ITreeContentProvider {
 
 	private final Set<ICollaborationOutlineFilter> filters = new HashSet<>();
 
-	//add filter to filter set
+	// add filter to filter set
 	public void addFilter(ICollaborationOutlineFilter filter) {
 		filters.add(filter);
 	}
 
-	//remove filter from filter set
+	// remove filter from filter set
 	public void removeFilter(ICollaborationOutlineFilter filter) {
 		filters.remove(filter);
 	}
 
-	//apply all filters from filter set
+	// apply all filters from filter set
 	private Object[] filter(Object[] obj) {
 		for (final ICollaborationOutlineFilter filter : filters) {
 			obj = filter.filter(obj);

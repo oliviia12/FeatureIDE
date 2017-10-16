@@ -97,6 +97,7 @@ public class ColorSchemePage extends WizardPage {
 		colorSchemeList = new List(composite, SWT.FILL | SWT.BORDER | SWT.NO_FOCUS | SWT.SINGLE | SWT.HIDE_SELECTION);
 		colorSchemeList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		colorSchemeList.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				final String[] selection = ((List) e.getSource()).getSelection();
@@ -106,8 +107,7 @@ public class ColorSchemePage extends WizardPage {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 		// Col 3
 		final Composite buttonComposite = new Composite(composite, SWT.NULL);
@@ -119,38 +119,38 @@ public class ColorSchemePage extends WizardPage {
 		Button button = new Button(buttonComposite, SWT.NULL);
 		button.setImage(PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_TOOL_BACK));
 		button.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectColorScheme();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 		button = new Button(buttonComposite, SWT.NULL);
 		button.setImage(PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_ETOOL_DELETE));
 		button.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				deleteColorScheme();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 		button = new Button(buttonComposite, SWT.NULL);
 		button.setImage(PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_ETOOL_CLEAR));
 		button.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				renameColorScheme();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		// New Color Scheme
@@ -164,14 +164,14 @@ public class ColorSchemePage extends WizardPage {
 		button = new Button(composite, SWT.NULL);
 		button.setImage(PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ADD));
 		button.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				createNewColorScheme();
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		updateColorSchemeList();

@@ -51,12 +51,14 @@ public class BuildFeatureGraphHandler extends AFeatureProjectHandler {
 		for (final IFeatureProject project : projectList) {
 			final Path path = Paths.get(project.getProject().getFile("model.fg").getLocationURI());
 			final IRunner<ModalImplicationGraph> runner = LongRunningWrapper.getRunner(new LongRunningMethod<ModalImplicationGraph>() {
+
 				@Override
 				public ModalImplicationGraph execute(IMonitor monitor) throws Exception {
 					return project.getFeatureModelManager().getSnapshot().getFormula().getElement(new ModalImplicationGraphCreator());
 				}
 			});
 			runner.addJobFinishedListener(new JobFinishListener<ModalImplicationGraph>() {
+
 				@Override
 				public void jobFinished(IJob<ModalImplicationGraph> finishedJob) {
 					SimpleFileHandler.save(path, finishedJob.getResults(), new MIGAdjListFormat());

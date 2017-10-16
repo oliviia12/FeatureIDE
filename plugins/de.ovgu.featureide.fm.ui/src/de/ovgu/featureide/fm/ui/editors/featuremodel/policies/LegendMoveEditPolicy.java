@@ -44,7 +44,8 @@ public class LegendMoveEditPolicy extends NonResizableEditPolicy {
 
 	private boolean isValidPosition = true;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#createDragSourceFeedbackFigure()
 	 */
 	@Override
@@ -65,19 +66,20 @@ public class LegendMoveEditPolicy extends NonResizableEditPolicy {
 		return r;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#showChangeBoundsFeedback(org.eclipse.gef.requests.ChangeBoundsRequest)
 	 */
 
 	@Override
 	protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
-		//Get the position where the the user wants to move the legend to
+		// Get the position where the the user wants to move the legend to
 		final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds().getCopy());
 		getHostFigure().translateToAbsolute(rect);
 		rect.translate(request.getMoveDelta());
 		rect.resize(request.getSizeDelta());
 
-		//Check that no figure intersects with the new position of the legend
+		// Check that no figure intersects with the new position of the legend
 		final Rectangle newFeedback = new Rectangle(rect.getLocation(), rect.getSize());
 		getHostFigure().translateToRelative(newFeedback);
 		final List<?> children = getHostFigure().getParent().getChildren();
@@ -90,7 +92,7 @@ public class LegendMoveEditPolicy extends NonResizableEditPolicy {
 			}
 		}
 
-		//Create new feedback
+		// Create new feedback
 		final IFigure feedback = getDragSourceFeedbackFigure();
 		if (feedback instanceof RectangleFigure) {
 			final RectangleFigure r = (RectangleFigure) feedback;

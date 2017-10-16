@@ -60,16 +60,17 @@ public class Commons {
 		}
 	};
 
-	public static final String FEATURE_MODEL_BENCHMARK_PATH_REMOTE = "/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/benchmarkFeatureModels/";
+	public static final String FEATURE_MODEL_BENCHMARK_PATH_REMOTE =
+			"/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/benchmarkFeatureModels/";
 	public static final String FEATURE_MODEL_BENCHMARK_PATH_LOCAL_CLASS_PATH = "benchmarkFeatureModels";
 
-	public static final String FEATURE_MODEL_TESTFEATUREMODELS_PATH_REMOTE = "/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/testFeatureModels/";
+	public static final String FEATURE_MODEL_TESTFEATUREMODELS_PATH_REMOTE =
+			"/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/testFeatureModels/";
 	public static final String FEATURE_MODEL_TESTFEATUREMODELS_PATH_LOCAL_CLASS_PATH = "testFeatureModels";
 
 	/**
-	 * Returns a file reference to <code>remotePath</code> via a absolute path on TeamCity build server or
-	 * the file reference to <code>localClassPath</code> which should be inside the class path. The return
-	 * value could be <code>null</code> if no such file exists on both places.
+	 * Returns a file reference to <code>remotePath</code> via a absolute path on TeamCity build server or the file reference to <code>localClassPath</code>
+	 * which should be inside the class path. The return value could be <code>null</code> if no such file exists on both places.
 	 *
 	 * @param remotePath Path to desired file on TeamCity
 	 * @param localClassPath Path to desired file on class path
@@ -88,7 +89,7 @@ public class Commons {
 	 * @param featureModelXmlFilename Feature model file, e.g., "model.xml"
 	 * @param remotePath Directory in which the model is located, e.g., "/myremote_server_path/models"
 	 * @param localClassPath Alternative resource path in class path to look for the feature model file, if remote path is not available (in local mode for
-	 *            instance).
+	 *        instance).
 	 * @return Feature model loaded from the given file
 	 */
 	public final static IFeatureModel loadFeatureModelFromFile(final String featureModelXmlFilename, final String remotePath, final String localClassPath) {
@@ -97,8 +98,8 @@ public class Commons {
 	}
 
 	/**
-	 * Extracts the file extension of the given file <b>filename</b> or empty string, if no file extension is available.
-	 * The extension does not include the leading ".".
+	 * Extracts the file extension of the given file <b>filename</b> or empty string, if no file extension is available. The extension does not include the
+	 * leading ".".
 	 *
 	 * @param filename file name
 	 * @return File extension or empty string
@@ -121,7 +122,7 @@ public class Commons {
 	 * @param featureModelXmlFilename Feature model file, e.g., "model.xml"
 	 * @param remotePath Directory in which the model is located, e.g., "/myremote_server_path/models"
 	 * @param localClassPath Alternative resource path in class path to look for the feature model file, if remote path is not available (in local mode for
-	 *            instance).
+	 *        instance).
 	 * @return Feature model loaded from the given file
 	 */
 	public final static IFeatureModel loadFeatureModelFromFile(final String featureModelXmlFilename, final FileFilter filter, final String remotePath,

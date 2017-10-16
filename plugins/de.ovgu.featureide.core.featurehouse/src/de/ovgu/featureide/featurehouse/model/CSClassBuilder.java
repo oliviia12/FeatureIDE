@@ -66,9 +66,7 @@ public class CSClassBuilder extends ClassBuilder {
 	/**
 	 *
 	 * @param terminal body
-	 * @return list(0) field modifiers
-	 *         list(1) field type
-	 *         ... field names
+	 * @return list(0) field modifiers list(1) field type ... field names
 	 */
 	public LinkedList<String> getFields(String body) {
 		String modifiers = "";

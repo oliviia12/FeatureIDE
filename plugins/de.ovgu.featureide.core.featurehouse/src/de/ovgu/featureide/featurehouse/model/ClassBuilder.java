@@ -33,11 +33,9 @@ import de.ovgu.featureide.core.fstmodel.FSTModel;
 import de.ovgu.featureide.core.fstmodel.IRoleElement;
 
 /**
- * Class builders are creating entries for the FSTModel of their special language.<br>
- * Parent Class for all Class builders.
+ * Class builders are creating entries for the FSTModel of their special language.<br> Parent Class for all Class builders.
  *
- * @see {@link JavaClassBuilder}, {@link CClassBuilder}, {@link CSClassBuilder},
- *      {@link HaskellClassBuilder}
+ * @see {@link JavaClassBuilder}, {@link CClassBuilder}, {@link CSClassBuilder}, {@link HaskellClassBuilder}
  * @author Jens Meinicke
  */
 public class ClassBuilder {
@@ -56,32 +54,28 @@ public class ClassBuilder {
 	 *
 	 * @param terminal FSTTerminal containing the field
 	 */
-	void caseFieldDeclaration(FSTTerminal terminal) {
-	}
+	void caseFieldDeclaration(FSTTerminal terminal) {}
 
 	/**
 	 * Creates the entry for the given method.
 	 *
 	 * @param terminal FSTTerminal containing the method
 	 */
-	void caseMethodDeclaration(FSTTerminal terminal) {
-	}
+	void caseMethodDeclaration(FSTTerminal terminal) {}
 
 	/**
 	 * Creates the entry for the given constructor.
 	 *
 	 * @param terminal FSTTerminal containing the constructor
 	 */
-	void caseConstructorDeclaration(FSTTerminal terminal) {
-	}
+	void caseConstructorDeclaration(FSTTerminal terminal) {}
 
 	/**
 	 * Creates the entry for the given constructor.
 	 *
 	 * @param terminal FSTTerminal containing the constructor
 	 */
-	void caseInnerClassDeclaration(FSTTerminal terminal) {
-	}
+	void caseInnerClassDeclaration(FSTTerminal terminal) {}
 
 	/**
 	 * Locks for the correct {@link ClassBuilder} of the given file.
@@ -144,33 +138,23 @@ public class ClassBuilder {
 		return field;
 	}
 
-	public void caseJMLSpecCaseSeq(FSTTerminal terminal) {
-	}
+	public void caseJMLSpecCaseSeq(FSTTerminal terminal) {}
 
-	public void caseClassDeclarationType(FSTTerminal terminal) {
-	}
+	public void caseClassDeclarationType(FSTTerminal terminal) {}
 
-	public void caseAddImport(FSTTerminal terminal) {
-	}
+	public void caseAddImport(FSTTerminal terminal) {}
 
-	public void casePackage(FSTTerminal terminal) {
-	}
+	public void casePackage(FSTTerminal terminal) {}
 
-	public void caseImplementsList(FSTTerminal terminal) {
-	}
+	public void caseImplementsList(FSTTerminal terminal) {}
 
-	public void caseExtendsList(FSTTerminal terminal) {
-	}
+	public void caseExtendsList(FSTTerminal terminal) {}
 
-	public void caseModifiers(FSTTerminal terminal) {
-	}
+	public void caseModifiers(FSTTerminal terminal) {}
 
-	public void caseInvariant(FSTTerminal terminal) {
-	}
+	public void caseInvariant(FSTTerminal terminal) {}
 
-	public void caseInitialization(FSTNode node) {
-	}
+	public void caseInitialization(FSTNode node) {}
 
-	public void caseSignatureDeclaration(FSTNonTerminal node) {
-	}
+	public void caseSignatureDeclaration(FSTNonTerminal node) {}
 }

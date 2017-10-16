@@ -48,60 +48,35 @@ import org.junit.Test;
 import de.ovgu.runtimetest.RuntimeTest.Logger.Level;
 
 /**
- * A runtime test extends JUnit capabilities by defining additional acceptance ranges for <i>timeout</i> tests.
- * Instead of giving a fixed <i>timeout</i> value, the tester defines an optional minimum (<b>allowedMinus</b>) and an optional maximum
- * (<b>allowedPlus</b>) allowed variation of a given run time that is compared to previous runs. If a method runtime is outside this
- * range, the test will fail. To implement a test, the user have to inherent a class from the abstract base class <code>RuntimeTest</code> but
- * there is no need to specify additional <code>@Test</code> annotations of JUnit. To invoke runtime constraints on certain methods, a
- * <b>@Constraint</b> annotation is required. Inside this annotation, it is required to specify a maximum sample count (<b>samples</b>) and the optional minimum
- * and maximum ranges.
+ * A runtime test extends JUnit capabilities by defining additional acceptance ranges for <i>timeout</i> tests. Instead of giving a fixed <i>timeout</i> value,
+ * the tester defines an optional minimum (<b>allowedMinus</b>) and an optional maximum (<b>allowedPlus</b>) allowed variation of a given run time that is
+ * compared to previous runs. If a method runtime is outside this range, the test will fail. To implement a test, the user have to inherent a class from the
+ * abstract base class <code>RuntimeTest</code> but there is no need to specify additional <code>@Test</code> annotations of JUnit. To invoke runtime
+ * constraints on certain methods, a <b>@Constraint</b> annotation is required. Inside this annotation, it is required to specify a maximum sample count
+ * (<b>samples</b>) and the optional minimum and maximum ranges.
  *
- * <br/>
- * <br/>
- * <b>Note</b>: Since JUnit invokes a starter method inside this class, the entire test will stop if at least one method under test
- * fail by constraint violation or regular exceptions or assertions. An additional JUnit <code>@Test</code> annotation will lead to an additional
- * test drive by JUnit but with regular behavior.
+ * <br/> <br/> <b>Note</b>: Since JUnit invokes a starter method inside this class, the entire test will stop if at least one method under test fail by
+ * constraint violation or regular exceptions or assertions. An additional JUnit <code>@Test</code> annotation will lead to an additional test drive by JUnit
+ * but with regular behavior.
  *
- * <br/>
- * <br/>
- * <b>Example</b>
+ * <br/> <br/> <b>Example</b>
  *
- * <pre>
- * <code>
- 	import java.util.Random;
-
-	public class MyTest extends RuntimeTest {
-
-	static {
-		disableThisTest = false;
-		historyLength = HistoryLength.FIVE_ENTRIES;
-		logger = Logger.LOG_NOTHING;
-	}
-
-	&#64;Annotations.WarmUp
-	public void methodBeforeTesting() {
-		// Add code here
-	}
-
-
-	&#64;Annotations.CoolDown
-	public void methodAfterTesting() {
-		// Add code here
-	}
-
-
-	&#64;Annotations.Constraint(samples=5,allowedPlus=3)
-	public void foo1() throws InterruptedException {
-		Thread.sleep(new Random().nextInt(20));
-	}
-
-	&#64;Annotations.Constraint(samples=5,allowedPlus=10,allowedMinus=1)
-	public void foo2() throws InterruptedException {
-		Thread.sleep(new Random().nextInt(10));
-	}
-}
- </code>
- * </pre>
+ * <pre> <code> import java.util.Random;
+ * 
+ * public class MyTest extends RuntimeTest {
+ * 
+ * static { disableThisTest = false; historyLength = HistoryLength.FIVE_ENTRIES; logger = Logger.LOG_NOTHING; }
+ * 
+ * &#64;Annotations.WarmUp public void methodBeforeTesting() { // Add code here }
+ * 
+ * 
+ * &#64;Annotations.CoolDown public void methodAfterTesting() { // Add code here }
+ * 
+ * 
+ * &#64;Annotations.Constraint(samples=5,allowedPlus=3) public void foo1() throws InterruptedException { Thread.sleep(new Random().nextInt(20)); }
+ * 
+ * &#64;Annotations.Constraint(samples=5,allowedPlus=10,allowedMinus=1) public void foo2() throws InterruptedException { Thread.sleep(new Random().nextInt(10));
+ * } } </code> </pre>
  *
  * @author Marcus Pinnecke (pinnecke@ovgu.de)
  *
@@ -110,7 +85,7 @@ public abstract class RuntimeTest {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	//	A N N O T A T I O N S
+	// A N N O T A T I O N S
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -120,9 +95,9 @@ public abstract class RuntimeTest {
 	 * @author Marcus Pinnecke (pinnecke@ovgu.de)
 	 */
 	public static class Annotations {
+
 		/**
-		 * Specifies that a user-defined method should be automatically invoked and
-		 * tested in terms of regular JUnit/Java behavior and runtime behavior.
+		 * Specifies that a user-defined method should be automatically invoked and tested in terms of regular JUnit/Java behavior and runtime behavior.
 		 *
 		 * @see WarmUp
 		 * @see CoolDown
@@ -132,6 +107,7 @@ public abstract class RuntimeTest {
 		@Target(value = ElementType.METHOD)
 		@Retention(value = RetentionPolicy.RUNTIME)
 		public @interface Constraint {
+
 			double allowedMinus() default Double.NEGATIVE_INFINITY;
 
 			double allowedPlus() default Double.POSITIVE_INFINITY;
@@ -140,8 +116,7 @@ public abstract class RuntimeTest {
 		}
 
 		/**
-		 * Methods annotated with this annotation will be executed before the first
-		 * invocation of <code>@Constraint</code> methods.
+		 * Methods annotated with this annotation will be executed before the first invocation of <code>@Constraint</code> methods.
 		 *
 		 * @see WarmUp
 		 * @see Constraint
@@ -150,12 +125,10 @@ public abstract class RuntimeTest {
 		 */
 		@Target(value = ElementType.METHOD)
 		@Retention(value = RetentionPolicy.RUNTIME)
-		public @interface CoolDown {
-		}
+		public @interface CoolDown {}
 
 		/**
-		 * Methods annotated with this annotation will be executed after the last
-		 * invocation of <code>@Constraint</code> methods.
+		 * Methods annotated with this annotation will be executed after the last invocation of <code>@Constraint</code> methods.
 		 *
 		 * @see CoolDown
 		 * @see Constraint
@@ -164,17 +137,17 @@ public abstract class RuntimeTest {
 		 */
 		@Target(value = ElementType.METHOD)
 		@Retention(value = RetentionPolicy.RUNTIME)
-		public @interface WarmUp {
-		}
+		public @interface WarmUp {}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	//	E X C E P T I O N S
+	// E X C E P T I O N S
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class RangeException extends RuntimeException {
+
 		private static final long serialVersionUID = 5567220675749347664L;
 
 		public RangeException(final Annotations.Constraint constraint) {
@@ -185,6 +158,7 @@ public abstract class RuntimeTest {
 	}
 
 	class ViolationException extends AssertionError {
+
 		private static final long serialVersionUID = 7877278129859302108L;
 
 		public ViolationException(final String msg) {
@@ -194,12 +168,14 @@ public abstract class RuntimeTest {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	//	H I S T O R Y
+	// H I S T O R Y
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public static abstract class History {
+
 		public static class PlainTextFileHistory extends History {
+
 			protected String directoryToStoreFiles;
 
 			protected final String fileExtension;
@@ -284,6 +260,7 @@ public abstract class RuntimeTest {
 		}
 
 		public static class Result {
+
 			public static final Result PASSES = new Result(true, "");
 
 			String message;
@@ -386,13 +363,16 @@ public abstract class RuntimeTest {
 	}
 
 	public static class HistoryLength {
+
 		public static class ClearHistory extends HistoryLength {
+
 			ClearHistory() {
 				super(0);
 			}
 		}
 
 		public static class DefaultHistoryLength extends HistoryLength {
+
 			DefaultHistoryLength() {
 				super(5);
 			}
@@ -411,16 +391,18 @@ public abstract class RuntimeTest {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	//	L O G G I N G
+	// L O G G I N G
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public static abstract class Logger {
+
 		public static enum Level {
 			DEBUG, ERROR, INFO
 		}
 
 		public static final class LogAllLogger extends Logger {
+
 			public LogAllLogger() {
 				logInfo = logDebug = logError = true;
 				printerInfo = printerDebug = printerError = System.out;
@@ -428,6 +410,7 @@ public abstract class RuntimeTest {
 		}
 
 		public static final class LogNothingLogger extends Logger {
+
 			public LogNothingLogger() {
 				logInfo = logDebug = logError = false;
 			}
@@ -458,13 +441,13 @@ public abstract class RuntimeTest {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	//	R U N T I M E   T E S T   C L A S S
+	// R U N T I M E T E S T C L A S S
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  S T A T I C   H E L P E R  M E T H O D S
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// S T A T I C H E L P E R M E T H O D S
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	protected static double avg(final Collection<Double> list) {
 		double retval = 0;
@@ -504,9 +487,9 @@ public abstract class RuntimeTest {
 		return map.containsKey(key) ? map.get(key) : defaultValue;
 	}
 
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  F I E L D S
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// F I E L D S
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	protected static boolean disableThisTest = false;
 
@@ -534,9 +517,9 @@ public abstract class RuntimeTest {
 
 	private static final String STR_WARMUP_PHASE = "Run warmup phase...";
 
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  P R O T E C T E D   M E T H O D S
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// P R O T E C T E D M E T H O D S
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	protected void checkConstraintRanges(final Annotations.Constraint constraint) {
 		if (((constraint.allowedMinus() != Double.NEGATIVE_INFINITY) && (constraint.allowedMinus() < 0))
@@ -641,9 +624,9 @@ public abstract class RuntimeTest {
 		invokeMethodsWithAnnotation(Annotations.WarmUp.class, instance);
 	}
 
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//  J U N I T   E N T R Y   P O I N T
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// J U N I T E N T R Y P O I N T
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	@Test
 	public void entryPoint() {

@@ -61,7 +61,7 @@ public class AutoLayoutConstraintAction extends Action {
 		final int counter = oldPos.size();
 		oldPos.add(newList);
 		final AutoLayoutConstraintOperation op = new AutoLayoutConstraintOperation(featureModel, oldPos, counter);
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 		op.addContext((IUndoContext) featureModel.getFeatureModel().getUndoContext());
 
 		try {

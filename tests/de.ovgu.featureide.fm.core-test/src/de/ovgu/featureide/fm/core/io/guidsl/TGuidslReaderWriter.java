@@ -34,6 +34,7 @@ import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
  * @author Fabian Benduhn
  */
 public class TGuidslReaderWriter extends TAbstractFeatureModelReaderWriter {
+
 	/**
 	 * @param file
 	 * @throws UnsupportedModelException
@@ -47,14 +48,14 @@ public class TGuidslReaderWriter extends TAbstractFeatureModelReaderWriter {
 		return new GuidslFormat();
 	}
 
-	//guidsl does not save concrete compound features
+	// guidsl does not save concrete compound features
 	@Override
 	public void testFeatureConcrete() {
 		for (final IFeature origF : origFm.getFeatures()) {
 			if (!origF.getStructure().isConcrete() && origF.getStructure().isConcrete()) {
 				final IFeature newF = newFm.getFeature(origF.getName());
 				if (newF == null) {
-					//fail("Feature " + origF.getName() + " cannot be found");
+					// fail("Feature " + origF.getName() + " cannot be found");
 				} else {
 					assertTrue(failureMessage + origF, newFm.getFeature(origF.getName()).getStructure().isConcrete());
 				}

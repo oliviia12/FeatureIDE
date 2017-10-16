@@ -119,8 +119,7 @@ public class CErrorPropagation extends ErrorPropagation {
 	protected boolean propagateMarker(IMarker m) {
 		try {
 			return !(TASK.equals(m.getType()));
-		} catch (final CoreException e) {
-		}
+		} catch (final CoreException e) {}
 		return super.propagateMarker(m);
 	}
 

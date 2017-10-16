@@ -28,13 +28,13 @@ import de.ovgu.featureide.ui.views.configMap.ConfigurationMapFilter;
 import de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter;
 
 /**
- * A Filter that only allows Features, that aren't allowed by any of the given
- * Filters.
+ * A Filter that only allows Features, that aren't allowed by any of the given Filters.
  *
  * @author Paul Maximilian Bittner
  * @author Antje Moench
  */
 public class NotAnyFilterFiltersFeatureFilter extends ConfigurationMapFilter {
+
 	private final List<IConfigurationMapFilter> filters;
 
 	/**
@@ -47,7 +47,8 @@ public class NotAnyFilterFiltersFeatureFilter extends ConfigurationMapFilter {
 		setImagePath(Image_Empty);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.ui.views.configMap.ConfigurationMapFilter#initialize(de.ovgu.featureide.ui.views.configMap.ConfigurationMap)
 	 */
 	@Override
@@ -58,8 +59,10 @@ public class NotAnyFilterFiltersFeatureFilter extends ConfigurationMapFilter {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter#test(de.ovgu.featureide.ui.views.configMap.ConfigurationMap, de.ovgu.featureide.fm.core.base.IFeature)
+	/*
+	 * (non-Javadoc)
+	 * @see de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter#test(de.ovgu.featureide.ui.views.configMap.ConfigurationMap,
+	 * de.ovgu.featureide.fm.core.base.IFeature)
 	 */
 	@Override
 	public boolean test(ConfigurationMap configurationMap, IFeature feature) {

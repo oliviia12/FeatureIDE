@@ -33,6 +33,7 @@ import org.antlr.runtime.RecognizerSharedState;
 
 @SuppressWarnings({ "all", "warnings", "unchecked" })
 public class VelvetLexer extends Lexer {
+
 	public static final int EOF = -1;
 	public static final int ABSTRACT = 4;
 	public static final int ACONSTR = 5;
@@ -103,8 +104,7 @@ public class VelvetLexer extends Lexer {
 		return new Lexer[] {};
 	}
 
-	public VelvetLexer() {
-	}
+	public VelvetLexer() {}
 
 	public VelvetLexer(CharStream input) {
 		this(input, new RecognizerSharedState());
@@ -1862,7 +1862,10 @@ public class VelvetLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// Velvet.g:1:8: ( ABSTRACT | ATTR_OP_EQUALS | ATTR_OP_GREATER | ATTR_OP_GREATER_EQ | ATTR_OP_LESS | ATTR_OP_LESS_EQ | ATTR_OP_NOT_EQUALS | CINTERFACE | COLON | COMMA | CONCEPT | CONSTRAINT | DESCRIPTION | END_C | END_R | EQ | FEATURE | IMPORT | IMPORTINSTANCE | IMPORTINTERFACE | MANDATORY | MINUS | ONEOF | OP_AND | OP_EQUIVALENT | OP_IMPLIES | OP_NOT | OP_OR | OP_XOR | PLUS | SEMI | SOMEOF | START_C | START_R | USE | VAR_BOOL | VAR_FLOAT | VAR_INT | VAR_STRING | BOOLEAN | ID | IDPath | INT | FLOAT | STRING | WS | SL_COMMENT | ML_COMMENT )
+		// Velvet.g:1:8: ( ABSTRACT | ATTR_OP_EQUALS | ATTR_OP_GREATER | ATTR_OP_GREATER_EQ | ATTR_OP_LESS | ATTR_OP_LESS_EQ | ATTR_OP_NOT_EQUALS | CINTERFACE |
+		// COLON | COMMA | CONCEPT | CONSTRAINT | DESCRIPTION | END_C | END_R | EQ | FEATURE | IMPORT | IMPORTINSTANCE | IMPORTINTERFACE | MANDATORY | MINUS |
+		// ONEOF | OP_AND | OP_EQUIVALENT | OP_IMPLIES | OP_NOT | OP_OR | OP_XOR | PLUS | SEMI | SOMEOF | START_C | START_R | USE | VAR_BOOL | VAR_FLOAT |
+		// VAR_INT | VAR_STRING | BOOLEAN | ID | IDPath | INT | FLOAT | STRING | WS | SL_COMMENT | ML_COMMENT )
 		int alt19 = 48;
 		alt19 = dfa19.predict(input);
 		switch (alt19) {
@@ -2263,10 +2266,10 @@ public class VelvetLexer extends Lexer {
 			+ "\1\55\2\uffff\1\55\2\uffff\4\55\1\56\3\uffff\1\52\2\55\13\uffff" + "\11\55\2\uffff\7\55\3\uffff\35\55\1\uffff\2\55\1\uffff\2\55\1\uffff"
 			+ "\21\55\2\uffff\6\55\1\uffff\4\55\1\uffff\10\55\1\uffff\3\55\2\uffff" + "\2\55\1\uffff\2\55\1\uffff\3\55\1\uffff\3\55\1\uffff\5\55\4\uffff"
 			+ "\1\55\1\uffff";
-	static final String DFA19_maxS = "\1\175\1\172\4\75\1\172\2\uffff\1\172\2\uffff\5\172\2\uffff\1\172"
-			+ "\2\uffff\1\172\2\uffff\4\172\1\145\3\uffff\1\57\2\172\13\uffff\11" + "\172\2\uffff\7\172\3\uffff\35\172\1\uffff\2\172\1\uffff\2\172\1"
-			+ "\uffff\21\172\2\uffff\6\172\1\uffff\4\172\1\uffff\10\172\1\uffff" + "\3\172\2\uffff\2\172\1\uffff\2\172\1\uffff\3\172\1\uffff\3\172\1"
-			+ "\uffff\5\172\4\uffff\1\172\1\uffff";
+	static final String DFA19_maxS =
+			"\1\175\1\172\4\75\1\172\2\uffff\1\172\2\uffff\5\172\2\uffff\1\172" + "\2\uffff\1\172\2\uffff\4\172\1\145\3\uffff\1\57\2\172\13\uffff\11"
+					+ "\172\2\uffff\7\172\3\uffff\35\172\1\uffff\2\172\1\uffff\2\172\1" + "\uffff\21\172\2\uffff\6\172\1\uffff\4\172\1\uffff\10\172\1\uffff"
+					+ "\3\172\2\uffff\2\172\1\uffff\2\172\1\uffff\3\172\1\uffff\3\172\1" + "\uffff\5\172\4\uffff\1\172\1\uffff";
 	static final String DFA19_acceptS = "\7\uffff\1\11\1\12\1\uffff\1\16\1\17\5\uffff\1\30\1\34\1\uffff\1"
 			+ "\36\1\37\1\uffff\1\41\1\42\5\uffff\1\54\1\55\1\56\3\uffff\1\51\1" + "\52\1\2\1\20\1\4\1\3\1\6\1\31\1\5\1\7\1\33\11\uffff\1\32\1\26\7"
 			+ "\uffff\1\53\1\57\1\60\35\uffff\1\46\2\uffff\1\35\2\uffff\1\43\21" + "\uffff\1\44\1\50\6\uffff\1\45\4\uffff\1\27\10\uffff\1\22\3\uffff"

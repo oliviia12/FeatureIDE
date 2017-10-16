@@ -27,11 +27,9 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 
 /**
- * This is a benchmark for analyzes at the {@link IFeatureModel}.
- * The test cases do not analyze the validity of the analyses.
+ * This is a benchmark for analyzes at the {@link IFeatureModel}. The test cases do not analyze the validity of the analyses.
  *
- * All timeouts are set to around 4 times the measured times(with intel i5 @ 3,3 GHz)
- * to avoid that the tests fail for slower computers.
+ * All timeouts are set to around 4 times the measured times(with intel i5 @ 3,3 GHz) to avoid that the tests fail for slower computers.
  *
  * @author Jens Meinicke
  */
@@ -105,10 +103,10 @@ public class BFeatureModelAnalyzer {
 		analyze(500);
 	}
 
-	//	@Test (timeout=300000) // 75.904s @ i5(3,3GHz)
-	//	public void BAnalyzeFeatureModel1000() {
-	//		analyze(1000);
-	//	}
+	// @Test (timeout=300000) // 75.904s @ i5(3,3GHz)
+	// public void BAnalyzeFeatureModel1000() {
+	// analyze(1000);
+	// }
 
 	/************************************************************
 	 * Analyzes constraints only
@@ -167,7 +165,7 @@ public class BFeatureModelAnalyzer {
 		BUpdateConstraints(500);
 	}
 
-	//	@Test (timeout=140000) //  @ i5(3,3GHz)
+	// @Test (timeout=140000) // @ i5(3,3GHz)
 	public final void BUpdateConstraints1000() {
 		BUpdateConstraints(1000);
 	}

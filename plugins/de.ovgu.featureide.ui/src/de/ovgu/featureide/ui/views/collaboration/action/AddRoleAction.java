@@ -46,6 +46,7 @@ import de.ovgu.featureide.ui.wizards.NewFeatureIDEFileWizard;
  * @author Jens Meinicke
  */
 public class AddRoleAction extends Action {
+
 	private final GraphicalViewerImpl viewer;
 	private final CollaborationView collaborationView;
 

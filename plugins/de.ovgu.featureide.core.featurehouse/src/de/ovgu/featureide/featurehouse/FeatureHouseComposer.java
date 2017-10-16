@@ -112,10 +112,11 @@ import fuji.SyntacticErrorException;
 // TODO set "Composition errors" like *.png could not be composed with *.png
 @SuppressWarnings("restriction")
 public class FeatureHouseComposer extends ComposerExtensionClass {
-	private static final QualifiedName BUILD_META_PRODUCT = new QualifiedName(FeatureHouseComposer.class.getName() + "#BuildMetaProduct",
-			FeatureHouseComposer.class.getName() + "#BuildMetaProduct");
-	private static final QualifiedName USE_FUJI = new QualifiedName(FeatureHouseComposer.class.getName() + "#Fuji",
-			FeatureHouseComposer.class.getName() + "#Fuji");
+
+	private static final QualifiedName BUILD_META_PRODUCT =
+			new QualifiedName(FeatureHouseComposer.class.getName() + "#BuildMetaProduct", FeatureHouseComposer.class.getName() + "#BuildMetaProduct");
+	private static final QualifiedName USE_FUJI =
+			new QualifiedName(FeatureHouseComposer.class.getName() + "#Fuji", FeatureHouseComposer.class.getName() + "#Fuji");
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
 
@@ -230,10 +231,8 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	/**
 	 * Creates an error marker to the last error file.
 	 *
-	 * @param line
-	 *            The line of the marker.
-	 * @param message
-	 *            The message.
+	 * @param line The line of the marker.
+	 * @param message The message.
 	 */
 	protected void createBuilderProblemMarker(int line, String message) {
 		message = detruncateString(message);
@@ -249,8 +248,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * @param message
-	 *            The message
+	 * @param message The message
 	 * @return A substring of message that is smaller than 65535 bytes.
 	 */
 	private static String detruncateString(String message) {
@@ -277,12 +275,9 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Removes line and column form the message of the TokenMgrError.<br>
-	 * Example message:<br>
-	 * -Lexical error at line 7, column 7. Encountered: <EOF> after : ""
+	 * Removes line and column form the message of the TokenMgrError.<br> Example message:<br> -Lexical error at line 7, column 7. Encountered: <EOF> after : ""
 	 *
-	 * @param message
-	 *            The message
+	 * @param message The message
 	 * @return message without "line i, column j."
 	 */
 	private String getTokenMgrErrorMessage(String message) {
@@ -293,12 +288,9 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Gets the line of the message of the TokenMgrError.<br>
-	 * Example message:<br>
-	 * -Lexical error at line 7, column 7. Encountered: <EOF> after : ""
+	 * Gets the line of the message of the TokenMgrError.<br> Example message:<br> -Lexical error at line 7, column 7. Encountered: <EOF> after : ""
 	 *
-	 * @param message
-	 *            The error message
+	 * @param message The error message
 	 * @return The line
 	 */
 	private int getTokenMgrErrorLine(String message) {
@@ -309,8 +301,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Checks the current folder structure at the build folder and creates
-	 * folders if necessary.
+	 * Checks the current folder structure at the build folder and creates folders if necessary.
 	 */
 	private void createBuildStructure() {
 		final IProject p = featureProject.getProject();
@@ -329,8 +320,8 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Checks whether the java build path is equal to the defined build path of the FeatureIDE project.<br>
-	 * Only necessary for FeatureHouse projects with the old build structure.
+	 * Checks whether the java build path is equal to the defined build path of the FeatureIDE project.<br> Only necessary for FeatureHouse projects with the
+	 * old build structure.
 	 */
 	private void checkJavaBuildPath() {
 		try {
@@ -363,8 +354,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 			}
 
 			/**
-			 * case: there is no source entry at the class path add the source
-			 * entry to the classpath
+			 * case: there is no source entry at the class path add the source entry to the classpath
 			 **/
 			final IFolder folder = featureProject.getBuildFolder();
 			final ClasspathEntry sourceEntry = new ClasspathEntry(IPackageFragmentRoot.K_SOURCE, IClasspathEntry.CPE_SOURCE, folder.getFullPath(), new IPath[0],
@@ -536,16 +526,14 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Check if there is an introductionary method contract for methods that
-	 * contain the keyword original in contract.
+	 * Check if there is an introductionary method contract for methods that contain the keyword original in contract.
 	 */
 	private boolean checkForOriginalInContract(FSTMethod m, FSTMethod mm) {
 		return m.hasContract() && m.getContract().contains(ORIGINAL) && mm.getName().equals(m.getName()) && mm.hasContract();
 	}
 
 	/**
-	 * Check if a method whose contract is marked with \final_method is
-	 * redefine.
+	 * Check if a method whose contract is marked with \final_method is redefine.
 	 *
 	 *
 	 * @param m
@@ -557,8 +545,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Check if a method whose contract is marked with \final_contract is
-	 * redefined.
+	 * Check if a method whose contract is marked with \final_contract is redefined.
 	 *
 	 * @param m
 	 * @param mm
@@ -569,8 +556,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Check if a method contract's composition technique is illegitimately
-	 * redefined with another technique.
+	 * Check if a method contract's composition technique is illegitimately redefined with another technique.
 	 *
 	 * @param m
 	 * @param mm
@@ -635,12 +621,11 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 
 		try {
 			final String[] args = getArguments(configPath, basePath, outputPath, getContractParameter());
-			final FeatureModelInfo modelInfo = new FeatureIDEModelInfo(featureModel,
-					!IFeatureProject.META_THEOREM_PROVING.equals(featureProject.getMetaProductGeneration()));
+			final FeatureModelInfo modelInfo =
+					new FeatureIDEModelInfo(featureModel, !IFeatureProject.META_THEOREM_PROVING.equals(featureProject.getMetaProductGeneration()));
 			composerExtension.setModelInfo(modelInfo);
 			composerExtension.buildMetaProduct(args, features);
-		} catch (final TokenMgrError e) {
-		} catch (final Error e) {
+		} catch (final TokenMgrError e) {} catch (final Error e) {
 			LOGGER.logError(e);
 		}
 	}
@@ -728,6 +713,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 			}
 		}
 		final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+
 			@Override
 			public Boolean execute(IMonitor workMonitor) throws Exception {
 				try {
@@ -745,11 +731,9 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Runs the type checker fuji. synchronized because fuji use static fields,
-	 * and a parallel execution is not possible.
+	 * Runs the type checker fuji. synchronized because fuji use static fields, and a parallel execution is not possible.
 	 *
-	 * @param featureProject
-	 *            The feature project of the caller.
+	 * @param featureProject The feature project of the caller.
 	 */
 	private synchronized static Program runFuji(IFeatureProject featureProject) throws CompositionException {
 		final String sourcePath = featureProject.getSourcePath();
@@ -758,7 +742,7 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 		Program ast = null;
 		try {
 			final IFeatureModel fm = featureProject.getFeatureModel();
-			//			fm.getAnalyser().setDependencies();
+			// fm.getAnalyser().setDependencies();
 
 			final Main fuji = new Main(fujiOptions, fm, null);
 
@@ -790,7 +774,8 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 			}
 		} catch (final CompositionErrorException e) {
 			createFujiMarker(-1, e.getMessage(), featureProject.getSourceFolder(), IMarker.SEVERITY_ERROR, featureProject);
-		} catch (IllegalArgumentException | org.apache.commons.cli.ParseException | IOException | FeatureDirNotFoundException | SyntacticErrorException
+		} catch (
+				IllegalArgumentException | org.apache.commons.cli.ParseException | IOException | FeatureDirNotFoundException | SyntacticErrorException
 				| SemanticErrorException | CompilerWarningException | UnsupportedModelException e) {
 			LOGGER.logError(e);
 		}
@@ -826,14 +811,10 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	/**
 	 * Creates an marker for fuji type checks.
 	 *
-	 * @param line
-	 *            The line number
-	 * @param message
-	 *            The message to display
-	 * @param file
-	 *            The file path
-	 * @param severity
-	 *            The severity of the marker (IMarker.SEVERITY_*)
+	 * @param line The line number
+	 * @param message The message to display
+	 * @param file The file path
+	 * @param severity The severity of the marker (IMarker.SEVERITY_*)
 	 */
 	protected static void createFujiMarker(int line, String message, String file, int severity, IFeatureProject featureProject) {
 		final IFile iFile = featureProject.getProject().getWorkspace().getRoot().findFilesForLocationURI(new File(file).toURI())[0];
@@ -843,14 +824,10 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	/**
 	 * Creates an marker for fuji type checks.
 	 *
-	 * @param line
-	 *            The line number
-	 * @param message
-	 *            The message to display
-	 * @param file
-	 *            The file
-	 * @param severity
-	 *            The severity of the marker (IMarker.SEVERITY_*)
+	 * @param line The line number
+	 * @param message The message to display
+	 * @param file The file
+	 * @param severity The severity of the marker (IMarker.SEVERITY_*)
 	 */
 	private static void createFujiMarker(int line, String message, IResource file, int severity, IFeatureProject featureProject) {
 		// TODO NEWLine does not work
@@ -876,9 +853,8 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 	private void buildFSTModel(final String configPath, final String basePath, final String outputPath) {
 		// build the fst model of the current product
 		/**
-		 * It is necessary to also build the model of the current product,
-		 * because the line numbers of generated elements (e.g., methods) are
-		 * necessary for error propagation.
+		 * It is necessary to also build the model of the current product, because the line numbers of generated elements (e.g., methods) are necessary for
+		 * error propagation.
 		 **/
 		fhModelBuilder.buildModel(composer.getFstnodes(), false);
 
@@ -1078,10 +1054,8 @@ public class FeatureHouseComposer extends ComposerExtensionClass {
 				getArguments(temporaryConfigrationFile.toString(), featureProject.getSourcePath(), folder.getLocation().toOSString(), getContractParameter()));
 		if ((errorPropagation != null) && (errorPropagation.job != null)) {
 			/*
-			 * Waiting for the propagation job to finish, because the
-			 * corresponding FSTModel is necessary for propagation at FH This is
-			 * in general no problem because the compiler is much faster then
-			 * the composer
+			 * Waiting for the propagation job to finish, because the corresponding FSTModel is necessary for propagation at FH This is in general no problem
+			 * because the compiler is much faster then the composer
 			 */
 			try {
 				errorPropagation.job.join();

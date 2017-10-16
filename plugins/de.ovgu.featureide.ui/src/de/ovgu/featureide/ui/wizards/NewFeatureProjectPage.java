@@ -124,6 +124,7 @@ public class NewFeatureProjectPage extends WizardPage {
 		extensions = new IComposerExtensionBase[composerExtensions.size()];
 		composerExtensions.toArray(extensions);
 		Arrays.sort(extensions, new Comparator<IComposerExtensionBase>() {
+
 			@Override
 			public int compare(IComposerExtensionBase arg0, IComposerExtensionBase arg1) {
 				return arg0.getName().compareTo(arg1.getName());
@@ -146,6 +147,7 @@ public class NewFeatureProjectPage extends WizardPage {
 		}
 		descriptionLabel.setText(descriptionString);
 		toolCB.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				composerExtension = extensions[toolCB.getSelectionIndex()];
@@ -153,7 +155,7 @@ public class NewFeatureProjectPage extends WizardPage {
 		});
 		toolCB.select(0);
 
-		//Path Group
+		// Path Group
 		pathGroup = new Group(container, SWT.NONE);
 		layout.numColumns = 2;
 		layout.verticalSpacing = 9;

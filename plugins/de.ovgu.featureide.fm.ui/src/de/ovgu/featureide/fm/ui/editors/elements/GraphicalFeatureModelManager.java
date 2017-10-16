@@ -42,6 +42,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 public class GraphicalFeatureModelManager extends FileManager<IGraphicalFeatureModel> {
 
 	private static class ObjectCreator extends FileManager.ObjectCreator<IGraphicalFeatureModel> {
+
 		private final IGraphicalFeatureModel model;
 
 		public ObjectCreator(IGraphicalFeatureModel model) {

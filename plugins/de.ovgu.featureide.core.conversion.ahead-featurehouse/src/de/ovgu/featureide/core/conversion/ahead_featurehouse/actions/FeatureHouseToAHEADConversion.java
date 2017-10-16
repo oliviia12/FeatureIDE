@@ -59,6 +59,7 @@ import de.ovgu.featureide.core.fstmodel.FSTRole;
  */
 @SuppressWarnings(RESTRICTION)
 public class FeatureHouseToAHEADConversion extends ComposerConversion {
+
 	private FSTModel model;
 
 	/**
@@ -73,6 +74,7 @@ public class FeatureHouseToAHEADConversion extends ComposerConversion {
 		this.featureProject = featureProject;
 		ConversionPlugin.getDefault().logInfo(CHANGE_THE_COMPOSER_OF_PROJECT + featureProject.getProjectName() + FROM_FEATUREHOUSE_TO_AHEAD_);
 		final Job job = new Job(CHANGE_COMPOSER_) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
@@ -162,8 +164,7 @@ public class FeatureHouseToAHEADConversion extends ComposerConversion {
 	}
 
 	/**
-	 * Replaces <code>original()</code> by <code>Super().methodName()</code>.<br>
-	 * Inserts <code>refines</code> to classes that refine.
+	 * Replaces <code>original()</code> by <code>Super().methodName()</code>.<br> Inserts <code>refines</code> to classes that refine.
 	 */
 	@Override
 	public String changeFile(String fileText, IFile file) {

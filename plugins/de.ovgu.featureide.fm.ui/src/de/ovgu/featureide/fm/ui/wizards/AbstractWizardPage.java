@@ -34,12 +34,10 @@ public abstract class AbstractWizardPage extends WizardPage {
 
 	protected class KeyPressedListener implements KeyListener {
 
-		public KeyPressedListener() {
-		}
+		public KeyPressedListener() {}
 
 		@Override
-		public void keyPressed(KeyEvent e) {
-		}
+		public void keyPressed(KeyEvent e) {}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
@@ -87,8 +85,7 @@ public abstract class AbstractWizardPage extends WizardPage {
 
 	protected abstract void putData();
 
-	protected void removeData() {
-	}
+	protected void removeData() {}
 
 	protected String checkPage() {
 		return null;

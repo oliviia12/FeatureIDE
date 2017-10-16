@@ -67,12 +67,10 @@ import de.ovgu.featureide.ui.views.collaboration.outline.OutlineLabelProvider;
 public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 
 	@Override
-	public void addListener(ILabelProviderListener listener) {
-	}
+	public void addListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public boolean isLabelProperty(Object element, String property) {
@@ -80,8 +78,7 @@ public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 	}
 
 	@Override
-	public void removeListener(ILabelProviderListener listener) {
-	}
+	public void removeListener(ILabelProviderListener listener) {}
 
 	@Override
 	public Image getImage(Object element) {
@@ -152,8 +149,7 @@ public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 	}
 
 	@Override
-	public void colorizeItems(TreeItem[] treeItems, IFile file) {
-	}
+	public void colorizeItems(TreeItem[] treeItems, IFile file) {}
 
 	@Override
 	public void setForeground(TreeItem item, IFile file) {
@@ -190,8 +186,7 @@ public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 			IRegion lineInfo = null;
 			try {
 				lineInfo = document.getLineInformation(lineNumber - 1);
-			} catch (final BadLocationException e) {
-			}
+			} catch (final BadLocationException e) {}
 			if (lineInfo != null) {
 				editor.selectAndReveal(lineInfo.getOffset(), lineInfo.getLength());
 			}
@@ -199,6 +194,7 @@ public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 	}
 
 	private final ISelectionChangedListener sListner = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			if (viewer.getInput() != null) {
@@ -245,8 +241,8 @@ public class ContextOutlineLabelProvider extends OutlineLabelProvider {
 					final IWorkbench workbench = PlatformUI.getWorkbench();
 					try {
 						final IContentDescription description = iFile.getContentDescription();
-						final IEditorDescriptor desc = workbench.getEditorRegistry().getDefaultEditor(iFile.getName(),
-								(description != null) ? description.getContentType() : null);
+						final IEditorDescriptor desc =
+								workbench.getEditorRegistry().getDefaultEditor(iFile.getName(), (description != null) ? description.getContentType() : null);
 						final IWorkbenchPage activePage = workbench.getActiveWorkbenchWindow().getActivePage();
 						IEditorPart editorPart = activePage.findEditor(new FileEditorInput(iFile));
 						if (editorPart == null) {

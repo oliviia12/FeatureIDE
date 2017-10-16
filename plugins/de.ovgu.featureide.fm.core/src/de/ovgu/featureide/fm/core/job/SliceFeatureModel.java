@@ -186,7 +186,7 @@ public class SliceFeatureModel implements LongRunningMethod<IFeatureModel> {
 					feat.getStructure().getParent().removeChild(feat.getStructure());
 					feat.getStructure().setParent(null);
 					removeCount++;
-					//    				changed = true;
+					// changed = true;
 				}
 			}
 			if (list.isEmpty()) {

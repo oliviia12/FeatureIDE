@@ -48,12 +48,10 @@ import de.ovgu.featureide.fm.core.functional.Functional;
 import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
 
 /**
- * Basic test super-class for IFeatureModelReader/IFeatureModelWriter
- * implementations tests will write feature-models into a string and read it
- * back to check if the result is as expected
+ * Basic test super-class for IFeatureModelReader/IFeatureModelWriter implementations tests will write feature-models into a string and read it back to check if
+ * the result is as expected
  *
- * To add additional readers/writers extend this class and override abstract
- * methods
+ * To add additional readers/writers extend this class and override abstract methods
  *
  * Add model.m files into folder testFeatureModels to add test cases
  *
@@ -67,8 +65,8 @@ public abstract class TAbstractFeatureModelReaderWriter {
 	// there should be an corresponding test case for the
 	// GuidslReader which tests the resulting FeatureModel directly
 
-	protected static File MODEL_FILE_FOLDER = new File(
-			"/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/testFeatureModels/");
+	protected static File MODEL_FILE_FOLDER =
+			new File("/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/testFeatureModels/");
 
 	static boolean online = false;
 	protected IFeatureModel origFm;
@@ -79,14 +77,14 @@ public abstract class TAbstractFeatureModelReaderWriter {
 
 		origFm = fm;
 		newFm = writeAndReadModel();
-		//		System.out.println("ori:\n" + origFm);
-		//		System.out.println("new:\n" + newFm);
+		// System.out.println("ori:\n" + origFm);
+		// System.out.println("new:\n" + newFm);
 		failureMessage = "(" + s + ")";
 	}
 
 	@Parameters
 	public static Collection<Object[]> getModels() throws FileNotFoundException, UnsupportedModelException {
-		//first tries the location on build server, if this fails tries to use local location
+		// first tries the location on build server, if this fails tries to use local location
 		if (!MODEL_FILE_FOLDER.canRead()) {
 			MODEL_FILE_FOLDER = new File(ClassLoader.getSystemResource("testFeatureModels").getPath());
 		}
@@ -144,8 +142,8 @@ public abstract class TAbstractFeatureModelReaderWriter {
 		for (final IFeature origF : origFm.getFeatures()) {
 			if (origF.getStructure().isOr()) {
 				final IFeature newF = newFm.getFeature(origF.getName());
-				//				System.out.println("origF:[" + origF.getStructure().isOr() + "]" + origF + "\nnewF:[" + newF.getStructure().isOr() + "]"
-				//						+ newF + "\n: ");
+				// System.out.println("origF:[" + origF.getStructure().isOr() + "]" + origF + "\nnewF:[" + newF.getStructure().isOr() + "]"
+				// + newF + "\n: ");
 				assertTrue(failureMessage, newF.getStructure().isOr());
 			}
 		}
@@ -206,7 +204,7 @@ public abstract class TAbstractFeatureModelReaderWriter {
 		}
 	}
 
-	//TODO @Fabian @Test
+	// TODO @Fabian @Test
 	public void testPropNodes() throws FileNotFoundException, UnsupportedModelException {
 		for (final IConstraint constraint : origFm.getConstraints()) {
 			assertFalse(failureMessage + constraint, newFm.getConstraints().contains(constraint));
@@ -260,6 +258,7 @@ public abstract class TAbstractFeatureModelReaderWriter {
 
 	private final static FileFilter getFileFilter(final String s) {
 		final FileFilter filter = new FileFilter() {
+
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getName().endsWith(s);

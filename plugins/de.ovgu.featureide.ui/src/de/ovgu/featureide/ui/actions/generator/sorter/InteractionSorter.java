@@ -114,8 +114,7 @@ public class InteractionSorter extends AbstractConfigurationSorter {
 	}
 
 	/**
-	 * Gets the configuration that covers the most interactions that are left.<br>
-	 * Basically, the configurations with the greatest set of interactions.
+	 * Gets the configuration that covers the most interactions that are left.<br> Basically, the configurations with the greatest set of interactions.
 	 */
 	private BuilderConfiguration getMostCoveringConfiguration(final Map<BuilderConfiguration, Set<Interaction>> interactions) {
 		BuilderConfiguration mostCovering = null;
@@ -181,6 +180,7 @@ public class InteractionSorter extends AbstractConfigurationSorter {
 	}
 
 	private class Interaction {
+
 		private final Collection<String> selectedFeatures;
 		private final Collection<String> unselectedFeatures;
 		private final int hashCode;
@@ -192,7 +192,7 @@ public class InteractionSorter extends AbstractConfigurationSorter {
 			this.selectedFeatures = selectedFeatures;
 			this.unselectedFeatures = unselectedFeatures;
 
-			//TODO _Sebastian Revise Hash Function
+			// TODO _Sebastian Revise Hash Function
 			int hash = 0;
 			for (final String feature : selectedFeatures) {
 				hash = (hash * 3) + feature.hashCode();

@@ -82,8 +82,7 @@ public class ElementDeleteOperation extends MultiFeatureModelOperation implement
 	@Override
 	public void createSingleOperations() {
 		/**
-		 * The key of the Map is the feature which could be replaced by their equivalents given at the
-		 * corresponding List.
+		 * The key of the Map is the feature which could be replaced by their equivalents given at the corresponding List.
 		 */
 		final Map<IFeature, List<IFeature>> removalMap = new HashMap<>();
 		final List<IFeature> alreadyDeleted = new LinkedList<>();
@@ -102,8 +101,8 @@ public class ElementDeleteOperation extends MultiFeatureModelOperation implement
 
 		if (viewer instanceof GraphicalViewerImpl) {
 			final GraphicalViewerImpl viewer2 = (GraphicalViewerImpl) viewer;
-			final IFeature parent = ((commonAncestorList != null) && !commonAncestorList.isEmpty()) ? commonAncestorList.get(commonAncestorList.size() - 1)
-					: null;
+			final IFeature parent =
+					((commonAncestorList != null) && !commonAncestorList.isEmpty()) ? commonAncestorList.get(commonAncestorList.size() - 1) : null;
 			final Object editPart = viewer2.getEditPartRegistry().get(parent != null ? parent : featureModel.getStructure().getRoot());
 			if (editPart instanceof FeatureEditPart) {
 				viewer2.setSelection(new StructuredSelection(editPart));
@@ -183,10 +182,9 @@ public class ElementDeleteOperation extends MultiFeatureModelOperation implement
 	}
 
 	/**
-	 * Exception handling if the {@link Feature} to remove is contained in {@link Constraint}s.<br>
-	 * If the feature could be removed a {@link DeleteOperationAlternativeDialog} will be opened to
-	 * select the features to replace with.<br>
-	 * If the feature has no equivalent an error message will be displayed.
+	 * Exception handling if the {@link Feature} to remove is contained in {@link Constraint}s.<br> If the feature could be removed a
+	 * {@link DeleteOperationAlternativeDialog} will be opened to select the features to replace with.<br> If the feature has no equivalent an error message
+	 * will be displayed.
 	 *
 	 * @param removalMap A map with the features and their equivalents.
 	 * @param alreadyDeleted A List of features which are already deleted.

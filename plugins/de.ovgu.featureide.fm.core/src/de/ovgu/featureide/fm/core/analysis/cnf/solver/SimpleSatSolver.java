@@ -80,13 +80,13 @@ public class SimpleSatSolver implements ISimpleSatSolver {
 		}
 	}
 
-	//	protected IConstr addClauseInternal(Solver<?> solver, VecInt vec) throws RuntimeContradictionException {
-	//		try {
-	//			return solver.addClause(vec);
-	//		} catch (ContradictionException e) {
-	//			throw new RuntimeContradictionException(e);
-	//		}
-	//	}
+	// protected IConstr addClauseInternal(Solver<?> solver, VecInt vec) throws RuntimeContradictionException {
+	// try {
+	// return solver.addClause(vec);
+	// } catch (ContradictionException e) {
+	// throw new RuntimeContradictionException(e);
+	// }
+	// }
 
 	@Override
 	public List<IConstr> addClauses(Iterable<? extends LiteralSet> clauses) throws RuntimeContradictionException {
@@ -215,8 +215,7 @@ public class SimpleSatSolver implements ISimpleSatSolver {
 	}
 
 	/**
-	 * Add clauses to the solver.
-	 * Initializes the order instance.
+	 * Add clauses to the solver. Initializes the order instance.
 	 */
 	protected void initSolver(Solver<?> solver) throws RuntimeContradictionException {
 		final int size = satInstance.getVariables().size();

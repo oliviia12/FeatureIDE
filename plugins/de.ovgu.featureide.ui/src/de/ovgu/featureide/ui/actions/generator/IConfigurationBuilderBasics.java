@@ -65,17 +65,17 @@ public interface IConfigurationBuilderBasics {
 	QualifiedName TOGGLE_STATE = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#CreateNewProject",
 			IConfigurationBuilderBasics.class.getName() + "#CreateNewProject");
 	QualifiedName T_WISE = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#T-Wise", IConfigurationBuilderBasics.class.getName() + "#T-Wise");
-	QualifiedName T_INTERACTION = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#T-Order",
-			IConfigurationBuilderBasics.class.getName() + "#T-Order");
-	QualifiedName GENERATE = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#Generate",
-			IConfigurationBuilderBasics.class.getName() + "#Generate");
+	QualifiedName T_INTERACTION =
+			new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#T-Order", IConfigurationBuilderBasics.class.getName() + "#T-Order");
+	QualifiedName GENERATE =
+			new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#Generate", IConfigurationBuilderBasics.class.getName() + "#Generate");
 	QualifiedName ORDER = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#Order", IConfigurationBuilderBasics.class.getName() + "#Order");
 	QualifiedName TEST = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#Test", IConfigurationBuilderBasics.class.getName() + "#Test");
 	QualifiedName MAX = new QualifiedName(IConfigurationBuilderBasics.class.getName() + "#MaxConf", IConfigurationBuilderBasics.class.getName() + "#MaxConf");
 	String TRUE = "true";
 	String FALSE = "false";
 
-	//------------------------------------------------------------------------------
+	// ------------------------------------------------------------------------------
 
 	/**
 	 * Basics for the ConfigurationBuilder.

@@ -101,6 +101,7 @@ public abstract class MungeSignatureBuilder {
 		final FeatureDataConstructor featureDataConstructor = new FeatureDataConstructor(projectSignatures, FeatureDataConstructor.TYPE_PP);
 
 		root.accept(new ASTVisitor() {
+
 			private BodyDeclaration curDeclaration = null;
 			private PreprocessorFeatureData curfeatureData = null;
 			private String lastComment = null;
@@ -184,8 +185,8 @@ public abstract class MungeSignatureBuilder {
 				for (final Iterator<?> it = node.fragments().iterator(); it.hasNext();) {
 					final VariableDeclarationFragment fragment = (VariableDeclarationFragment) it.next();
 
-					final MungeFieldSignature fieldSignature = new MungeFieldSignature(getParent(node.getParent()), fragment.getName().getIdentifier(),
-							node.getModifiers(), node.getType());
+					final MungeFieldSignature fieldSignature =
+							new MungeFieldSignature(getParent(node.getParent()), fragment.getName().getIdentifier(), node.getModifiers(), node.getType());
 
 					attachFeatureData(fieldSignature, node);
 				}
@@ -217,6 +218,7 @@ public abstract class MungeSignatureBuilder {
 		final IFolder sourceFolder = featureProject.getSourceFolder();
 		try {
 			sourceFolder.accept(new IResourceVisitor() {
+
 				@Override
 				public boolean visit(IResource resource) throws CoreException {
 					if (resource instanceof IFolder) {

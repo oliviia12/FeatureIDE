@@ -38,30 +38,26 @@ public class FeatureProjectDecorator implements ILightweightLabelDecorator {
 
 	private static final ImageDescriptor OVERLAY = UIPlugin.getDefault().getImageDescriptor("icons/FeatureProjectDecorator.png");
 
-	public FeatureProjectDecorator() {
-	}
+	public FeatureProjectDecorator() {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void decorate(Object element, IDecoration decoration) {
 		final IProject project = (IProject) element;
 
-		//decorate feature projects
+		// decorate feature projects
 		if (CorePlugin.hasProjectData(project)) {
 			decoration.addOverlay(OVERLAY, IDecoration.TOP_LEFT);
 		}
 	}
 
 	@Override
-	public void addListener(ILabelProviderListener listener) {
-	}
+	public void addListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void removeListener(ILabelProviderListener listener) {
-	}
+	public void removeListener(ILabelProviderListener listener) {}
 
 	@Override
 	public boolean isLabelProperty(Object element, String property) {

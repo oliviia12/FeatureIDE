@@ -82,8 +82,7 @@ public class FeatureProperty implements IFeatureProperty {
 	}
 
 	@Override
-	public void setDisplayName(CharSequence name) {
-	}
+	public void setDisplayName(CharSequence name) {}
 
 	@Override
 	public boolean isConstraintSelected() {

@@ -33,8 +33,7 @@ import de.ovgu.featureide.fm.ui.editors.IGraphicalFeature;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 
 /**
- * Operation with functionality to expand only features of this constraint. Enables undo/redo
- * functionality. Enables undo/redo functionality.
+ * Operation with functionality to expand only features of this constraint. Enables undo/redo functionality. Enables undo/redo functionality.
  *
  * @author Maximilian K�hl
  * @author Christopher Sontag

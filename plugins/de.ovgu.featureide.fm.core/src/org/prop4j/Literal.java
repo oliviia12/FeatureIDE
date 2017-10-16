@@ -84,25 +84,25 @@ public class Literal extends Node implements Cloneable {
 
 	@Override
 	protected Node eliminate(List<Class<? extends Node>> list) {
-		//nothing to do with children
+		// nothing to do with children
 		return this;
 	}
 
 	@Override
 	protected Node clausifyCNF() {
-		//nothing to do
+		// nothing to do
 		return this;
 	}
 
 	@Override
 	protected Node clausifyDNF() {
-		//nothing to do
+		// nothing to do
 		return this;
 	}
 
 	@Override
 	public void simplify() {
-		//nothing to do (recursive calls reached lowest node)
+		// nothing to do (recursive calls reached lowest node)
 	}
 
 	@Override

@@ -62,8 +62,8 @@ public class KeYWrapper {
 
 		try {
 			if (bundleKeYStarter != null) {
-				final org.osgi.framework.BundleActivator act = ((org.osgi.framework.BundleActivator) bundleKeYStarter
-						.loadClass("org.key_project.key4eclipse.Activator").newInstance());
+				final org.osgi.framework.BundleActivator act =
+						((org.osgi.framework.BundleActivator) bundleKeYStarter.loadClass("org.key_project.key4eclipse.Activator").newInstance());
 				act.start(InternalPlatform.getDefault().getBundleContext());
 
 				mainClass = bundleKeYStarter.loadClass("de.uka.ilkd.key.gui.Main");
@@ -92,6 +92,7 @@ public class KeYWrapper {
 
 	private KeYWrapper(final FeatureStubsGenerator featureStubsGenerator, final ProjectSignatures signatures, final LinkedList<FSTFeature> features) {
 		final InvocationHandler h = new InvocationHandler() {
+
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				if (method.getName().equals("shutDown")) {
@@ -103,7 +104,8 @@ public class KeYWrapper {
 		final Class<?> proxyguiL = Proxy.getProxyClass(guilClass.getClassLoader(), guilClass);
 		try {
 			guiL = proxyguiL.getConstructor(InvocationHandler.class).newInstance((Object) h);
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+		} catch (
+				InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException e) {
 			e.printStackTrace();
 		}
@@ -123,7 +125,8 @@ public class KeYWrapper {
 			} else {
 				FeatureHouseCorePlugin.getDefault().logError(KEY_COULD_NOT_BE_STARTED_, null);
 			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException
+		} catch (
+				IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException
 				| InstantiationException e) {
 			FeatureHouseCorePlugin.getDefault().logError(KEY_COULD_NOT_BE_STARTED_, e);
 		}

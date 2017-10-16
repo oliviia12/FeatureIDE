@@ -41,8 +41,7 @@ import de.ovgu.featureide.core.fstmodel.FSTModel;
  * @author Jens Meinicke
  */
 /**
- * Hacky: jampack and mixin have their own AST... types, which are functionally equivalent
- * due to being generated from the same code.
+ * Hacky: jampack and mixin have their own AST... types, which are functionally equivalent due to being generated from the same code.
  *
  * @author Felix Rieger
  */
@@ -66,14 +65,10 @@ public abstract class AbstractJakModelBuilder<AST_Program_Type> {
 	/**
 	 * Adds a class to the jak project model
 	 *
-	 * @param className
-	 *            Name of the class
-	 * @param sources
-	 *            source files that were composed to build this class
-	 * @param composedASTs
-	 *            composed ahead ASTs during the composition step
-	 * @param ownASTs
-	 *            ahead ASTs of each source file without composing
+	 * @param className Name of the class
+	 * @param sources source files that were composed to build this class
+	 * @param composedASTs composed ahead ASTs during the composition step
+	 * @param ownASTs ahead ASTs of each source file without composing
 	 */
 	public abstract void addClass(String className, List<IFile> sources, AST_Program_Type[] composedASTs, AST_Program_Type[] ownASTs);
 

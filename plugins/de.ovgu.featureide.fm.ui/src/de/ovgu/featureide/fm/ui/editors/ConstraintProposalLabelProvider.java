@@ -35,7 +35,8 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
  */
 public class ConstraintProposalLabelProvider extends LabelProvider implements GUIDefaults {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
 	 */
 	@Override

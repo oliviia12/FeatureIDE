@@ -44,6 +44,7 @@ import de.ovgu.featureide.fm.core.Logger;
 
 @SuppressWarnings({ "all", "warnings", "unchecked" })
 public class VelvetParser extends Parser {
+
 	public static final String[] tokenNames = new String[] { "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "ACONSTR", "ATTR", "ATTR_OP_EQUALS",
 			"ATTR_OP_GREATER", "ATTR_OP_GREATER_EQ", "ATTR_OP_LESS", "ATTR_OP_LESS_EQ", "ATTR_OP_NOT_EQUALS", "BASEEXT", "BOOLEAN", "CINTERFACE", "COLON",
 			"COMMA", "CONCEPT", "CONSTR", "CONSTRAINT", "DEF", "DESCRIPTION", "EMPTY", "END_C", "END_R", "EQ", "ESC_SEQ", "EXPONENT", "FEATURE", "FLOAT",
@@ -161,6 +162,7 @@ public class VelvetParser extends Parser {
 	}
 
 	public class InternalSyntaxException extends RuntimeException {
+
 		private final RecognitionException e;
 
 		public InternalSyntaxException(RecognitionException e) {
@@ -173,6 +175,7 @@ public class VelvetParser extends Parser {
 	}
 
 	public static class velvetModel_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -295,6 +298,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "velvetModel"
 
 	public static class imp_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -420,6 +424,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "imp"
 
 	public static class concept_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -429,7 +434,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "concept"
-	// Velvet.g:102:1: concept : CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports | instanceImports )? ( definitions )? -> ^( CONCEPT ID ( conceptBaseExt )? ( instanceImports )? ( interfaceImports )? ( definitions )? ) ;
+	// Velvet.g:102:1: concept : CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports |
+	// instanceImports )? ( definitions )? -> ^( CONCEPT ID ( conceptBaseExt )? ( instanceImports )? ( interfaceImports )? ( definitions )? ) ;
 	public final VelvetParser.concept_return concept() throws RecognitionException {
 		final VelvetParser.concept_return retval = new VelvetParser.concept_return();
 		retval.start = input.LT(1);
@@ -466,8 +472,10 @@ public class VelvetParser extends Parser {
 		final RewriteRuleSubtreeStream stream_interfaceImports = new RewriteRuleSubtreeStream(adaptor, "rule interfaceImports");
 		final RewriteRuleSubtreeStream stream_definitions = new RewriteRuleSubtreeStream(adaptor, "rule definitions");
 		try {
-			// Velvet.g:103:2: ( CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports | instanceImports )? ( definitions )? -> ^( CONCEPT ID ( conceptBaseExt )? ( instanceImports )? ( interfaceImports )? ( definitions )? ) )
-			// Velvet.g:103:4: CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports | instanceImports )? ( definitions )?
+			// Velvet.g:103:2: ( CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports |
+			// instanceImports )? ( definitions )? -> ^( CONCEPT ID ( conceptBaseExt )? ( instanceImports )? ( interfaceImports )? ( definitions )? ) )
+			// Velvet.g:103:4: CONCEPT ID ( COLON conceptBaseExt )? ( instanceImports interfaceImports | interfaceImports instanceImports | interfaceImports |
+			// instanceImports )? ( definitions )?
 			{
 				CONCEPT8 = (Token) match(input, CONCEPT, FOLLOW_CONCEPT_in_concept521);
 				stream_CONCEPT.add(CONCEPT8);
@@ -670,6 +678,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "concept"
 
 	public static class cinterface_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -802,6 +811,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "cinterface"
 
 	public static class conceptBaseExt_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -918,6 +928,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "conceptBaseExt"
 
 	public static class instanceImports_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1060,6 +1071,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "instanceImports"
 
 	public static class interfaceImports_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1202,6 +1214,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "interfaceImports"
 
 	public static class name_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1261,6 +1274,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "name"
 
 	public static class definitions_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1359,6 +1373,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "definitions"
 
 	public static class definition_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1368,7 +1383,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "definition"
-	// Velvet.g:137:1: definition : ( nonFeatureDefinition )* ( ( featureGroup ( nonFeatureDefinition )* ) | ( feature ( feature | nonFeatureDefinition )* ) )? ;
+	// Velvet.g:137:1: definition : ( nonFeatureDefinition )* ( ( featureGroup ( nonFeatureDefinition )* ) | ( feature ( feature | nonFeatureDefinition )* ) )?
+	// ;
 	public final VelvetParser.definition_return definition() throws RecognitionException {
 		final VelvetParser.definition_return retval = new VelvetParser.definition_return();
 		retval.start = input.LT(1);
@@ -1560,6 +1576,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "definition"
 
 	public static class nonFeatureDefinition_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1693,6 +1710,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "nonFeatureDefinition"
 
 	public static class use_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1784,6 +1802,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "use"
 
 	public static class feature_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -1793,7 +1812,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "feature"
-	// Velvet.g:154:1: feature : ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )? FEATURE name ( definitions | SEMI ) -> ^( FEATURE name ( MANDATORY )? ( ABSTRACT )? ( definitions )? ) ;
+	// Velvet.g:154:1: feature : ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )? FEATURE name ( definitions | SEMI ) -> ^( FEATURE name (
+	// MANDATORY )? ( ABSTRACT )? ( definitions )? ) ;
 	public final VelvetParser.feature_return feature() throws RecognitionException {
 		final VelvetParser.feature_return retval = new VelvetParser.feature_return();
 		retval.start = input.LT(1);
@@ -1827,7 +1847,8 @@ public class VelvetParser extends Parser {
 		final RewriteRuleSubtreeStream stream_name = new RewriteRuleSubtreeStream(adaptor, "rule name");
 		final RewriteRuleSubtreeStream stream_definitions = new RewriteRuleSubtreeStream(adaptor, "rule definitions");
 		try {
-			// Velvet.g:155:2: ( ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )? FEATURE name ( definitions | SEMI ) -> ^( FEATURE name ( MANDATORY )? ( ABSTRACT )? ( definitions )? ) )
+			// Velvet.g:155:2: ( ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )? FEATURE name ( definitions | SEMI ) -> ^( FEATURE name (
+			// MANDATORY )? ( ABSTRACT )? ( definitions )? ) )
 			// Velvet.g:155:4: ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )? FEATURE name ( definitions | SEMI )
 			{
 				// Velvet.g:155:4: ( MANDATORY ABSTRACT | ABSTRACT MANDATORY | MANDATORY | ABSTRACT )?
@@ -2011,6 +2032,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "feature"
 
 	public static class featureGroup_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2148,6 +2170,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "featureGroup"
 
 	public static class groupType_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2207,6 +2230,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "groupType"
 
 	public static class description_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2296,6 +2320,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "description"
 
 	public static class constraint_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2449,6 +2474,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "constraint"
 
 	public static class constraintDefinition_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2582,6 +2608,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "constraintDefinition"
 
 	public static class constraintOperand_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2591,7 +2618,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "constraintOperand"
-	// Velvet.g:184:1: constraintOperand : ( unaryOp )* ( START_R constraintDefinition END_R | name ) -> ( constraintDefinition )? ( ^( UNARYOP unaryOp ) )* ( ^( OPERAND name ) )? ;
+	// Velvet.g:184:1: constraintOperand : ( unaryOp )* ( START_R constraintDefinition END_R | name ) -> ( constraintDefinition )? ( ^( UNARYOP unaryOp ) )* (
+	// ^( OPERAND name ) )? ;
 	public final VelvetParser.constraintOperand_return constraintOperand() throws RecognitionException {
 		final VelvetParser.constraintOperand_return retval = new VelvetParser.constraintOperand_return();
 		retval.start = input.LT(1);
@@ -2614,7 +2642,8 @@ public class VelvetParser extends Parser {
 		final RewriteRuleSubtreeStream stream_unaryOp = new RewriteRuleSubtreeStream(adaptor, "rule unaryOp");
 		final RewriteRuleSubtreeStream stream_constraintDefinition = new RewriteRuleSubtreeStream(adaptor, "rule constraintDefinition");
 		try {
-			// Velvet.g:184:19: ( ( unaryOp )* ( START_R constraintDefinition END_R | name ) -> ( constraintDefinition )? ( ^( UNARYOP unaryOp ) )* ( ^( OPERAND name ) )? )
+			// Velvet.g:184:19: ( ( unaryOp )* ( START_R constraintDefinition END_R | name ) -> ( constraintDefinition )? ( ^( UNARYOP unaryOp ) )* ( ^( OPERAND
+			// name ) )? )
 			// Velvet.g:184:21: ( unaryOp )* ( START_R constraintDefinition END_R | name )
 			{
 				// Velvet.g:184:21: ( unaryOp )*
@@ -2769,6 +2798,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "constraintOperand"
 
 	public static class attribute_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -2778,7 +2808,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "attribute"
-	// Velvet.g:188:1: attribute : ( intAttribute | floatAttribute | stringAttribute | boolAttribute ) SEMI -> ^( ATTR ( intAttribute )? ( floatAttribute )? ( stringAttribute )? ( boolAttribute )? ) ;
+	// Velvet.g:188:1: attribute : ( intAttribute | floatAttribute | stringAttribute | boolAttribute ) SEMI -> ^( ATTR ( intAttribute )? ( floatAttribute )? (
+	// stringAttribute )? ( boolAttribute )? ) ;
 	public final VelvetParser.attribute_return attribute() throws RecognitionException {
 		final VelvetParser.attribute_return retval = new VelvetParser.attribute_return();
 		retval.start = input.LT(1);
@@ -2801,7 +2832,8 @@ public class VelvetParser extends Parser {
 		final RewriteRuleSubtreeStream stream_floatAttribute = new RewriteRuleSubtreeStream(adaptor, "rule floatAttribute");
 		final RewriteRuleSubtreeStream stream_boolAttribute = new RewriteRuleSubtreeStream(adaptor, "rule boolAttribute");
 		try {
-			// Velvet.g:189:2: ( ( intAttribute | floatAttribute | stringAttribute | boolAttribute ) SEMI -> ^( ATTR ( intAttribute )? ( floatAttribute )? ( stringAttribute )? ( boolAttribute )? ) )
+			// Velvet.g:189:2: ( ( intAttribute | floatAttribute | stringAttribute | boolAttribute ) SEMI -> ^( ATTR ( intAttribute )? ( floatAttribute )? (
+			// stringAttribute )? ( boolAttribute )? ) )
 			// Velvet.g:189:4: ( intAttribute | floatAttribute | stringAttribute | boolAttribute ) SEMI
 			{
 				// Velvet.g:189:4: ( intAttribute | floatAttribute | stringAttribute | boolAttribute )
@@ -2960,6 +2992,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "attribute"
 
 	public static class attributeConstraint_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3039,6 +3072,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "attributeConstraint"
 
 	public static class attribConstraint_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3048,7 +3082,8 @@ public class VelvetParser extends Parser {
 	};
 
 	// $ANTLR start "attribConstraint"
-	// Velvet.g:198:1: attribConstraint : attribNumInstance ( attribOperator attribNumInstance )* attribRelation attribNumInstance ( attribOperator attribNumInstance )* ;
+	// Velvet.g:198:1: attribConstraint : attribNumInstance ( attribOperator attribNumInstance )* attribRelation attribNumInstance ( attribOperator
+	// attribNumInstance )* ;
 	public final VelvetParser.attribConstraint_return attribConstraint() throws RecognitionException {
 		final VelvetParser.attribConstraint_return retval = new VelvetParser.attribConstraint_return();
 		retval.start = input.LT(1);
@@ -3070,7 +3105,8 @@ public class VelvetParser extends Parser {
 		VelvetParser.attribNumInstance_return attribNumInstance100 = null;
 
 		try {
-			// Velvet.g:199:2: ( attribNumInstance ( attribOperator attribNumInstance )* attribRelation attribNumInstance ( attribOperator attribNumInstance )* )
+			// Velvet.g:199:2: ( attribNumInstance ( attribOperator attribNumInstance )* attribRelation attribNumInstance ( attribOperator attribNumInstance )*
+			// )
 			// Velvet.g:199:4: attribNumInstance ( attribOperator attribNumInstance )* attribRelation attribNumInstance ( attribOperator attribNumInstance )*
 			{
 				root_0 = (Tree) adaptor.nil();
@@ -3188,6 +3224,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "attribConstraint"
 
 	public static class attribOperator_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3247,6 +3284,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "attribOperator"
 
 	public static class attribNumInstance_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3331,6 +3369,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "attribNumInstance"
 
 	public static class intAttribute_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3415,6 +3454,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "intAttribute"
 
 	public static class floatAttribute_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3499,6 +3539,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "floatAttribute"
 
 	public static class stringAttribute_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3583,6 +3624,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "stringAttribute"
 
 	public static class boolAttribute_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3667,6 +3709,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "boolAttribute"
 
 	public static class unaryOp_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3719,6 +3762,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "unaryOp"
 
 	public static class binaryOp_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3778,6 +3822,7 @@ public class VelvetParser extends Parser {
 	// $ANTLR end "binaryOp"
 
 	public static class attribRelation_return extends ParserRuleReturnScope {
+
 		Tree tree;
 
 		@Override
@@ -3845,9 +3890,9 @@ public class VelvetParser extends Parser {
 	static final String DFA5_maxS = "\1\67\2\41\1\uffff\2\42\2\67\1\41\2\uffff\1\41\2\uffff\2\42\2\67";
 	static final String DFA5_acceptS = "\3\uffff\1\5\5\uffff\1\1\1\4\1\uffff\1\2\1\3\4\uffff";
 	static final String DFA5_specialS = "\22\uffff}>";
-	static final String[] DFA5_transitionS = { "\1\1\1\2\21\uffff\1\3", "\1\4", "\1\5", "", "\2\6", "\2\7", "\1\10\23\uffff\1\11\21\uffff\1\12",
-			"\1\13\22\uffff\1\14\22\uffff\1\15", "\1\16", "", "", "\1\17", "", "", "\2\20", "\2\21", "\1\10\23\uffff\1\11\21\uffff\1\12",
-			"\1\13\22\uffff\1\14\22\uffff\1\15" };
+	static final String[] DFA5_transitionS =
+			{ "\1\1\1\2\21\uffff\1\3", "\1\4", "\1\5", "", "\2\6", "\2\7", "\1\10\23\uffff\1\11\21\uffff\1\12", "\1\13\22\uffff\1\14\22\uffff\1\15", "\1\16",
+					"", "", "\1\17", "", "", "\2\20", "\2\21", "\1\10\23\uffff\1\11\21\uffff\1\12", "\1\13\22\uffff\1\14\22\uffff\1\15" };
 
 	static final short[] DFA5_eot = DFA.unpackEncodedString(DFA5_eotS);
 	static final short[] DFA5_eof = DFA.unpackEncodedString(DFA5_eofS);

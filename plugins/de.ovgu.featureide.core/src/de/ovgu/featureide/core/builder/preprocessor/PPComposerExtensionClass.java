@@ -59,8 +59,7 @@ import de.ovgu.featureide.fm.core.editing.AdvancedNodeCreator;
 import de.ovgu.featureide.fm.core.functional.Functional;
 
 /**
- * Abstract class for FeatureIDE preprocessor composer extensions with
- * predefined functions.
+ * Abstract class for FeatureIDE preprocessor composer extensions with predefined functions.
  *
  * @author Christoph Giesel
  * @author Marcus Kamieth
@@ -76,60 +75,52 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	static final int SAT_TAUTOLOGY = 2;
 	protected static final String MESSAGE_DEAD_CODE = ": This expression is a contradiction and causes a dead code block.";
 	protected static final String MESSAGE_ALWAYS_TRUE = ": This expression is a tautology and causes a superfluous code block.";
-	protected static final String MESSAGE_ABSTRACT = IS_DEFINED_AS_ABSTRACT_IN_THE_FEATURE_MODEL__ONLY_CONCRETE_FEATURES_SHOULD_BE_REFERENCED_IN_PREPROCESSOR_DIRECTIVES_;
+	protected static final String MESSAGE_ABSTRACT =
+			IS_DEFINED_AS_ABSTRACT_IN_THE_FEATURE_MODEL__ONLY_CONCRETE_FEATURES_SHOULD_BE_REFERENCED_IN_PREPROCESSOR_DIRECTIVES_;
 	protected static final String MESSAGE_NOT_DEFINED = IS_NOT_DEFINED_IN_THE_FEATURE_MODEL_AND_COMMA__THUS_COMMA__ALWAYS_ASSUMED_TO_BE_FALSE;
 
 	/**
-	 * Feature model node generated in {@link #performFullBuild(IFile)} and used
-	 * for expression checking.
+	 * Feature model node generated in {@link #performFullBuild(IFile)} and used for expression checking.
 	 */
 	protected Node featureModel;
 
 	/**
-	 * Preprocessor name used for messages in build markers (must set in
-	 * subclass).
+	 * Preprocessor name used for messages in build markers (must set in subclass).
 	 */
 	protected String pluginName = PREPROCESSOR;
 
 	/**
-	 * List of activated features. List will be generated in
-	 * {@link #prepareFullBuild(IFile)}.
+	 * List of activated features. List will be generated in {@link #prepareFullBuild(IFile)}.
 	 */
 	protected ArrayList<String> activatedFeatures;
 
 	/**
-	 * List of all features from model as ArrayList. List will be generated in
-	 * {@link #prepareFullBuild(IFile)}.
+	 * List of all features from model as ArrayList. List will be generated in {@link #prepareFullBuild(IFile)}.
 	 */
 	protected Collection<String> featureList;
 
 	/**
-	 * Pattern for checking of concrete feature:
-	 * "feature1|feature2|feature3|...".
+	 * Pattern for checking of concrete feature: "feature1|feature2|feature3|...".
 	 */
 	protected Pattern patternIsConcreteFeature;
 
 	/**
-	 * Pattern for checking of abstract feature:
-	 * "feature1|feature2|feature3|...".
+	 * Pattern for checking of abstract feature: "feature1|feature2|feature3|...".
 	 */
 	protected Pattern patternIsAbstractFeature;
 
 	/**
-	 * Node Reader for parsing expressions in preprocessor annotations to check
-	 * for tautologies and contradictions.
+	 * Node Reader for parsing expressions in preprocessor annotations to check for tautologies and contradictions.
 	 */
 	protected NodeReader nodereader = new NodeReader();
 
 	/**
-	 * Stack for preprocessor directives (for nested expressions). Have to be
-	 * initialized in subclass.
+	 * Stack for preprocessor directives (for nested expressions). Have to be initialized in subclass.
 	 */
 	protected Deque<Node> expressionStack;
 
 	/**
-	 * Stack for count of "if" and "else" instructions for each level. Have to
-	 * be initialized in subclass.
+	 * Stack for count of "if" and "else" instructions for each level. Have to be initialized in subclass.
 	 */
 	protected Deque<Integer> ifelseCountStack;
 
@@ -147,13 +138,10 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Initializes class fields. Should called at start of
-	 * {@link #performFullBuild(IFile)}.
+	 * Initializes class fields. Should called at start of {@link #performFullBuild(IFile)}.
 	 *
-	 * @param config
-	 *            Path to the activated configuration file.
-	 * @return Return <code>false</code> if configuration file does not exists
-	 *         or its feature list is empty.
+	 * @param config Path to the activated configuration file.
+	 * @return Return <code>false</code> if configuration file does not exists or its feature list is empty.
 	 */
 	public boolean prepareFullBuild(IFile config) {
 		usedFeatures.clear();
@@ -201,12 +189,9 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	/**
 	 * Checks expression for contradiction or tautology.
 	 *
-	 * @param node
-	 *            the expression to prove
-	 * @param withModel
-	 *            Checking with model if is <code>true</code>.
-	 * @return {@link #SAT_CONTRADICTION}, {@link #SAT_TAUTOLOGY} or
-	 *         {@link #SAT_NONE}
+	 * @param node the expression to prove
+	 * @param withModel Checking with model if is <code>true</code>.
+	 * @return {@link #SAT_CONTRADICTION}, {@link #SAT_TAUTOLOGY} or {@link #SAT_NONE}
 	 */
 	protected int isContradictionOrTautology(Node node, boolean withModel) {
 		// with model: node
@@ -237,12 +222,9 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	/**
 	 * Set marker for tautology or contradiction on given line in given file.
 	 *
-	 * @param status
-	 *            expects {@link #SAT_CONTRADICTION} or {@link #SAT_TAUTOLOGY}.
-	 * @param lineNumber
-	 *            number of line
-	 * @param res
-	 *            file path
+	 * @param status expects {@link #SAT_CONTRADICTION} or {@link #SAT_TAUTOLOGY}.
+	 * @param lineNumber number of line
+	 * @param res file path
 	 */
 	protected void setMarkersOnContradictionOrTautology(int status, int lineNumber, IFile res) {
 		if (status == SAT_CONTRADICTION) {
@@ -255,16 +237,11 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	/**
 	 * Checks for tautology and contradiction and set build markers.
 	 *
-	 * @param node
-	 *            expression to check.
-	 * @param withModel
-	 *            Checking with model if is <code>true</code>.
-	 * @param lineNumber
-	 *            number of line
-	 * @param res
-	 *            file path
-	 * @return {@link #SAT_CONTRADICTION}, {@link #SAT_TAUTOLOGY} or
-	 *         {@link #SAT_NONE}
+	 * @param node expression to check.
+	 * @param withModel Checking with model if is <code>true</code>.
+	 * @param lineNumber number of line
+	 * @param res file path
+	 * @return {@link #SAT_CONTRADICTION}, {@link #SAT_TAUTOLOGY} or {@link #SAT_NONE}
 	 */
 	protected int isContradictionOrTautology(Node node, boolean withModel, int lineNumber, IFile res) {
 		final int status = isContradictionOrTautology(node, withModel);
@@ -275,23 +252,14 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Checks given line if it contains expressions which are always
-	 * <code>true</code> or <code>false</code>.<br />
-	 * <br />
+	 * Checks given line if it contains expressions which are always <code>true</code> or <code>false</code>.<br /> <br />
 	 *
-	 * Check in steps:
-	 * <ol>
-	 * <li>just the given line</li>
-	 * <li>the given line and the feature model</li>
-	 * <li>the given line, the surrounding lines and the feature model</li>
-	 * </ol>
+	 * Check in steps: <ol> <li>just the given line</li> <li>the given line and the feature model</li> <li>the given line, the surrounding lines and the feature
+	 * model</li> </ol>
 	 *
-	 * @param ppExpression
-	 *            expression in the current line
-	 * @param lineNumber
-	 *            line number
-	 * @param res
-	 *            file containing the given expression
+	 * @param ppExpression expression in the current line
+	 * @param lineNumber line number
+	 * @param res file containing the given expression
 	 */
 	protected void checkExpressions2(Node ppExpression, int lineNumber, IFile res) {
 		if (ppExpression == null) {
@@ -330,6 +298,7 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	}
 
 	private class LocalExpression {
+
 		private final int lineNumber;
 		private final IFile file;
 		private final Node[] nestedExpressions;
@@ -416,12 +385,9 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	/**
 	 * Set marker if given feature does not exists or is abstract.
 	 *
-	 * @param name
-	 *            feature name
-	 * @param lineNumber
-	 *            current line number
-	 * @param res
-	 *            file containing the feature name
+	 * @param name feature name
+	 * @param lineNumber current line number
+	 * @param res file containing the feature name
 	 */
 	protected boolean setMarkersOnNotExistingOrAbstractFeature(String name, int lineNumber, IFile res) {
 		if (name == null) {
@@ -452,8 +418,7 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	/**
 	 * Read all lines of a file into a vector.
 	 *
-	 * @param res
-	 *            file path
+	 * @param res file path
 	 * @return lines of the given file
 	 */
 	public static Vector<String> loadStringsFromFile(IFile res) {
@@ -508,10 +473,8 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Creates following markers at the Feature Model:<br>
-	 * -A Feature is never used in a preprocessor annotation<br>
-	 * -A used Feature does not exist at the Feature Model<br>
-	 * -A used Feature is abstract
+	 * Creates following markers at the Feature Model:<br> -A Feature is never used in a preprocessor annotation<br> -A used Feature does not exist at the
+	 * Feature Model<br> -A used Feature is abstract
 	 */
 	protected void setModelMarkers() {
 		removeModelMarkers();
@@ -584,6 +547,5 @@ public abstract class PPComposerExtensionClass extends ComposerExtensionClass {
 	 *
 	 * @param folder The folder containing the preprocessed files
 	 */
-	public void postProcess(IFolder folder) {
-	}
+	public void postProcess(IFolder folder) {}
 }

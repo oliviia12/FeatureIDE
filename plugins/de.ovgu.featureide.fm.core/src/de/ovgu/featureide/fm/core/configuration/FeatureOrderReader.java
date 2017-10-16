@@ -31,8 +31,7 @@ import de.ovgu.featureide.fm.core.Logger;
 import de.ovgu.featureide.fm.core.io.FeatureOrderFormat;
 
 /**
- * Read the .order file from the project directory. The constructor need the
- * location of the project as parameter
+ * Read the .order file from the project directory. The constructor need the location of the project as parameter
  *
  * @deprecated Use {@link FeatureOrderFormat} instead.
  *

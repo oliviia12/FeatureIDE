@@ -60,7 +60,6 @@ public class AspectJFMCompserExtension extends FMComposerExtension {
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see de.ovgu.featureide.fm.core.IFMComposerExtension#getComposer()
 	 */
 	@Override
@@ -206,7 +205,6 @@ public class AspectJFMCompserExtension extends FMComposerExtension {
 
 	/*
 	 * (non-Javadoc)
-	 *
 	 * @see de.ovgu.featureide.fm.core.IFMComposerExtension#hasFeaureOrder()
 	 */
 	@Override

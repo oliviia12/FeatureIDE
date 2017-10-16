@@ -80,6 +80,7 @@ import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
 // implement buildconfiguration
 @SuppressWarnings(RESTRICTION)
 public class AspectJComposer extends ComposerExtensionClass {
+
 	private static final String PLUGIN_ID = "org.eclipse.ajdt";
 	private static final String PLUGIN_WARNING = THE_REQUIRED_BUNDLE + PLUGIN_ID + IS_NOT_INSTALLED_;
 	private static final String ASPECTJ_NATURE = "org.eclipse.ajdt.ui.ajnature";
@@ -334,8 +335,8 @@ public class AspectJComposer extends ComposerExtensionClass {
 			}
 
 			/** add the new entries **/
-			final IClasspathEntry[] entries = new IClasspathEntry[(sourceAdded ? 0 : 1) + (containerAdded ? 0 : 1) + (ajContainerAdded ? 0 : 1)
-					+ oldEntries.length];
+			final IClasspathEntry[] entries =
+					new IClasspathEntry[(sourceAdded ? 0 : 1) + (containerAdded ? 0 : 1) + (ajContainerAdded ? 0 : 1) + oldEntries.length];
 			System.arraycopy(oldEntries, 0, entries, 0, oldEntries.length);
 
 			if (!sourceAdded) {

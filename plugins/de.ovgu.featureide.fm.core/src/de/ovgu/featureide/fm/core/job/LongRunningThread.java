@@ -36,6 +36,7 @@ import de.ovgu.featureide.fm.core.job.util.JobFinishListener;
  */
 // TODO Implement prioritization
 public class LongRunningThread<T> extends Thread implements IRunner<T> {
+
 	protected final List<JobFinishListener<T>> listenerList = new LinkedList<>();
 
 	private final LongRunningMethod<T> method;

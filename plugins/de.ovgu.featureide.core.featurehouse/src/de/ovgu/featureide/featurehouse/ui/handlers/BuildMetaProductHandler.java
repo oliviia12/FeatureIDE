@@ -46,6 +46,7 @@ public class BuildMetaProductHandler extends AFeatureProjectHandler {
 			featureHouseComposer.setBuildMetaProduct(!featureHouseComposer.buildMetaProduct());
 
 			final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+
 				@Override
 				public Boolean execute(IMonitor workMonitor) throws Exception {
 					try {

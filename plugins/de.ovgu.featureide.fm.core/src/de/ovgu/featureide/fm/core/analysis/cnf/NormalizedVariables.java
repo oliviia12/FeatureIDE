@@ -21,9 +21,8 @@
 package de.ovgu.featureide.fm.core.analysis.cnf;
 
 /**
- * Represents an instance of a satisfiability problem in CNF.<br/>
- * Use a {@link ISatSolverProvider solver provider} or the {@link #getSolver()}
- * method to get a {@link BasicSolver solver} for this problem.
+ * Represents an instance of a satisfiability problem in CNF.<br/> Use a {@link ISatSolverProvider solver provider} or the {@link #getSolver()} method to get a
+ * {@link BasicSolver solver} for this problem.
  *
  * @author Sebastian Krieter
  */

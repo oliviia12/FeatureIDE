@@ -55,13 +55,13 @@ import org.eclipse.swt.widgets.Text;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
 
 /**
- * This dialog will show up for the calculation of the complexity of a feature model.
- * Here you can set the priority and the timeout.
+ * This dialog will show up for the calculation of the complexity of a feature model. Here you can set the priority and the timeout.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
  */
 public class ConfigDialog extends TitleAreaDialog {
+
 	private static final String MINUTE = "60";
 
 	private int priority;
@@ -143,12 +143,14 @@ public class ConfigDialog extends TitleAreaDialog {
 	private void createTimeOutComboBox() {
 		timeOutComboBox = new Combo(container, SWT.NONE);
 		timeOutComboBox.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				convertToReadable();
 			}
 		});
 		timeOutComboBox.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				convertToReadable();

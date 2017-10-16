@@ -66,6 +66,7 @@ import de.ovgu.featureide.fm.core.ModelMarkerHandler;
  */
 @SuppressWarnings(RESTRICTION)
 public class FeatureCppWrapper {
+
 	private final static String EXE_LINUX_64BIT = "fc++v0.6Linux64bit";
 	private final static String EXE_LINUX_32BIT = "fc++v0.8Linux32bit";
 	private final static String EXE_MAC_OS_X = "fc++v0.8MacOSX";
@@ -182,9 +183,9 @@ public class FeatureCppWrapper {
 							}
 						}
 						/** Lines to debug executing FeatureC++ **/
-						//						else {
-						//							FeatureCppCorePlugin.getDefault().logInfo("FeatureC++: " + line);
-						//						}
+						// else {
+						// FeatureCppCorePlugin.getDefault().logInfo("FeatureC++: " + line);
+						// }
 					}
 					while ((line = error.readLine()) != null) {
 						FeatureCppCorePlugin.getDefault().logWarning(line);
@@ -234,6 +235,7 @@ public class FeatureCppWrapper {
 	private void openMessageBox(IOException e) {
 		if ((e != null) && (e.getCause() != null) && "java.io.IOException: java.io.IOException: error=13, Permission denied".equals(e.getCause().toString())) {
 			final UIJob uiJob = new UIJob("") {
+
 				@Override
 				public IStatus runInUIThread(IProgressMonitor monitor) {
 					final MessageBox d = new MessageBox(new Shell(), SWT.ICON_ERROR);
@@ -287,6 +289,7 @@ public class FeatureCppWrapper {
 
 	private void addMarker(final IFile file, final String message, final int line) {
 		final Job job = new Job(PROPAGATE_PROBLEM_MARKERS_FOR + CorePlugin.getFeatureProject(file)) {
+
 			@Override
 			public IStatus run(IProgressMonitor monitor) {
 				try {

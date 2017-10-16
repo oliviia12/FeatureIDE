@@ -36,6 +36,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
  * @author Alexander Knueppel
  */
 public class CombinedConverter implements IConverterStrategy {
+
 	private final List<IConverterStrategy> strategies = new LinkedList<>();
 	private final IConverterStrategy bestStrategy = new NNFConverter();
 
@@ -75,7 +76,7 @@ public class CombinedConverter implements IConverterStrategy {
 			}
 			costs += estimatedCosts(node);
 		}
-		//System.out.println(costs);
+		// System.out.println(costs);
 		return costs;
 	}
 

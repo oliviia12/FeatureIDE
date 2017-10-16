@@ -30,6 +30,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Sebastian Krieter
  */
 public class MonitorThread extends Thread {
+
 	private final Lock lock = new ReentrantLock();
 	private final Condition condition = lock.newCondition();
 	private final Runnable function;

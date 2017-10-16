@@ -34,6 +34,7 @@ public class ContextMerger extends ADocumentationCommentMerger {
 	private static final long serialVersionUID = 2811545559986504025L;
 
 	private static final class BlockTagFilter implements IFilter<BlockTag> {
+
 		@Override
 		public boolean isValid(BlockTag blockTag) {
 			return blockTag.isFeatureIndependent() || (blockTag.getPriority() >= 0);

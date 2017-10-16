@@ -96,7 +96,7 @@ public class ExampleCalculator {
 		bSatisfiable.add(bIndex);
 	}
 
-	//might return some examples multiple times
+	// might return some examples multiple times
 	public Configuration nextExample() throws TimeoutException {
 		if (exampleSolver == null) {
 			if (bSatisfiable.isEmpty() && !findSatisfiable(true)) {

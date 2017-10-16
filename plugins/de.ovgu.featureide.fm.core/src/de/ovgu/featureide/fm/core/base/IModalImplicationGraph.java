@@ -24,15 +24,15 @@ import java.io.Serializable;
 
 public interface IModalImplicationGraph extends Serializable {
 
-	public static final byte EDGE_NONE = 0b00000000, //0x00;
-			EDGE_00Q = 0b00000001, //0x01,
-			EDGE_00 = 0b00000010, //0x02,
-			EDGE_01Q = 0b00000100, //0x04,
-			EDGE_01 = 0b00001000, //0x08,
-			EDGE_10Q = 0b00010000, //0x10,
-			EDGE_10 = 0b00100000, //0x20,
-			EDGE_11Q = 0b01000000, //0x40,
-			EDGE_11 = (byte) 0b10000000, //0x80,
+	public static final byte EDGE_NONE = 0b00000000, // 0x00;
+			EDGE_00Q = 0b00000001, // 0x01,
+			EDGE_00 = 0b00000010, // 0x02,
+			EDGE_01Q = 0b00000100, // 0x04,
+			EDGE_01 = 0b00001000, // 0x08,
+			EDGE_10Q = 0b00010000, // 0x10,
+			EDGE_10 = 0b00100000, // 0x20,
+			EDGE_11Q = 0b01000000, // 0x40,
+			EDGE_11 = (byte) 0b10000000, // 0x80,
 
 			VALUE_NONE = EDGE_NONE, VALUE_0Q = EDGE_00Q, VALUE_0 = EDGE_00, VALUE_1Q = EDGE_01Q, VALUE_1 = EDGE_01, VALUE_10Q = EDGE_00Q | EDGE_01Q;
 

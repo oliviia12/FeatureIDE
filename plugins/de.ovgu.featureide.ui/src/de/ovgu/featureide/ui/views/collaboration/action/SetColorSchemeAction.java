@@ -41,7 +41,8 @@ public class SetColorSchemeAction extends AbstractColorAction {
 		this.newColorSchemeName = newColorSchemeName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.ui.views.collaboration.color.action.AbstractColorAction#action(de.ovgu.featureide.fm.core.Feature)
 	 */
 	@Override

@@ -67,12 +67,12 @@ public class AutoLayoutConstraintOperation extends AbstractGraphicalFeatureModel
 			final LinkedList<IGraphicalFeature> featureList = new LinkedList<>();
 			featureList.addAll(Functional.toList(graphicalFeatureModel.getVisibleFeatures()));
 
-			//Get root because the constraints will be auto layouted depending on the root
-			final IGraphicalFeature root = graphicalFeatureModel
-					.getGraphicalFeature(graphicalFeatureModel.getFeatureModel().getStructure().getRoot().getFeature());
+			// Get root because the constraints will be auto layouted depending on the root
+			final IGraphicalFeature root =
+					graphicalFeatureModel.getGraphicalFeature(graphicalFeatureModel.getFeatureModel().getStructure().getRoot().getFeature());
 			minX = root.getLocation().x;
 			maxX = root.getLocation().x + root.getSize().width;
-			//+20 because of the collapsed decorator
+			// +20 because of the collapsed decorator
 			y = FMPropertyManager.getLayoutMarginY();
 
 			for (int i = 0; i < featureList.size(); i++) {
@@ -82,7 +82,7 @@ public class AutoLayoutConstraintOperation extends AbstractGraphicalFeatureModel
 			}
 			final IGraphicalConstraint constraint = constraintList.get(0);
 			newPos.x = ((minX + maxX) / 2) - (constraint.getSize().width / 2);
-			//added 2 times getConstraintSpace to prevent intersecting with the collapsed decorator
+			// added 2 times getConstraintSpace to prevent intersecting with the collapsed decorator
 			newPos.y = y + (FMPropertyManager.getConstraintSpace() * 2);
 			constraint.setLocation(newPos);
 		}

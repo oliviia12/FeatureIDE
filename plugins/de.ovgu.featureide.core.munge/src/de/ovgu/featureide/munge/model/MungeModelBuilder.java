@@ -56,13 +56,14 @@ import de.ovgu.featureide.munge.signatures.MungeSignatureBuilder;
 public class MungeModelBuilder extends PPModelBuilder {
 
 	private static final class SignatureComparator implements Comparator<AbstractSignature> {
+
 		@Override
 		public int compare(AbstractSignature arg0, AbstractSignature arg1) {
 			return arg0.getFirstFeatureData().getStartLineNumber() - arg1.getFirstFeatureData().getStartLineNumber();
 		}
 	}
 
-	private ProjectSignatures signatures; //= MungeSignatureBuilder.build(featureProject);
+	private ProjectSignatures signatures; // = MungeSignatureBuilder.build(featureProject);
 	private MungePreprocessor mungePreprocessor;
 
 	public MungeModelBuilder(IFeatureProject featureProject) {
@@ -136,7 +137,7 @@ public class MungeModelBuilder extends PPModelBuilder {
 
 	@Override
 	public LinkedList<FSTDirective> buildModelDirectivesForFile(Vector<String> lines) {
-		//for preprocessor outline
+		// for preprocessor outline
 		final Deque<FSTDirective> directivesStack = new LinkedList<FSTDirective>();
 		final LinkedList<FSTDirective> directivesList = new LinkedList<FSTDirective>();
 
@@ -162,6 +163,7 @@ public class MungeModelBuilder extends PPModelBuilder {
 			}
 			sigIt = signatures.iterator();
 			sigIt.addFilter(new IFilter<AbstractSignature>() {
+
 				@Override
 				public boolean isValid(AbstractSignature object) {
 					String sigName = object.getFullName();
@@ -279,7 +281,7 @@ public class MungeModelBuilder extends PPModelBuilder {
 				}
 
 				if ((startLineSig >= startLine) && (endLineSig <= endLine)) {
-					//if a children has the method already included, do nothing
+					// if a children has the method already included, do nothing
 					final FSTDirective[] children = fstDirective.getChildren();
 					boolean alreadIncluded = false;
 					for (final FSTDirective fstDirective2 : children) {

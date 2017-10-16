@@ -56,19 +56,19 @@ public class Experiment_SPLOTmodels {
 		// Initialize the reasoner (BDD is created at this moment)
 		reasoner.init();
 		// Use the reasoner
-		//System.out.println("BDD has " + reasoner.getBDD().nodeCount()
-		//+ " nodes and was built in " + reasoner.getBDDBuildingTime()
-		//+ " ms "  );
+		// System.out.println("BDD has " + reasoner.getBDD().nodeCount()
+		// + " nodes and was built in " + reasoner.getBDDBuildingTime()
+		// + " ms " );
 
 		// Check if feature model is consistent, i.e., has at least one valid
 		// configuration
 		assert (reasoner.isConsistent());
-		//System.out.println("Feature model is "
-		//+ (reasoner.isConsistent() ? "" : " NOT ") + "consistent!");
+		// System.out.println("Feature model is "
+		// + (reasoner.isConsistent() ? "" : " NOT ") + "consistent!");
 
 		// Count feature model solutions
-		//System.out.println("Feature model has "
-		//				+ reasoner.countValidConfigurations()
+		// System.out.println("Feature model has "
+		// + reasoner.countValidConfigurations()
 		// + " possible configurations");
 
 		// Important:

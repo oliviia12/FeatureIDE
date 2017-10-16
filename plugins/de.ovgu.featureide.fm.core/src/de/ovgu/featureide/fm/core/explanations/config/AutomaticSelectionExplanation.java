@@ -28,6 +28,7 @@ import de.ovgu.featureide.fm.core.configuration.SelectableFeature;
  * @author Timo G&uuml;nther
  */
 public class AutomaticSelectionExplanation extends ConfigurationExplanation {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *

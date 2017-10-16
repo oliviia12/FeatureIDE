@@ -56,6 +56,7 @@ import de.ovgu.featureide.ui.UIPlugin;
  * @author Stephan Besecke
  */
 public class CollaborationModelBuilder {
+
 	/**
 	 * Every feature project has its own filter
 	 */

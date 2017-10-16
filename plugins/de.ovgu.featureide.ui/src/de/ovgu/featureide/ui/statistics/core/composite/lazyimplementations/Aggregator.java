@@ -46,6 +46,7 @@ import de.ovgu.featureide.core.fstmodel.preprocessor.FSTDirective;
 public class Aggregator {
 
 	public static class AggregatorResult {
+
 		private int nesting;
 		private Map<String, Integer> directives = new HashMap<String, Integer>();
 
@@ -72,8 +73,7 @@ public class Aggregator {
 	private final Map<String, AggregatorResult> class_to_directives = new HashMap<String, AggregatorResult>();
 
 	/**
-	 * Counts and groups all directives in the project and adds the information
-	 * to the given node.
+	 * Counts and groups all directives in the project and adds the information to the given node.
 	 *
 	 * @param fstModel
 	 * @param parent

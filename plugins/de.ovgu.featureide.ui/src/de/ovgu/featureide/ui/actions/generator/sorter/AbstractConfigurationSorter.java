@@ -29,16 +29,14 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 import de.ovgu.featureide.ui.actions.generator.BuilderConfiguration;
 
 /**
- * Sorts configurations.<br>
- * Default implementation, does nothing.
+ * Sorts configurations.<br> Default implementation, does nothing.
  *
  * @author Jens Meinicke
  */
 public class AbstractConfigurationSorter {
 
 	/**
-	 * This list contains all found configurations to built.<br>
-	 * Use <code>getConfiguration()</code> and <code>setConfiguration(c)</code> for synchronizing.
+	 * This list contains all found configurations to built.<br> Use <code>getConfiguration()</code> and <code>setConfiguration(c)</code> for synchronizing.
 	 */
 	protected LinkedList<BuilderConfiguration> configurations = new LinkedList<BuilderConfiguration>();
 

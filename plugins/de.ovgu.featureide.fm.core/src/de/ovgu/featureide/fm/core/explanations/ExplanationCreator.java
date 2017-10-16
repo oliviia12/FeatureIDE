@@ -26,6 +26,7 @@ package de.ovgu.featureide.fm.core.explanations;
  * @author Timo Günther
  */
 public interface ExplanationCreator {
+
 	/**
 	 * Returns an explanation for the specified circumstance.
 	 *

@@ -32,8 +32,7 @@ import de.ovgu.featureide.core.fstmodel.FSTFeature;
 import de.ovgu.featureide.ui.views.collaboration.GUIDefaults;
 
 /**
- * An instance of this class represents the graphical representation of the
- * Collaboration.
+ * An instance of this class represents the graphical representation of the Collaboration.
  *
  * @author Constanze Adler
  */

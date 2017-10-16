@@ -31,6 +31,7 @@ import de.ovgu.featureide.core.signature.ProjectSignatures;
  * @author Sebastian Krieter
  */
 public class SignatureSetter {
+
 	private final FujiSignaturesCreator sigCreator = new FujiSignaturesCreator();
 
 	private FSTModel fstModel = null;

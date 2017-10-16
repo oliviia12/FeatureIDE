@@ -23,8 +23,7 @@ package de.ovgu.featureide.ui.actions.generator;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
 
 /**
- * This is just an extension of {@link Configuration} where you can define
- * a specific name.
+ * This is just an extension of {@link Configuration} where you can define a specific name.
  *
  * @author Jens Meinicke
  */

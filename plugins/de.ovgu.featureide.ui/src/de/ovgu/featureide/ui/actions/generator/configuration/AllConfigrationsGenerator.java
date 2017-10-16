@@ -43,8 +43,7 @@ import de.ovgu.featureide.ui.actions.generator.ConfigurationBuilder;
 import de.ovgu.featureide.ui.actions.generator.IConfigurationBuilderBasics;
 
 /**
- * Configuration generator that creates all configurations of the feature model.<br>
- * Exploits the structure of the feature model.
+ * Configuration generator that creates all configurations of the feature model.<br> Exploits the structure of the feature model.
  *
  * @author Jens Meinicke
  */
@@ -59,6 +58,7 @@ public class AllConfigrationsGenerator extends AConfigurationGenerator {
 	public AllConfigrationsGenerator(final ConfigurationBuilder builder, IFeatureProject featureProject) {
 		super(builder, featureProject);
 		numberJob = new LongRunningJob<>(IConfigurationBuilderBasics.JOB_TITLE_COUNT_CONFIGURATIONS, new LongRunningMethod<Boolean>() {
+
 			@Override
 			public Boolean execute(IMonitor workMonitor) throws Exception {
 				final Long number = LongRunningWrapper.runMethod(configurationPropagator.number(1_000_000));
@@ -93,15 +93,11 @@ public class AllConfigrationsGenerator extends AConfigurationGenerator {
 	}
 
 	/**
-	 * Builds all possible valid configurations for the feature project.<br>
-	 * Iterates through the structure of the feature model and ignores
-	 * constraints, to get a linear expenditure.<br>
-	 * After collecting a configurations the satsolver tests its validity.<br>
-	 * Then the found configuration will be build into the folder for all valid
-	 * products.
+	 * Builds all possible valid configurations for the feature project.<br> Iterates through the structure of the feature model and ignores constraints, to get
+	 * a linear expenditure.<br> After collecting a configurations the satsolver tests its validity.<br> Then the found configuration will be build into the
+	 * folder for all valid products.
 	 *
-	 * @param root
-	 *            The root feature of the feature model
+	 * @param root The root feature of the feature model
 	 * @param monitor
 	 */
 	private void buildAll(IFeature root, IMonitor monitor) {
@@ -310,11 +306,9 @@ public class AllConfigrationsGenerator extends AConfigurationGenerator {
 	}
 
 	/**
-	 * Returns all children of a feature if it is a layer or if it has a child
-	 * that is concrete.
+	 * Returns all children of a feature if it is a layer or if it has a child that is concrete.
 	 *
-	 * @param currentFeature
-	 *            The feature
+	 * @param currentFeature The feature
 	 * @return The children
 	 */
 	private LinkedList<IFeature> getChildren(IFeature currentFeature) {
@@ -329,10 +323,8 @@ public class AllConfigrationsGenerator extends AConfigurationGenerator {
 	}
 
 	/**
-	 * @param feature
-	 *            The feature
-	 * @return <code>true</code> if the feature is a layer or if it has a child
-	 *         that is a concrete
+	 * @param feature The feature
+	 * @return <code>true</code> if the feature is a layer or if it has a child that is a concrete
 	 */
 	private boolean hasLayerChild(IFeature feature) {
 		if (feature.getStructure().hasChildren()) {

@@ -38,11 +38,11 @@ public class ExportGUIDSLHandler extends AbstractFMExportHandler {
 	protected IFeatureModelFormat getOutputFormat() {
 		final GuidslFormat fmWriter = new GuidslFormat();
 		// TODO Guidsl
-		//		if (fmWriter.hasConcreteCompounds()
-		//				&& !MessageDialog.openQuestion(new Shell(), "Warning!",
-		//						"The current feature model cannot be transformed due to concrete compounds! Proceed? (all compound features will be set as abstract)")) {
-		//			return null;
-		//		}
+		// if (fmWriter.hasConcreteCompounds()
+		// && !MessageDialog.openQuestion(new Shell(), "Warning!",
+		// "The current feature model cannot be transformed due to concrete compounds! Proceed? (all compound features will be set as abstract)")) {
+		// return null;
+		// }
 		return fmWriter;
 	}
 

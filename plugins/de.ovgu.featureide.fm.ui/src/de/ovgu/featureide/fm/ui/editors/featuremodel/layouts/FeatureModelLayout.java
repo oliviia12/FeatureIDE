@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.Point;
  * @author soenke
  */
 public class FeatureModelLayout implements IExtendedFeatureModelLayout {
+
 	private boolean autoLayoutLegend;
 	private boolean showHiddenFeatures;
 	private boolean showCollapsedConstraints;

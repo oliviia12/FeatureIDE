@@ -43,6 +43,7 @@ import de.ovgu.featureide.ui.actions.generator.BuilderConfiguration;
  * @author Mustafa Alhajjaj
  */
 public class PriorizationSorter extends AbstractConfigurationSorter {
+
 	private final List<List<String>> allconfigs = new ArrayList<List<String>>();
 	private final List<List<String>> allsortedconfigs = new ArrayList<List<String>>();
 	HashMap<String, Double> configsDistancesResult = new HashMap<String, Double>();

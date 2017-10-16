@@ -55,8 +55,7 @@ import de.ovgu.featureide.fm.ui.views.featuremodeleditview.ViewContentProvider;
 import de.ovgu.featureide.fm.ui.views.featuremodeleditview.ViewLabelProvider;
 
 /**
- * A view to calculate the category an edit. Given an open feature model editor
- * the current editing version is compared to the last saved model.
+ * A view to calculate the category an edit. Given an open feature model editor the current editing version is compared to the last saved model.
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke
@@ -67,8 +66,8 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 
 	public static final Image REFESH_TAB_IMAGE = FMUIPlugin.getImage("refresh_tab.gif");
 
-	private static final QualifiedName ACTIVATOR_KEY = new QualifiedName(FMUIPlugin.PLUGIN_ID + ".EditViewActivator",
-			FMUIPlugin.PLUGIN_ID + ".EditViewActivator");
+	private static final QualifiedName ACTIVATOR_KEY =
+			new QualifiedName(FMUIPlugin.PLUGIN_ID + ".EditViewActivator", FMUIPlugin.PLUGIN_ID + ".EditViewActivator");
 
 	private static final String ACTIVATOR_ACTION_TEXT = DISABLE_AUTOMATIC_CALCULATIONS;
 	private static final String MANUAL_CALCULATION_TEXT = START_CALCULATION;
@@ -85,9 +84,11 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 	 * Button to start manual calculations.
 	 */
 	private final Action manualAction = new Action() {
+
 		@Override
 		public void run() {
 			final Job job = new Job(UPDATING_FEATURE_MODEL_EDITS) {
+
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					if (featureModelEditor == null) {
@@ -107,9 +108,11 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 	 * Button to enable/disable automatic calculations.
 	 */
 	private final Action activatorAction = new Action() {
+
 		@Override
 		public void run() {
 			final Job job = new Job("") {
+
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					activatorAction.setChecked(activatorAction.isChecked());
@@ -127,12 +130,10 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 	private final IPartListener editorListener = new IPartListener() {
 
 		@Override
-		public void partOpened(IWorkbenchPart part) {
-		}
+		public void partOpened(IWorkbenchPart part) {}
 
 		@Override
-		public void partDeactivated(IWorkbenchPart part) {
-		}
+		public void partDeactivated(IWorkbenchPart part) {}
 
 		@Override
 		public void partClosed(IWorkbenchPart part) {
@@ -158,6 +159,7 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 	};
 
 	private final IEventListener modelListener = new IEventListener() {
+
 		@Override
 		public void propertyChange(FeatureIDEEvent evt) {
 			if (!EventType.MODEL_LAYOUT_CHANGED.equals(evt.getEventType())) {
@@ -212,8 +214,7 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 	/**
 	 * Sets the persistent property status of the activator action.
 	 *
-	 * @param checked
-	 *            The new status
+	 * @param checked The new status
 	 */
 	private void setActivatorChecked(boolean checked) {
 		try {
@@ -270,10 +271,10 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 		}
 
 		/*
-		 * This job waits for the calculation job to finish and starts
-		 * immediately a new one
+		 * This job waits for the calculation job to finish and starts immediately a new one
 		 */
 		final Job waiter = new Job(UPDATING_FEATURE_MODEL_EDITS) {
+
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				try {
@@ -290,6 +291,7 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 				}
 
 				job = new Job(UPDATING_FEATURE_MODEL_EDITS) {
+
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						activatorAction.setEnabled(true);

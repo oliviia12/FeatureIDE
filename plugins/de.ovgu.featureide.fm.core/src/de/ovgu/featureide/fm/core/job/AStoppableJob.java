@@ -27,8 +27,8 @@ import de.ovgu.featureide.fm.core.Logger;
 /**
  * Abstract eclipse job which can be stopped.
  *
- * @deprecated Use {@link LongRunningMethod} and {@link LongRunningWrapper} instead. <br/>
- *             A {@link IRunner} from the wrapper can be made stoppable via {@link IRunner#setStoppable(boolean)}.
+ * @deprecated Use {@link LongRunningMethod} and {@link LongRunningWrapper} instead. <br/> A {@link IRunner} from the wrapper can be made stoppable via
+ *             {@link IRunner#setStoppable(boolean)}.
  *
  * @author Sebastian Krieter
  * @author Marcus Pinnecke (Feature Interface)
@@ -38,6 +38,7 @@ import de.ovgu.featureide.fm.core.Logger;
 public abstract class AStoppableJob extends AbstractJob implements IStoppableJob {
 
 	private class InnerThread extends Thread {
+
 		public InnerThread() {
 			super("Thread-" + AStoppableJob.this.getName());
 
@@ -83,6 +84,7 @@ public abstract class AStoppableJob extends AbstractJob implements IStoppableJob
 
 		if (cancelingTimeout > 0) {
 			new Thread(new Runnable() {
+
 				@Override
 				public void run() {
 					try {
@@ -109,9 +111,7 @@ public abstract class AStoppableJob extends AbstractJob implements IStoppableJob
 	}
 
 	/**
-	 * {@inheritDoc}</br>
-	 * </br>
-	 * Implementing jobs should continuously call {@link #checkCancel()} and respond to a canceling request.
+	 * {@inheritDoc}</br> </br> Implementing jobs should continuously call {@link #checkCancel()} and respond to a canceling request.
 	 */
 	protected abstract boolean work() throws Exception;
 

@@ -43,6 +43,7 @@ import de.ovgu.featureide.fm.core.io.manager.FeatureModelManager;
  * @author Alexander
  */
 public class ComplexConstraintConverter {
+
 	/* Feature model factory */
 	private IFeatureModelFactory factory;
 	/* Working feature model */
@@ -143,7 +144,7 @@ public class ComplexConstraintConverter {
 	 * @return
 	 */
 	public IFeatureModel convert(IFeatureModel model, IConverterStrategy converter, Option... options) {
-		//check if model is valid
+		// check if model is valid
 		if (model == null) {
 			throw new IllegalArgumentException("Invalid feature model.");
 		}
@@ -164,22 +165,22 @@ public class ComplexConstraintConverter {
 			}
 		}
 
-		//Work with a clone
+		// Work with a clone
 		fm = model.clone();
 		factory = FMFactoryManager.getFactory(fm);
 
-		//Basic cleaning
+		// Basic cleaning
 		if (removeRedundncy && !prepare()) {
 			return fm;
 		}
 
-		//Identify trivial refactorings
+		// Identify trivial refactorings
 		refactorPseudoComplexConstraints();
 
-		//Get list of complex clauses and remove them from the model
+		// Get list of complex clauses and remove them from the model
 		final List<IConstraint> complexConstraints = pruneComplexConstraints();
 
-		//Minimize constraints
+		// Minimize constraints
 		final List<Node> minComplexNodes = new ArrayList<>();
 		for (final IConstraint c : complexConstraints) {
 			final List<Node> nodes = converter.preprocess(c);
@@ -219,13 +220,13 @@ public class ComplexConstraintConverter {
 	 * @return
 	 */
 	protected Node minimize(Node clause) {
-		//TODO minimize complex clauses
+		// TODO minimize complex clauses
 		return clause;
 	}
 
 	/**
-	 * Removes tautologies and redundant constraints.
-	 * If the feature model is a void model or unsatisfiable then a simple contradicting feature model will be created.
+	 * Removes tautologies and redundant constraints. If the feature model is a void model or unsatisfiable then a simple contradicting feature model will be
+	 * created.
 	 */
 	protected boolean prepare() {
 		final FeatureModelAnalyzer analyzer = FeatureModelManager.getAnalyzer(fm);

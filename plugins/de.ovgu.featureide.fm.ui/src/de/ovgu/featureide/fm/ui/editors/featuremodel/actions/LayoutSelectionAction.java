@@ -53,7 +53,7 @@ public class LayoutSelectionAction extends Action {
 	@Override
 	public void run() {
 		final LayoutSelectionOperation op = new LayoutSelectionOperation(featureModel, newSelectedLayoutAlgorithm, oldSelectedLayoutAlgorithm);
-		//TODO _interfaces Removed Code
+		// TODO _interfaces Removed Code
 		op.addContext((IUndoContext) featureModel.getFeatureModel().getUndoContext());
 		try {
 			PlatformUI.getWorkbench().getOperationSupport().getOperationHistory().execute(op, null, null);

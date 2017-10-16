@@ -43,9 +43,8 @@ import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 import de.ovgu.featureide.ui.statistics.core.composite.lazyimplementations.genericdatatypes.AbstractSortModeNode;
 
 /**
- * TreeNode who stores the number of used preprocessor directives, directives
- * per class and features per directives.<br>
- * This node should only be used for a preprocessor project.
+ * TreeNode who stores the number of used preprocessor directives, directives per class and features per directives.<br> This node should only be used for a
+ * preprocessor project.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
@@ -57,10 +56,8 @@ public class DirectivesNode extends LazyParent {
 	/**
 	 * Constructor for a {@code DirectivesNode}.
 	 *
-	 * @param description
-	 *            description of the node shown in the view
-	 * @param fstModel
-	 *            FSTModel for the calculation
+	 * @param description description of the node shown in the view
+	 * @param fstModel FSTModel for the calculation
 	 */
 	public DirectivesNode(String description, FSTModel fstModel) {
 		super(description);
@@ -119,6 +116,7 @@ public class DirectivesNode extends LazyParent {
 
 		// 1.2 Class Statistics Node
 		final Parent classes = new AbstractSortModeNode(CLASS_STATISTICS) {
+
 			@Override
 			protected void initChildren() {
 				for (final FSTClass c : fstModel.getClasses()) {

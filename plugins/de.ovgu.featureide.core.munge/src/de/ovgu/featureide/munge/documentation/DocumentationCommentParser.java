@@ -39,7 +39,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 		} else if (typeString.equals("feature")) {
 			featureHead = true;
 		} else {
-			//warning?
+			// warning?
 			tagFeatureNode = null;
 			tagPriority = 0;
 		}
@@ -57,7 +57,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 						}
 						tagFeatureNode = nodeReader.stringToNode(sb.toString());
 					} else {
-						//warning?
+						// warning?
 						tagFeatureNode = null;
 					}
 				}

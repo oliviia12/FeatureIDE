@@ -37,8 +37,7 @@ public class AspectJCorePlugin extends AbstractCorePlugin {
 	// The shared instance
 	private static AspectJCorePlugin plugin;
 
-	public AspectJCorePlugin() {
-	}
+	public AspectJCorePlugin() {}
 
 	@Override
 	public String getID() {

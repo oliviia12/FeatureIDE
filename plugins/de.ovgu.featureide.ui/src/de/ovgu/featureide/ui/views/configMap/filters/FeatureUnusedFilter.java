@@ -38,8 +38,10 @@ public class FeatureUnusedFilter extends ConfigurationMapFilter {
 		setImagePath(Image_Minus);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter#test(de.ovgu.featureide.ui.views.configMap.ConfigurationMap, de.ovgu.featureide.fm.core.base.IFeature)
+	/*
+	 * (non-Javadoc)
+	 * @see de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilter#test(de.ovgu.featureide.ui.views.configMap.ConfigurationMap,
+	 * de.ovgu.featureide.fm.core.base.IFeature)
 	 */
 	@Override
 	public boolean test(ConfigurationMap configurationMap, IFeature feature) {

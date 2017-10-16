@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.core.explanations.Reason;
  * @author Timo G&uuml;nther
  */
 public abstract class FeatureModelExplanation extends Explanation {
+
 	/**
 	 * Constructs a new instance of this class.
 	 *
@@ -50,8 +51,8 @@ public abstract class FeatureModelExplanation extends Explanation {
 	}
 
 	/**
-	 * Returns all feature model elements affected by this explanation.
-	 * An element is considered affected if it is the defect element, the source element of any reason or part of any such constraint.
+	 * Returns all feature model elements affected by this explanation. An element is considered affected if it is the defect element, the source element of any
+	 * reason or part of any such constraint.
 	 *
 	 * @return all feature model elements affected by this explanation
 	 */

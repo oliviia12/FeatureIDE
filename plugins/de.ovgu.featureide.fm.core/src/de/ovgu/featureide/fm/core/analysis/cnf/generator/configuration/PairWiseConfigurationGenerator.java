@@ -49,6 +49,7 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 public class PairWiseConfigurationGenerator extends AbstractAnalysis<List<LiteralSet>> {
 
 	public static class Configuration {
+
 		private static final double minBackJumpingDelta = 0.0;
 
 		private IConstr blockingClauseConstraint = null;

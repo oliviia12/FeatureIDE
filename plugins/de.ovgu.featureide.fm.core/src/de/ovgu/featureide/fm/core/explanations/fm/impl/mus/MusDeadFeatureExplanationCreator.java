@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.DeadFeatureExplanationCreator;
  * @author Timo G&uuml;nther
  */
 public class MusDeadFeatureExplanationCreator extends MusFeatureModelExplanationCreator implements DeadFeatureExplanationCreator {
+
 	/** The dead feature in the feature model. */
 	private IFeature deadFeature;
 

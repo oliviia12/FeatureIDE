@@ -40,17 +40,16 @@ import de.ovgu.featureide.core.builder.IComposerExtensionClass;
 import de.ovgu.featureide.ui.UIPlugin;
 
 /**
- * This Editor extends the standard Java editor {@link CompilationUnitEditor} It
- * only sets the part name to differ a source from a composed file.
+ * This Editor extends the standard Java editor {@link CompilationUnitEditor} It only sets the part name to differ a source from a composed file.
  *
  * @author Jens Meinicke
  */
 /*
- * TODO maybe the BasicJavaEditorActionContributor should used at plugin.xml
- * TODO the images for composed and source files should differ(?)
+ * TODO maybe the BasicJavaEditorActionContributor should used at plugin.xml TODO the images for composed and source files should differ(?)
  */
 @SuppressWarnings(RESTRICTION)
 public class JavaEditor extends CompilationUnitEditor {
+
 	public static final String ID = UIPlugin.PLUGIN_ID + ".editors.JavaEditor";
 	private static final Image TITLE_IMAGE = UIPlugin.getImage("JakFileIcon.png");
 	private IComposerExtensionClass composer;
@@ -97,12 +96,10 @@ public class JavaEditor extends CompilationUnitEditor {
 	}
 
 	/**
-	 * Looks for the corresponding configuration file<br>
-	 * Necessary for generated products
+	 * Looks for the corresponding configuration file<br> Necessary for generated products
 	 *
 	 * @param parent
-	 * @return The name of the configuration or <code>null</code> if there is
-	 *         none
+	 * @return The name of the configuration or <code>null</code> if there is none
 	 */
 	private String getConfiguration(IContainer parent) {
 		try {
@@ -126,8 +123,7 @@ public class JavaEditor extends CompilationUnitEditor {
 	/**
 	 * @param parent
 	 * @param buildFolder
-	 * @return <code>true</code> if the build folder is a parent of the given
-	 *         file
+	 * @return <code>true</code> if the build folder is a parent of the given file
 	 */
 	private boolean isComposedFile(IContainer parent, IFolder buildFolder) {
 		if (parent != null) {

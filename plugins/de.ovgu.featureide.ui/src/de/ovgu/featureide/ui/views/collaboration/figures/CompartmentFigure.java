@@ -46,6 +46,7 @@ public class CompartmentFigure extends Figure {
 	}
 
 	public static class CompartmentFigureBorder extends AbstractBorder {
+
 		@Override
 		public Insets getInsets(IFigure figure) {
 			return new Insets(1, 0, 0, 0);

@@ -143,6 +143,7 @@ public class FmOutlinePageContextMenu {
 		final MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
+
 			@Override
 			public void menuAboutToShow(IMenuManager manager) {
 				FmOutlinePageContextMenu.this.fillContextMenu(manager);
@@ -162,7 +163,7 @@ public class FmOutlinePageContextMenu {
 		setFeatureColorAction = new SetFeatureColorAction(viewer, getFeatureModel());
 		mAction = new MandatoryAction(viewer, fInput);
 		hAction = new HiddenAction(viewer, fInput);
-		//collapseAction = new CollapseAction(viewer, fInput);
+		// collapseAction = new CollapseAction(viewer, fInput);
 		aAction = new AbstractAction(viewer, fInput, (ObjectUndoContext) fInput.getUndoContext());
 		dAction = new DeleteAction(viewer, fInput);
 		dAAction = new DeleteAllAction(viewer, fInput);
@@ -176,12 +177,13 @@ public class FmOutlinePageContextMenu {
 		}
 
 		oAction = new OrAction(viewer, fInput);
-		//TODO _interfaces Removed Code
-		//		roAction = new ReverseOrderAction(viewer, fInput);
+		// TODO _interfaces Removed Code
+		// roAction = new ReverseOrderAction(viewer, fInput);
 		andAction = new AndAction(viewer, fInput);
 		altAction = new AlternativeAction(viewer, fInput);
 
 		collapseAllAction = new Action() {
+
 			@Override
 			public void run() {
 				viewer.collapseAll();
@@ -191,6 +193,7 @@ public class FmOutlinePageContextMenu {
 		collapseAllAction.setImageDescriptor(IMG_COLLAPSE);
 
 		expandAllAction = new Action() {
+
 			@Override
 			public void run() {
 				viewer.expandAll();
@@ -200,11 +203,12 @@ public class FmOutlinePageContextMenu {
 		expandAllAction.setImageDescriptor(IMG_EXPAND);
 
 		dblClickListener = new IDoubleClickListener() {
+
 			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				if ((((IStructuredSelection) viewer.getSelection()).getFirstElement() instanceof IFeature)) {
 					if (syncCollapsedFeatures) {
-						//collapseAction.run();
+						// collapseAction.run();
 					} else if ((((IStructuredSelection) viewer.getSelection()).getFirstElement() instanceof IConstraint)) {
 						ecAction.run();
 					}
@@ -222,6 +226,7 @@ public class FmOutlinePageContextMenu {
 
 		if (fTextEditor != null) {
 			viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
 				@Override
 				public void selectionChanged(SelectionChangedEvent event) {
 					if (viewer.getSelection() == null) {
@@ -244,7 +249,7 @@ public class FmOutlinePageContextMenu {
 						return;
 					}
 					// workaround for bug: close the FM-editor and open it again,
-					//					-> selecting something at the outline causes a null-pointer exception
+					// -> selecting something at the outline causes a null-pointer exception
 					if (part == null) {
 						return;
 					}
@@ -277,8 +282,8 @@ public class FmOutlinePageContextMenu {
 			manager.add(oAction);
 			manager.add(altAction);
 			manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-			//TODO _interfaces Removed Code
-			//			manager.add(roAction);
+			// TODO _interfaces Removed Code
+			// manager.add(roAction);
 		}
 		if (sel instanceof IFeature) {
 
@@ -311,7 +316,7 @@ public class FmOutlinePageContextMenu {
 			manager.add(aAction);
 			manager.add(hAction);
 			manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-			//TODO _interfaces Removed Code
+			// TODO _interfaces Removed Code
 			manager.add(setFeatureColorAction);
 		}
 		if (sel instanceof IConstraint) {

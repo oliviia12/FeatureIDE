@@ -100,6 +100,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	private StyledText searchFeatureText;
 
 	private abstract class ComposedViewerFilter extends ViewerFilter {
+
 		public boolean selectComposer(Viewer viewer, Object parentElement, Object element) {
 			final ViewerFilter[] filters = ((StructuredViewer) viewer).getFilters();
 			Object[] filterRes = ((ITreeContentProvider) ((StructuredViewer) viewer).getContentProvider()).getChildren(element);
@@ -111,6 +112,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	}
 
 	private class SearchProjectFilter extends ComposedViewerFilter {
+
 		private String searchText = null;
 
 		@Override
@@ -131,6 +133,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	}
 
 	private class ErrorProjectFilter extends ComposedViewerFilter {
+
 		private boolean isActive = false;
 
 		@Override
@@ -153,6 +156,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	};
 
 	private class MyCheckStateListener implements ICheckStateListener {
+
 		@Override
 		public void checkStateChanged(CheckStateChangedEvent event) {
 			if (event instanceof ContainerTreeViewerWrapper.ParentCheckStateChangedEvent) {
@@ -191,6 +195,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	}
 
 	private class SelectionChangedListener implements ISelectionChangedListener {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			CheckboxTreeViewer viewer = null;
@@ -246,6 +251,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	}
 
 	private class DynamicComposite extends Composite {
+
 		public DynamicComposite(Composite parent, int style, String contentProviderName) {
 			super(parent, style);
 			final GridLayout layout = new GridLayout();
@@ -262,6 +268,7 @@ public class ExampleNewWizardPage extends WizardPage {
 			contCheckTreeV.addCheckStateListener(checkStateList);
 
 			final ViewerSorter viewerSorter = new ViewerSorter(new Collator() {
+
 				@Override
 				public int hashCode() {
 					return 0;
@@ -335,6 +342,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		item.setToolTipText("Hide all projects with errors and warnings");
 
 		item.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (e.getSource() instanceof ToolItem) {
@@ -354,6 +362,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		item.setImage(IMAGE_COLLAPSE);
 		item.setToolTipText("Collapse all projects");
 		item.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				wrapper.getSelectedViewer().collapseAll();
@@ -363,6 +372,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		item.setImage(IMAGE_EXPAND);
 		item.setToolTipText("Expand all projects");
 		item.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				wrapper.getSelectedViewer().expandAll();
@@ -374,6 +384,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		item.setImage(IMAGE_SELECT);
 		item.setToolTipText("Select All Projects");
 		item.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectAllElementsWithoutWarningsAndErrors();
@@ -384,6 +395,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		item.setImage(IMAGE_DESELECT);
 		item.setToolTipText("Deselect All Projects");
 		item.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				deselectAllProjects();
@@ -398,6 +410,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		searchFeatureText.setForeground(gray);
 		searchFeatureText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		searchFeatureText.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				final Object[] checkedProjects = wrapper.getCheckedProjectItems(wrapper.getSelectedViewer());
@@ -408,6 +421,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		});
 
 		searchFeatureText.addListener(SWT.FocusOut, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				if (searchFeatureText.getText().isEmpty()) {
@@ -417,6 +431,7 @@ public class ExampleNewWizardPage extends WizardPage {
 			}
 		});
 		searchFeatureText.addListener(SWT.FocusIn, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				setMessage("");
@@ -441,6 +456,7 @@ public class ExampleNewWizardPage extends WizardPage {
 	private void createProjectSelectionArea(final Composite workArea) {
 		final CTabFolder tabFolder = new CTabFolder(workArea, SWT.BORDER);
 		tabFolder.addListener(SWT.MouseExit, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				final Object[] checkedProjects = wrapper.getCheckedProjects();
@@ -465,6 +481,7 @@ public class ExampleNewWizardPage extends WizardPage {
 		tabFolder.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL | GridData.FILL_BOTH));
 
 		tabFolder.addSelectionListener(new SelectionListener() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (e.getSource() instanceof CTabFolder) {
@@ -478,8 +495,7 @@ public class ExampleNewWizardPage extends WizardPage {
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 		});
 
 		final Set<String> tabItems = ProjectProvider.getViewersNamesForProjects();

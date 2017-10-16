@@ -64,7 +64,7 @@ public class BreadthFirstLayout extends FeatureDiagramLayoutManager {
 		yoffset += FMPropertyManager.getLayoutMarginY();
 
 		while (!list.isEmpty()) {
-			//center the features of the level
+			// center the features of the level
 			int width = (2 * FMPropertyManager.getLayoutMarginX()) - FMPropertyManager.getFeatureSpaceX();
 			for (final IGraphicalFeature feature : list) {
 				width += feature.getSize().width + FMPropertyManager.getFeatureSpaceX();
@@ -72,13 +72,13 @@ public class BreadthFirstLayout extends FeatureDiagramLayoutManager {
 
 			int xoffset = (controlWidth / 2) - (width / 2);
 
-			//set location of each feature at this level
+			// set location of each feature at this level
 			final int levelSize = list.size();
 			for (int i = 0; i < levelSize; i++) {
 				final IGraphicalFeature feature = list.removeFirst();
 				setLocation(feature, new Point(xoffset, yoffset));
 				xoffset += feature.getSize().width + FMPropertyManager.getFeatureSpaceX();
-				//add the features children
+				// add the features children
 				list.addAll(getChildren(feature));
 			}
 			yoffset += FMPropertyManager.getFeatureSpaceY();

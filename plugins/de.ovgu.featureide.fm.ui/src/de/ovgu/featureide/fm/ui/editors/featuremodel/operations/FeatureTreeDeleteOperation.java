@@ -95,8 +95,7 @@ public class FeatureTreeDeleteOperation extends MultiFeatureModelOperation imple
 	}
 
 	/**
-	 * traverses through the whole subtree and collects the features that should
-	 * be deleted
+	 * traverses through the whole subtree and collects the features that should be deleted
 	 *
 	 * @param linkedList
 	 */
@@ -115,7 +114,7 @@ public class FeatureTreeDeleteOperation extends MultiFeatureModelOperation imple
 	@Override
 	protected FeatureIDEEvent inverseOperation() {
 		super.inverseOperation();
-		//Set the right group types for the features
+		// Set the right group types for the features
 		for (final IFeature ifeature : andList) {
 			if (featureModel.getFeature(ifeature.getName()) != null) {
 				featureModel.getFeature(ifeature.getName()).getStructure().changeToAnd();

@@ -46,6 +46,7 @@ public class ComposerExtensionManager extends ExtensionManager<IComposerExtensio
 	private ComposerExtensionManager() {
 		setExtensionLoaderInternal(new EclipseExtensionLoader<IComposerExtension>(CorePlugin.PLUGIN_ID, IComposerExtensionBase.extensionPointID,
 				IComposerExtensionBase.extensionID, IComposerExtension.class) {
+
 			@Override
 			protected IComposerExtension parseExtension(IConfigurationElement configurationElement) {
 				if (!IComposerExtensionBase.extensionID.equals(configurationElement.getName())) {

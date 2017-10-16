@@ -83,8 +83,7 @@ public class FrameworkJarCreator {
 	}
 
 	/**
-	 * recursive method<br>
-	 * calls other methods depending on type (file or folder)
+	 * recursive method<br> calls other methods depending on type (file or folder)
 	 *
 	 * @param jarStream
 	 * @param res
@@ -94,7 +93,7 @@ public class FrameworkJarCreator {
 	 */
 	public static void addToJar(JarOutputStream jarStream, IResource res, String path) throws IOException, CoreException {
 		if (res instanceof IFolder) {
-			final String path2 = path + res.getName() + "/"; //Slash is needed for JAR creation -> DO NOT REPLACE WITH SYSTEM PROPERTIES
+			final String path2 = path + res.getName() + "/"; // Slash is needed for JAR creation -> DO NOT REPLACE WITH SYSTEM PROPERTIES
 			for (final IResource member : ((IFolder) res).members()) {
 				addToJar(jarStream, member, path2);
 			}

@@ -63,6 +63,7 @@ public class CreateCompoundAction extends Action {
 	private static ImageDescriptor createImage = PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD);
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
@@ -83,8 +84,8 @@ public class CreateCompoundAction extends Action {
 
 	@Override
 	public void run() {
-		//if (selectedFeatures.size() != 1)
-		//throw new RuntimeException("Create compound operator for multiple selected features is not supported.");
+		// if (selectedFeatures.size() != 1)
+		// throw new RuntimeException("Create compound operator for multiple selected features is not supported.");
 		final CreateFeatureAboveOperation op = new CreateFeatureAboveOperation(featureModel, selectedFeatures);
 
 		try {

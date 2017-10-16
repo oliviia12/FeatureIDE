@@ -43,6 +43,7 @@ import de.ovgu.featureide.fm.core.io.manager.SimpleFileHandler;
  * @author Sebastian Krieter
  */
 public class ConfigurationLoader {
+
 	private final IConfigurationLoaderCallback callback;
 
 	public ConfigurationLoader() {
@@ -101,6 +102,7 @@ public class ConfigurationLoader {
 	}
 
 	private static final class ConfigFileFilter implements Filter<Path> {
+
 		private final String excludeFile;
 
 		public ConfigFileFilter() {

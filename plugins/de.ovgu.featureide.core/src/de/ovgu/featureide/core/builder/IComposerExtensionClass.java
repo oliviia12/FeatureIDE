@@ -38,14 +38,11 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
 /**
  * @brief Base interface of all composition tool classes.
  *
- *        Every plug-in which extends the de.ovgu.featureide.core.composers needs to provide a class,
- *        which implements this interface. Implementing this interface ensures that a given
- *        composition tool meets the requirements for composition tools, which are used by the
- * @c ExtensibleFeatureProjectBuilder. This requirements are:
- *    - Specifying a path for the composed files (usually "./build")
- *    - Specifying a path for the source files (usually "./src") if hasFeatureFolder()
- *    - Specifying a path to the current configuration file
- *    - Performing a full build for the current project with a given configuration file
+ *        Every plug-in which extends the de.ovgu.featureide.core.composers needs to provide a class, which implements this interface. Implementing this
+ *        interface ensures that a given composition tool meets the requirements for composition tools, which are used by the
+ * @c ExtensibleFeatureProjectBuilder. This requirements are: - Specifying a path for the composed files (usually "./build") - Specifying a path for the source
+ *    files (usually "./src") if hasFeatureFolder() - Specifying a path to the current configuration file - Performing a full build for the current project with
+ *    a given configuration file
  *
  * @author Tom Brosch
  */
@@ -66,8 +63,8 @@ public interface IComposerExtensionClass extends IComposerExtensionBase {
 	void performFullBuild(IFile config);
 
 	/**
-	 * Builds a configuration to the given folder<br>
-	 * To call a method before the building process of all configurations is started see: {@link IComposerExtensionClass#preBuildConfiguration()}
+	 * Builds a configuration to the given folder<br> To call a method before the building process of all configurations is started see:
+	 * {@link IComposerExtensionClass#preBuildConfiguration()}
 	 *
 	 * @param folder The destination
 	 * @param configuration The configuration to build
@@ -121,8 +118,7 @@ public interface IComposerExtensionClass extends IComposerExtensionBase {
 	void buildFSTModel();
 
 	/**
-	 * Returns the list of templates for the current composer. <br>
-	 * Format: {FILE_FORMAT_NAME, EXTENSION, TEMPLATE}
+	 * Returns the list of templates for the current composer. <br> Format: {FILE_FORMAT_NAME, EXTENSION, TEMPLATE}
 	 *
 	 * @return list of templates for the current composer
 	 */
@@ -139,8 +135,7 @@ public interface IComposerExtensionClass extends IComposerExtensionBase {
 	String replaceSourceContentMarker(String fileContent, boolean refines, String packageName);
 
 	/**
-	 * Defines if a refining class differs from a common one and <code>replaceMarker()</code>
-	 * has to be called.
+	 * Defines if a refining class differs from a common one and <code>replaceMarker()</code> has to be called.
 	 *
 	 * @return <code>true</code> if the refining class differs.
 	 */
@@ -166,8 +161,7 @@ public interface IComposerExtensionClass extends IComposerExtensionBase {
 	void postModelChanged();
 
 	/**
-	 * @return returns <code>false</code> if filenames equal the corresponding feature name
-	 *         otherwise <code>true</code>.
+	 * @return returns <code>false</code> if filenames equal the corresponding feature name otherwise <code>true</code>.
 	 */
 	boolean hasCustomFilename();
 

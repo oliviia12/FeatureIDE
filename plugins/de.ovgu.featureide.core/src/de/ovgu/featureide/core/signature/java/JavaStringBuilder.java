@@ -26,6 +26,7 @@ import de.ovgu.featureide.core.signature.base.AbstractMethodSignature;
 import de.ovgu.featureide.core.signature.base.AbstractSignature;
 
 public class JavaStringBuilder {
+
 	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
 	public static String getClassString(AbstractClassFragment cls, boolean shortString) {
@@ -115,7 +116,7 @@ public class JavaStringBuilder {
 						sb.append(" {");
 						sb.append(LINE_SEPARATOR);
 
-						//TODO MPL: use Fuji
+						// TODO MPL: use Fuji
 						if (method.isConstructor()) {
 							sb.append("\t\tsuper();");
 						}

@@ -38,6 +38,7 @@ import de.ovgu.featureide.fm.core.color.ColorPalette;
 public class ColorAnnotationImageProvider implements IAnnotationImageProvider {
 
 	private static final class ColorAnnotationDescriptor extends ImageDescriptor {
+
 		private final ImageData imgdata;
 
 		public ColorAnnotationDescriptor(int color) {

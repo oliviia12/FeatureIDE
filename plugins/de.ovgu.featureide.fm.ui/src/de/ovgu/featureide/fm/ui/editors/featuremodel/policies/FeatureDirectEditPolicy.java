@@ -52,7 +52,6 @@ public class FeatureDirectEditPolicy extends DirectEditPolicy {
 	}
 
 	@Override
-	protected void showCurrentEditValue(DirectEditRequest request) {
-	}
+	protected void showCurrentEditValue(DirectEditRequest request) {}
 
 }

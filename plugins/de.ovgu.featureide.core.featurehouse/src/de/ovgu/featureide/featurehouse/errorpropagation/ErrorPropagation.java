@@ -65,28 +65,22 @@ public abstract class ErrorPropagation {
 	private static final String NO_ATTRIBUTE = "#NO_ATTRIBUTE#";
 
 	/**
-	 * A list containing composed files. These files will be checked for
-	 * propagation.
+	 * A list containing composed files. These files will be checked for propagation.
 	 */
 	private final Set<IFile> composedFiles = Collections.newSetFromMap(new ConcurrentHashMap<IFile, Boolean>());
 
 	/**
-	 * The main background job calling the corresponding error propagation class
-	 * for each file.
+	 * The main background job calling the corresponding error propagation class for each file.
 	 */
 	public final Job job;
 
-	public boolean force = false; //FOP Composed Lines
+	public boolean force = false; // FOP Composed Lines
 
 	/**
-	 * Propagates error markers for composed files to sources files.<br>
-	 * Call {@link #addFile(IFile)} to propagate the markers of the given source
-	 * file, to the corresponding file at the features folder.
+	 * Propagates error markers for composed files to sources files.<br> Call {@link #addFile(IFile)} to propagate the markers of the given source file, to the
+	 * corresponding file at the features folder.
 	 *
-	 * @param sourceFile
-	 *            initial source file for determine project and language.
-	 *            </br>
-	 *            (must still be added by calling {@link #addFile(IFile)})
+	 * @param sourceFile initial source file for determine project and language. </br> (must still be added by calling {@link #addFile(IFile)})
 	 */
 	public static ErrorPropagation createErrorPropagation(IFile sourceFile) {
 		final IFeatureProject featureProject = CorePlugin.getFeatureProject(sourceFile);
@@ -104,6 +98,7 @@ public abstract class ErrorPropagation {
 
 	protected ErrorPropagation(IFeatureProject featureProject) {
 		job = new Job(PROPAGATE_PROBLEM_MARKERS_FOR + featureProject) {
+
 			@Override
 			public IStatus run(IProgressMonitor monitor) {
 				propagateMarkers(monitor);
@@ -128,11 +123,9 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Propagates the markers of the given source file, to the corresponding
-	 * file at the features folder.
+	 * Propagates the markers of the given source file, to the corresponding file at the features folder.
 	 *
-	 * @param sourceFile
-	 *            The composed file
+	 * @param sourceFile The composed file
 	 */
 	public void addFile(IFile sourceFile) {
 		if (composedFiles.contains(sourceFile)) {
@@ -153,8 +146,7 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Calls the corresponding propagation for all files at
-	 * <code>composedFiles</code>.
+	 * Calls the corresponding propagation for all files at <code>composedFiles</code>.
 	 */
 	protected void propagateMarkers(IProgressMonitor monitor) {
 		if (composedFiles.isEmpty()) {
@@ -180,8 +172,7 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Removes the not composed markers form the given source file and calls
-	 * <code>propagateMarkers(marker, file)</code>
+	 * Removes the not composed markers form the given source file and calls <code>propagateMarkers(marker, file)</code>
 	 */
 	protected void propagateMarkers(IFile file) {
 		if (!file.exists()) {
@@ -209,9 +200,7 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Necessary if a marker should not be removed but also should not be
-	 * propagated. <br>
-	 * <code>Needs to be implemented by the Subclass.</code>
+	 * Necessary if a marker should not be removed but also should not be propagated. <br> <code>Needs to be implemented by the Subclass.</code>
 	 *
 	 * @param marker
 	 * @return <code>false</code> if the marker should not be propagated.
@@ -221,9 +210,7 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Necessary if a marker should be removed and also should not be
-	 * propagated. <br>
-	 * <code>Needs to be implemented by the Subclass.</code>
+	 * Necessary if a marker should be removed and also should not be propagated. <br> <code>Needs to be implemented by the Subclass.</code>
 	 *
 	 * @param message
 	 * @return <code>true</code> if the marker should not be removed.
@@ -383,31 +370,25 @@ public abstract class ErrorPropagation {
 	}
 
 	/**
-	 * Propagates markers outside of methods and fields. <br>
-	 * <code>Needs to be implemented by the Subclass.</code>
+	 * Propagates markers outside of methods and fields. <br> <code>Needs to be implemented by the Subclass.</code>
 	 */
 	protected void propagateUnsupportedMarker(IMarker marker, IFile file) {
 		FeatureHouseCorePlugin.getDefault().logInfo("Marker not propagated: " + marker.getAttribute(IMarker.MESSAGE, ""));
 	}
 
 	/**
-	 * Sets the composed lines of the given fields and methods. <br>
-	 * <code>Needs to be implemented by the Subclass.</code>
+	 * Sets the composed lines of the given fields and methods. <br> <code>Needs to be implemented by the Subclass.</code>
 	 *
-	 * @param content
-	 *            The content of the composed file
+	 * @param content The content of the composed file
 	 */
 	protected abstract void setElementLines(String content, LinkedList<FSTField> fields, LinkedList<FSTMethod> methods);
 
 	/**
 	 * Propagates the given marker to the given source line
 	 *
-	 * @param marker
-	 *            The marker to propagate
-	 * @param file
-	 *            The features file
-	 * @param line
-	 *            The marker line at the features file
+	 * @param marker The marker to propagate
+	 * @param file The features file
+	 * @param line The marker line at the features file
 	 */
 	protected void propagateMarker(IMarker marker, IFile file, int line) {
 		if ((file != null) && file.exists()) {

@@ -34,8 +34,9 @@ import de.ovgu.featureide.fm.core.conversion.NNFConverter;
  * @author Alexander
  */
 public class EliminateConstraintsWizard extends AbstractWizard implements INewWizard {
+
 	protected static enum ConversionMethod {
-		NNF, CNF, /*TSEITIN,*/ COMBINED;
+		NNF, CNF, /* TSEITIN, */ COMBINED;
 	}
 
 	private EliminateConstraintsPage page;

@@ -40,6 +40,7 @@ import org.prop4j.Or;
  * @author Timo G&uuml;nther
  */
 public class DimacsReader {
+
 	/** Token leading a (single-line) comment. */
 	private static final String COMMENT = "c";
 	/** Token leading the problem definition. */
@@ -55,16 +56,14 @@ public class DimacsReader {
 	/** Maps indexes to variables. */
 	private final Map<Integer, Object> indexVariables = new LinkedHashMap<>();
 	/**
-	 * The amount of variables as declared in the problem definition.
-	 * May differ from the actual amount of variables found.
+	 * The amount of variables as declared in the problem definition. May differ from the actual amount of variables found.
 	 */
 	private int variableCount;
 	/** The amount of clauses in the problem. */
 	private int clauseCount;
 	/**
-	 * True iff the last clause has been reached.
-	 * In this case, the token denoting the end of a clause is optional.
-	 * However, if it exists, any non-comment data past it is illegal.
+	 * True iff the last clause has been reached. In this case, the token denoting the end of a clause is optional. However, if it exists, any non-comment data
+	 * past it is illegal.
 	 */
 	private boolean lastClause = false;
 	/** True to read the variable directory for naming variables. */
@@ -89,15 +88,10 @@ public class DimacsReader {
 	}
 
 	/**
-	 * <p>
-	 * Sets the reading variable directory flag.
-	 * If true, the reader will look for a variable directory in the comments.
-	 * This contains names for the variables which would otherwise just be numbers.
-	 * </p>
+	 * <p> Sets the reading variable directory flag. If true, the reader will look for a variable directory in the comments. This contains names for the
+	 * variables which would otherwise just be numbers. </p>
 	 *
-	 * <p>
-	 * Defaults to false.
-	 * </p>
+	 * <p> Defaults to false. </p>
 	 *
 	 * @param readingVariableDirectory whether to read the variable directory
 	 */
@@ -106,8 +100,7 @@ public class DimacsReader {
 	}
 
 	/**
-	 * Reads the next non-comment token.
-	 * Also reads any comments before it.
+	 * Reads the next non-comment token. Also reads any comments before it.
 	 *
 	 * @return the next token; null if already completely read and empty
 	 * @throws ParseException if there is no token left in the input but the reader is not yet done
@@ -124,9 +117,9 @@ public class DimacsReader {
 			token = scanner.next();
 			if (COMMENT.equals(token)) {
 				readComment(scanner.nextLine());
-				continue; //Keep reading tokens...
+				continue; // Keep reading tokens...
 			}
-			break; //... until a non-comment token is found.
+			break; // ... until a non-comment token is found.
 		}
 		return token;
 	}
@@ -135,8 +128,8 @@ public class DimacsReader {
 	 * Reads the input.
 	 *
 	 * @return a CNF; not null
-	 * @throws IllegalStateException if this method has already been called on this instance before
-	 *             (reading multiple times is disallowed since {@link Readable} cannot be reversed)
+	 * @throws IllegalStateException if this method has already been called on this instance before (reading multiple times is disallowed since {@link Readable}
+	 *         cannot be reversed)
 	 * @throws ParseException if the input does not conform to the DIMACS CNF file format
 	 */
 	public synchronized Node read() throws IllegalStateException, ParseException {
@@ -296,7 +289,7 @@ public class DimacsReader {
 			}
 			String variable = sc.nextLine();
 			if ((variable.length() >= 2) && Character.isWhitespace(variable.codePointAt(0))) {
-				variable = variable.substring(1); //remove a single separating whitespace character (but allow variables with whitespace after that)
+				variable = variable.substring(1); // remove a single separating whitespace character (but allow variables with whitespace after that)
 			} else {
 				return false;
 			}

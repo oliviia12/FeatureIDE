@@ -37,6 +37,7 @@ import org.prop4j.Node;
  * @author Timo G&uuml;nther
  */
 public class DimacsWriter {
+
 	/** Token leading a (single-line) comment. */
 	private static final String COMMENT = "c";
 	/** Token leading the problem definition. */
@@ -75,8 +76,7 @@ public class DimacsWriter {
 	}
 
 	/**
-	 * Adds the given variable.
-	 * This means assigning an index to it.
+	 * Adds the given variable. This means assigning an index to it.
 	 *
 	 * @param l variable to add; not null
 	 */
@@ -89,16 +89,10 @@ public class DimacsWriter {
 	}
 
 	/**
-	 * <p>
-	 * Sets the writing variable directory flag.
-	 * If true, the writer will write a variable directory at the start of the output.
-	 * This is a set of comments naming the variables.
-	 * This can later be used during reading so the variables are not just numbers.
-	 * </p>
+	 * <p> Sets the writing variable directory flag. If true, the writer will write a variable directory at the start of the output. This is a set of comments
+	 * naming the variables. This can later be used during reading so the variables are not just numbers. </p>
 	 *
-	 * <p>
-	 * Defaults to false.
-	 * </p>
+	 * <p> Defaults to false. </p>
 	 *
 	 * @param writingVariableDirectory whether to write the variable directory
 	 */

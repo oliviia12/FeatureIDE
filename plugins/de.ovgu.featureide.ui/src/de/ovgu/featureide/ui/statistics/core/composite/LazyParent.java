@@ -33,9 +33,8 @@ import de.ovgu.featureide.ui.statistics.ui.helper.JobDoneListener;
 import de.ovgu.featureide.ui.statistics.ui.helper.jobs.TreeJob;
 
 /**
- * Provides functionality for lazy calculating its children for the
- * {@link TreeViewer}. {@link LazyParent#initChildren()} has to be overridden
- * using the LazyParent#addChild(Parent)-method to initialize.
+ * Provides functionality for lazy calculating its children for the {@link TreeViewer}. {@link LazyParent#initChildren()} has to be overridden using the
+ * LazyParent#addChild(Parent)-method to initialize.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
@@ -80,8 +79,7 @@ public abstract class LazyParent extends Parent {
 	}
 
 	/**
-	 * Starts a job, that calculates the children of this instance, and
-	 * registers it to the listener.
+	 * Starts a job, that calculates the children of this instance, and registers it to the listener.
 	 */
 	protected Parent[] calculateChidren(boolean expand) {
 		if (lazy) {
@@ -99,8 +97,7 @@ public abstract class LazyParent extends Parent {
 	}
 
 	/**
-	 * May be overridden in order to change the priority. Should be used
-	 * especially for lengthy calculations.
+	 * May be overridden in order to change the priority. Should be used especially for lengthy calculations.
 	 *
 	 * @param job
 	 */

@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.CollapseAllOpera
  * @author Enis Belli
  */
 public class CollapseAllAction extends Action {
+
 	public static final String ID = "de.ovgu.featureide.collapseall";
 
 	private final IGraphicalFeatureModel graphicalFeatureModel;

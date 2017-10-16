@@ -44,18 +44,17 @@ import de.ovgu.featureide.fm.core.Preferences;
 public class FeatureIDEPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
 	private static final SelectionListener completionSelectionListener = new SelectionListener() {
+
 		@Override
 		public void widgetSelected(SelectionEvent e) {
 			Preferences.setDefaultCompletion((Integer) ((Button) e.getSource()).getData());
 		}
 
 		@Override
-		public void widgetDefaultSelected(SelectionEvent e) {
-		}
+		public void widgetDefaultSelected(SelectionEvent e) {}
 	};
 
-	public FeatureIDEPreferencePage() {
-	}
+	public FeatureIDEPreferencePage() {}
 
 	public FeatureIDEPreferencePage(String title) {
 		super(title);
@@ -66,8 +65,7 @@ public class FeatureIDEPreferencePage extends PreferencePage implements IWorkben
 	}
 
 	@Override
-	public void init(IWorkbench workbench) {
-	}
+	public void init(IWorkbench workbench) {}
 
 	@Override
 	protected Control createContents(Composite parent) {

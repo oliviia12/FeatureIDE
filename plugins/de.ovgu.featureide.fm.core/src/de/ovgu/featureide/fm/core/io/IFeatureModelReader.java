@@ -59,8 +59,8 @@ public interface IFeatureModelReader {
 	 * @throws UnsupportedModelException
 	 * @throws FileNotFoundException
 	 */
-	//	public void readFromFile(IFile file)
-	//			throws UnsupportedModelException, FileNotFoundException;
+	// public void readFromFile(IFile file)
+	// throws UnsupportedModelException, FileNotFoundException;
 	/**
 	 * Parses a specific feature model file.
 	 *
@@ -88,8 +88,7 @@ public interface IFeatureModelReader {
 	/**
 	 * Set the source file of the textual representation of the feature model.
 	 *
-	 * @param featureModelFile
-	 *            the source file
+	 * @param featureModelFile the source file
 	 */
 	public void setFile(File featureModelFile);
 

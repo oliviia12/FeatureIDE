@@ -384,12 +384,10 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 
 	private void setScaleTWise() {
 		/**
-		 * Help content of SPLCATool:
-		 * -t t_wise -a Chvatal -fm <feature_model> -s <strength, 1-4> (-startFrom <covering array>) (-limit <coverage limit>) (-sizelimit <rows>) (-onlyOnes)
-		 * (-noAllZeros)
-		 * -t t_wise -a ICPL -fm <feature_model> -s <strength, 1-3> (-startFrom <covering array>) (-onlyOnes) (-noAllZeros) [Inexact: (-sizelimit <rows>)
-		 * (-limit <coverage limit>)] (for 3-wise, -eights <1-8>)
-		 * -t t_wise -a CASA -fm <feature_model> -s <strength, 1-6>
+		 * Help content of SPLCATool: -t t_wise -a Chvatal -fm <feature_model> -s <strength, 1-4> (-startFrom <covering array>) (-limit <coverage limit>)
+		 * (-sizelimit <rows>) (-onlyOnes) (-noAllZeros) -t t_wise -a ICPL -fm <feature_model> -s <strength, 1-3> (-startFrom <covering array>) (-onlyOnes)
+		 * (-noAllZeros) [Inexact: (-sizelimit <rows>) (-limit <coverage limit>)] (for 3-wise, -eights <1-8>) -t t_wise -a CASA -fm <feature_model> -s
+		 * <strength, 1-6>
 		 **/
 		final int lastSelection = scaleTWise.getSelection();
 		scaleTWise.setMinimum(1);
@@ -461,6 +459,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 
 	private void addListeners() {
 		comboAlgorithm.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				setScaleTWise();
@@ -469,6 +468,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 		});
 
 		scaleTWise.addListener(SWT.Selection, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				final int selection = scaleTWise.getSelection();
@@ -478,6 +478,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 		});
 
 		scaleInteraction.addListener(SWT.Selection, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				final int selection = scaleInteraction.getSelection();
@@ -487,6 +488,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 		});
 
 		comboGenerate.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				final String text = comboGenerate.getText();
@@ -498,6 +500,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 		});
 
 		comboOrder.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				setScaleInteraction();
@@ -523,6 +526,7 @@ public class BuildProductsPage extends WizardPage implements IConfigurationBuild
 		});
 
 		textField.addModifyListener(new ModifyListener() {
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();

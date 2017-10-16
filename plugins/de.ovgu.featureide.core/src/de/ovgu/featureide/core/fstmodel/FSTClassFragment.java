@@ -31,6 +31,7 @@ import javax.annotation.Nonnull;
  * @author Sebastian Krieter
  */
 public class FSTClassFragment extends RoleElement<FSTClassFragment> {
+
 	protected final TreeSet<FSTMethod> methods = new TreeSet<FSTMethod>();
 	protected final TreeSet<FSTField> fields = new TreeSet<FSTField>();
 	protected final TreeSet<FSTClassFragment> innerClasses = new TreeSet<FSTClassFragment>();

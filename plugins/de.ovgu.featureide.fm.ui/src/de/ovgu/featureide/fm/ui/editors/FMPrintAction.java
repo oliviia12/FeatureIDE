@@ -32,8 +32,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.LegendEditPart;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.layouts.FeatureModelLayout;
 
 /**
- * A PrintAction for the FeatureModelEditor that temporarily moves the
- * feature diagram to the top-left corner
+ * A PrintAction for the FeatureModelEditor that temporarily moves the feature diagram to the top-left corner
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke (Feature Interface)
@@ -64,7 +63,7 @@ public class FMPrintAction extends PrintAction {
 		final Point minP = featureIter.next().getLocation().getCopy();
 
 		move(featureModel, layout, features, featureIter, minP);
-		//print
+		// print
 		super.run();
 		moveBack(featureModel, layout, layoutOld, features, minP);
 		return;

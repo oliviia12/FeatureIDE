@@ -42,13 +42,14 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * This is an extension of a default xml reader, which saves the line numbers via user data.
- * Original code by: http://eyalsch.wordpress.com/2010/11/30/xml-dom-2/
+ * This is an extension of a default xml reader, which saves the line numbers via user data. Original code by:
+ * http://eyalsch.wordpress.com/2010/11/30/xml-dom-2/
  *
  * @author Jens Meinicke
  */
 @Deprecated
 public class PositionalXMLReader {
+
 	final static String LINE_NUMBER_KEY_NAME = "lineNumber";
 
 	public static Document readXML(final InputStream is) throws IOException, SAXException, ParserConfigurationException {
@@ -62,6 +63,7 @@ public class PositionalXMLReader {
 		final Stack<Element> elementStack = new Stack<>();
 		final StringBuilder textBuffer = new StringBuilder();
 		final DefaultHandler handler = new DefaultHandler() {
+
 			private Locator locator;
 
 			@Override

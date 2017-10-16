@@ -32,15 +32,14 @@ import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 import de.ovgu.featureide.ui.statistics.ui.helper.TreeClickListener;
 
 /**
- * Implements a second sorting-order. If {@link AbstractSortModeNode#sortByValue} is true, the imminent child nodes are
- * sorted by their value instead of being sorted alphabetically. In this
- * implementation the {@link TreeClickListener} is responsible for changing
- * this.
+ * Implements a second sorting-order. If {@link AbstractSortModeNode#sortByValue} is true, the imminent child nodes are sorted by their value instead of being
+ * sorted alphabetically. In this implementation the {@link TreeClickListener} is responsible for changing this.
  *
  * @author Dominik Hamann
  * @author Patrick Haese
  */
 public abstract class AbstractSortModeNode extends LazyParent implements IToolTip {
+
 	protected boolean sortByValue = false;
 
 	public AbstractSortModeNode(String description, Object value) {
@@ -65,6 +64,7 @@ public abstract class AbstractSortModeNode extends LazyParent implements IToolTi
 	protected void sortChildren() {
 		if (sortByValue) {
 			Collections.sort(children, new Comparator<Parent>() {
+
 				@Override
 				public int compare(Parent o1, Parent o2) {
 					if (o1.getValue() == null) {
@@ -83,6 +83,7 @@ public abstract class AbstractSortModeNode extends LazyParent implements IToolTi
 			});
 		} else {
 			Collections.sort(children, new Comparator<Parent>() {
+
 				@Override
 				public int compare(Parent o1, Parent o2) {
 					return o1.getDescription().compareTo(o2.getDescription());

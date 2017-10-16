@@ -51,12 +51,14 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 public class ModalImplicationGraphBuilder extends AbstractAnalysis<ModalImplicationGraph> {
 
 	private static class TempVertex {
+
 		private final ArrayList<Integer> negStrongEdges = new ArrayList<>();
 		private final ArrayList<Integer> posStrongEdges = new ArrayList<>();
 		private final ArrayList<Integer> relevantClausesIndex = new ArrayList<>();
 	}
 
 	private static final Comparator<LiteralSet> lengthComparator = new Comparator<LiteralSet>() {
+
 		@Override
 		public int compare(LiteralSet o1, LiteralSet o2) {
 			return o1.getLiterals().length - o2.getLiterals().length;

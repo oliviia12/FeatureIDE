@@ -51,6 +51,7 @@ public class ExpandConstraintAction extends Action {
 	private final IGraphicalFeatureModel graphcialFeatureModel;
 	private IConstraint constraint;
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

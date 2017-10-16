@@ -39,8 +39,7 @@ import de.ovgu.featureide.fm.core.color.FeatureColorManager;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
 
 /**
- * This class is part of the outline. It maps the items provided by the
- * ContentProvider to visible items that can be displayed inside a TreeView.
+ * This class is part of the outline. It maps the items provided by the ContentProvider to visible items that can be displayed inside a TreeView.
  *
  * @author Jan Wedding
  * @author Melanie Pflaume
@@ -49,12 +48,10 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
 public class FmLabelProvider implements ILabelProvider, IFontProvider, GUIDefaults, IColorProvider {
 
 	@Override
-	public void addListener(ILabelProviderListener listener) {
-	}
+	public void addListener(ILabelProviderListener listener) {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public boolean isLabelProperty(Object element, String property) {
@@ -62,8 +59,7 @@ public class FmLabelProvider implements ILabelProvider, IFontProvider, GUIDefaul
 	}
 
 	@Override
-	public void removeListener(ILabelProviderListener listener) {
-	}
+	public void removeListener(ILabelProviderListener listener) {}
 
 	public void colorizeItems(TreeItem[] treeItems, IFile file) {
 

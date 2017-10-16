@@ -58,8 +58,7 @@ public abstract class AbstractFeatureModelReader implements IFeatureModelReader 
 	protected LinkedList<Problem> warnings = new LinkedList<>();
 
 	/**
-	 * The source of the textual representation of the feature model.<br/>
-	 * <br/>
+	 * The source of the textual representation of the feature model.<br/> <br/>
 	 *
 	 * <strong>Caution:</strong> This field can be null and is maybe not up to date.
 	 */
@@ -78,9 +77,7 @@ public abstract class AbstractFeatureModelReader implements IFeatureModelReader 
 	/**
 	 * Reads a feature model from a file.
 	 *
-	 * @param file
-	 *            the file which contains the textual representation of the
-	 *            feature model
+	 * @param file the file which contains the textual representation of the feature model
 	 * @throws UnsupportedModelException
 	 * @throws FileNotFoundException
 	 */
@@ -109,14 +106,11 @@ public abstract class AbstractFeatureModelReader implements IFeatureModelReader 
 	}
 
 	/**
-	 * Reads a feature model from a string.<br/>
-	 * <br/>
+	 * Reads a feature model from a string.<br/> <br/>
 	 *
-	 * Please use {@link #setFile(File)} if you know the source of the feature
-	 * model.
+	 * Please use {@link #setFile(File)} if you know the source of the feature model.
 	 *
-	 * @param text
-	 *            the textual representation of the feature model
+	 * @param text the textual representation of the feature model
 	 * @throws UnsupportedModelException
 	 */
 	@Override
@@ -142,8 +136,7 @@ public abstract class AbstractFeatureModelReader implements IFeatureModelReader 
 	/**
 	 * Set the source file of the textual representation of the feature model.
 	 *
-	 * @param featureModelFile
-	 *            the source file
+	 * @param featureModelFile the source file
 	 */
 	@Override
 	public void setFile(File featureModelFile) {

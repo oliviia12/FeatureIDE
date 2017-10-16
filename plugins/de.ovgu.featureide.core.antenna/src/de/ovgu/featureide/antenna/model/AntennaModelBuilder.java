@@ -63,7 +63,7 @@ public class AntennaModelBuilder extends PPModelBuilder {
 
 	@Override
 	public LinkedList<FSTDirective> buildModelDirectivesForFile(Vector<String> lines) {
-		//for preprocessor outline
+		// for preprocessor outline
 		final Stack<FSTDirective> directivesStack = new Stack<FSTDirective>();
 		final LinkedList<FSTDirective> directivesList = new LinkedList<FSTDirective>();
 		int id = 0;
@@ -75,27 +75,27 @@ public class AntennaModelBuilder extends PPModelBuilder {
 			if (containsRegex(line, "//\\s*#")) {
 				FSTDirectiveCommand command = null;
 
-				if (containsRegex(line, "//\\s*#if[ (]")) {//1
+				if (containsRegex(line, "//\\s*#if[ (]")) {// 1
 					command = FSTDirectiveCommand.IF;
-				} else if (containsRegex(line, "//\\s*#ifdef[ (]")) {//2
+				} else if (containsRegex(line, "//\\s*#ifdef[ (]")) {// 2
 					command = FSTDirectiveCommand.IFDEF;
-				} else if (containsRegex(line, "//\\s*#ifndef[ (]")) {//3
+				} else if (containsRegex(line, "//\\s*#ifndef[ (]")) {// 3
 					command = FSTDirectiveCommand.IFNDEF;
-				} else if (containsRegex(line, "//\\s*#elif[ (]")) {//4
+				} else if (containsRegex(line, "//\\s*#elif[ (]")) {// 4
 					command = FSTDirectiveCommand.ELIF;
-				} else if (containsRegex(line, "//\\s*#elifdef[ (]")) {//5
+				} else if (containsRegex(line, "//\\s*#elifdef[ (]")) {// 5
 					command = FSTDirectiveCommand.ELIFDEF;
-				} else if (containsRegex(line, "//\\s*#elifndef[ (]")) {//6
+				} else if (containsRegex(line, "//\\s*#elifndef[ (]")) {// 6
 					command = FSTDirectiveCommand.ELIFNDEF;
-				} else if (containsRegex(line, "//\\s*#else")) {//7
+				} else if (containsRegex(line, "//\\s*#else")) {// 7
 					command = FSTDirectiveCommand.ELSE;
-				} else if (containsRegex(line, "//\\s*#condition[ (]")) {//8
+				} else if (containsRegex(line, "//\\s*#condition[ (]")) {// 8
 					command = FSTDirectiveCommand.CONDITION;
-				} else if (containsRegex(line, "//\\s*#define[ (]")) {//9
+				} else if (containsRegex(line, "//\\s*#define[ (]")) {// 9
 					command = FSTDirectiveCommand.DEFINE;
-				} else if (containsRegex(line, "//\\s*#undefine[ (]")) {//10
+				} else if (containsRegex(line, "//\\s*#undefine[ (]")) {// 10
 					command = FSTDirectiveCommand.UNDEFINE;
-				} else if (!containsRegex(line, "//\\s*#endif")) {//11
+				} else if (!containsRegex(line, "//\\s*#endif")) {// 11
 					continue;
 				}
 
@@ -160,14 +160,8 @@ public class AntennaModelBuilder extends PPModelBuilder {
 	}
 
 	/**
-	 * the Pattern:
-	 * <ul>
-	 * <li>set flag DOTALL</li>
-	 * <li>match any characters</li>
-	 * <li>match any whitespace characters</li>
-	 * <li>match "//# if/... [operators]feature[operators]"</li>
-	 * <li>match any further characters</li>
-	 * </ul>
+	 * the Pattern: <ul> <li>set flag DOTALL</li> <li>match any characters</li> <li>match any whitespace characters</li> <li>match "//# if/...
+	 * [operators]feature[operators]"</li> <li>match any further characters</li> </ul>
 	 */
 	public static boolean contains(String text, String feature) {
 		final Pattern pattern = Pattern.compile(String.format(REGEX, feature));

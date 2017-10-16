@@ -35,6 +35,7 @@ import de.ovgu.featureide.fm.core.FMCorePlugin;
  * @author Jens Meinicke
  */
 public abstract class AbstractBuildConfigurationsAction implements IObjectActionDelegate, IConfigurationBuilderBasics {
+
 	protected ISelection selection;
 
 	/**
@@ -62,10 +63,7 @@ public abstract class AbstractBuildConfigurationsAction implements IObjectAction
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action
-	 * .IAction, org.eclipse.jface.viewers.ISelection)
+	 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action .IAction, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
@@ -74,10 +72,7 @@ public abstract class AbstractBuildConfigurationsAction implements IObjectAction
 
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see
-	 * org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.
-	 * action.IAction, org.eclipse.ui.IWorkbenchPart)
+	 * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface. action.IAction, org.eclipse.ui.IWorkbenchPart)
 	 */
 	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {

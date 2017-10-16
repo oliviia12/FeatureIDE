@@ -35,11 +35,11 @@ import org.sat4j.tools.xplain.Xplain;
  * @author Timo G&uuml;nther
  */
 public class Sat4jMusExtractor extends Sat4jMutableSatSolver implements MusExtractor {
+
 	/**
 	 * Constructs a new instance of this class.
 	 */
-	protected Sat4jMusExtractor() {
-	}
+	protected Sat4jMusExtractor() {}
 
 	@Override
 	protected Xplain<ISolver> createOracle() {

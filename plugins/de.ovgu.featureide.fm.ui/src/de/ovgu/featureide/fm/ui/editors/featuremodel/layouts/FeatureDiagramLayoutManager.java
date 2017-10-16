@@ -114,7 +114,7 @@ abstract public class FeatureDiagramLayoutManager {
 	}
 
 	void layout(int yoffset, List<IGraphicalConstraint> constraints) {
-		//added 2 times getConstraintSpace to prevent intersecting with the collapsed decorator
+		// added 2 times getConstraintSpace to prevent intersecting with the collapsed decorator
 		int y = yoffset + (FMPropertyManager.getConstraintSpace() * 2);
 		final boolean depthFirst = (this instanceof DepthFirstLayout) || (this instanceof VerticalLayout);
 		for (final IGraphicalConstraint constraint : constraints) {
@@ -133,8 +133,7 @@ abstract public class FeatureDiagramLayoutManager {
 		final Point max = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
 
 		/*
-		 * update lowest, highest, most left, most right coordinates
-		 * for features
+		 * update lowest, highest, most left, most right coordinates for features
 		 */
 		final Iterable<IGraphicalFeature> nonHidden = featureModel.getVisibleFeatures();
 		for (final IGraphicalFeature feature : nonHidden) {
@@ -154,8 +153,7 @@ abstract public class FeatureDiagramLayoutManager {
 		}
 
 		/*
-		 * update lowest, highest, most left, most right coordinates
-		 * for constraints
+		 * update lowest, highest, most left, most right coordinates for constraints
 		 */
 		for (final IGraphicalConstraint constraint : featureModel.getVisibleConstraints()) {
 			final Rectangle position = FeatureUIHelper.getBounds(constraint);
@@ -177,7 +175,7 @@ abstract public class FeatureDiagramLayoutManager {
 		}
 		Dimension legendSize = null;
 		LegendFigure legendFigure = null;
-		//Find Legend Figure
+		// Find Legend Figure
 		for (final Object obj : editor.getEditPartRegistry().values()) {
 			if (obj instanceof LegendEditPart) {
 				legendFigure = ((LegendEditPart) obj).getFigure();
@@ -273,8 +271,7 @@ abstract public class FeatureDiagramLayoutManager {
 		final Point max = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
 
 		/*
-		 * update lowest, highest, most left, most right coordinates
-		 * for features
+		 * update lowest, highest, most left, most right coordinates for features
 		 */
 		final Iterable<IGraphicalFeature> nonHidden = featureModel.getVisibleFeatures();
 		for (final IGraphicalFeature feature : nonHidden) {
@@ -294,8 +291,7 @@ abstract public class FeatureDiagramLayoutManager {
 		}
 
 		/*
-		 * update lowest, highest, most left, most right coordinates
-		 * for constraints
+		 * update lowest, highest, most left, most right coordinates for constraints
 		 */
 		for (final IGraphicalConstraint constraint : featureModel.getVisibleConstraints()) {
 			final Rectangle position = FeatureUIHelper.getBounds(constraint);
@@ -317,7 +313,7 @@ abstract public class FeatureDiagramLayoutManager {
 		}
 		Dimension legendSize = null;
 		LegendFigure legendFigure = null;
-		//Find Legend Figure
+		// Find Legend Figure
 		for (final Object obj : editor.getEditPartRegistry().values()) {
 			if (obj instanceof LegendEditPart) {
 				legendFigure = ((LegendEditPart) obj).getFigure();

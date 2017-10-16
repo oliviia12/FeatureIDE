@@ -34,8 +34,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
  */
 public class ViewLabelProvider extends LabelProvider implements GUIDefaults {
 
-	public ViewLabelProvider() {
-	}
+	public ViewLabelProvider() {}
 
 	@Override
 	public String getText(Object o) {
@@ -56,8 +55,8 @@ public class ViewLabelProvider extends LabelProvider implements GUIDefaults {
 
 	@Override
 	public void dispose() {
-		//		IMAGE_ASELECTED.dispose();
-		//		IMAGE_ADESELECTED.dispose();
+		// IMAGE_ASELECTED.dispose();
+		// IMAGE_ADESELECTED.dispose();
 		super.dispose();
 	}
 

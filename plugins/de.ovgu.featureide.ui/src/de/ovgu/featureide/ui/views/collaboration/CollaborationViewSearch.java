@@ -40,8 +40,8 @@ import org.eclipse.ui.PlatformUI;
 import de.ovgu.featureide.ui.views.collaboration.editparts.ModelEditPart;
 
 /**
- * This class is designated for search functionalities inside of the collaborations diagram
- * It takes care of tasks like: creating the searchbox, catching the key events, firing the search and so on.
+ * This class is designated for search functionalities inside of the collaborations diagram It takes care of tasks like: creating the searchbox, catching the
+ * key events, firing the search and so on.
  *
  * @author Christopher Kruczek
  */
@@ -56,6 +56,7 @@ public class CollaborationViewSearch {
 	private final List<Label> matchedLabels;
 
 	private class SearchDialog extends org.eclipse.jface.dialogs.Dialog {
+
 		private Text searchTextBox;
 		private String searchText;
 		private final String title;
@@ -96,6 +97,7 @@ public class CollaborationViewSearch {
 	}
 
 	public static class Builder {
+
 		private GraphicalViewerImpl attachedViewerParent;
 		private String searchBoxText;
 		private Color findResultsColor;
@@ -187,8 +189,7 @@ public class CollaborationViewSearch {
 	}
 
 	/**
-	 * This function refreshes the labels which are designated for searching.
-	 * It uses the given GraphicalViewerImpl and looks for labels.
+	 * This function refreshes the labels which are designated for searching. It uses the given GraphicalViewerImpl and looks for labels.
 	 */
 	public void refreshSearchContent() {
 		final ModelEditPart editPart = (ModelEditPart) attachedViewerParent.getContents();

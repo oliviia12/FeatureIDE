@@ -78,15 +78,13 @@ public class RoleEditPart extends AbstractGraphicalEditPart {
 	}
 
 	@Override
-	protected void createEditPolicies() {
-	}
+	protected void createEditPolicies() {}
 
 	/**
 	 * {@Link ModelEditPart#refreshVisuals()}
 	 */
 	@Override
-	protected void refreshVisuals() {
-	}
+	protected void refreshVisuals() {}
 
 	/**
 	 * opens the fields/methods/file of the role with its default editor.
@@ -228,7 +226,7 @@ public class RoleEditPart extends AbstractGraphicalEditPart {
 				}
 			}
 		}
-		//if no element found, open file in editor
+		// if no element found, open file in editor
 		openEditor(file);
 		getViewer().getContents().refresh();
 	}

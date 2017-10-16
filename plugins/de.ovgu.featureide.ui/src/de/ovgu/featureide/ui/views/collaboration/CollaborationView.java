@@ -170,9 +170,9 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 
 	private static final String REFRESH_TOOL_TIP_LABEL = BUILD_COLLABORATIONMODEL;
 
-	private static final String[] FIELD_METHOD_LABEL_NAMES = { FIELDS_WITH_REFINEMENTS, FIELDS_WITHOUT_REFINEMENTS, METHODS_WITH_REFINEMENTS,
-			METHODS_WITHOUT_REFINEMENTS, SHOW_METHOD_CONTRACTS, SHOW_CLASS_INVARIANTS, SHOW_NESTED_CLASSES, HIDE_PARAMETER_TYPES, PUBLIC, PROTECTED, DEFAULT,
-			PRIVATE, SELECT_ALL, DESELECT_ALL };
+	private static final String[] FIELD_METHOD_LABEL_NAMES =
+			{ FIELDS_WITH_REFINEMENTS, FIELDS_WITHOUT_REFINEMENTS, METHODS_WITH_REFINEMENTS, METHODS_WITHOUT_REFINEMENTS, SHOW_METHOD_CONTRACTS,
+					SHOW_CLASS_INVARIANTS, SHOW_NESTED_CLASSES, HIDE_PARAMETER_TYPES, PUBLIC, PROTECTED, DEFAULT, PRIVATE, SELECT_ALL, DESELECT_ALL };
 
 	private static final Image[] FIELD_METHOD_IMAGES = { IMAGE_FIELDS_REFINEMENTS, IMAGE_FIELDS_WITHOUT_REFINEMENTS, IMAGE_METHODS_REFINEMENTS,
 			IMAGE_METHODS_WITHOUT_REFINEMENTS, IMAGE_AT_CONTRACT, IMAGE_AT_INVARIANT, IMAGE_NESTED_CLASS, null, IMAGE_METHODE_PUBLIC, IMAGE_METHODE_PROTECTED,
@@ -195,9 +195,9 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 	/*
 	 * the following codefragments which are commented out, create the submenu of the colorscheme
 	 */
-	//	private AddColorSchemeAction addColorSchemeAction;
-	//	private RenameColorSchemeAction renameColorSchemeAction;
-	//	private DeleteColorSchemeAction deleteColorSchemeAction;
+	// private AddColorSchemeAction addColorSchemeAction;
+	// private RenameColorSchemeAction renameColorSchemeAction;
+	// private DeleteColorSchemeAction deleteColorSchemeAction;
 	private ExportAsImageImpl exportAsImage;
 	private ExportAsXmlImpl exportAsXML;
 
@@ -241,6 +241,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 				return Status.OK_STATUS;
 			}
 			final UIJob uiJob = new UIJob(UPDATE_COLLABORATION_VIEW) {
+
 				@Override
 				public IStatus runInUIThread(IProgressMonitor monitor) {
 					viewer.setContents(model);
@@ -424,8 +425,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 			}
 
 			@Override
-			public void dispose() {
-			}
+			public void dispose() {}
 		});
 
 		createContextMenu();
@@ -433,7 +433,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 		makeActions();
 		contributeToActionBars();
 
-		//Add to color CHange Listener
+		// Add to color CHange Listener
 		FeatureColorManager.addListener(colorChangeListener);
 
 		final CollaborationViewSearch.Builder builder = new CollaborationViewSearch.Builder();
@@ -494,14 +494,14 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 
 			if (featureProject != null) {
 				// case: it's a FeatureIDE project
-				//				featureProject.getFeatureModel().addListener(new PropertyChangeListener() {
-				//					@Override
-				//					public void propertyChange(PropertyChangeEvent event) {
-				//						if (PropertyConstants.MODEL_DATA_LOADED.equals(event.getPropertyName())) {
-				//							readColorsFromFile();
-				//						}
-				//					}
-				//				});
+				// featureProject.getFeatureModel().addListener(new PropertyChangeListener() {
+				// @Override
+				// public void propertyChange(PropertyChangeEvent event) {
+				// if (PropertyConstants.MODEL_DATA_LOADED.equals(event.getPropertyName())) {
+				// readColorsFromFile();
+				// }
+				// }
+				// });
 
 				if (ConfigFormatManager.getInstance().hasFormat(inputFile.getName())) {
 					// case: open configuration editor
@@ -542,6 +542,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 		menuMgr.setRemoveAllWhenShown(true);
 
 		menuMgr.addMenuListener(new IMenuListener() {
+
 			@Override
 			public void menuAboutToShow(IMenuManager m) {
 				fillContextMenu(m);
@@ -685,6 +686,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 	}
 
 	public class ImageComarator implements Comparator<Image> {
+
 		@Override
 		public int compare(Image image1, Image image2) {
 			return image1.getImageData().bytesPerLine > image2.getImageData().bytesPerLine ? 1 : 0;
@@ -777,12 +779,14 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 		exportAsXML.setImageDescriptor(ImageDescriptor.createFromImage(IMAGE_EXPORT_XML_ICON));
 
 		final Action exportAsToolbarIcon = new Action(EXPORT_AS___, IAction.AS_DROP_DOWN_MENU) {
+
 			@Override
 			public void run() {
 
 			}
 		};
 		exportAsToolbarIcon.setMenuCreator(new IMenuCreator() {
+
 			Menu fMenu = null;
 
 			@Override
@@ -803,8 +807,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 			}
 
 			@Override
-			public void dispose() {
-			}
+			public void dispose() {}
 
 		});
 		exportAsToolbarIcon.setImageDescriptor(ImageDescriptor.createFromImage(IMAGE_EXPORT_ICON));
@@ -814,10 +817,12 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 
 	private void makeActions() {
 		refreshButton = new Action() {
+
 			@Override
 			public void run() {
 				disableToolbarFilterItems();
 				final LongRunningMethod<Boolean> job = new LongRunningMethod<Boolean>() {
+
 					@Override
 					public Boolean execute(IMonitor workMonitor) throws Exception {
 						if (!refreshButton.isEnabled()) {
@@ -860,8 +865,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 	}
 
 	@Override
-	public void doSave(IProgressMonitor monitor) {
-	}
+	public void doSave(IProgressMonitor monitor) {}
 
 	@Override
 	public boolean isDirty() {
@@ -897,6 +901,7 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 			return;
 		}
 		Display.getDefault().syncExec(new Runnable() {
+
 			@Override
 			public void run() {
 				viewer.setContents(model);
@@ -910,7 +915,8 @@ public class CollaborationView extends ViewPart implements GUIDefaults, ICurrent
 		refreshButton.run();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.ui.part.WorkbenchPart#dispose()
 	 */
 	@Override

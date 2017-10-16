@@ -29,11 +29,11 @@ import org.prop4j.NodeWriter;
  * @author Sofia Ananieva
  */
 public abstract class ExplanationWriter {
+
 	/** The explanation to be transformed. */
 	private final Explanation explanation;
 	/**
-	 * Whether to include the reason count versus explanation count when writing a reason.
-	 * This acts as an explanation for the reason's confidence.
+	 * Whether to include the reason count versus explanation count when writing a reason. This acts as an explanation for the reason's confidence.
 	 */
 	private boolean writingReasonCounts = true;
 	/** Symbols to use with {@link NodeWriter}. */
@@ -67,9 +67,8 @@ public abstract class ExplanationWriter {
 	}
 
 	/**
-	 * Returns the writing reason counts flag.
-	 * It denotes whether to include the reason count versus explanation count when writing a reason.
-	 * This acts as an explanation for the reason's confidence.
+	 * Returns the writing reason counts flag. It denotes whether to include the reason count versus explanation count when writing a reason. This acts as an
+	 * explanation for the reason's confidence.
 	 *
 	 * @return the writing reason counts flag
 	 */
@@ -78,13 +77,9 @@ public abstract class ExplanationWriter {
 	}
 
 	/**
-	 * <p>
-	 * Returns the symbols to use with {@link NodeWriter}.
-	 * </p>
+	 * <p> Returns the symbols to use with {@link NodeWriter}. </p>
 	 *
-	 * <p>
-	 * Defaults to {@link NodeWriter#logicalSymbols logical symbols}.
-	 * </p>
+	 * <p> Defaults to {@link NodeWriter#logicalSymbols logical symbols}. </p>
 	 *
 	 * @return the symbols to use with {@link NodeWriter}
 	 */
@@ -157,16 +152,14 @@ public abstract class ExplanationWriter {
 	}
 
 	/**
-	 * Returns the subject of the explanation.
-	 * That is the element to be explained.
+	 * Returns the subject of the explanation. That is the element to be explained.
 	 *
 	 * @return the subject of the explanation
 	 */
 	protected abstract String getSubjectString();
 
 	/**
-	 * Returns the attribute of the explanation.
-	 * That is what makes the subject worth explaining.
+	 * Returns the attribute of the explanation. That is what makes the subject worth explaining.
 	 *
 	 * @return the attribute of the explanation
 	 */

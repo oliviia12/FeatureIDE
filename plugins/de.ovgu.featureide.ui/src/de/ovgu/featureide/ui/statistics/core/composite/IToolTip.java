@@ -31,6 +31,7 @@ import de.ovgu.featureide.ui.statistics.ui.helper.TreeLabelProvider;
  * @author Patrick Haese
  */
 public interface IToolTip {
+
 	/**
 	 * @return tool-tip text to be displayed.
 	 */

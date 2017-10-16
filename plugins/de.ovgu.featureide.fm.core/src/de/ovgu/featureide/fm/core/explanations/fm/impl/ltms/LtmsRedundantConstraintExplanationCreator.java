@@ -46,6 +46,7 @@ import de.ovgu.featureide.fm.core.explanations.impl.ltms.Ltms;
  * @author Timo G&uuml;nther
  */
 public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelExplanationCreator implements RedundantConstraintExplanationCreator {
+
 	/** The redundant constraint in the feature model. */
 	private IConstraint redundantConstraint;
 	/** The CNF with all constraints but the redundant one. */
@@ -94,11 +95,8 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Does not include any of the constraints.
-	 * The constraints are only added later during explaining.
-	 * This is faster than creating the complete CNF and repeatedly removing the redundant constraints from it.
-	 * </p>
+	 * <p> Does not include any of the constraints. The constraints are only added later during explaining. This is faster than creating the complete CNF and
+	 * repeatedly removing the redundant constraints from it. </p>
 	 */
 	@Override
 	protected AdvancedNodeCreator createNodeCreator() {
@@ -160,14 +158,10 @@ public class LtmsRedundantConstraintExplanationCreator extends LtmsFeatureModelE
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Uses a representation of the feature model without the redundant constraint.
-	 * Sets several initial truth value assumptions that lead to a violation of the redundant constraint.
-	 * Then propagates each set of values until a violation in a clause occurs.
-	 * Since a representation of the feature model without the redundant constraint is used,
-	 * the information of the constraint must already be stored differently in the feature model, making it redundant.
-	 * Finally combines all generated explanations into one.
-	 * </p>
+	 * <p> Uses a representation of the feature model without the redundant constraint. Sets several initial truth value assumptions that lead to a violation of
+	 * the redundant constraint. Then propagates each set of values until a violation in a clause occurs. Since a representation of the feature model without
+	 * the redundant constraint is used, the information of the constraint must already be stored differently in the feature model, making it redundant. Finally
+	 * combines all generated explanations into one. </p>
 	 */
 	@Override
 	public RedundantConstraintExplanation getExplanation() throws IllegalStateException {

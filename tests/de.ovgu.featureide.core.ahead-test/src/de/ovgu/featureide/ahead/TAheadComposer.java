@@ -58,9 +58,9 @@ public class TAheadComposer {
 		assertEquals(AheadComposer.correctFileText(SOUCE_2), CORRECTED_2);
 	}
 
-	private static final String SOUCE_3 = AheadComposer.NEWLINE + "import player.*;" + AheadComposer.NEWLINE + "public class Player {" + AheadComposer.NEWLINE
-			+ "	private void player() {" + AheadComposer.NEWLINE + AheadComposer.NEWLINE + "	}" + AheadComposer.NEWLINE + "private Player player;"
-			+ AheadComposer.NEWLINE + "}";
+	private static final String SOUCE_3 =
+			AheadComposer.NEWLINE + "import player.*;" + AheadComposer.NEWLINE + "public class Player {" + AheadComposer.NEWLINE + "	private void player() {"
+					+ AheadComposer.NEWLINE + AheadComposer.NEWLINE + "	}" + AheadComposer.NEWLINE + "private Player player;" + AheadComposer.NEWLINE + "}";
 
 	/**
 	 * Tests ignoring other layer occurrences.

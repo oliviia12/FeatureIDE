@@ -148,7 +148,7 @@ public class OneWiseConfigurationGenerator extends AbstractAnalysis<List<Literal
 
 		}
 
-		//		return solver.getAssignmentArray(initialAssignmentLength, solver.getAssignment().size());
+		// return solver.getAssignmentArray(initialAssignmentLength, solver.getAssignment().size());
 		return coverArray;
 	}
 

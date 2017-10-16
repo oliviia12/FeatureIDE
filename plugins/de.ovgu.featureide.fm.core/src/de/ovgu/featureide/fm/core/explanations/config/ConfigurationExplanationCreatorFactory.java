@@ -30,6 +30,7 @@ import de.ovgu.featureide.fm.core.explanations.config.impl.mus.MusConfigurationE
  * @author Timo G&uuml;nther
  */
 public abstract class ConfigurationExplanationCreatorFactory implements ExplanationCreatorFactory {
+
 	/**
 	 * Returns a default instance of this class.
 	 *

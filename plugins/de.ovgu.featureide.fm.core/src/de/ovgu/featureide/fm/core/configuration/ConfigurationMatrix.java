@@ -39,6 +39,7 @@ import de.ovgu.featureide.fm.core.configuration.io.IConfigurationLoaderCallback;
  * @author Antje Moench
  */
 public class ConfigurationMatrix {
+
 	private final List<Config> configurationMatrix;
 	private final ConfigurationLoader loader;
 	private final IFeatureModel featureModel;
@@ -62,8 +63,7 @@ public class ConfigurationMatrix {
 			}
 
 			@Override
-			public void onLoadingError(IOException exception) {
-			}
+			public void onLoadingError(IOException exception) {}
 
 			@Override
 			public void onConfigurationLoaded(Configuration configuration, Path path) {
@@ -144,6 +144,7 @@ public class ConfigurationMatrix {
 	}
 
 	private static class Config {
+
 		private final byte[] configArray;
 
 		public Config(byte[] configArray) {

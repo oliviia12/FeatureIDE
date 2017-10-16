@@ -55,14 +55,14 @@ import de.ovgu.featureide.ui.views.collaboration.model.CollaborationModelBuilder
 import de.ovgu.featureide.ui.views.collaboration.policy.ClassXYLayoutPolicy;
 
 /**
- * EditPart of all graphical objects, resize and relocate all editParts of
- * collaboration diagram {@link #refreshVisuals()}
+ * EditPart of all graphical objects, resize and relocate all editParts of collaboration diagram {@link #refreshVisuals()}
  *
  * @author Constanze Adler
  * @author Steffen Schulze
  * @author Christian Lausberger
  */
 public class ModelEditPart extends AbstractGraphicalEditPart implements GUIDefaults {
+
 	private final LinkedList<CollaborationEditPart> collaborationEditPartList = new LinkedList<CollaborationEditPart>();
 	private final LinkedList<ClassEditPart> classEditPartList = new LinkedList<ClassEditPart>();
 

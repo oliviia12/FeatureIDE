@@ -107,10 +107,11 @@ public class StatisticsContractComplexityNew extends LazyParent {
 				numClassesWithInvariants += numInvariantsInClass > 0 ? 1 : 0;
 			}
 
-			final HashMapNode methodsNode = new HashMapNode(
-					NUMBER_METHOD_METHOD_CONTRACT + SEPARATOR + classMethodMap.keySet().size() + "/" + classMethodCountMap.keySet().size() + " ("
-							+ Math.round(100 * (classMethodMap.keySet().size() / (double) classMethodCountMap.keySet().size())) + "%)",
-					null, classMethodMap);
+			final HashMapNode methodsNode =
+					new HashMapNode(
+							NUMBER_METHOD_METHOD_CONTRACT + SEPARATOR + classMethodMap.keySet().size() + "/" + classMethodCountMap.keySet().size() + " ("
+									+ Math.round(100 * (classMethodMap.keySet().size() / (double) classMethodCountMap.keySet().size())) + "%)",
+							null, classMethodMap);
 			methodsNode.initChildren();
 			for (final Parent p : methodsNode.getChildren()) {
 				final LinkedList<String> featureChildList = new LinkedList<String>();
@@ -167,7 +168,7 @@ public class StatisticsContractComplexityNew extends LazyParent {
 									? contractRefinementRealNameMap.get(PROJECT_BASED__ + contractComposition) : 0));
 				}
 			}
-			//TODO new node?
+			// TODO new node?
 			addChild(new HashMapNode(METHOD_CONTRACT_REFINEMENT, null, contractRefinementRealNameMap));
 
 			addChild(new SumImplementationArtifactsParent(METHOD_CONTRACTS_FEATURE, fstModel, 6));

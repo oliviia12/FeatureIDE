@@ -40,11 +40,11 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 			if (parts.length > prioIndex) {
 				tagFeatureNode = nodeReader.stringToNode(parts[prioIndex++]);
 			} else {
-				//warning?
+				// warning?
 				tagFeatureNode = null;
 			}
 		} else {
-			//warning?
+			// warning?
 			tagFeatureNode = null;
 			tagPriority = 0;
 		}
@@ -54,7 +54,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 			try {
 				tagPriority = Integer.parseInt(parts[prioIndex]);
 			} catch (final NumberFormatException e) {
-				//warning?
+				// warning?
 				tagPriority = 0;
 			}
 		} else {

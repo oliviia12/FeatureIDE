@@ -36,6 +36,7 @@ import de.ovgu.featureide.fm.core.explanations.impl.ltms.Ltms;
  * @author Timo G&uuml;nther
  */
 public class LtmsDeadFeatureExplanationCreator extends LtmsFeatureModelExplanationCreator implements DeadFeatureExplanationCreator {
+
 	/** The dead feature in the feature model. */
 	private IFeature deadFeature;
 
@@ -79,10 +80,7 @@ public class LtmsDeadFeatureExplanationCreator extends LtmsFeatureModelExplanati
 	/**
 	 * {@inheritDoc}
 	 *
-	 * <p>
-	 * Sets initial truth value assumptions of the dead feature to true.
-	 * Then propagates the values until a violation in a clause occurs.
-	 * </p>
+	 * <p> Sets initial truth value assumptions of the dead feature to true. Then propagates the values until a violation in a clause occurs. </p>
 	 */
 	@Override
 	public DeadFeatureExplanation getExplanation() throws IllegalStateException {

@@ -131,8 +131,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 	}
 
 	@Override
-	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
-	}
+	public void inputChanged(Viewer v, Object oldInput, Object newInput) {}
 
 	@Override
 	public void dispose() {
@@ -172,8 +171,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 	}
 
 	/**
-	 * Displays a default message if the automatic calculations are disabled and
-	 * there are no statistics displayed.
+	 * Displays a default message if the automatic calculations are disabled and there are no statistics displayed.
 	 */
 	public void defaultManualContent() {
 		if (invisibleRoot.getChildren().length <= 1) {
@@ -203,8 +201,8 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 		}
 
 		if (invisibleRoot.getChildren().length <= 1) {
-			//case: init
-			// 		initializes the tree with default values
+			// case: init
+			// initializes the tree with default values
 			if (invisibleRoot.getChildren().length < 1) {
 				invisibleRoot.addChild(new TreeObject(CALCULATING_MESSAGE, DEFAULT_IMAGE));
 			}
@@ -230,6 +228,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 				// case: running in parallel jobs
 				// TODO it is unnecessary to refresh this every time while nothing has changed
 				final Job oldCalculationJob = new Job("Calculate: \"" + STATISTICS_BEFORE + "\"") {
+
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						if (isCanceled()) {
@@ -244,6 +243,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 				oldCalculationJob.schedule();
 
 				final Job newCalculationJob = new Job("Calculate: \"" + STATISTICS_AFTER + "\"") {
+
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						if (isCanceled()) {
@@ -303,8 +303,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 	}
 
 	/**
-	 * Calculates the content of the first line
-	 * Compares the old with the new model
+	 * Calculates the content of the first line Compares the old with the new model
 	 */
 	private TreeObject calculateHead(IFeatureModel oldModel, IFeatureModel newModel, ModelComparator comparator) {
 		final long start = System.currentTimeMillis();
@@ -365,6 +364,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 			// case: init
 			// does not count configurations and program variants
 			final TreeParent statistics = new TreeParent(text, null, true) {
+
 				@Override
 				public void initChildren() {
 					// TODO catch time put
@@ -410,6 +410,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 
 			if (Runtime.getRuntime().availableProcessors() >= PROCESSOR_LIMIT) {
 				final Job job = new Job("Calculate: \"" + text + "\"") {
+
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
 						monitor.setTaskName(CALCULATE_NUMBER_OF_CONFIGURATIONS);
@@ -452,14 +453,14 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 
 		final String variants = ignoreAbstractFeatures ? CONFIGURATIONS : PROGRAM_VARIANTS;
 		final TreeParent p = new TreeParent(NUMBER_OF + variants, null, true) {
+
 			@Override
-			public void initChildren() {
-			}
+			public void initChildren() {}
 		};
 
 		if (!ignoreAbstractFeatures && (FeatureModelManager.getAnalyzer(model).countConcreteFeatures() == 0)) {
 			// case: there is no concrete feature so there is only one program variant,
-			//       without this the calculation least much to long
+			// without this the calculation least much to long
 			p.addChild("1 " + variants);
 			return p;
 		}
@@ -482,6 +483,7 @@ public class ViewContentProvider implements IStructuredContentProvider, ITreeCon
 	 */
 	protected void refresh() {
 		final UIJob job_setColor = new UIJob(REFRESH_EDIT_VIEW) {
+
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
 				if (!view.getViewer().getControl().isDisposed()) {

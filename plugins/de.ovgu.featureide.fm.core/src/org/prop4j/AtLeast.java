@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A constraint that is true iff at least a specified number of children is
- * true.
+ * A constraint that is true iff at least a specified number of children is true.
  *
  * @author Thomas Thuem
  */

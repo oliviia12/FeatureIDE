@@ -35,6 +35,7 @@ import org.eclipse.core.runtime.QualifiedName;
  * @author Jens Meinicke
  */
 public class FMComposerManager implements IFMComposerExtension {
+
 	private IFMComposerExtension fmComposerExtension = new FMComposerExtension();
 	private String composerId;
 

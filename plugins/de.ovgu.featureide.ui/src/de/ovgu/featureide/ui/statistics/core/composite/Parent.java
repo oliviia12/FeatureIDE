@@ -36,8 +36,7 @@ import de.ovgu.featureide.ui.statistics.ui.helper.TreeLabelProvider;
 
 /**
  *
- * Holds information for {@link TreeViewer}. Is capable of holding an image, a
- * description and a value.
+ * Holds information for {@link TreeViewer}. Is capable of holding an image, a description and a value.
  *
  * @see LazyParent
  * @see FeatureStatisticsView
@@ -47,6 +46,7 @@ import de.ovgu.featureide.ui.statistics.ui.helper.TreeLabelProvider;
  * @author Patrick Haese
  */
 public class Parent implements StatisticsIds, GUIDefaults {
+
 	protected Object value;
 	protected String description; // description
 	protected Image image;
@@ -92,8 +92,7 @@ public class Parent implements StatisticsIds, GUIDefaults {
 		this.image = image;
 	}
 
-	protected Parent() {
-	}
+	protected Parent() {}
 
 	public Parent(String description) {
 		this(description, null);
@@ -124,6 +123,7 @@ public class Parent implements StatisticsIds, GUIDefaults {
 
 	protected void sortChildren() {
 		Collections.sort(children, new Comparator<Parent>() {
+
 			@Override
 			public int compare(Parent o1, Parent o2) {
 				return o1.toString().compareToIgnoreCase(o2.toString());

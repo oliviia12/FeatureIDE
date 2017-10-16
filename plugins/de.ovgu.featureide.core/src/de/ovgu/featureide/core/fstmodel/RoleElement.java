@@ -197,9 +197,7 @@ public abstract class RoleElement<T extends RoleElement<T>> implements Comparabl
 	}
 
 	/**
-	 * @return
-	 * 		<code>true</code> if the given element is equivalent
-	 *         in its structure and it has the same class as this element
+	 * @return <code>true</code> if the given element is equivalent in its structure and it has the same class as this element
 	 */
 	@Override
 	public int hashCode() {

@@ -32,9 +32,8 @@ import de.ovgu.featureide.fm.core.io.guidsl.GuidslFormat;
 import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
 
 /**
- * Abstract class that can be used for tests on configurations.
- * Each set of configuration tests that is performed on the same model is defined
- * in its own subclass.
+ * Abstract class that can be used for tests on configurations. Each set of configuration tests that is performed on the same model is defined in its own
+ * subclass.
  *
  * @author Fabian Benduhn
  */
@@ -48,10 +47,8 @@ public abstract class AbstractConfigurationTest {
 	}
 
 	/**
-	 * This method is used by setModel() to initialize
-	 * the feature model before each test case.
-	 * For basic string input use methods loadGUIDSL or loadXML.
-	 * For file input use any FeatureModelReader.
+	 * This method is used by setModel() to initialize the feature model before each test case. For basic string input use methods loadGUIDSL or loadXML. For
+	 * file input use any FeatureModelReader.
 	 *
 	 * @return the FeatureModel used in this test class
 	 */

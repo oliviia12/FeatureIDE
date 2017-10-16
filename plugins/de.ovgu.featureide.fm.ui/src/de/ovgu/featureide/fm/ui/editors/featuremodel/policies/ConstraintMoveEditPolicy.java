@@ -46,8 +46,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ConstraintEditPar
 public class ConstraintMoveEditPolicy extends NonResizableEditPolicy {
 
 	/**
-	 * Allows constraints to be moved at the feature diagram and provides a
-	 * feedback figure.
+	 * Allows constraints to be moved at the feature diagram and provides a feedback figure.
 	 *
 	 */
 	private final ConstraintEditPart editPart;

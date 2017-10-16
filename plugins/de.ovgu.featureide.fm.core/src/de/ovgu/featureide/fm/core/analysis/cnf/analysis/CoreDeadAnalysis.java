@@ -132,11 +132,11 @@ public class CoreDeadAnalysis extends AVariableAnalysis<LiteralSet> {
 				switch (solver.hasSolution()) {
 				case FALSE:
 					foundVariables(model, vars);
-					//				solver.removeLastClause();
+					// solver.removeLastClause();
 					break;
 				case TIMEOUT:
 					reportTimeout();
-					//				solver.removeLastClause();
+					// solver.removeLastClause();
 					break;
 				case TRUE:
 					SatUtils.updateSolution(model, solver.getSolution());

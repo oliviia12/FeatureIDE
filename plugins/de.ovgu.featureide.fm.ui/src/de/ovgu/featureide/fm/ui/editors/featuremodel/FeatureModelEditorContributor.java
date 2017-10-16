@@ -60,12 +60,12 @@ public class FeatureModelEditorContributor extends EditorActionBarContributor {
 
 	private static final String[] DIAGRAM_ACTION_IDS = { CreateLayerAction.ID, CreateCompoundAction.ID, CalculateDependencyAction.ID, DeleteAction.ID,
 			MandatoryAction.ID, AndAction.ID, OrAction.ID, AlternativeAction.ID, ActionFactory.UNDO.getId(), ActionFactory.REDO.getId(),
-			//ActionFactory.CUT.getId(), ActionFactory.COPY.getId(),
-			//ActionFactory.PASTE.getId(),
+			// ActionFactory.CUT.getId(), ActionFactory.COPY.getId(),
+			// ActionFactory.PASTE.getId(),
 			ActionFactory.SELECT_ALL.getId(),
-			//ActionFactory.FIND.getId(),
+			// ActionFactory.FIND.getId(),
 			ActionFactory.PRINT.getId(), GEFActionConstants.ZOOM_IN, GEFActionConstants.ZOOM_OUT,
-			//IDEActionFactory.BOOKMARK.getId()
+			// IDEActionFactory.BOOKMARK.getId()
 	};
 
 	private static final String[] TEXTEDITOR_ACTION_IDS = { ActionFactory.DELETE.getId(), ActionFactory.UNDO.getId(), ActionFactory.REDO.getId(),
@@ -111,9 +111,10 @@ public class FeatureModelEditorContributor extends EditorActionBarContributor {
 		super.contributeToToolBar(manager);
 		manager.add(new Separator());
 
-		//Fix for Issue #363
+		// Fix for Issue #363
 		if (org.eclipse.core.runtime.Platform.getOS().equals(org.eclipse.core.runtime.Platform.OS_WIN32)) {
 			manager.add(new ContributionItem() {
+
 				final Point size = new Point(0, 30);
 				private ToolItem widget;
 
@@ -137,6 +138,7 @@ public class FeatureModelEditorContributor extends EditorActionBarContributor {
 						gc.fillRectangle(image.getBounds());
 						gc.dispose();
 						ti.addDisposeListener(new DisposeListener() {
+
 							@Override
 							public void widgetDisposed(DisposeEvent e) {
 								image.dispose();

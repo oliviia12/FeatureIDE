@@ -48,8 +48,7 @@ public final class ProjectProvider {
 	private static final Collection<ProjectRecord> projects = getProjects();
 	private static final Set<String> viewerNames = getViewersNamesForProjects();
 
-	private ProjectProvider() {
-	}
+	private ProjectProvider() {}
 
 	public static Collection<ProjectRecord> getProjects() {
 		if (projects != null) {

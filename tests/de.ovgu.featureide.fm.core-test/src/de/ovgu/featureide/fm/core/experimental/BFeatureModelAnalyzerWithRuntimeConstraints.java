@@ -28,11 +28,9 @@ import de.ovgu.runtimetest.RuntimeTest.Annotations.Constraint;
 import de.ovgu.runtimetest.RuntimeTest.Annotations.WarmUp;
 
 /**
- * This is a benchmark for analyzes at the {@link IFeatureModel}.
- * The test cases do not analyze the validity of the analyses.
+ * This is a benchmark for analyzes at the {@link IFeatureModel}. The test cases do not analyze the validity of the analyses.
  *
- * All timeouts are set to around 4 times the measured times(with intel i5 @ 3,3 GHz)
- * to avoid that the tests fail for slower computers.
+ * All timeouts are set to around 4 times the measured times(with intel i5 @ 3,3 GHz) to avoid that the tests fail for slower computers.
  *
  * @author Jens Meinicke
  * @author Marcus Pinnecke

@@ -42,8 +42,8 @@ public interface IFileManager<T> extends IEventManager {
 	ProblemList getLastProblems();
 
 	/**
-	 * Loads the content from the local file and stores it in the local object.
-	 * To update the persistent and variable object, {@link #override()} must be called.
+	 * Loads the content from the local file and stores it in the local object. To update the persistent and variable object, {@link #override()} must be
+	 * called.
 	 *
 	 * @return {@code true} if successful read, {@code false} otherwise.
 	 *
@@ -52,8 +52,7 @@ public interface IFileManager<T> extends IEventManager {
 	boolean read();
 
 	/**
-	 * Save last modifications to the local file.
-	 * Updates (overrides) local object and persistent object.
+	 * Save last modifications to the local file. Updates (overrides) local object and persistent object.
 	 *
 	 * @return {@code true} if successful write, {@code false} otherwise.
 	 */

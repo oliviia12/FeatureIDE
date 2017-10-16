@@ -30,6 +30,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.FeatureModelReason;
  * @author Timo G&uuml;nther
  */
 public abstract class ModelElementFigure extends Figure {
+
 	/** the currently active reason */
 	private FeatureModelReason activeReason;
 

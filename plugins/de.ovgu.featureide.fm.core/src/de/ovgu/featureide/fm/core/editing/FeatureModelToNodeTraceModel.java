@@ -42,35 +42,27 @@ import de.ovgu.featureide.fm.core.base.IFeatureModelElement;
 import de.ovgu.featureide.fm.core.base.impl.FeatureStructure;
 
 /**
- * <p>
- * A trace model for when a {@link IFeatureModel feature model} is transformed into a {@link Node}.
- * </p>
+ * <p> A trace model for when a {@link IFeatureModel feature model} is transformed into a {@link Node}. </p>
  *
- * <p>
- * When a feature model is transformed into a propositional formula, the mapping between the two formats is ambiguous.
- * For instance, depending on the group type and the amount of children, a child relationship may be mapped to fewer or more clauses than source elements.
- * To solve this, a trace model containing instances of this class can be used to remember the mapping.
- * In particular, using a trace model, the corresponding source {@link IFeatureModelElement element} may be looked up from the target {@link Node formula}.
- * </p>
+ * <p> When a feature model is transformed into a propositional formula, the mapping between the two formats is ambiguous. For instance, depending on the group
+ * type and the amount of children, a child relationship may be mapped to fewer or more clauses than source elements. To solve this, a trace model containing
+ * instances of this class can be used to remember the mapping. In particular, using a trace model, the corresponding source {@link IFeatureModelElement
+ * element} may be looked up from the target {@link Node formula}. </p>
  *
- * <p>
- * Note, however, that this is not implemented as map from target formula to source element.
- * After all, two clauses that are equal may occur multiple times in the same formula while originating from different source elements.
- * For example, a feature model containing a parent feature <i>P</i>, a child feature <i>C</i> and a constraint <i>C</i> &rArr; <i>P</i>, the target formula
- * would be:
+ * <p> Note, however, that this is not implemented as map from target formula to source element. After all, two clauses that are equal may occur multiple times
+ * in the same formula while originating from different source elements. For example, a feature model containing a parent feature <i>P</i>, a child feature
+ * <i>C</i> and a constraint <i>C</i> &rArr; <i>P</i>, the target formula would be:
  *
- * <pre>
- * (<i>C</i> &rArr; <i>P</i>) &and; (<i>C</i> &rArr; <i>P</i>)
- * </pre>
+ * <pre> (<i>C</i> &rArr; <i>P</i>) &and; (<i>C</i> &rArr; <i>P</i>) </pre>
  *
- * Both of these two clauses could stem from either the child relationship or the constraint.
- * To differentiate these cases, the lookup is done using the index of the clause in the formula.
- * </p>
+ * Both of these two clauses could stem from either the child relationship or the constraint. To differentiate these cases, the lookup is done using the index
+ * of the clause in the formula. </p>
  *
  * @author Timo G&uuml;nther
  * @see AdvancedNodeCreator#getTraceModel()
  */
 public class FeatureModelToNodeTraceModel implements Cloneable {
+
 	/**
 	 * Denotes the origin type of the target clause.
 	 *
@@ -79,52 +71,34 @@ public class FeatureModelToNodeTraceModel implements Cloneable {
 	 */
 	public enum Origin {
 		/**
-		 * <p>
-		 * Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} directed upward.
-		 * </p>
+		 * <p> Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} directed upward. </p>
 		 *
-		 * <p>
-		 * The upward part of the child relationship is that of the following form:
+		 * <p> The upward part of the child relationship is that of the following form:
 		 *
-		 * <pre>
-		 * <i>Child<sub>1</sub></i> &or; &hellip; &or; <i>Child<sub>n</sub></i> &rArr; <i>Parent</i>
-		 * </pre>
+		 * <pre> <i>Child<sub>1</sub></i> &or; &hellip; &or; <i>Child<sub>n</sub></i> &rArr; <i>Parent</i> </pre>
 		 *
-		 * Every child relationship contains an upward part.
-		 * In fact, optional child relationships consist of nothing but an upward part (with <i>n</i> = 1).
+		 * Every child relationship contains an upward part. In fact, optional child relationships consist of nothing but an upward part (with <i>n</i> = 1).
 		 * </p>
 		 */
 		CHILD_UP,
 		/**
-		 * <p>
-		 * Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} directed downward.
-		 * </p>
+		 * <p> Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} directed downward. </p>
 		 *
-		 * <p>
-		 * The upward part of the child relationship is that of the following form:
+		 * <p> The upward part of the child relationship is that of the following form:
 		 *
-		 * <pre>
-		 * <i>Parent</i> &rArr; <i>Child<sub>1</sub></i> &or; &hellip; &or; <i>Child<sub>n</sub></i>
-		 * </pre>
+		 * <pre> <i>Parent</i> &rArr; <i>Child<sub>1</sub></i> &or; &hellip; &or; <i>Child<sub>n</sub></i> </pre>
 		 *
-		 * Every non-optional child relationship contains a downward part.
-		 * </p>
+		 * Every non-optional child relationship contains a downward part. </p>
 		 */
 		CHILD_DOWN,
 		/**
-		 * <p>
-		 * Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} not directed {@link CHILD_UP upward} or {@link CHILD_DOWN
-		 * downward}.
-		 * </p>
+		 * <p> Denotes that the clause's origin is a {@link FeatureStructure#getChildren() child feature} not directed {@link CHILD_UP upward} or
+		 * {@link CHILD_DOWN downward}. </p>
 		 *
-		 * <p>
-		 * This is the case for {@link FeatureStructure#isAlternative() alternative groups}, which (in addition to upward and downward parts) contain the
+		 * <p> This is the case for {@link FeatureStructure#isAlternative() alternative groups}, which (in addition to upward and downward parts) contain the
 		 * following part:
 		 *
-		 * <pre>
-		 * atmost1(<i>Child<sub>1</sub></i>, &hellip;, <i>Child<sub>n</sub></i>)
-		 * </pre>
-		 * </p>
+		 * <pre> atmost1(<i>Child<sub>1</sub></i>, &hellip;, <i>Child<sub>n</sub></i>) </pre> </p>
 		 */
 		CHILD_HORIZONTAL,
 		/** Denotes that the literal's origin is the {@link FeatureStructure#isRoot() root feature}. */
@@ -134,12 +108,12 @@ public class FeatureModelToNodeTraceModel implements Cloneable {
 	}
 
 	/**
-	 * A part of a trace model.
-	 * Remembers the source elements of a single clause.
+	 * A part of a trace model. Remembers the source elements of a single clause.
 	 *
 	 * @author Timo G&uuml;nther
 	 */
 	public static class FeatureModelElementTrace implements Cloneable {
+
 		/** The origin type of the formula. */
 		private final Origin origin;
 		/** The single source feature model element. */
@@ -194,8 +168,7 @@ public class FeatureModelToNodeTraceModel implements Cloneable {
 		}
 
 		/**
-		 * Creates a new trace.
-		 * Used in cloning.
+		 * Creates a new trace. Used in cloning.
 		 *
 		 * @param origin the origin type of the formula; not null
 		 * @param element the single source feature model element
@@ -226,9 +199,8 @@ public class FeatureModelToNodeTraceModel implements Cloneable {
 		}
 
 		/**
-		 * Returns the multiple source elements.
-		 * For a child relationship, this means the children.
-		 * Otherwise, this means a singleton of the single source element.
+		 * Returns the multiple source elements. For a child relationship, this means the children. Otherwise, this means a singleton of the single source
+		 * element.
 		 *
 		 * @return the multiple source elements; not null or empty
 		 */
@@ -244,10 +216,8 @@ public class FeatureModelToNodeTraceModel implements Cloneable {
 		}
 
 		/**
-		 * Returns the single source element.
-		 * For a child relationship, this means the parent.
-		 * For the root, this means the root.
-		 * For a constraint, this means the constraint.
+		 * Returns the single source element. For a child relationship, this means the parent. For the root, this means the root. For a constraint, this means
+		 * the constraint.
 		 *
 		 * @return the single source element; null if the origin is a {@link Origin#CHILD_HORIZONTAL horizontal child relationship}
 		 */

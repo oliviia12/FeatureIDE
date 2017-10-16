@@ -33,10 +33,9 @@ import de.ovgu.featureide.fm.core.analysis.cnf.solver.ISimpleSatSolver.SatResult
 import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 
 /**
- * Finds redundancies by incrementally adding constraints.<br/>
- * <b>Note:</b> This analysis might be faster than {@link RedundancyAnalysis}, which uses removal of constraints.
- * However, this analysis only checks the redundancy of each constraint at the time of adding it to the formula.
- * Thus, it cannot detect constraints that become redundant by the adding another constraint later on.
+ * Finds redundancies by incrementally adding constraints.<br/> <b>Note:</b> This analysis might be faster than {@link RedundancyAnalysis}, which uses removal
+ * of constraints. However, this analysis only checks the redundancy of each constraint at the time of adding it to the formula. Thus, it cannot detect
+ * constraints that become redundant by the adding another constraint later on.
  *
  * @author Sebastian Krieter
  */
@@ -76,7 +75,7 @@ public class RedundancyAnalysis2 extends AClauseAnalysis<List<LiteralSet>> {
 			resultList.add(null);
 		}
 		// TODO Find a better way of sorting
-		//		final Integer[] index = Functional.getSortedIndex(resultList, new ClauseLengthComparatorDsc());
+		// final Integer[] index = Functional.getSortedIndex(resultList, new ClauseLengthComparatorDsc());
 		monitor.step();
 
 		int endIndex = 0;

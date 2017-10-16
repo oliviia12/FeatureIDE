@@ -324,9 +324,9 @@ public class Traverser {
 
 	private void traverseWeakRec(int curVar) {
 		final int curIndex = Math.abs(curVar) - 1;
-		//		if ((computationMark[curIndex] & MARK_AUTO_SELECTION) != 0) {
-		//			return;
-		//		}
+		// if ((computationMark[curIndex] & MARK_AUTO_SELECTION) != 0) {
+		// return;
+		// }
 
 		final int[] strongEdges;
 		final int[] complexClauses;

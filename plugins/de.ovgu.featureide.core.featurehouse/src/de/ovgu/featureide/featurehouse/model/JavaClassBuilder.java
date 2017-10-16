@@ -32,8 +32,7 @@ import de.ovgu.featureide.core.fstmodel.IRoleElement;
 import de.ovgu.featureide.featurehouse.FeatureHouseCorePlugin;
 
 /**
- * Builds Classes for the {@link FSTModel} for <code>FeatureHouse</code> Java
- * files.
+ * Builds Classes for the {@link FSTModel} for <code>FeatureHouse</code> Java files.
  *
  * @see ClassBuilder
  * @author Jens Meinicke
@@ -68,11 +67,8 @@ public class JavaClassBuilder extends ClassBuilder {
 
 	/**
 	 *
-	 * @param terminal
-	 *            body
-	 * @return list(0) field modifiers<br>
-	 *         list(1) field type<br>
-	 *         ... field names
+	 * @param terminal body
+	 * @return list(0) field modifiers<br> list(1) field type<br> ... field names
 	 */
 	public LinkedList<String> getFields(String body) {
 		String modifiers = "";
@@ -334,8 +330,7 @@ public class JavaClassBuilder extends ClassBuilder {
 	}
 
 	@Override
-	public void caseJMLSpecCaseSeq(FSTTerminal terminal) {
-	}
+	public void caseJMLSpecCaseSeq(FSTTerminal terminal) {}
 
 	@Override
 	public void caseModifiers(FSTTerminal terminal) {

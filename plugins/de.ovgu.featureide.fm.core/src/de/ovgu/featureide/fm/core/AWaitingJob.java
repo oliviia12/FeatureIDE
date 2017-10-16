@@ -26,9 +26,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
 /**
- * If the job is scheduled twice, the second call waits until the first has finished.<br>
- * If it is scheduled more than twice, but one instance is still waiting, it is not
- * scheduled again.
+ * If the job is scheduled twice, the second call waits until the first has finished.<br> If it is scheduled more than twice, but one instance is still waiting,
+ * it is not scheduled again.
  *
  * @author Jens Meinicke
  */

@@ -133,8 +133,7 @@ public class SatUtils {
 	}
 
 	/**
-	 * Constructs a new array of literals that contains no duplicates and unwanted literals.
-	 * Also checks whether the array contains a literal and its negation.
+	 * Constructs a new array of literals that contains no duplicates and unwanted literals. Also checks whether the array contains a literal and its negation.
 	 *
 	 * @param literalArray The initial literal array.
 	 * @param unwantedVariables An array of variables that should be removed.

@@ -37,6 +37,7 @@ import org.prop4j.explain.solvers.SatProblem;
  * @author Timo G&uuml;nther
  */
 public abstract class AbstractSatProblem implements SatProblem {
+
 	/** The clauses added to this problem. */
 	private final List<Node> clauses = new ArrayList<>();
 	/** The assumptions added to this problem. */
@@ -62,8 +63,7 @@ public abstract class AbstractSatProblem implements SatProblem {
 	}
 
 	/**
-	 * Adds all given CNF clauses to the problem.
-	 * Each one must be a non-empty disjunction of literals.
+	 * Adds all given CNF clauses to the problem. Each one must be a non-empty disjunction of literals.
 	 *
 	 * @param clauses clauses to add; not null
 	 */
@@ -74,8 +74,7 @@ public abstract class AbstractSatProblem implements SatProblem {
 	}
 
 	/**
-	 * Adds the given CNF clause to the problem.
-	 * It must be a non-empty disjunction of literals.
+	 * Adds the given CNF clause to the problem. It must be a non-empty disjunction of literals.
 	 *
 	 * @param clause clause to add; not null
 	 * @throws IllegalArgumentException if the clause is empty

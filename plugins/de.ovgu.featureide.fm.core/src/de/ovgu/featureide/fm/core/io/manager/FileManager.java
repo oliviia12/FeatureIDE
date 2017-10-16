@@ -39,8 +39,7 @@ import de.ovgu.featureide.fm.core.io.Problem;
 import de.ovgu.featureide.fm.core.io.ProblemList;
 
 /**
- * Responsible to load and save all information from / to a file.<br/>
- * To get an instance use the {@link FileManagerMap}.
+ * Responsible to load and save all information from / to a file.<br/> To get an instance use the {@link FileManagerMap}.
  *
  * @author Sebastian Krieter
  */
@@ -185,12 +184,12 @@ public class FileManager<T> extends AFileManager<T> {
 		fireEvent(new FeatureIDEEvent(variableObject, EventType.MODEL_DATA_OVERRIDDEN));
 	}
 
-	protected void copyPropertiesOnOverride() {
-	}
+	protected void copyPropertiesOnOverride() {}
 
 	@Override
 	public boolean save() {
 		return externalSave(new ICriticalConsumer<T>() {
+
 			@Override
 			public void invoke(T t) throws IOException {
 				FileSystem.write(path, format.getInstance().write(t).getBytes(SimpleFileHandler.DEFAULT_CHARSET));

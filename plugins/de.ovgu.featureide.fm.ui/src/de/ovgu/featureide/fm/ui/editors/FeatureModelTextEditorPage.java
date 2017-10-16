@@ -83,8 +83,7 @@ public class FeatureModelTextEditorPage extends TextEditor implements IFeatureMo
 	}
 
 	/**
-	 * Reads the current content of the model.xml file. (Removes dirty state for
-	 * the page)
+	 * Reads the current content of the model.xml file. (Removes dirty state for the page)
 	 */
 	public void resetTextEditor() {
 		try {
@@ -151,7 +150,7 @@ public class FeatureModelTextEditorPage extends TextEditor implements IFeatureMo
 		if (!oldText.equals(newText)) {
 			final IFeatureModel fm = featureModelEditor.getFeatureModel();
 
-			//TODO _interfaces replace text with DocumentEvent (delta)
+			// TODO _interfaces replace text with DocumentEvent (delta)
 			final SourceChangedOperation op = new SourceChangedOperation(fm, featureModelEditor, newText, oldText);
 
 			op.addContext((IUndoContext) fm.getUndoContext());

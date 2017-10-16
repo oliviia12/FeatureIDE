@@ -44,6 +44,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
  * @author Alexander Knueppel
  */
 public class TseitinConverter extends NNFConverter {
+
 	private int number = 0;
 	private final Set<String> auxVariables = new HashSet<>();
 
@@ -66,26 +67,26 @@ public class TseitinConverter extends NNFConverter {
 
 	@Override
 	protected void createAbstractSubtree(IFeature top, List<Node> nodes) {
-		//		int i = 0;
-		//		addClause(top, "x0");
-		//		for(Node node : nodes) {
-		//			IFeature clause = addClause(top, "clause" + (i++));
+		// int i = 0;
+		// addClause(top, "x0");
+		// for(Node node : nodes) {
+		// IFeature clause = addClause(top, "clause" + (i++));
 		//
-		//			//System.out.println(node);
+		// //System.out.println(node);
 		//
-		//			for(Node child : node.getChildren()) {
-		//				String name = "";
-		//				if(auxVariables.contains(child.getContainedFeatures().get(0))) {
-		//					//name = child.getContainedFeatures().get(0);
-		//				} else {
-		//					name = child.getContainedFeatures().get(0) + "_" + i;
-		//					addTerminalAndConstraints(clause, child, name, preserve);
-		//				}
-		//				//name = child.getContainedFeatures().get(0) + "_" + i;
-		//				//addTerminalAndConstraints(clause, child, name, preserve);
-		//				//System.out.println(clause + ", " + child + ", " + name);
-		//			}
-		//		}
+		// for(Node child : node.getChildren()) {
+		// String name = "";
+		// if(auxVariables.contains(child.getContainedFeatures().get(0))) {
+		// //name = child.getContainedFeatures().get(0);
+		// } else {
+		// name = child.getContainedFeatures().get(0) + "_" + i;
+		// addTerminalAndConstraints(clause, child, name, preserve);
+		// }
+		// //name = child.getContainedFeatures().get(0) + "_" + i;
+		// //addTerminalAndConstraints(clause, child, name, preserve);
+		// //System.out.println(clause + ", " + child + ", " + name);
+		// }
+		// }
 
 		final IFeature clause = addClause(top, "Tseitin");
 
@@ -133,7 +134,7 @@ public class TseitinConverter extends NNFConverter {
 		auxVariables.add(var);
 
 		if (node instanceof Not) {
-			//TODO: not correct...
+			// TODO: not correct...
 			tseitinEncoding.addAll(tseitinEncoding(fm, node.getChildren()[0], "x" + (++number)));
 			tseitinEncoding.add(new Or(var, "x" + (number)));
 			tseitinEncoding.add(new Or(new Not(var), new Not("x" + (number))));

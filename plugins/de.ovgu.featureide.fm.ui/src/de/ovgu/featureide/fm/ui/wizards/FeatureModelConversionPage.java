@@ -46,6 +46,7 @@ import de.ovgu.featureide.fm.core.io.IFeatureModelFormat;
 public class FeatureModelConversionPage extends AbstractWizardPage {
 
 	private final class DialogChangedListener implements ModifyListener {
+
 		@Override
 		public void modifyText(ModifyEvent e) {
 			updatePage();
@@ -94,7 +95,7 @@ public class FeatureModelConversionPage extends AbstractWizardPage {
 			toFormatCombo.select(0);
 		}
 
-		//Path Group
+		// Path Group
 		final Group pathGroup = new Group(container, SWT.NONE);
 		final GridLayout layout = new GridLayout();
 		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);

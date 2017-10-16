@@ -53,6 +53,7 @@ import org.prop4j.Or;
  * @author Timo G&uuml;nther
  */
 public abstract class SatProblemTests {
+
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
@@ -95,7 +96,7 @@ public abstract class SatProblemTests {
 	@Test
 	public void testAddFormulasCollection() {
 		final SatProblem instance = getInstance();
-		final Collection<Node> in = Arrays.<Node> asList(new Literal("A", false), new Or("A", "B"));
+		final Collection<Node> in = Arrays.<Node>asList(new Literal("A", false), new Or("A", "B"));
 		instance.addFormulas(in);
 		final List<Node> expected = new LinkedList<>();
 		expected.add(new Or(new Literal("A", false)));

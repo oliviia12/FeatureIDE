@@ -28,8 +28,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent;
 import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
 
 /**
- * Operation with functionality to change group types. Enables undo/redo
- * functionality.
+ * Operation with functionality to change group types. Enables undo/redo functionality.
  *
  * @author Fabian Benduhn
  * @author Marcus Pinnecke
@@ -45,8 +44,7 @@ public class ChangeFeatureGroupTypeOperation extends AbstractFeatureModelOperati
 	private final int oldGroupType;
 
 	/**
-	 * Grouptype of feature will be set to groupType when this operation is
-	 * executed
+	 * Grouptype of feature will be set to groupType when this operation is executed
 	 */
 	public ChangeFeatureGroupTypeOperation(int groupType, IFeature feature, IFeatureModel featureModel) {
 		super(featureModel, CHANGE_GROUP_TYPE);

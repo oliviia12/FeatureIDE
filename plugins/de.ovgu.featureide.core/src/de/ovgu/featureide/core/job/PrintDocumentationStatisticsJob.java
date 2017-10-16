@@ -55,7 +55,7 @@ public class PrintDocumentationStatisticsJob implements LongRunningMethod<Boolea
 	protected PrintDocumentationStatisticsJob(String foldername, IProject project) {
 		this.foldername = foldername;
 		this.project = project;
-		//		super(BUILD_DOCUMENTATION_STATISTICS, arguments);
+		// super(BUILD_DOCUMENTATION_STATISTICS, arguments);
 	}
 
 	@Override
@@ -93,60 +93,60 @@ public class PrintDocumentationStatisticsJob implements LongRunningMethod<Boolea
 		final int[] statisticDataTags = new int[5];
 
 		// ----------------------------------- SPL ---------------------------------------------
-		//		AJavaDocCommentMerger.reset();
-		//		pseudoMerge(interfaceProject.getProjectSignatures().createIterator(),
-		//			new SPLMerger(interfaceProject, featureIDs));
-		//		statisticDataChars[0] = AJavaDocCommentMerger.STAT_BEFORE_CHARS;
-		//		statisticDataChars[2] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
-		//		statisticDataTags[0] = AJavaDocCommentMerger.STAT_BEFORE_TAGS;
-		//		statisticDataTags[2] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
+		// AJavaDocCommentMerger.reset();
+		// pseudoMerge(interfaceProject.getProjectSignatures().createIterator(),
+		// new SPLMerger(interfaceProject, featureIDs));
+		// statisticDataChars[0] = AJavaDocCommentMerger.STAT_BEFORE_CHARS;
+		// statisticDataChars[2] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
+		// statisticDataTags[0] = AJavaDocCommentMerger.STAT_BEFORE_TAGS;
+		// statisticDataTags[2] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
 
-		//		int[] statisticNumComments = new int[]{
-		//			AJavaDocCommentMerger.STAT_NUM_FEATURE0,
-		//			AJavaDocCommentMerger.STAT_NUM_FEATURE1,
-		//			AJavaDocCommentMerger.STAT_NUM_NEW,
-		//			AJavaDocCommentMerger.STAT_NUM_FEATURE0 + AJavaDocCommentMerger.STAT_NUM_FEATURE1,
-		//			AJavaDocCommentMerger.STAT_NUM_GENERAL0,
-		//			AJavaDocCommentMerger.STAT_NUM_GENERAL1,
-		//			AJavaDocCommentMerger.STAT_NUM_GENERAL0 + AJavaDocCommentMerger.STAT_NUM_GENERAL1,
-		//			AJavaDocCommentMerger.STAT_NUM_FEATURE0 + AJavaDocCommentMerger.STAT_NUM_FEATURE1 +
-		//			AJavaDocCommentMerger.STAT_NUM_GENERAL0 + AJavaDocCommentMerger.STAT_NUM_GENERAL1,
-		//		};
+		// int[] statisticNumComments = new int[]{
+		// AJavaDocCommentMerger.STAT_NUM_FEATURE0,
+		// AJavaDocCommentMerger.STAT_NUM_FEATURE1,
+		// AJavaDocCommentMerger.STAT_NUM_NEW,
+		// AJavaDocCommentMerger.STAT_NUM_FEATURE0 + AJavaDocCommentMerger.STAT_NUM_FEATURE1,
+		// AJavaDocCommentMerger.STAT_NUM_GENERAL0,
+		// AJavaDocCommentMerger.STAT_NUM_GENERAL1,
+		// AJavaDocCommentMerger.STAT_NUM_GENERAL0 + AJavaDocCommentMerger.STAT_NUM_GENERAL1,
+		// AJavaDocCommentMerger.STAT_NUM_FEATURE0 + AJavaDocCommentMerger.STAT_NUM_FEATURE1 +
+		// AJavaDocCommentMerger.STAT_NUM_GENERAL0 + AJavaDocCommentMerger.STAT_NUM_GENERAL1,
+		// };
 		workMonitor.worked();
 
 		// ------------------------------- Featuremodule ------------------------------------------
 
-		//		AJavaDocCommentMerger.reset();
-		//		for (int j = 0; j < featureIDs.length; j++) {
-		//			int[] shortFeatureIDs = new int[j + 1];
-		//			System.arraycopy(featureIDs, 0, shortFeatureIDs, 0, j + 1);
+		// AJavaDocCommentMerger.reset();
+		// for (int j = 0; j < featureIDs.length; j++) {
+		// int[] shortFeatureIDs = new int[j + 1];
+		// System.arraycopy(featureIDs, 0, shortFeatureIDs, 0, j + 1);
 		//
-		//			SignatureIterator it = interfaceProject.getProjectSignatures().createIterator();
-		//			it.addFilter(new FeatureFilter(new int[]{j}));
-		//			pseudoMerge(it, new FeatureModuleMerger(interfaceProject, shortFeatureIDs, j));
-		//			workMonitor.worked();
-		//		}
-		//		statisticDataChars[4] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
-		//		statisticDataTags[4] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
+		// SignatureIterator it = interfaceProject.getProjectSignatures().createIterator();
+		// it.addFilter(new FeatureFilter(new int[]{j}));
+		// pseudoMerge(it, new FeatureModuleMerger(interfaceProject, shortFeatureIDs, j));
+		// workMonitor.worked();
+		// }
+		// statisticDataChars[4] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
+		// statisticDataTags[4] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
 
 		// --------------------------------- Context ---------------------------------------------
-		//		AJavaDocCommentMerger.reset();
-		//		SignatureIterator it = interfaceProject.getProjectSignatures().createIterator();
-		//		it.addFilter(new ContextFilter(new Node[]{}, interfaceProject));
-		//		pseudoMerge(it, new ContextMerger(interfaceProject, featureIDs));
-		//		statisticDataChars[3] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
-		//		statisticDataTags[3] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
-		//		for (int j = 0; j < featureIDs.length; j++) {
-		//			it = interfaceProject.getProjectSignatures().createIterator();
-		//			it.addFilter(new ContextFilter(interfaceProject.getFeatureName(j), interfaceProject));
-		//			pseudoMerge(it, new ContextMerger(interfaceProject, featureIDs));
+		// AJavaDocCommentMerger.reset();
+		// SignatureIterator it = interfaceProject.getProjectSignatures().createIterator();
+		// it.addFilter(new ContextFilter(new Node[]{}, interfaceProject));
+		// pseudoMerge(it, new ContextMerger(interfaceProject, featureIDs));
+		// statisticDataChars[3] = AJavaDocCommentMerger.STAT_AFTER_CHARS;
+		// statisticDataTags[3] = AJavaDocCommentMerger.STAT_AFTER_TAGS;
+		// for (int j = 0; j < featureIDs.length; j++) {
+		// it = interfaceProject.getProjectSignatures().createIterator();
+		// it.addFilter(new ContextFilter(interfaceProject.getFeatureName(j), interfaceProject));
+		// pseudoMerge(it, new ContextMerger(interfaceProject, featureIDs));
 		//
-		//			AJavaDocCommentMerger.STAT_AFTER_CHARS -= statisticDataChars[3];
-		//			AJavaDocCommentMerger.STAT_AFTER_TAGS -= statisticDataTags[3];
-		//			workMonitor.worked();
-		//		}
-		//		statisticDataChars[3] += AJavaDocCommentMerger.STAT_AFTER_CHARS;
-		//		statisticDataTags[3] += AJavaDocCommentMerger.STAT_AFTER_TAGS;
+		// AJavaDocCommentMerger.STAT_AFTER_CHARS -= statisticDataChars[3];
+		// AJavaDocCommentMerger.STAT_AFTER_TAGS -= statisticDataTags[3];
+		// workMonitor.worked();
+		// }
+		// statisticDataChars[3] += AJavaDocCommentMerger.STAT_AFTER_CHARS;
+		// statisticDataTags[3] += AJavaDocCommentMerger.STAT_AFTER_TAGS;
 
 		// -------------------------------- Variante ---------------------------------------------
 
@@ -216,10 +216,10 @@ public class PrintDocumentationStatisticsJob implements LongRunningMethod<Boolea
 		workMonitor.worked();
 
 		final StringBuilder sb3 = new StringBuilder("Feature0;Feature1;New;SumFeature;General0;General1;SumGeneral;SumAll\n");
-		//		for (int j = 0; j < statisticNumComments.length; j++) {
-		//			sb3.append(statisticNumComments[j]);
-		//			sb3.append(';');
-		//		}
+		// for (int j = 0; j < statisticNumComments.length; j++) {
+		// sb3.append(statisticNumComments[j]);
+		// sb3.append(';');
+		// }
 		sb3.setCharAt(sb3.length() - 1, '\n');
 		try {
 			FileSystem.write(Paths.get(folder.getFile("numComments.txt").getLocationURI()), sb3.toString().getBytes(Charset.forName("UTF-8")));
@@ -232,10 +232,10 @@ public class PrintDocumentationStatisticsJob implements LongRunningMethod<Boolea
 		return true;
 	}
 
-	//	private void pseudoMerge(SignatureIterator it, ADocumentationCommentMerger merger) {
-	//		while (it.hasNext()) {
-	//			merger.setSig(it.next());
-	//			merger..mergeComments();
-	//		}
-	//	}
+	// private void pseudoMerge(SignatureIterator it, ADocumentationCommentMerger merger) {
+	// while (it.hasNext()) {
+	// merger.setSig(it.next());
+	// merger..mergeComments();
+	// }
+	// }
 }

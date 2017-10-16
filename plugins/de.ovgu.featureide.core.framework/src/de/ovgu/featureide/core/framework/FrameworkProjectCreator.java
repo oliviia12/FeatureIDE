@@ -145,8 +145,8 @@ public class FrameworkProjectCreator {
 			final Transformer transformer = transformerFactory.newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			final DOMSource source = new DOMSource(infoXML);
-			final StreamResult result = new StreamResult(
-					new File(destination.getLocationURI()).getAbsolutePath().concat(FileSystems.getDefault().getSeparator() + "info.xml"));
+			final StreamResult result =
+					new StreamResult(new File(destination.getLocationURI()).getAbsolutePath().concat(FileSystems.getDefault().getSeparator() + "info.xml"));
 			transformer.transform(source, result);
 		} catch (ParserConfigurationException | TransformerException e) {
 			FrameworkCorePlugin.getDefault().logError(e);

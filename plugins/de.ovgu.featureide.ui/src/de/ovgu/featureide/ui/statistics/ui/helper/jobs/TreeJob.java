@@ -26,10 +26,7 @@ import de.ovgu.featureide.fm.core.job.LongRunningMethod;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Job for the {@code FeatureStatisticsView}.
- * <p>
- * Behaves like a normal {@link Job} but stores a {@link Parent} for the
- * calculation.
+ * Job for the {@code FeatureStatisticsView}. <p> Behaves like a normal {@link Job} but stores a {@link Parent} for the calculation.
  *
  * @author Dominik Hamann
  * @author Patrick Haese

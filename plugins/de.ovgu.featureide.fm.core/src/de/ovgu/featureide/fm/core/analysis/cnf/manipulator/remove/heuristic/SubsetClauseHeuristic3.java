@@ -23,8 +23,7 @@ package de.ovgu.featureide.fm.core.analysis.cnf.manipulator.remove.heuristic;
 import de.ovgu.featureide.fm.core.analysis.cnf.manipulator.remove.DeprecatedFeature;
 
 /**
- * Implementation of {@link AFeatureOrderHeuristic}.
- * Returns features dependent on the current clauses in the formula.
+ * Implementation of {@link AFeatureOrderHeuristic}. Returns features dependent on the current clauses in the formula.
  *
  * @author Sebastian Krieter
  */

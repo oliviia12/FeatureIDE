@@ -143,8 +143,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	private int couterAddProjects = 0;
 
 	/**
-	 * add ResourceChangeListener to workspace to track project move/rename
-	 * events at the moment project refactoring and
+	 * add ResourceChangeListener to workspace to track project move/rename events at the moment project refactoring and
 	 */
 	private IResourceChangeListener listener;
 
@@ -183,8 +182,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	}
 
 	/**
-	 * If the given project has the old FeatureIDE nature, it will be replaced with the actual one.
-	 * Also sets the composition tool to the given ID.
+	 * If the given project has the old FeatureIDE nature, it will be replaced with the actual one. Also sets the composition tool to the given ID.
 	 *
 	 * @param project The project
 	 * @param composerID The new composer ID
@@ -273,7 +271,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	@CheckForNull
 	public String getComposerID(IProjectDescription description) {
 		for (final ICommand command : description.getBuildSpec()) {
-			//TODO Make Extension Point for additional Builders
+			// TODO Make Extension Point for additional Builders
 			if (ExtensibleFeatureProjectBuilder.BUILDER_ID.equals(command.getBuilderName())
 					|| "de.ovgu.featureide.core.mpl.MSPLBuilder".equals(command.getBuilderName())) {
 				return command.getArguments().get("composer");
@@ -369,9 +367,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	}
 
 	/**
-	 * Setups the projects structure.<br>
-	 * Starts composer specific changes of the project structure,
-	 * after adding the FeatureIDE nature to a project.
+	 * Setups the projects structure.<br> Starts composer specific changes of the project structure, after adding the FeatureIDE nature to a project.
 	 */
 	public static void setupProject(final IProject project, String compositionToolID, final String sourcePath, final String configPath, final String buildPath,
 			boolean shouldCreateSourceFolder, boolean shouldCreateBuildFolder) {
@@ -383,6 +379,7 @@ public class CorePlugin extends AbstractCorePlugin {
 
 		if (composer != null) {
 			final ISafeRunnable runnable = new ISafeRunnable() {
+
 				@Override
 				public void handleException(Throwable e) {
 					getDefault().logError(e);
@@ -400,10 +397,8 @@ public class CorePlugin extends AbstractCorePlugin {
 	}
 
 	/**
-	 * Composer specific changes of the project structure,
-	 * after adding the FeatureIDE nature to a project.<br>
-	 * Moves the files of the source folder to the features folder(composer specific)<br>
-	 * Creates a configuration file, where the base feature is selected, to automatically build the project.
+	 * Composer specific changes of the project structure, after adding the FeatureIDE nature to a project.<br> Moves the files of the source folder to the
+	 * features folder(composer specific)<br> Creates a configuration file, where the base feature is selected, to automatically build the project.
 	 */
 	protected static void runProjectConversion(IProject project, String sourcePath, String configPath, String buildPath, IComposerExtensionClass composer)
 			throws IOException {
@@ -433,11 +428,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	}
 
 	/**
-	 * Setups the project.<br>
-	 * Creates folders<br>
-	 * Adds the compiler(if necessary)<br>
-	 * Adds the FeatureIDE nature<br>
-	 * Creates the feature model
+	 * Setups the project.<br> Creates folders<br> Adds the compiler(if necessary)<br> Adds the FeatureIDE nature<br> Creates the feature model
 	 *
 	 * @param addCompiler <code>false</code> if the project already has a compiler
 	 */
@@ -451,6 +442,7 @@ public class CorePlugin extends AbstractCorePlugin {
 
 		if ((composer != null) && addCompiler) {
 			final ISafeRunnable runnable = new ISafeRunnable() {
+
 				@Override
 				public void handleException(Throwable e) {
 					getDefault().logError(e);
@@ -521,9 +513,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	}
 
 	/**
-	 * Creates the source-, features- and build-folder at the given paths.<br>
-	 * Also creates the bin folder if necessary.<br>
-	 * Creates the default feature model.
+	 * Creates the source-, features- and build-folder at the given paths.<br> Also creates the bin folder if necessary.<br> Creates the default feature model.
 	 */
 	private static void createProjectStructure(IProject project, String sourcePath, String configPath, String buildPath, IComposerExtensionClass composer,
 			boolean shouldCreateSourceFolder, boolean shouldCreateBuildFolder) {
@@ -603,8 +593,7 @@ public class CorePlugin extends AbstractCorePlugin {
 	 * returns the ProjectData object associated with the given resource
 	 *
 	 * @param res
-	 * @return <code>null</code> if there is no associated project, no active
-	 *         instance of this plug-in or resource is the workspace root
+	 * @return <code>null</code> if there is no associated project, no active instance of this plug-in or resource is the workspace root
 	 */
 	@CheckForNull
 	public static IFeatureProject getFeatureProject(IResource res) {
@@ -639,6 +628,7 @@ public class CorePlugin extends AbstractCorePlugin {
 		projectsToAdd.add(project);
 		if (job == null) {
 			job = new Job(ADD_PROJECT) {
+
 				@Override
 				public IStatus run(IProgressMonitor monitor) {
 					addProjects(monitor);
@@ -697,7 +687,7 @@ public class CorePlugin extends AbstractCorePlugin {
 					final AbstractMethodSignature methSig = (AbstractMethodSignature) curMember;
 					final List<String> sig = methSig.getParameterTypes();
 
-					//TODO differentiate between possible types
+					// TODO differentiate between possible types
 					char[][] c = new char[][] { {} };
 					if (sig.size() > 0) {
 						c = new char[sig.size()][];
@@ -733,7 +723,7 @@ public class CorePlugin extends AbstractCorePlugin {
 
 	private int getFlagOfSignature(AbstractSignature element) {
 		if (element instanceof AbstractMethodSignature) {
-			//TODO add constructor icon
+			// TODO add constructor icon
 			switch (((AbstractMethodSignature) element).getVisibilty()) {
 			case AbstractSignature.VISIBILITY_DEFAULT:
 				return Flags.AccDefault;
@@ -763,7 +753,7 @@ public class CorePlugin extends AbstractCorePlugin {
 		final ProjectSignatures signatures = project.getProjectSignatures();
 		if ((signatures != null) && (signatures.getFeatureID(featureName) != -1)) {
 			final SignatureIterator it = signatures.iterator();
-			//TODO check
+			// TODO check
 			if (featureName != null) {
 				it.addFilter(new ContextFilter(featureName, signatures));
 			}

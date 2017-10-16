@@ -61,8 +61,7 @@ import de.ovgu.featureide.ui.views.collaboration.GUIDefaults;
 import de.ovgu.featureide.ui.views.collaboration.action.ShowFieldsMethodsAction;
 
 /**
- * <code>RoleFigure</code> represents the graphical representation of a
- * role in the collaboration diagram.
+ * <code>RoleFigure</code> represents the graphical representation of a role in the collaboration diagram.
  *
  * @author Constanze Adler
  * @author Stephan Besecke
@@ -291,13 +290,12 @@ public class RoleFigure extends Figure implements GUIDefaults {
 			}
 
 			// TODO: Seperation lines between inner classes, fields and methods
-			/*if (invariant != null && (fieldCount + ((Integer) invariant[0]) > 0) && (methodCount > 0)) {
-				int xyValue = (fieldCount + ((Integer) invariant[0])) * (ROLE_PREFERED_SIZE + GRIDLAYOUT_VERTICAL_SPACING) + GRIDLAYOUT_MARGIN_HEIGHT;
-				panel.setBorder(new RoleFigureBorder(xyValue, xyValue));
-			} else if (fieldCount > 0 && (methodCount > 0)) {
-				int xyValue = fieldCount * (ROLE_PREFERED_SIZE + GRIDLAYOUT_VERTICAL_SPACING) + GRIDLAYOUT_MARGIN_HEIGHT;
-				panel.setBorder(new RoleFigureBorder(xyValue, xyValue));
-			}*/
+			/*
+			 * if (invariant != null && (fieldCount + ((Integer) invariant[0]) > 0) && (methodCount > 0)) { int xyValue = (fieldCount + ((Integer)
+			 * invariant[0])) * (ROLE_PREFERED_SIZE + GRIDLAYOUT_VERTICAL_SPACING) + GRIDLAYOUT_MARGIN_HEIGHT; panel.setBorder(new RoleFigureBorder(xyValue,
+			 * xyValue)); } else if (fieldCount > 0 && (methodCount > 0)) { int xyValue = fieldCount * (ROLE_PREFERED_SIZE + GRIDLAYOUT_VERTICAL_SPACING) +
+			 * GRIDLAYOUT_MARGIN_HEIGHT; panel.setBorder(new RoleFigureBorder(xyValue, xyValue)); }
+			 */
 
 		} else if (role.getClassFragment().getName().startsWith("*.")) {
 			setContentForFiles(tooltipContent, null);
@@ -467,7 +465,7 @@ public class RoleFigure extends Figure implements GUIDefaults {
 				if ((invariants % 25) == 0) {
 					tooltipContent.add(invariantFigure);
 					invariantFigure = new CompartmentFigure();
-					invariantFigure.add(invariantLabel);//new Label(invariant.getBody()));
+					invariantFigure.add(invariantLabel);// new Label(invariant.getBody()));
 				}
 			}
 		}

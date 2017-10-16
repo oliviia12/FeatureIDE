@@ -96,8 +96,7 @@ public class JavaCompiler implements IConfigurationBuilderBasics {
 	}
 
 	/**
-	 * Compiles the built configuration to create error markers.
-	 * The binary files will be placed into an temporary folder.
+	 * Compiles the built configuration to create error markers. The binary files will be placed into an temporary folder.
 	 *
 	 * @param confName
 	 */
@@ -208,9 +207,9 @@ public class JavaCompiler implements IConfigurationBuilderBasics {
 				}
 
 				final String errorMessage = currentLine;
-				//			if (CANNOT_FIND_SYMBOL.equals(errorMessage)) {
-				//				errorMessage = parseCannotFindSymbolMessage(scanner);
-				//			}
+				// if (CANNOT_FIND_SYMBOL.equals(errorMessage)) {
+				// errorMessage = parseCannotFindSymbolMessage(scanner);
+				// }
 				if (errorMessage.contains(ERROR_IGNOR_RAW_TYPE) || errorMessage.contains(ERROR_IGNOR_CAST) || errorMessage.contains(ERROR_IGNOR_SERIIZABLE)
 						|| (errorMessage.contains(ERROR_IGNOR_UNUSED_IMPORT) && !errorMessage.contains("cannot be resolved"))
 						|| errorMessage.contains(ERROR_IGNOR_DEPRECATION)) {

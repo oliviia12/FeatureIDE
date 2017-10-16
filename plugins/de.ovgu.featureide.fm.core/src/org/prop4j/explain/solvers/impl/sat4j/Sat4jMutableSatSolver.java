@@ -39,6 +39,7 @@ import org.sat4j.specs.IConstr;
  * @author Timo G&uuml;nther
  */
 public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatSolver {
+
 	/** The variables that were assumed in each scope except the current one. */
 	private final Deque<Map<Object, Boolean>> previousScopeAssumptions = new LinkedList<>();
 	/** The amount of clauses that were added in each scope except the current one. */
@@ -51,8 +52,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 	/**
 	 * Constructs a new instance of this class.
 	 */
-	protected Sat4jMutableSatSolver() {
-	}
+	protected Sat4jMutableSatSolver() {}
 
 	@Override
 	public void addClause(Node clause) {
@@ -62,16 +62,16 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 
 	@Override
 	public void push() {
-		//Push the clauses.
+		// Push the clauses.
 		previousScopeClauseCounts.push(scopeClauseCount);
 		scopeClauseCount = 0;
 
-		//Push the contradiction distance.
+		// Push the contradiction distance.
 		if (isContradiction()) {
 			scopeContradictionDistance++;
 		}
 
-		//Push the assumptions.
+		// Push the assumptions.
 		final Map<Object, Boolean> assumptions = super.getAssumptions();
 		previousScopeAssumptions.push(new LinkedHashMap<>(assumptions));
 		assumptions.clear();
@@ -79,14 +79,14 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 
 	@Override
 	public List<Node> pop() throws NoSuchElementException {
-		//Pop the clauses.
+		// Pop the clauses.
 		final List<Node> removedClauses = new LinkedList<>();
 		while (scopeClauseCount > 0) {
 			removedClauses.add(removeClause());
 		}
 		scopeClauseCount = previousScopeClauseCounts.pop();
 
-		//Pop the contradiction distance.
+		// Pop the contradiction distance.
 		if (isContradiction()) {
 			if (scopeContradictionDistance == 0) {
 				setContradiction(false);
@@ -95,7 +95,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 			}
 		}
 
-		//Pop the assumptions.
+		// Pop the assumptions.
 		final Map<Object, Boolean> assumptions = super.getAssumptions();
 		assumptions.clear();
 		assumptions.putAll(previousScopeAssumptions.pop());
@@ -112,8 +112,8 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 		scopeClauseCount--;
 
 		/*
-		 * When a constraint is removed from a Sat4J oracle, its index is not freed up.
-		 * To still be able to keep track of the constraint indexes, do not remove the corresponding clause from the local list but just set it to null.
+		 * When a constraint is removed from a Sat4J oracle, its index is not freed up. To still be able to keep track of the constraint indexes, do not remove
+		 * the corresponding clause from the local list but just set it to null.
 		 */
 		final List<Node> clauses = super.getClauses();
 		Node clause = null;
@@ -135,9 +135,8 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 	@Override
 	public List<Node> getClauses() {
 		/*
-		 * Sat4J does not free up a constraint's index when it is removed.
-		 * In the local clause list, the resulting gaps in the index range are modeled using null values.
-		 * As such, return a copy without these null values to fulfill the interface's contract.
+		 * Sat4J does not free up a constraint's index when it is removed. In the local clause list, the resulting gaps in the index range are modeled using
+		 * null values. As such, return a copy without these null values to fulfill the interface's contract.
 		 */
 		final List<Node> clauses = super.getClauses();
 		final List<Node> clausesWithoutNull = new ArrayList<>(getClauseCount());
@@ -192,8 +191,7 @@ public class Sat4jMutableSatSolver extends Sat4jSatSolver implements MutableSatS
 	@Override
 	public Map<Object, Boolean> getAssumptions() {
 		/*
-		 * Merge the assumptions of all scopes.
-		 * Add the newer assumptions later to override the older ones.
+		 * Merge the assumptions of all scopes. Add the newer assumptions later to override the older ones.
 		 */
 		final Map<Object, Boolean> assumptions = new LinkedHashMap<>();
 		for (final Iterator<Map<Object, Boolean>> it = previousScopeAssumptions.descendingIterator(); it.hasNext();) {

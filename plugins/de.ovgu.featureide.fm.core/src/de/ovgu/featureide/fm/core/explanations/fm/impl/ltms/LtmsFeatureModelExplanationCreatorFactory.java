@@ -33,6 +33,7 @@ import de.ovgu.featureide.fm.core.explanations.impl.ltms.Ltms;
  * @author Timo G&uuml;nther
  */
 public class LtmsFeatureModelExplanationCreatorFactory extends FeatureModelExplanationCreatorFactory {
+
 	@Override
 	public DeadFeatureExplanationCreator getDeadFeatureExplanationCreator() {
 		return new LtmsDeadFeatureExplanationCreator();

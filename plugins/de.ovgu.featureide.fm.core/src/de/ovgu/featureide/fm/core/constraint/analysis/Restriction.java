@@ -30,9 +30,7 @@ import java.util.List;
 import de.ovgu.featureide.fm.core.constraint.RelationOperator;
 
 /**
- * The abstract Restriction class provides a template to build specialized
- * subclasses which represent a pseudo-boolean restriction (equation
- * or inequality).
+ * The abstract Restriction class provides a template to build specialized subclasses which represent a pseudo-boolean restriction (equation or inequality).
  *
  * @author Sebastian Henneberg
  */
@@ -58,8 +56,7 @@ abstract public class Restriction {
 	}
 
 	/**
-	 * The only abstract method that is responsible to define the normal form
-	 * and store the terms, the operator and the degree.
+	 * The only abstract method that is responsible to define the normal form and store the terms, the operator and the degree.
 	 *
 	 * @param terms The terms that contain unknowns.
 	 * @param op The operator of the restriction.
@@ -203,6 +200,7 @@ abstract public class Restriction {
 	 * @author Sebastian Henneberg
 	 */
 	static protected class IdComparator implements Comparator<Term> {
+
 		@Override
 		public int compare(Term term1, Term term2) {
 			return term1.getId() - term2.getId();
@@ -210,12 +208,12 @@ abstract public class Restriction {
 	}
 
 	/**
-	 * The CoefficientComparator can be used in subclasses to sort the terms
-	 * by absolute value of coefficients.
+	 * The CoefficientComparator can be used in subclasses to sort the terms by absolute value of coefficients.
 	 *
 	 * @author Sebastian Henneberg
 	 */
 	static protected class CoefficientComparator implements Comparator<Term> {
+
 		@Override
 		public int compare(Term term1, Term term2) {
 			return term1.getCoefficient() - term2.getCoefficient();

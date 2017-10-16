@@ -111,7 +111,8 @@ public class GraphicalFeatureModel implements IGraphicalFeatureModel {
 		fireEvent(EventType.LEGEND_LAYOUT_CHANGED);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel#getLegendHidden()
 	 */
 	@Override
@@ -119,7 +120,8 @@ public class GraphicalFeatureModel implements IGraphicalFeatureModel {
 		return hiddenLegend;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel#setLegendHidden(boolean)
 	 */
 	@Override
@@ -127,7 +129,8 @@ public class GraphicalFeatureModel implements IGraphicalFeatureModel {
 		hiddenLegend = hidden;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel#getLegend()
 	 */
 	@Override
@@ -135,7 +138,8 @@ public class GraphicalFeatureModel implements IGraphicalFeatureModel {
 		return legend;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel#setLegend(de.ovgu.featureide.fm.ui.editors.featuremodel.Legend)
 	 */
 	@Override

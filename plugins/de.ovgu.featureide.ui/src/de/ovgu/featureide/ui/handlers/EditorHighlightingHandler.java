@@ -30,8 +30,7 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import de.ovgu.featureide.ui.editors.annotation.ColorAnnotationModel;
 
 /**
- * Action in the editor's context menu to toggle
- * the editor highlighting of the directives
+ * Action in the editor's context menu to toggle the editor highlighting of the directives
  *
  * @author Sebastian Krieter
  */

@@ -27,77 +27,49 @@ import java.util.Map;
 import org.prop4j.Node;
 
 /**
- * <p>
- * Facade for the satisfiability problem for propositional formulas.
- * </p>
+ * <p> Facade for the satisfiability problem for propositional formulas. </p>
  *
- * <p>
- * Note that this interface only requires the bare minimum.
- * In particular, clauses may only be {@link #addFormula(Node) added} but never removed.
- * </p>
+ * <p> Note that this interface only requires the bare minimum. In particular, clauses may only be {@link #addFormula(Node) added} but never removed. </p>
  *
  * @author Timo G&uuml;nther
  * @see {@link SatSolver} for solving the problem
  */
 public interface SatProblem {
+
 	/**
-	 * <p>
-	 * Adds all given formulas to the problem.
-	 * First, each given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}.
-	 * Then, each clause of the resulting conjunction is added to the existing conjunction.
-	 * </p>
+	 * <p> Adds all given formulas to the problem. First, each given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}. Then,
+	 * each clause of the resulting conjunction is added to the existing conjunction. </p>
 	 *
-	 * <p>
-	 * More formally, let <i>f</i> denote the current (possibly empty) formula in the problem.
-	 * After this operation, the problem contains the formula <i>f'</i>.
-	 * <i>f'</i> is the conjunction of <i>f</i> with each of the <i>m</i> &ge; 0 (possibly empty) given formulas <i>g<sub>j</sub></i> in CNF:
+	 * <p> More formally, let <i>f</i> denote the current (possibly empty) formula in the problem. After this operation, the problem contains the formula
+	 * <i>f'</i>. <i>f'</i> is the conjunction of <i>f</i> with each of the <i>m</i> &ge; 0 (possibly empty) given formulas <i>g<sub>j</sub></i> in CNF:
 	 *
-	 * <pre>
-	 * <i>f'</i> = <i>f</i> &and; <i>g<sub>1</sub></i> &and; &hellip; &and; <i>g<sub>m</sub></i>
-	 * </pre>
-	 * </p>
+	 * <pre> <i>f'</i> = <i>f</i> &and; <i>g<sub>1</sub></i> &and; &hellip; &and; <i>g<sub>m</sub></i> </pre> </p>
 	 *
 	 * @param formulas formulas to add; not null
 	 */
 	public void addFormulas(Node... formulas);
 
 	/**
-	 * <p>
-	 * Adds all given formulas to the problem.
-	 * First, each given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}.
-	 * Then, each clause of the resulting conjunction is added to the existing conjunction.
-	 * </p>
+	 * <p> Adds all given formulas to the problem. First, each given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}. Then,
+	 * each clause of the resulting conjunction is added to the existing conjunction. </p>
 	 *
-	 * <p>
-	 * More formally, let <i>f</i> denote the current (possibly empty) formula in the problem.
-	 * After this operation, the problem contains the formula <i>f'</i>.
-	 * <i>f'</i> is the conjunction of <i>f</i> with each of the <i>m</i> &ge; 0 (possibly empty) given formulas <i>g<sub>j</sub></i> in CNF:
+	 * <p> More formally, let <i>f</i> denote the current (possibly empty) formula in the problem. After this operation, the problem contains the formula
+	 * <i>f'</i>. <i>f'</i> is the conjunction of <i>f</i> with each of the <i>m</i> &ge; 0 (possibly empty) given formulas <i>g<sub>j</sub></i> in CNF:
 	 *
-	 * <pre>
-	 * <i>f'</i> = <i>f</i> &and; <i>g<sub>1</sub></i> &and; &hellip; &and; <i>g<sub>m</sub></i>
-	 * </pre>
-	 * </p>
+	 * <pre> <i>f'</i> = <i>f</i> &and; <i>g<sub>1</sub></i> &and; &hellip; &and; <i>g<sub>m</sub></i> </pre> </p>
 	 *
 	 * @param formulas formulas to add; not null
 	 */
 	public void addFormulas(Collection<Node> formulas);
 
 	/**
-	 * <p>
-	 * Adds the given formula to the problem.
-	 * First, the given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}.
-	 * Then, each clause of the resulting conjunction is added to the existing conjunction.
-	 * </p>
+	 * <p> Adds the given formula to the problem. First, the given formula is converted to {@link Node#isClausalNormalForm() clausal normal form (CNF)}. Then,
+	 * each clause of the resulting conjunction is added to the existing conjunction. </p>
 	 *
-	 * <p>
-	 * More formally, let <i>f</i> denote the current (possibly empty) formula in the problem.
-	 * After this operation, the problem contains the formula <i>f'</i>.
-	 * <i>f'</i> is the conjunction of <i>f</i> with the (possibly empty) given formula <i>g</i> in CNF:
+	 * <p> More formally, let <i>f</i> denote the current (possibly empty) formula in the problem. After this operation, the problem contains the formula
+	 * <i>f'</i>. <i>f'</i> is the conjunction of <i>f</i> with the (possibly empty) given formula <i>g</i> in CNF:
 	 *
-	 * <pre>
-	 * <i>f'</i> = <i>f</i> &and; <i>g</i>
-	 * </pre>
-	 * </p>
+	 * <pre> <i>f'</i> = <i>f</i> &and; <i>g</i> </pre> </p>
 	 *
 	 * @param formula formula to add; not null
 	 */

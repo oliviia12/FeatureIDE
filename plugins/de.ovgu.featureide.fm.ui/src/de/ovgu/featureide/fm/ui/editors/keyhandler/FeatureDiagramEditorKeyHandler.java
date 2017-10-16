@@ -41,14 +41,10 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
 
 /**
- * The KeyHandler for the FeatureDiagramEditor.
- * </br>
- * At Manual-Layout: </br>
- * to ensure that actions registered in {@link #createKeyBindings()} will be handled first! default actions will be handled at last!
+ * The KeyHandler for the FeatureDiagramEditor. </br> At Manual-Layout: </br> to ensure that actions registered in {@link #createKeyBindings()} will be handled
+ * first! default actions will be handled at last!
  *
- * Handles searching of features in the Tree.
- * </br>
- * At Automatic-Layout: run {@link GraphicalViewerKeyHandler} first
+ * Handles searching of features in the Tree. </br> At Automatic-Layout: run {@link GraphicalViewerKeyHandler} first
  *
  * @author Guenter Ulreich
  * @author Andy Koch
@@ -69,8 +65,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	private long lastTime;
 
 	/**
-	 * alternativeKeyHandler handles the KeyEvents, if the
-	 * GraphicalViewerKeyHandler is active for auto-layout
+	 * alternativeKeyHandler handles the KeyEvents, if the GraphicalViewerKeyHandler is active for auto-layout
 	 */
 	public FeatureDiagramEditorKeyHandler(FeatureDiagramEditor view, IGraphicalFeatureModel featureModel) {
 		super();
@@ -94,8 +89,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	}
 
 	/**
-	 * use {@link GraphicalViewerKeyHandler} first if auto-layout is active handles
-	 * the searching on the graph (depth-first, same way as in Outline)
+	 * use {@link GraphicalViewerKeyHandler} first if auto-layout is active handles the searching on the graph (depth-first, same way as in Outline)
 	 */
 	@Override
 	public boolean keyPressed(KeyEvent e) {
@@ -145,8 +139,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	}
 
 	/**
-	 * To handle 2 key handlers (otherwise there would be an action loop)</br>
-	 * {@inheritDoc}
+	 * To handle 2 key handlers (otherwise there would be an action loop)</br> {@inheritDoc}
 	 */
 	@Override
 	public void put(KeyStroke keystroke, IAction action) {
@@ -157,6 +150,7 @@ public class FeatureDiagramEditorKeyHandler extends KeyHandler implements IEvent
 	private void resetFeatureList() {
 		featureList.clear();
 		featureList.addAll(Functional.toList(Functional.map(featureModel.getFeatureModel().getFeatures(), new Functional.IFunction<IFeature, String>() {
+
 			@Override
 			public String invoke(IFeature t) {
 				return t.getName();

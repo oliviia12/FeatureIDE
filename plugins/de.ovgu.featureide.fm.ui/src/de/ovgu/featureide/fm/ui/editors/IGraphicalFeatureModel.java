@@ -78,10 +78,8 @@ public interface IGraphicalFeatureModel extends IGraphicItem, Cloneable {
 	void init();
 
 	/**
-	 * Returns the list of not collapsed constraints stored in this feature model.
-	 * <br/>
-	 * <br/>
-	 * <b>Note</b>: The returned list should be <b>unmodifiable</b> to avoid external access to internal data
+	 * Returns the list of not collapsed constraints stored in this feature model. <br/> <br/> <b>Note</b>: The returned list should be <b>unmodifiable</b> to
+	 * avoid external access to internal data
 	 *
 	 * @see #addConstraint(IConstraint)
 	 * @see #addConstraint(IConstraint, int)
@@ -100,10 +98,8 @@ public interface IGraphicalFeatureModel extends IGraphicItem, Cloneable {
 	List<IGraphicalConstraint> getVisibleConstraints();
 
 	/**
-	 * Returns the list of not collapsed features stored in this feature model.
-	 * <br/>
-	 * <br/>
-	 * <b>Note</b>: The returned list should be <b>unmodifiable</b> to avoid external access to internal data
+	 * Returns the list of not collapsed features stored in this feature model. <br/> <br/> <b>Note</b>: The returned list should be <b>unmodifiable</b> to
+	 * avoid external access to internal data
 	 *
 	 * @since 3.3
 	 *

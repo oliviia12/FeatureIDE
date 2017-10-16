@@ -43,9 +43,8 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.ModelEditPart;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.CalculateDependencyOperation;
 
 /**
- * Action to calculate implicit dependencies of a sub feature model after selecting a feature
- * and choosing to "calculate implicit dependencies". This feature will be the root of the new
- * sub feature model.
+ * Action to calculate implicit dependencies of a sub feature model after selecting a feature and choosing to "calculate implicit dependencies". This feature
+ * will be the root of the new sub feature model.
  *
  * @author "Ananieva Sofia"
  */
@@ -70,6 +69,7 @@ public class CalculateDependencyAction extends Action {
 	 * The listener which remembers the selection and checks whether it is valid.
 	 */
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

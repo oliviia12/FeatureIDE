@@ -30,16 +30,14 @@ import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import de.ovgu.featureide.ui.wizards.NewConfigurationFileWizard;
 
 /**
- * Starts the configuration file wizard for the selected configuration file
- * at the context menu.
+ * Starts the configuration file wizard for the selected configuration file at the context menu.
  */
 public class StartConfigurationFileWizard implements IWorkbenchWindowActionDelegate {
 
 	private IWorkbenchWindow window;
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void init(IWorkbenchWindow window) {
@@ -63,7 +61,6 @@ public class StartConfigurationFileWizard implements IWorkbenchWindowActionDeleg
 	}
 
 	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-	}
+	public void selectionChanged(IAction action, ISelection selection) {}
 
 }

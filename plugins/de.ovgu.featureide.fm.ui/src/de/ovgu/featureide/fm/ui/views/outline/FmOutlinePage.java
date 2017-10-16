@@ -30,8 +30,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.ui.editors.FeatureModelEditor;
 
 /**
- * This class is part of the outline. It sets up an new outline page that uses a
- * TreeView to show the FeatureModel currently being worked on.
+ * This class is part of the outline. It sets up an new outline page that uses a TreeView to show the FeatureModel currently being worked on.
  *
  * @author Jan Wedding
  * @author Melanie Pflaume
@@ -62,8 +61,7 @@ public class FmOutlinePage extends ContentOutlinePage {
 	/**
 	 * Sets the input of the outline page
 	 *
-	 * @param input
-	 *            the input of this outline page
+	 * @param input the input of this outline page
 	 */
 	public void setInput(IFeatureModel input) {
 		fInput = input;

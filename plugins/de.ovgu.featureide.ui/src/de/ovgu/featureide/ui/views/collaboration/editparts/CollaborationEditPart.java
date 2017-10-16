@@ -51,7 +51,8 @@ public class CollaborationEditPart extends AbstractGraphicalEditPart implements 
 		return (FSTFeature) getModel();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
 	 */
 	@Override
@@ -59,12 +60,12 @@ public class CollaborationEditPart extends AbstractGraphicalEditPart implements 
 		return new UnderlayerFigure(getCollaborationModel());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
 	 */
 	@Override
-	protected void createEditPolicies() {
-	}
+	protected void createEditPolicies() {}
 
 	/**
 	 * {@link ModelEditPart#refreshVisuals()}

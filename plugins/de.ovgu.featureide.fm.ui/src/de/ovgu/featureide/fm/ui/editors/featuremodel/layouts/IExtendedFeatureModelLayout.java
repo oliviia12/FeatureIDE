@@ -21,6 +21,7 @@
 package de.ovgu.featureide.fm.ui.editors.featuremodel.layouts;
 
 public interface IExtendedFeatureModelLayout extends IFeatureModelLayout {
+
 	public boolean showShortNames();
 
 	public void setShowShortNames(boolean b);

@@ -34,6 +34,7 @@ import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent.EventType;
  * @author Marcus Pinnecke
  */
 public class DeleteConstraintOperation extends AbstractFeatureModelOperation {
+
 	private final IConstraint constraint;
 
 	private int index;

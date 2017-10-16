@@ -29,6 +29,7 @@ import org.prop4j.explain.solvers.SatSolverFactory;
  * @author Timo G&uuml;nther
  */
 public class Sat4jSatSolverFactory extends SatSolverFactory {
+
 	@Override
 	public Sat4jSatSolver getSatSolver() {
 		return new Sat4jSatSolver();

@@ -39,9 +39,9 @@ import org.eclipse.swt.widgets.Text;
 public class SearchField<T> {
 
 	private final class SearchNextListener implements KeyListener {
+
 		@Override
-		public void keyReleased(KeyEvent e) {
-		}
+		public void keyReleased(KeyEvent e) {}
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -53,6 +53,7 @@ public class SearchField<T> {
 	}
 
 	private final class SearchModifyListener implements ModifyListener {
+
 		@Override
 		public void modifyText(ModifyEvent e) {
 			curIndex = 0;

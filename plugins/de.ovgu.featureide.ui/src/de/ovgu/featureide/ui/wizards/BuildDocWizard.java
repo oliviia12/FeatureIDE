@@ -30,6 +30,7 @@ import de.ovgu.featureide.ui.UIPlugin;
  * @author Reimar Schroeter
  */
 public class BuildDocWizard extends AbstractWizard {
+
 	public static final String ID = UIPlugin.PLUGIN_ID + ".wizards.BuildExtendedModulesWizard";
 
 	private final String defaultFolderString;
@@ -46,7 +47,7 @@ public class BuildDocWizard extends AbstractWizard {
 		if (featureSelection) {
 			addPage(new ChooseFeaturePage());
 		}
-		//		addPage(new ChooseFolderPage(defaultFolderString));
+		// addPage(new ChooseFolderPage(defaultFolderString));
 		addPage(new DocArgumentsPage());
 	}
 

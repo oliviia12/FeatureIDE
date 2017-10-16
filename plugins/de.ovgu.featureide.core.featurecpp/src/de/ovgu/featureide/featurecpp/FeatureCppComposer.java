@@ -54,6 +54,7 @@ import de.ovgu.featureide.fm.core.configuration.Configuration;
  * @author Jens Meinicke
  */
 public class FeatureCppComposer extends ComposerExtensionClass {
+
 	private static final String PLUGIN_ID = "org.eclipse.cdt";
 	private static final String PLUGIN_WARNING = THE_REQUIRED_BUNDLE + PLUGIN_ID + IS_NOT_INSTALLED_;
 	public static final String COMPOSER_ID = "de.ovgu.featureide.composer.featurecpp";
@@ -73,8 +74,7 @@ public class FeatureCppComposer extends ComposerExtensionClass {
 	private final FeatureCppWrapper featureCpp = new FeatureCppWrapper();
 
 	/**
-	 * This wrapper builds a complete configuration into the temp folder to
-	 * generate a full FST model.
+	 * This wrapper builds a complete configuration into the temp folder to generate a full FST model.
 	 */
 	private final FeatureCppWrapper featureCppModelWrapper = new FeatureCppWrapper();
 
@@ -105,9 +105,7 @@ public class FeatureCppComposer extends ComposerExtensionClass {
 	}
 
 	/**
-	 * Creates the folders for building a full FST model.<br>
-	 * {@link FeatureCppComposer#parentFolder}<br>
-	 * {@link FeatureCppComposer#tempFolder}
+	 * Creates the folders for building a full FST model.<br> {@link FeatureCppComposer#parentFolder}<br> {@link FeatureCppComposer#tempFolder}
 	 */
 	private void createTempFolder() {
 		parentFolder = featureProject.getProject().getFolder(".tmp");
@@ -215,7 +213,8 @@ public class FeatureCppComposer extends ComposerExtensionClass {
 		return super.replaceSourceContentMarker(text, refines, packageName);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.core.builder.ComposerExtensionClass#refines()
 	 */
 	@Override
@@ -303,7 +302,8 @@ public class FeatureCppComposer extends ComposerExtensionClass {
 		return IComposerExtensionClass.Mechanism.FEATURE_ORIENTED_PROGRAMMING;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.core.builder.IComposerExtensionBase#supportsMigration()
 	 */
 	@Override

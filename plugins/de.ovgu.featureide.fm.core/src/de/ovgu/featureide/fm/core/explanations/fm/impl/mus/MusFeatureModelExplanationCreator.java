@@ -34,9 +34,9 @@ import de.ovgu.featureide.fm.core.explanations.fm.impl.AbstractFeatureModelExpla
  * @author Timo G&uuml;nther
  */
 public abstract class MusFeatureModelExplanationCreator extends AbstractFeatureModelExplanationCreator {
+
 	/**
-	 * The oracle with the CNF as input.
-	 * The oracle is created lazily when needed and reset when the CNF changes.
+	 * The oracle with the CNF as input. The oracle is created lazily when needed and reset when the CNF changes.
 	 */
 	private MusExtractor oracle;
 
@@ -57,8 +57,7 @@ public abstract class MusFeatureModelExplanationCreator extends AbstractFeatureM
 	}
 
 	/**
-	 * Returns the oracle.
-	 * Creates it first if necessary.
+	 * Returns the oracle. Creates it first if necessary.
 	 *
 	 * @return the oracle; not null
 	 */

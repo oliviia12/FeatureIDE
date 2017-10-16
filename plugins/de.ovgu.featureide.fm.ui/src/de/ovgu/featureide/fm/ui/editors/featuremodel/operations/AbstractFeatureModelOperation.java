@@ -35,8 +35,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.event.FeatureIDEEvent;
 
 /**
- * This operation should be used as superclass for all operations on the feature model.
- * It provides standard handling and refreshing of the model.
+ * This operation should be used as superclass for all operations on the feature model. It provides standard handling and refreshing of the model.
  *
  * @author Jens Meinicke
  * @author Sebastian Krieter

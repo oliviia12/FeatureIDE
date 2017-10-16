@@ -29,8 +29,7 @@ import org.prop4j.Node;
 import de.ovgu.featureide.core.signature.ProjectSignatures;
 
 /**
- * Creates a {@link BlockTag} from a given line in a Javadoc comment.</br>
- * Is used by {@link ADocumentationCommentParser}.
+ * Creates a {@link BlockTag} from a given line in a Javadoc comment.</br> Is used by {@link ADocumentationCommentParser}.
  *
  * @author Sebastian Krieter
  */

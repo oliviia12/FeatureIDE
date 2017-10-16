@@ -36,6 +36,7 @@ import de.ovgu.featureide.ui.views.configMap.IConfigurationMapFilterable;
  * @author Antje Moench
  */
 public class ConfigMapFilterMenuAction extends Action implements IMenuCreator {
+
 	private Menu filterMenu = null;
 	private final IConfigurationMapFilterable filterable;
 	private final ConfigMapFilterAction[] filterActions;
@@ -53,7 +54,8 @@ public class ConfigMapFilterMenuAction extends Action implements IMenuCreator {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Control)
 	 */
 	@Override
@@ -65,15 +67,16 @@ public class ConfigMapFilterMenuAction extends Action implements IMenuCreator {
 				filterAction.initializeImage(FMUIPlugin.getImage(filterAction.getFilter().getImagePath()));
 
 				final ActionContributionItem contributionItem = new ActionContributionItem(filterAction);
-				//contributionItem.setMode(ActionContributionItem.MODE_FORCE_TEXT);
-				contributionItem.fill(filterMenu, -1 /* means insert at end*/);
+				// contributionItem.setMode(ActionContributionItem.MODE_FORCE_TEXT);
+				contributionItem.fill(filterMenu, -1 /* means insert at end */);
 			}
 		}
 
 		return filterMenu;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Menu)
 	 */
 	@Override
@@ -82,6 +85,5 @@ public class ConfigMapFilterMenuAction extends Action implements IMenuCreator {
 	}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 }

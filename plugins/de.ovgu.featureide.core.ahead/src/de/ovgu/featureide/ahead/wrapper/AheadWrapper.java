@@ -41,12 +41,9 @@ import de.ovgu.featureide.core.IFeatureProject;
 import jak2java.Jak2JavaWrapper;
 
 /**
- * The AheadWrapper class encapsulates all functionality that has to do
- * with the ahead tool suite. It provides methods to set the current
- * configuration file, to add jak files that should be recompiled due to an
- * incremental or full build. The build methods are capable of composing
- * jak files to java files as well as reduce jak files to java files and
- * compile java files to class files.
+ * The AheadWrapper class encapsulates all functionality that has to do with the ahead tool suite. It provides methods to set the current configuration file, to
+ * add jak files that should be recompiled due to an incremental or full build. The build methods are capable of composing jak files to java files as well as
+ * reduce jak files to java files and compile java files to class files.
  *
  * The actual work is than delegated to the dedicated wrapper classes.
  *
@@ -139,34 +136,37 @@ public class AheadWrapper {
 			return;
 		}
 		createJob = false;
-		final Job job = new Job(
-				(PROPAGATE_PROBLEM_MARKERS_FOR + CorePlugin.getFeatureProject(file)) != null ? CorePlugin.getFeatureProject(file).toString() : "") {
-			@Override
-			public IStatus run(IProgressMonitor monitor) {
-				try {
-					while (!files.isEmpty()) {
-						final IFile file = files.remove(0);
-						if (file.exists()) {
-							final IMarker[] markers = file.findMarkers(null, false, IResource.DEPTH_ZERO);
-							if (markers != null) {
-								for (final IMarker marker : markers) {
-									if (marker.exists() && !TASK.equals(marker.getType())) {
-										final String content = marker.getAttribute(IMarker.MESSAGE, null);
-										if ((content != null)
-												&& (content.contains(RAW_TYPE) || content.contains(GENERIC_TYPE) || content.contains(TYPE_SAFETY))) {
-											marker.delete();
-										} else {
-											final AheadBuildErrorEvent buildError = new AheadBuildErrorEvent(file,
-													marker.getAttribute(IMarker.MESSAGE).toString(), AheadBuildErrorType.JAVAC_ERROR,
-													(Integer) marker.getAttribute(IMarker.LINE_NUMBER));
-											if (!hasMarker(buildError)) {
-												final IResource res = buildError.getResource();
-												if (res.exists()) {
-													final IMarker newMarker = res.createMarker(BUILDER_PROBLEM_MARKER);
-													if (newMarker.exists()) {
-														newMarker.setAttribute(IMarker.LINE_NUMBER, buildError.getLine());
-														newMarker.setAttribute(IMarker.MESSAGE, buildError.getMessage());
-														newMarker.setAttribute(IMarker.SEVERITY, marker.getAttribute(IMarker.SEVERITY));
+		final Job job =
+				new Job((PROPAGATE_PROBLEM_MARKERS_FOR + CorePlugin.getFeatureProject(file)) != null ? CorePlugin.getFeatureProject(file).toString() : "") {
+
+					@Override
+					public IStatus run(IProgressMonitor monitor) {
+						try {
+							while (!files.isEmpty()) {
+								final IFile file = files.remove(0);
+								if (file.exists()) {
+									final IMarker[] markers = file.findMarkers(null, false, IResource.DEPTH_ZERO);
+									if (markers != null) {
+										for (final IMarker marker : markers) {
+											if (marker.exists() && !TASK.equals(marker.getType())) {
+												final String content = marker.getAttribute(IMarker.MESSAGE, null);
+												if ((content != null)
+														&& (content.contains(RAW_TYPE) || content.contains(GENERIC_TYPE) || content.contains(TYPE_SAFETY))) {
+													marker.delete();
+												} else {
+													final AheadBuildErrorEvent buildError =
+															new AheadBuildErrorEvent(file, marker.getAttribute(IMarker.MESSAGE).toString(),
+																	AheadBuildErrorType.JAVAC_ERROR, (Integer) marker.getAttribute(IMarker.LINE_NUMBER));
+													if (!hasMarker(buildError)) {
+														final IResource res = buildError.getResource();
+														if (res.exists()) {
+															final IMarker newMarker = res.createMarker(BUILDER_PROBLEM_MARKER);
+															if (newMarker.exists()) {
+																newMarker.setAttribute(IMarker.LINE_NUMBER, buildError.getLine());
+																newMarker.setAttribute(IMarker.MESSAGE, buildError.getMessage());
+																newMarker.setAttribute(IMarker.SEVERITY, marker.getAttribute(IMarker.SEVERITY));
+															}
+														}
 													}
 												}
 											}
@@ -174,41 +174,39 @@ public class AheadWrapper {
 									}
 								}
 							}
+						} catch (final CoreException e) {
+							/** avoid exception: Marker id xxx not found. **/
+							if (!e.getMessage().startsWith("Marker")) {
+								AheadCorePlugin.getDefault().logError(e);
+							}
+						} finally {
+							createJob = true;
 						}
+						return Status.OK_STATUS;
 					}
-				} catch (final CoreException e) {
-					/** avoid exception: Marker id xxx not found. **/
-					if (!e.getMessage().startsWith("Marker")) {
-						AheadCorePlugin.getDefault().logError(e);
-					}
-				} finally {
-					createJob = true;
-				}
-				return Status.OK_STATUS;
-			}
 
-			private boolean hasMarker(AheadBuildErrorEvent buildError) {
-				try {
-					if (buildError.getResource().exists()) {
-						final int LineNumber = buildError.getLine();
-						final String Message = buildError.getMessage();
-						final IMarker[] marker = buildError.getResource().findMarkers(BUILDER_PROBLEM_MARKER, false, IResource.DEPTH_ZERO);
-						if (marker.length > 0) {
-							for (final IMarker m : marker) {
-								if (LineNumber == m.getAttribute(IMarker.LINE_NUMBER, -1)) {
-									if (Message.equals(m.getAttribute(IMarker.MESSAGE, null))) {
-										return true;
+					private boolean hasMarker(AheadBuildErrorEvent buildError) {
+						try {
+							if (buildError.getResource().exists()) {
+								final int LineNumber = buildError.getLine();
+								final String Message = buildError.getMessage();
+								final IMarker[] marker = buildError.getResource().findMarkers(BUILDER_PROBLEM_MARKER, false, IResource.DEPTH_ZERO);
+								if (marker.length > 0) {
+									for (final IMarker m : marker) {
+										if (LineNumber == m.getAttribute(IMarker.LINE_NUMBER, -1)) {
+											if (Message.equals(m.getAttribute(IMarker.MESSAGE, null))) {
+												return true;
+											}
+										}
 									}
 								}
 							}
+						} catch (final CoreException e) {
+							AheadCorePlugin.getDefault().logError(e);
 						}
+						return false;
 					}
-				} catch (final CoreException e) {
-					AheadCorePlugin.getDefault().logError(e);
-				}
-				return false;
-			}
-		};
+				};
 		job.setPriority(Job.DECORATE);
 		job.schedule();
 	}

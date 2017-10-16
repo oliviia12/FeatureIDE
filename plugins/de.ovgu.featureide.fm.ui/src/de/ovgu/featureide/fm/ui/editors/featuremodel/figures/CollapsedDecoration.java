@@ -41,8 +41,9 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
  * @author Maximilian Kühl
  */
 public class CollapsedDecoration extends ConnectionDecoration implements GUIDefaults {
+
 	private final Label childrenCount = new Label();
-	//	private static GridLayout gl = new GridLayout();
+	// private static GridLayout gl = new GridLayout();
 	private static final FreeformLayout layout = new FreeformLayout();
 
 	private IGraphicalFeature graphicalFeature;
@@ -89,7 +90,7 @@ public class CollapsedDecoration extends ConnectionDecoration implements GUIDefa
 
 		if (graphicalFeature != null) {
 			if (graphicalFeature.getGraphicalModel().getLayout().getLayoutAlgorithm() == 4) {
-				//left to right layout
+				// left to right layout
 				super.setLocation(p.translate((+getBounds().width / 2) + GUIDefaults.COLLAPSED_DECORATOR_FEATURE_SPACE, -getBounds().height / 2));
 			}
 		}
@@ -136,8 +137,7 @@ public class CollapsedDecoration extends ConnectionDecoration implements GUIDefa
 	}
 
 	@Override
-	protected void fillShape(Graphics graphics) {
-	}
+	protected void fillShape(Graphics graphics) {}
 
 	@Override
 	protected void outlineShape(Graphics graphics) {

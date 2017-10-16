@@ -40,8 +40,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.GUIDefaults;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 
 /**
- * Initializes the cell editor for feature renamings and adds a listener to show
- * a tooltip if the current name is not allowed.
+ * Initializes the cell editor for feature renamings and adds a listener to show a tooltip if the current name is not allowed.
  *
  * @author Thomas Thuem
  * @author Florian Proksch
@@ -67,6 +66,7 @@ public class FeatureLabelEditManager extends DirectEditManager implements GUIDef
 		cellEditor.setValue(oldValue);
 
 		cellEditor.addListener(new ICellEditorListener() {
+
 			private ToolTip tooltip;
 
 			@Override

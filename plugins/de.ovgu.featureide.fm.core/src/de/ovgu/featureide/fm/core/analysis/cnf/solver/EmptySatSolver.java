@@ -163,32 +163,25 @@ public class EmptySatSolver implements ISatSolver {
 	}
 
 	@Override
-	public void setOrder(int[] order) {
-	}
+	public void setOrder(int[] order) {}
 
 	@Override
-	public void setOrderFix() {
-	}
+	public void setOrderFix() {}
 
 	@Override
-	public void shuffleOrder() {
-	}
+	public void shuffleOrder() {}
 
 	@Override
-	public void shuffleOrder(Random rnd) {
-	}
+	public void shuffleOrder(Random rnd) {}
 
 	@Override
-	public void setSelectionStrategy(SelectionStrategy strategy) {
-	}
+	public void setSelectionStrategy(SelectionStrategy strategy) {}
 
 	@Override
-	public void setSelectionStrategy(int[] model, boolean min) {
-	}
+	public void setSelectionStrategy(int[] model, boolean min) {}
 
 	@Override
-	public void useSolutionList(int size) {
-	}
+	public void useSolutionList(int size) {}
 
 	@Override
 	public boolean isGlobalTimeout() {
@@ -196,8 +189,7 @@ public class EmptySatSolver implements ISatSolver {
 	}
 
 	@Override
-	public void setGlobalTimeout(boolean globalTimeout) {
-	}
+	public void setGlobalTimeout(boolean globalTimeout) {}
 
 	@Override
 	public IConstr addClause(LiteralSet mainClause) throws RuntimeContradictionException {
@@ -220,16 +212,13 @@ public class EmptySatSolver implements ISatSolver {
 	}
 
 	@Override
-	public void removeClause(IConstr constr) {
-	}
+	public void removeClause(IConstr constr) {}
 
 	@Override
-	public void removeLastClause() {
-	}
+	public void removeLastClause() {}
 
 	@Override
-	public void removeLastClauses(int numberOfClauses) {
-	}
+	public void removeLastClauses(int numberOfClauses) {}
 
 	@Override
 	public int[] getSolution() {
@@ -242,8 +231,7 @@ public class EmptySatSolver implements ISatSolver {
 	}
 
 	@Override
-	public void reset() {
-	}
+	public void reset() {}
 
 	@Override
 	public void setTimeout(int timeout) {

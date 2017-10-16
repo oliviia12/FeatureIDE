@@ -72,11 +72,9 @@ abstract public class AbstractUIPlugin extends org.eclipse.ui.plugin.AbstractUIP
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given plug-in
-	 * relative path.
+	 * Returns an image descriptor for the image file at the given plug-in relative path.
 	 *
-	 * @param path
-	 *            the path
+	 * @param path the path
 	 * @return the image descriptor
 	 */
 	public ImageDescriptor getImageDescriptor(String path) {
@@ -102,51 +100,41 @@ abstract public class AbstractUIPlugin extends org.eclipse.ui.plugin.AbstractUIP
 	}
 
 	/**
-	 * Convenience method for easy and clean logging. All messages collected by
-	 * this method will be written to the eclipse log file.
+	 * Convenience method for easy and clean logging. All messages collected by this method will be written to the eclipse log file.
 	 *
-	 * Messages are only written to the error log, if the debug option is set
-	 * for this plug-in
+	 * Messages are only written to the error log, if the debug option is set for this plug-in
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
+	 * @param message A message that should be written to the eclipse log file
 	 */
 	public void logInfo(String message) {
 		log(IStatus.INFO, message, null);
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of warnings. All messages
-	 * collected by this method will be written to the eclipse log file.
+	 * Convenience method for easy and clean logging of warnings. All messages collected by this method will be written to the eclipse log file.
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
+	 * @param message A message that should be written to the eclipse log file
 	 */
 	public void logWarning(String message) {
 		log(IStatus.WARNING, message, null);
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of exceptions. All messages
-	 * collected by this method will be written to the eclipse log file. The
+	 * Convenience method for easy and clean logging of exceptions. All messages collected by this method will be written to the eclipse log file. The
 	 * exception's stack trace is added to the log as well.
 	 *
-	 * @param message
-	 *            A message that should be written to the eclipse log file
-	 * @param exception
-	 *            Exception containing the stack trace
+	 * @param message A message that should be written to the eclipse log file
+	 * @param exception Exception containing the stack trace
 	 */
 	public void logError(String message, Throwable exception) {
 		log(IStatus.ERROR, message, exception);
 	}
 
 	/**
-	 * Convenience method for easy and clean logging of exceptions. All messages
-	 * collected by this method will be written to the eclipse log file. The
+	 * Convenience method for easy and clean logging of exceptions. All messages collected by this method will be written to the eclipse log file. The
 	 * exception's stack trace is added to the log as well.
 	 *
-	 * @param exception
-	 *            Exception containing the stack trace
+	 * @param exception Exception containing the stack trace
 	 */
 	public void logError(Throwable exception) {
 		if (exception != null) {

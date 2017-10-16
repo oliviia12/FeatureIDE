@@ -55,8 +55,7 @@ import de.ovgu.featureide.fm.core.functional.Functional;
 import de.ovgu.featureide.fm.ui.FMUIPlugin;
 
 /**
- * Additional editor page for the feature model editor. In this editor the order
- * of the features can be changed.
+ * Additional editor page for the feature model editor. In this editor the order of the features can be changed.
  *
  * @author Christian Becker
  * @author Jens Meinicke
@@ -104,7 +103,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 
 			if (hasFeatureOrder) {
 				writeToOrderFile(); // save the feature order also in .order if file
-									// exists
+									 // exists
 			}
 
 			if (featureModelEditor.getFeatureModel().getFeatureOrderList().isEmpty()) {
@@ -185,6 +184,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 	private void createActivateButton() {
 		activate = new Button(comp, SWT.CHECK);
 		activate.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				final boolean selection = activate.getSelection();
@@ -218,6 +218,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 		up.setLayoutData(gridData);
 		up.setEnabled(false);
 		up.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				final LinkedList<String> items = getSelectedItems();
@@ -249,6 +250,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 		down.setLayoutData(gridData);
 		down.setEnabled(false);
 		down.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				final LinkedList<String> items = getSelectedItems();
@@ -293,8 +295,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 	/**
 	 * Select items in feature order list.
 	 *
-	 * @param items
-	 *            to be selected
+	 * @param items to be selected
 	 */
 	private void selectItems(LinkedList<String> items) {
 		final int[] newindizies = new int[items.size()];
@@ -315,6 +316,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 		defaultButton.setLayoutData(gridData);
 		defaultButton.setEnabled(false);
 		defaultButton.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				defaultFeatureList();
@@ -330,7 +332,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 		featurelist.removeAll();
 
 		if (featureModelEditor.getFeatureModel().getStructure().getRoot() != null) {
-			featureModelEditor.getFeatureModel().setFeatureOrderList(Collections.<String> emptyList());
+			featureModelEditor.getFeatureModel().setFeatureOrderList(Collections.<String>emptyList());
 			for (final String featureName : featureModelEditor.getFeatureModel().getFeatureOrderList()) {
 				featurelist.add(featureName);
 			}
@@ -378,8 +380,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 	}
 
 	/**
-	 * Write the order of the features in the .order file in the feature project
-	 * directory, it will be supported for old versions
+	 * Write the order of the features in the .order file in the feature project directory, it will be supported for old versions
 	 *
 	 */
 	// TODO can be deleted if .order file is no longer used
@@ -440,8 +441,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 
 	/**
 	 *
-	 * @return Return the FeatureOrder as an ArrayList. Return null if the
-	 *         USERDEFINED_ORDER is deactivate or if no order file exists.
+	 * @return Return the FeatureOrder as an ArrayList. Return null if the USERDEFINED_ORDER is deactivate or if no order file exists.
 	 * @deprecated is no longer supported, use {@link #readFeatureOrderList()} instead
 	 */
 	@Deprecated
@@ -452,8 +452,7 @@ public class FeatureOrderEditor extends FeatureModelEditorPage {
 	/**
 	 * sets buttons and featurelist according to feature model if {@link #hasFeatureOrder} is true
 	 *
-	 * @return returns the featureOrderList from feature model or an empty list
-	 *         if {@link #hasFeatureOrder} is false
+	 * @return returns the featureOrderList from feature model or an empty list if {@link #hasFeatureOrder} is false
 	 */
 	public List<String> readFeatureOrderList() {
 		if (hasFeatureOrder) {

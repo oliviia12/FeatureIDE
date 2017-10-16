@@ -33,6 +33,7 @@ import org.junit.Test;
  * @author Jens Meinicke
  */
 public class TJavaClassBuilder {
+
 	private final JavaClassBuilder builder = new JavaClassBuilder(null);
 
 	// TEST 1
@@ -97,7 +98,7 @@ public class TJavaClassBuilder {
 		assertEquals(EXPECTED_NAME_FIELD_4, fields.get(2));
 	}
 
-	//Test 5
+	// Test 5
 	private final String METHOD_1 = "private void a() {\r\n\t}";
 	private final String METHOD_NAME_1 = "a";
 	private final String EXPECTED_HEAD_1 = "private void ";
@@ -107,7 +108,7 @@ public class TJavaClassBuilder {
 		assertEquals(EXPECTED_HEAD_1, builder.getHead(METHOD_1, METHOD_NAME_1));
 	}
 
-	//Test 6
+	// Test 6
 	private final String METHOD_2 = "private void display () {\r\n\t}";
 	private final String METHOD_NAME_2 = "display";
 	private final String EXPECTED_HEAD_2 = "private void ";
@@ -117,7 +118,7 @@ public class TJavaClassBuilder {
 		assertEquals(EXPECTED_HEAD_2, builder.getHead(METHOD_2, METHOD_NAME_2));
 	}
 
-	//Test 7
+	// Test 7
 	private final String METHOD_3 = "@Deprecated\r\nprivate void a() {\r\n\t}";
 	private final String METHOD_NAME_3 = "a";
 	private final String EXPECTED_HEAD_3 = "private void ";
@@ -127,7 +128,7 @@ public class TJavaClassBuilder {
 		assertEquals(EXPECTED_HEAD_3, builder.getHead(METHOD_3, METHOD_NAME_3));
 	}
 
-	//Test 8
+	// Test 8
 	private final String TEST_FIELD_8 = "/*@spec_public@*/ private String text;";
 	private final String EXPECTED_MODIFIER_FIELD_8 = "private";
 	private final String EXPECTED_TYPE_FIELD_8 = "String";

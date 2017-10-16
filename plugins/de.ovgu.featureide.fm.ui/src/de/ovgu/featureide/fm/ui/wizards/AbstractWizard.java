@@ -75,6 +75,5 @@ public abstract class AbstractWizard extends Wizard implements IWorkbenchWizard 
 	}
 
 	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-	}
+	public void init(IWorkbench workbench, IStructuredSelection selection) {}
 }

@@ -42,11 +42,13 @@ import de.ovgu.featureide.fm.core.job.LongRunningWrapper;
  */
 public class TConfigurationReader {
 
-	private static final String FEATUREMODEL_PATH = "/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/analyzefeaturemodels/";
+	private static final String FEATUREMODEL_PATH =
+			"/home/itidbrun/TeamCity/buildAgent/work/featureide/tests/de.ovgu.featureide.fm.core-test/src/analyzefeaturemodels/";
 
 	protected static File MODEL_FILE_FOLDER = getFolder();
 
 	private static final FileFilter filter = new FileFilter() {
+
 		@Override
 		public boolean accept(File pathname) {
 			return pathname.getName().endsWith(".xml");

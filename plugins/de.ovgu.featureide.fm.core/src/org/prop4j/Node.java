@@ -36,8 +36,7 @@ import java.util.Set;
 import de.ovgu.featureide.fm.core.base.IFeature;
 
 /**
- * A propositional node that can be transformed into conjunctive normal form
- * (cnf).
+ * A propositional node that can be transformed into conjunctive normal form (cnf).
  *
  * @author Thomas Thuem
  * @author Marcus Pinnecke (Feature Interface)
@@ -48,11 +47,11 @@ public abstract class Node {
 
 	@SuppressWarnings("unchecked")
 	public void setChildren(Object... newChildren) {
-		//allow collections as parameters
+		// allow collections as parameters
 		if ((newChildren.length == 1) && (newChildren[0] instanceof Collection)) {
 			newChildren = ((Collection<Object>) newChildren[0]).toArray();
 		}
-		//copy children and create literals
+		// copy children and create literals
 		children = new Node[newChildren.length];
 		for (int i = 0; i < children.length; i++) {
 			children[i] = getNode(newChildren[i]);
@@ -72,20 +71,14 @@ public abstract class Node {
 	}
 
 	/**
-	 * <p>
-	 * Returns true iff this node evaluates to true under the given truth value assignment.
-	 * The result of the evaluation is the same as if each positive literal in the expression were replaced by the corresponding boolean value in the given map.
-	 * </p>
+	 * <p> Returns true iff this node evaluates to true under the given truth value assignment. The result of the evaluation is the same as if each positive
+	 * literal in the expression were replaced by the corresponding boolean value in the given map. </p>
 	 *
-	 * <p>
-	 * For example, for the {@link And conjunction} operation, this operations returns true iff the following formula is satisfied:
+	 * <p> For example, for the {@link And conjunction} operation, this operations returns true iff the following formula is satisfied:
 	 *
-	 * <pre>
-	 * <i>c<sub>1</sub></i> &and; &hellip; &and; <i>c<sub>n</sub></i>
-	 * </pre>
+	 * <pre> <i>c<sub>1</sub></i> &and; &hellip; &and; <i>c<sub>n</sub></i> </pre>
 	 *
-	 * Where <i>c<sub>i</sub></i> is the <i>i</i>-th of the <i>n</i> children of the node.
-	 * </p>
+	 * Where <i>c<sub>i</sub></i> is the <i>i</i>-th of the <i>n</i> children of the node. </p>
 	 *
 	 * @param assignment truth value assignment from variable to true or false
 	 * @return the result of evaluation of this node
@@ -93,21 +86,16 @@ public abstract class Node {
 	public abstract boolean getValue(Map<Object, Boolean> assignment);
 
 	/**
-	 * Returns true iff this is in conjunctive normal form.
-	 * This is the case iff this is a conjunction of disjunctions of literals.
-	 * Note that redundant nodes may be omitted.
-	 * This means that instead of one-literal conjunctions and disjunctions, the literal alone may be stored.
+	 * Returns true iff this is in conjunctive normal form. This is the case iff this is a conjunction of disjunctions of literals. Note that redundant nodes
+	 * may be omitted. This means that instead of one-literal conjunctions and disjunctions, the literal alone may be stored.
 	 *
 	 * @return true iff this is in conjunctive normal form.
 	 */
 	public abstract boolean isConjunctiveNormalForm();
 
 	/**
-	 * Returns true iff this is in clausal normal form.
-	 * This is a more narrow case of conjunctive normal form.
-	 * Specifically, redundant nodes may not be omitted.
-	 * In other words, this must be a conjunction of clauses.
-	 * Each clause must in turn contain nothing but a positive amount of literals.
+	 * Returns true iff this is in clausal normal form. This is a more narrow case of conjunctive normal form. Specifically, redundant nodes may not be omitted.
+	 * In other words, this must be a conjunction of clauses. Each clause must in turn contain nothing but a positive amount of literals.
 	 *
 	 * @return true iff this is in clausal normal form
 	 */
@@ -392,8 +380,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns a string representation of this node. The symbols for logical
-	 * connectors, e.g. And, are given as a parameter.
+	 * Returns a string representation of this node. The symbols for logical connectors, e.g. And, are given as a parameter.
 	 *
 	 * @see org.prop4j.NodeWriter.shortSymbols (default)
 	 * @see org.prop4j.NodeWriter.logicalSymbols
@@ -484,12 +471,12 @@ public abstract class Node {
 	protected Node[] chooseKofN(Node[] elements, int k, boolean negated) {
 		final int n = elements.length;
 
-		//return tautology
+		// return tautology
 		if ((k == 0) || (k == (n + 1))) {
 			return new Node[] { new Or(new Not(elements[0].clone()), elements[0].clone()) };
 		}
 
-		//return contradiction
+		// return contradiction
 		if ((k < 0) || (k > (n + 1))) {
 			return new Node[] { new And(new Not(elements[0].clone()), elements[0].clone()) };
 		}
@@ -497,7 +484,7 @@ public abstract class Node {
 		final Node[] newNodes = new Node[binom(n, k)];
 		int j = 0;
 
-		//negate all elements
+		// negate all elements
 		if (negated) {
 			negateNodes(elements);
 		}
@@ -505,25 +492,25 @@ public abstract class Node {
 		final Node[] clause = new Node[k];
 		final int[] index = new int[k];
 
-		//the position that is currently filled in clause
+		// the position that is currently filled in clause
 		int level = 0;
 		index[level] = -1;
 
 		while (level >= 0) {
-			//fill this level with the next element
+			// fill this level with the next element
 			index[level]++;
-			//did we reach the maximum for this level
+			// did we reach the maximum for this level
 			if (index[level] >= (n - (k - 1 - level))) {
-				//go to previous level
+				// go to previous level
 				level--;
 			} else {
 				clause[level] = elements[index[level]];
 				if (level == (k - 1)) {
 					newNodes[j++] = new Or(clone(clause));
 				} else {
-					//go to next level
+					// go to next level
 					level++;
-					//allow only ascending orders (to prevent from duplicates)
+					// allow only ascending orders (to prevent from duplicates)
 					index[level] = index[level - 1];
 				}
 			}
@@ -554,8 +541,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all features contained in this node and its children.
-	 * Duplicates are kept.
+	 * Returns all features contained in this node and its children. Duplicates are kept.
 	 *
 	 * @return all features contained in this node and its children; not null
 	 */
@@ -564,8 +550,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all features contained in this node and its children.
-	 * Duplicates are removed.
+	 * Returns all features contained in this node and its children. Duplicates are removed.
 	 *
 	 * @return all features contained in this node and its children; not null
 	 */
@@ -574,8 +559,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all features contained in this node and its children.
-	 * Uses the given collection as out variable.
+	 * Returns all features contained in this node and its children. Uses the given collection as out variable.
 	 *
 	 * @param containedFeatures collection of previously found features to add to; not null
 	 * @return all features contained in this node and its children; not null
@@ -588,8 +572,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all literals contained in this node and its children.
-	 * Duplicates are kept.
+	 * Returns all literals contained in this node and its children. Duplicates are kept.
 	 *
 	 * @return all literals contained in this node and its children; not null
 	 */
@@ -598,8 +581,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all literals contained in this node and its children.
-	 * Duplicates are removed.
+	 * Returns all literals contained in this node and its children. Duplicates are removed.
 	 *
 	 * @return all literals contained in this node and its children; not null
 	 */
@@ -608,9 +590,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all literals contained in this node and its children.
-	 * Duplicates are kept.
-	 * Uses the given collection as out variable.
+	 * Returns all literals contained in this node and its children. Duplicates are kept. Uses the given collection as out variable.
 	 *
 	 * @param literals collection of previously found literals to add to; not null
 	 * @return all literals contained in this node and its children; not null
@@ -623,8 +603,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all variables contained in this node and its children.
-	 * Duplicates are kept.
+	 * Returns all variables contained in this node and its children. Duplicates are kept.
 	 *
 	 * @return all variables contained in this node and its children; not null
 	 */
@@ -633,8 +612,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all variables contained in this node and its children.
-	 * Duplicates are removed.
+	 * Returns all variables contained in this node and its children. Duplicates are removed.
 	 *
 	 * @return all variables contained in this node and its children; not null
 	 */
@@ -643,8 +621,7 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all variables contained in this node and its children.
-	 * Uses the given collection as out variable.
+	 * Returns all variables contained in this node and its children. Uses the given collection as out variable.
 	 *
 	 * @param variables collection of previously found variables to add to; not null
 	 * @return all variables contained in this node and its children; not null
@@ -657,15 +634,10 @@ public abstract class Node {
 	}
 
 	/**
-	 * <p>
-	 * Returns all possible truth value assignments for {@link #getVariables() all variables} in this node.
-	 * </p>
+	 * <p> Returns all possible truth value assignments for {@link #getVariables() all variables} in this node. </p>
 	 *
-	 * <p>
-	 * Let <i>n</i> denote the amount of literals in this node.
-	 * Then this method will return exactly <i>2<sup>n</sup></i> assignments.
-	 * Each assignment in turn contains exactly <i>n</i> entries (1 for each variable).
-	 * </p>
+	 * <p> Let <i>n</i> denote the amount of literals in this node. Then this method will return exactly <i>2<sup>n</sup></i> assignments. Each assignment in
+	 * turn contains exactly <i>n</i> entries (1 for each variable). </p>
 	 *
 	 * @return all possible truth value assignments; not null
 	 */
@@ -692,8 +664,8 @@ public abstract class Node {
 	}
 
 	/**
-	 * Returns all truth value assignments for which this node {@link #getValue(Map) evaluates} to the given boolean value.
-	 * Accepts all assignments if the given boolean value is null.
+	 * Returns all truth value assignments for which this node {@link #getValue(Map) evaluates} to the given boolean value. Accepts all assignments if the given
+	 * boolean value is null.
 	 *
 	 * @param result the expected evaluation result; null to accept every assignment
 	 * @return all accepted truth value assignments; not null

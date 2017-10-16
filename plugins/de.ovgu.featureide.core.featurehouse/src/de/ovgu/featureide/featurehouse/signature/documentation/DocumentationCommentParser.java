@@ -37,7 +37,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 			tagFeatureNode = getCurFeatureNode();
 			featureTags.clear();
 		} else {
-			//warning?
+			// warning?
 			tagFeatureNode = null;
 		}
 
@@ -46,7 +46,7 @@ public class DocumentationCommentParser extends ADocumentationCommentParser {
 			try {
 				tagPriority = Integer.parseInt(parts[1]);
 			} catch (final NumberFormatException e) {
-				//warning?
+				// warning?
 				tagPriority = 0;
 			}
 		} else {

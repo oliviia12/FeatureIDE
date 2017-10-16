@@ -37,8 +37,7 @@ import org.prop4j.Or;
  */
 public final class Nodes {
 
-	private Nodes() {
-	}
+	private Nodes() {}
 
 	public static List<LiteralSet> convert(IVariables satInstance, Node node) {
 		final ArrayList<LiteralSet> clauses = new ArrayList<>();

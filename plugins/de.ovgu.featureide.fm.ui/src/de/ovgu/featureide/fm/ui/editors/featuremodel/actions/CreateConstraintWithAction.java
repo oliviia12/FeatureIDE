@@ -33,9 +33,8 @@ import de.ovgu.featureide.fm.ui.editors.ConstraintDialog;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.editparts.FeatureEditPart;
 
 /**
- * The CREATE_CONSTRAINT action for a selected feature inside the feature diagram.
- * Calling this action the constraint dialog will automatically contains the selected
- * feature inside the input control.
+ * The CREATE_CONSTRAINT action for a selected feature inside the feature diagram. Calling this action the constraint dialog will automatically contains the
+ * selected feature inside the input control.
  *
  * @author Marcus Pinnecke
  */
@@ -56,6 +55,7 @@ public class CreateConstraintWithAction extends CreateConstraintAction {
 	}
 
 	private final ISelectionChangedListener listener = new ISelectionChangedListener() {
+
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
@@ -80,7 +80,8 @@ public class CreateConstraintWithAction extends CreateConstraintAction {
 		setText(CREATE_CONSTRAINT + (featureName.isEmpty() ? "" : " starting with \"" + featureName + "\""));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see de.ovgu.featureide.fm.ui.editors.featuremodel.actions.CreateConstraintAction#run()
 	 */
 	@Override

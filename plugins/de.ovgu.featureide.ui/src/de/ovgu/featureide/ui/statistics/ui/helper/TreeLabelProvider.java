@@ -27,10 +27,7 @@ import de.ovgu.featureide.ui.statistics.core.composite.IToolTip;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * LabelProvider for the {@code FeatureStatisticsView}.
- * <p>
- * Extends the given {@link ColumnLabelProvider} and allows to print tool tips
- * and images on the view.
+ * LabelProvider for the {@code FeatureStatisticsView}. <p> Extends the given {@link ColumnLabelProvider} and allows to print tool tips and images on the view.
  *
  * @author Dominik Hamann
  * @author Patrick Haese

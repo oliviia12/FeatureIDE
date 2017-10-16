@@ -31,9 +31,8 @@ import de.ovgu.featureide.core.CorePlugin;
 /**
  * @brief The nature for feature projects
  *
- * @remarks
- * 			- Every feature project has the same nature and builder independent from the used composition tool.
- *          - The composition tool in use depends on the project settings and not on the nature or builder
+ * @remarks - Every feature project has the same nature and builder independent from the used composition tool. - The composition tool in use depends on the
+ *          project settings and not on the nature or builder
  *
  * @author Tom Brosch
  */

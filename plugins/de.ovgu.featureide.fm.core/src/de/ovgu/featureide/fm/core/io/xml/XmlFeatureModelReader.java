@@ -82,8 +82,8 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 	protected synchronized void parseInputStream(final InputStream inputStream) throws UnsupportedModelException {
 		featureModel.reset();
 		// TODO _interfaces Removed Code
-		//		featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(true);
-		//		featureModel.getGraphicRepresenation().getLayout().verticalLayout(false);
+		// featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(true);
+		// featureModel.getGraphicRepresenation().getLayout().verticalLayout(false);
 		Document doc = null;
 		try {
 			doc = PositionalXMLReader.readXML(inputStream);
@@ -117,7 +117,7 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 
 		importCustomProperties(customProperties, featureModel);
 
-		//featureModel.handleModelDataLoaded();
+		// featureModel.handleModelDataLoaded();
 	}
 
 	private void importCustomProperties(Collection<PropertiesParser> customProperties, IFeatureModel featureModel) {
@@ -156,23 +156,23 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 	 */
 	private void setFeatureModelAttributes(Element eElement) {
 		// TODO _interfaces Legacy Code
-		//		String algorithm = eElement.getAttribute(CHOSEN_LAYOUT_ALGORITHM);
-		//		if (!algorithm.equals("")) {
-		//			featureModel.getGraphicRepresenation().getLayout().setLayout(
-		//					Integer.parseInt(algorithm));
-		//		}
-		//		String layout = eElement.getAttribute(HORIZONTAL_LAYOUT);
-		//		if (layout.equals(TRUE)) {
-		//			featureModel.getGraphicRepresenation().getLayout().verticalLayout(false);
-		//		} else if (layout.equals(FALSE)) {
-		//			featureModel.getGraphicRepresenation().getLayout().verticalLayout(true);
-		//		}
-		//		String showHidden = eElement.getAttribute(SHOW_HIDDEN_FEATURES);
-		//		if (showHidden.equals(TRUE)) {
-		//			featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(true);
-		//		} else if (showHidden.equals(FALSE)) {
-		//			featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(false);
-		//		}
+		// String algorithm = eElement.getAttribute(CHOSEN_LAYOUT_ALGORITHM);
+		// if (!algorithm.equals("")) {
+		// featureModel.getGraphicRepresenation().getLayout().setLayout(
+		// Integer.parseInt(algorithm));
+		// }
+		// String layout = eElement.getAttribute(HORIZONTAL_LAYOUT);
+		// if (layout.equals(TRUE)) {
+		// featureModel.getGraphicRepresenation().getLayout().verticalLayout(false);
+		// } else if (layout.equals(FALSE)) {
+		// featureModel.getGraphicRepresenation().getLayout().verticalLayout(true);
+		// }
+		// String showHidden = eElement.getAttribute(SHOW_HIDDEN_FEATURES);
+		// if (showHidden.equals(TRUE)) {
+		// featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(true);
+		// } else if (showHidden.equals(FALSE)) {
+		// featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(false);
+		// }
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 			boolean _abstract = false;
 			boolean hidden = false;
 			String name = "";
-			//			FMPoint featureLocation = null;
+			// FMPoint featureLocation = null;
 			if (e.hasAttributes()) {
 				final NamedNodeMap nodeMap = e.getAttributes();
 				for (int i = 0; i < nodeMap.getLength(); i++) {
@@ -219,14 +219,14 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 						hidden = attributeValue.equals(TRUE);
 					} else if (attributeName.equals(COORDINATES)) {
 						// TODO _interfaces Legacy Code
-						//						String subStringX = attributeValue.substring(0, attributeValue.indexOf(", "));
-						//						String subStringY = attributeValue.substring(attributeValue.indexOf(", ")+2);
-						//						try {
-						//							featureLocation = new FMPoint(Integer.parseInt (subStringX),
-						//										Integer.parseInt (subStringY));
-						//						} catch (NumberFormatException error) {
-						//							throwError(error.getMessage() + IS_NO_VALID_INTEGER_VALUE, e);
-						//						}
+						// String subStringX = attributeValue.substring(0, attributeValue.indexOf(", "));
+						// String subStringY = attributeValue.substring(attributeValue.indexOf(", ")+2);
+						// try {
+						// featureLocation = new FMPoint(Integer.parseInt (subStringX),
+						// Integer.parseInt (subStringY));
+						// } catch (NumberFormatException error) {
+						// throwError(error.getMessage() + IS_NO_VALID_INTEGER_VALUE, e);
+						// }
 					} else {
 						throwError("Unknown feature attribute: " + attributeName, e);
 					}
@@ -254,9 +254,9 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 			f.getStructure().setMandatory(mandatory);
 			f.getStructure().setHidden(hidden);
 			// TODO _interfaces Removed Code
-			//			if (featureLocation != null) {
-			//				f.getGraphicRepresenation().setLocation(featureLocation);
-			//			}
+			// if (featureLocation != null) {
+			// f.getGraphicRepresenation().setLocation(featureLocation);
+			// }
 			featureModel.addFeature(f);
 			if (parent == null) {
 				featureModel.getStructure().setRoot(f.getStructure());
@@ -277,24 +277,24 @@ public class XmlFeatureModelReader extends AbstractFeatureModelReader implements
 			for (final Element child : getElements(e.getChildNodes())) {
 				final String nodeName = child.getNodeName();
 				if (nodeName.equals(RULE)) {
-					final IConstraint c = FMFactoryManager.getFactory(featureModel).createConstraint(featureModel,
-							parseConstraints2(child.getChildNodes()).getFirst());
+					final IConstraint c =
+							FMFactoryManager.getFactory(featureModel).createConstraint(featureModel, parseConstraints2(child.getChildNodes()).getFirst());
 					if (child.hasAttributes()) {
 						final NamedNodeMap nodeMap = child.getAttributes();
 						for (int i = 0; i < nodeMap.getLength(); i++) {
 							final org.w3c.dom.Node node = nodeMap.item(i);
 							final String attributeName = node.getNodeName();
-							//							String attributeValue = node.getNodeValue();
+							// String attributeValue = node.getNodeValue();
 							if (attributeName.equals(COORDINATES)) {
 								// TODO _interfaces Legacy Code
-								//								String subStringX = attributeValue.substring(0, attributeValue.indexOf(", "));
-								//								String subStringY = attributeValue.substring(attributeValue.indexOf(", ")+2);
-								//								try {
-								//									c.getGraphicRepresenation().setLocation(new FMPoint(Integer.parseInt (subStringX),
-								//												Integer.parseInt (subStringY)));
-								//								} catch (NumberFormatException error) {
-								//									throwError(error.getMessage() + IS_NO_VALID_INTEGER_VALUE, child);
-								//								}
+								// String subStringX = attributeValue.substring(0, attributeValue.indexOf(", "));
+								// String subStringY = attributeValue.substring(attributeValue.indexOf(", ")+2);
+								// try {
+								// c.getGraphicRepresenation().setLocation(new FMPoint(Integer.parseInt (subStringX),
+								// Integer.parseInt (subStringY)));
+								// } catch (NumberFormatException error) {
+								// throwError(error.getMessage() + IS_NO_VALID_INTEGER_VALUE, child);
+								// }
 							} else {
 								throwError("Unknown constraint attribute: " + attributeName, node);
 							}

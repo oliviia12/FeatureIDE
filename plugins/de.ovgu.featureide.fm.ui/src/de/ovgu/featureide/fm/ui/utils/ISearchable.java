@@ -46,8 +46,7 @@ public interface ISearchable<T> {
 	Iterator<T> createIterator();
 
 	/**
-	 * Handles the search result.
-	 * Dependent on the actual implementation reveals, selects, or highlights the matching element in the view.
+	 * Handles the search result. Dependent on the actual implementation reveals, selects, or highlights the matching element in the view.
 	 *
 	 * @param searchResult The found element.
 	 */

@@ -41,8 +41,7 @@ public final class EclipseMarkerHandler {
 
 	private static final String CONFIGURATION_MARKER = CorePlugin.PLUGIN_ID + ".configurationProblemMarker";
 
-	private EclipseMarkerHandler() {
-	}
+	private EclipseMarkerHandler() {}
 
 	public static void createBuilderMarker(IResource resource, String message, int lineNumber, int severity) {
 		// for creating and deleting markers a synchronized file is
@@ -81,8 +80,7 @@ public final class EclipseMarkerHandler {
 							&& ((Integer) marker.getAttribute(IMarker.SEVERITY) == severity)) {
 						marker.delete();
 					}
-				} catch (final RuntimeException e) {
-				}
+				} catch (final RuntimeException e) {}
 			}
 		} catch (final CoreException e) {
 			CorePlugin.getDefault().logError(e);

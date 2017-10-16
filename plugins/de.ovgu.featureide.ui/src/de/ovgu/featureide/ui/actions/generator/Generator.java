@@ -186,8 +186,7 @@ public class Generator extends Thread implements IConfigurationBuilderBasics {
 		} catch (final Exception e) {
 			UIPlugin.getDefault().logError(ERROR_IN_CONFIGURATION + configuration, e);
 			/**
-			 * If there is any build error the configuration will be built again.
-			 * And because this job is terminated a new one will be created.
+			 * If there is any build error the configuration will be built again. And because this job is terminated a new one will be created.
 			 */
 			UIPlugin.getDefault().logWarning(THE_GENERATOR_NR_ + nr + WILL_BE_RESTARTED_);
 			builder.createNewGenerator(nr);

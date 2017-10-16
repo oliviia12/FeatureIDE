@@ -77,6 +77,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.operations.ElementDeleteOpe
  * @author Marcus Pinnecke (Feature Interface)
  */
 public class DeleteOperationAlternativeDialog implements GUIDefaults {
+
 	Shell shell;
 
 	private final IFeatureModel featureModel;
@@ -141,6 +142,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		final int y = bounds.y + ((bounds.height - rect.height) / 2);
 		shell.setLocation(x, y);
 		shell.addListener(SWT.Traverse, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				if (event.detail == SWT.TRAVERSE_ESCAPE) {
@@ -189,6 +191,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 
 		lastComposite.setTabList(new Control[] { okButton });
 		okButton.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				shell.dispose();
@@ -272,6 +275,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		tableColumnLayout.setColumnData(viewerNameColumn.getColumn(), new ColumnWeightData(100, 100, false));
 
 		tableViewer.setComparator(new ViewerComparator() {
+
 			@Override
 			public int compare(Viewer viewer, Object feature1, Object feature2) {
 				return ((IFeature) feature1).getName().compareToIgnoreCase(((IFeature) feature2).getName());
@@ -280,6 +284,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		});
 
 		viewerNameColumn.setLabelProvider(new CellLabelProvider() {
+
 			@Override
 			public void update(ViewerCell cell) {
 				cell.setText(((IFeature) cell.getElement()).getName());
@@ -308,6 +313,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		tableViewer2.setContentProvider(new ArrayContentProvider());
 
 		featureTable.addListener(SWT.MouseDoubleClick, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				execute();
@@ -315,6 +321,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		});
 
 		alternativefeatureTable.addListener(SWT.MouseUp, new Listener() {
+
 			@Override
 			public void handleEvent(Event event) {
 				final Collection<IFeature> l = new ArrayList<IFeature>();
@@ -334,6 +341,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		});
 
 		viewerNameColumn2.setLabelProvider(new CellLabelProvider() {
+
 			@Override
 			public void update(ViewerCell cell) {
 				cell.setText(((IFeature) cell.getElement()).getName());
@@ -351,6 +359,7 @@ public class DeleteOperationAlternativeDialog implements GUIDefaults {
 		button.setLayoutData(gridData);
 
 		button.addSelectionListener(new org.eclipse.swt.events.SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 				execute();

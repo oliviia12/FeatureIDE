@@ -54,16 +54,14 @@ public class CNF implements Serializable {
 	}
 
 	/**
-	 * Copy constructor. <br/>
-	 * Also copies clause list (no deep copy).
+	 * Copy constructor. <br/> Also copies clause list (no deep copy).
 	 */
 	public CNF(CNF oldSatInstance) {
 		this(oldSatInstance, true);
 	}
 
 	/**
-	 * Copy constructor. <br/>
-	 * Can either copy or neglect old clauses (no deep copy).
+	 * Copy constructor. <br/> Can either copy or neglect old clauses (no deep copy).
 	 */
 	public CNF(CNF oldSatInstance, boolean copyClauses) {
 		variables = oldSatInstance.variables.clone();
@@ -94,11 +92,10 @@ public class CNF implements Serializable {
 	}
 
 	/**
-	 * If the CNF was sliced, the old variable IDs are kept for compatibility reasons.
-	 * This method changes the the variable IDs in the variables object and the clause list, as if the CNF was not sliced.
+	 * If the CNF was sliced, the old variable IDs are kept for compatibility reasons. This method changes the the variable IDs in the variables object and the
+	 * clause list, as if the CNF was not sliced.
 	 *
-	 * @return A new instance with a proper clause list and variables object, is this CNF was sliced.
-	 *         Returns {@code this}, otherwise.
+	 * @return A new instance with a proper clause list and variables object, is this CNF was sliced. Returns {@code this}, otherwise.
 	 *
 	 * @see #isSliced()
 	 */

@@ -54,6 +54,7 @@ public class XmlPropertyLoader {
 	}
 
 	interface PropertiesParser {
+
 		Set<String> getIdentifier();
 
 		Set<IPropertyContainer.Entry<String, IPropertyContainer.Type, Object>> getPropertyEntries(String featureName);

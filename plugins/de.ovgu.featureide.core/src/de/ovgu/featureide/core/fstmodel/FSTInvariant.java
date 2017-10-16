@@ -86,7 +86,7 @@ public class FSTInvariant extends RoleElement<FSTInvariant> {
 			return fullname.toString();
 
 		} else {
-			//JML Invariant
+			// JML Invariant
 			final String name = body.replaceAll("  ", "").replace((char) 10, ' ').replaceFirst("invariant ", "");
 			return ((name.length() > 25 ? name.substring(0, 25) + "..." : name));
 		}

@@ -71,8 +71,7 @@ import de.ovgu.featureide.core.builder.IComposerExtension;
 import de.ovgu.featureide.core.builder.IComposerExtensionBase;
 
 /**
- * At this property page you can specify composer specific settings for a
- * FeatureProject This property page specifies project specific settings
+ * At this property page you can specify composer specific settings for a FeatureProject This property page specifies project specific settings
  *
  * @author Jens Meinicke
  */
@@ -82,6 +81,7 @@ import de.ovgu.featureide.core.builder.IComposerExtensionBase;
 public class FeatureProjectPropertyPage extends PropertyPage {
 
 	private static final class ExtensionComparator implements Comparator<IComposerExtensionBase>, Serializable {
+
 		private static final long serialVersionUID = 1L;
 
 		@Override
@@ -358,14 +358,10 @@ public class FeatureProjectPropertyPage extends PropertyPage {
 	/**
 	 * Adds a path member with the given parameters
 	 *
-	 * @param group
-	 *            The group containing the member
-	 * @param label
-	 *            The displayed label
-	 * @param folder
-	 *            The associated folder
-	 * @param enabeled
-	 *            The status of the member
+	 * @param group The group containing the member
+	 * @param label The displayed label
+	 * @param folder The associated folder
+	 * @param enabeled The status of the member
 	 * @return The created text field
 	 */
 	private Text addPathMember(Group group, String labelText, IFolder folder, boolean enabeled) {

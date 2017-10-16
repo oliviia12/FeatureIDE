@@ -95,7 +95,7 @@ public class AtomicSetAnalysis extends AVariableAnalysis<List<LiteralSet>> {
 				if (done[i] == 0) {
 					done[i] = 2;
 
-					//					int c = 0;
+					// int c = 0;
 					int[] xModel0 = Arrays.copyOf(model1, model1.length);
 
 					final int mx0 = xModel0[i];
@@ -125,7 +125,7 @@ public class AtomicSetAnalysis extends AVariableAnalysis<List<LiteralSet>> {
 								break;
 							case TRUE:
 								SatUtils.updateSolution(xModel0, solver.getSolution());
-								//								updateSolver(c++);
+								// updateSolver(c++);
 								solver.shuffleOrder();
 								break;
 							}
@@ -169,7 +169,7 @@ public class AtomicSetAnalysis extends AVariableAnalysis<List<LiteralSet>> {
 								case TRUE:
 									done[j] = 0;
 									SatUtils.updateSolution(xModel0, solver.getSolution());
-									//									updateSolver(c++);
+									// updateSolver(c++);
 									solver.shuffleOrder();
 									solver.assignmentPop();
 									break;
@@ -188,13 +188,13 @@ public class AtomicSetAnalysis extends AVariableAnalysis<List<LiteralSet>> {
 		return result;
 	}
 
-	//	private void updateSolver(int c) {
-	//		if ((c % 2 == 0)) {
-	//			solver.setSelectionStrategy(SelectionStrategy.RANDOM);
-	//		} else {
-	//			solver.setSelectionStrategy(SelectionStrategy.POSITIVE);
-	//			solver.shuffleOrder();
-	//		}
-	//	}
+	// private void updateSolver(int c) {
+	// if ((c % 2 == 0)) {
+	// solver.setSelectionStrategy(SelectionStrategy.RANDOM);
+	// } else {
+	// solver.setSelectionStrategy(SelectionStrategy.POSITIVE);
+	// solver.shuffleOrder();
+	// }
+	// }
 
 }

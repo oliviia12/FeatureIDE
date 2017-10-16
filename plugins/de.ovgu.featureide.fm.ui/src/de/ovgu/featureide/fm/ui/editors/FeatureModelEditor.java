@@ -96,8 +96,7 @@ import de.ovgu.featureide.fm.ui.properties.FMPropertyManager;
 import de.ovgu.featureide.fm.ui.views.outline.FmOutlinePage;
 
 /**
- * A multi page editor to edit feature models. If the model file contains
- * errors, markers will be created on save.
+ * A multi page editor to edit feature models. If the model file contains errors, markers will be created on save.
  *
  * @author Thomas Thuem
  * @author Christian Becker
@@ -195,6 +194,7 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 			textEditor.executeSaveOperation();
 			// textEditor.updateDiagram();
 			fmManager.externalSave(new ICriticalConsumer<IFeatureModel>() {
+
 				@Override
 				public void invoke(IFeatureModel t) throws Exception {
 					textEditor.doSave(monitor);
@@ -309,6 +309,7 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 			final IResourceDelta inputFileDelta = event.getDelta().findMember(inputFile.getFullPath());
 			if (inputFileDelta != null) {
 				final IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
+
 					@Override
 					public boolean visit(IResourceDelta delta) {
 						// only interested in removal changes
@@ -326,6 +327,7 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 			}
 			if ((deletedlist.size() > 0) && deletedlist.contains(inputFile)) {
 				Display.getDefault().asyncExec(new Runnable() {
+
 					@Override
 					public void run() {
 						if (getSite() == null) {
@@ -350,6 +352,7 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 		final IResource res = event.getResource();
 		if ((event.getType() == IResourceChangeEvent.PRE_CLOSE) || closeEditor) {
 			Display.getDefault().asyncExec(new Runnable() {
+
 				@Override
 				public void run() {
 					final IWorkbenchPartSite site = getSite();
@@ -434,12 +437,13 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 			setActivePage(getTextEditorIndex());
 		} else {
 			diagramEditor.getControl().getDisplay().asyncExec(new Runnable() {
+
 				@Override
 				public void run() {
 					diagramEditor.setContents(diagramEditor.getGraphicalFeatureModel());
 					pageChange(getDiagramEditorIndex());
 					diagramEditor.internRefresh(false);
-					//refresh root and children to prevent manual and another layout algorithm to omit connection
+					// refresh root and children to prevent manual and another layout algorithm to omit connection
 					if (diagramEditor.getFeatureModel().getStructure().getRoot() != null) {
 						diagramEditor.refreshChildAll(diagramEditor.getFeatureModel().getStructure().getRoot().getFeature());
 					}
@@ -487,13 +491,13 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 		createModelFileMarkers(fmManager.getLastProblems());
 
 		// TODO _Interfaces Removed Code
-		//		FeatureUIHelper.showHiddenFeatures(featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(), featureModel);
-		//		FeatureUIHelper.setVerticalLayoutBounds(featureModel.getGraphicRepresenation().getLayout().verticalLayout(), featureModel);
+		// FeatureUIHelper.showHiddenFeatures(featureModel.getGraphicRepresenation().getLayout().showHiddenFeatures(), featureModel);
+		// FeatureUIHelper.setVerticalLayoutBounds(featureModel.getGraphicRepresenation().getLayout().verticalLayout(), featureModel);
 
 		getExtensions();
 
 		FMPropertyManager.registerEditor(this);
-		//featureModel.getColorschemeTable().readColorsFromFile(file.getProject());
+		// featureModel.getColorschemeTable().readColorsFromFile(file.getProject());
 	}
 
 	void createDiagramPage() {
@@ -630,8 +634,7 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 	/**
 	 * Gets the corresponding page for the given index.
 	 *
-	 * @param index
-	 *            The index of the page
+	 * @param index The index of the page
 	 * @return The page
 	 */
 	private IFeatureModelEditorPage getPage(int index) {
@@ -661,10 +664,10 @@ public class FeatureModelEditor extends MultiPageEditorPart implements IEventLis
 	public void readModel(String newSource) {
 		final ProblemList warnings = fmManager.getFormat().getInstance().read(getFeatureModel(), newSource);
 		createModelFileMarkers(warnings);
-		//		final AModelFormatHandler modelHandler2 = PersistentFeatureModelManager.getModelHandler(ioType);
-		//		modelHandler2.setObject(fmManager.editFeatureModel());
-		//		final List<Problem> warnings = modelHandler2.read(newSource);
-		//		featureModel = fmManager.editFeatureModel();
+		// final AModelFormatHandler modelHandler2 = PersistentFeatureModelManager.getModelHandler(ioType);
+		// modelHandler2.setObject(fmManager.editFeatureModel());
+		// final List<Problem> warnings = modelHandler2.read(newSource);
+		// featureModel = fmManager.editFeatureModel();
 	}
 
 	private boolean saveEditors() {

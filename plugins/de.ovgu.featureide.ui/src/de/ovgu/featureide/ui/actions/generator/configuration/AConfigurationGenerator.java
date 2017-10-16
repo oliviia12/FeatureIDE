@@ -37,13 +37,13 @@ import de.ovgu.featureide.ui.actions.generator.ConfigurationBuilder;
  * @author Jens Meinicke
  */
 public abstract class AConfigurationGenerator implements LongRunningMethod<Void> {
+
 	protected IFeatureModel featureModel;
 
 	protected ConfigurationBuilder builder;
 
 	/**
-	 * This is the configuration where the {@link ConfigurationReader} saves the
-	 * read configuration.
+	 * This is the configuration where the {@link ConfigurationReader} saves the read configuration.
 	 */
 	protected Configuration configuration;
 

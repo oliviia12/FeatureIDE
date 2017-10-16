@@ -38,16 +38,14 @@ public interface IConfigurationPropagator {
 	LongRunningMethod<List<List<String>>> getSolutions(int max) throws TimeoutException;
 
 	/**
-	 * Checks that all manual and automatic selections are valid.<br>
-	 * Abstract features will <b>not</b> be ignored.
+	 * Checks that all manual and automatic selections are valid.<br> Abstract features will <b>not</b> be ignored.
 	 *
 	 * @return {@code true} if the current selection is a valid configuration
 	 */
 	LongRunningMethod<Boolean> isValid();
 
 	/**
-	 * Ignores hidden features.
-	 * Use this, when propgate is disabled (hidden features are not updated).
+	 * Ignores hidden features. Use this, when propgate is disabled (hidden features are not updated).
 	 */
 	LongRunningMethod<Boolean> isValidNoHidden();
 
@@ -56,8 +54,8 @@ public interface IConfigurationPropagator {
 	/**
 	 * Counts the number of possible solutions.
 	 *
-	 * @return a positive value equal to the number of solutions (if the method terminated in time)</br>
-	 *         or a negative value (if a timeout occurred) that indicates that there are more solutions than the absolute value
+	 * @return a positive value equal to the number of solutions (if the method terminated in time)</br> or a negative value (if a timeout occurred) that
+	 *         indicates that there are more solutions than the absolute value
 	 */
 	LongRunningMethod<Long> number(int timeout);
 

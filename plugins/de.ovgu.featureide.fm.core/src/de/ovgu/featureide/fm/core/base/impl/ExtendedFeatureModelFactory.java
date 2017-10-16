@@ -39,8 +39,7 @@ public class ExtendedFeatureModelFactory implements IFeatureModelFactory {
 		return new ExtendedFeatureModelFactory();
 	}
 
-	public ExtendedFeatureModelFactory() {
-	}
+	public ExtendedFeatureModelFactory() {}
 
 	@Override
 	public String getId() {

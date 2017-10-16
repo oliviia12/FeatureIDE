@@ -32,6 +32,7 @@ import de.ovgu.featureide.fm.ui.editors.featuremodel.figures.ModelElementFigure;
  * @author Timo G&uuml;nther
  */
 public abstract class ModelElementEditPart extends AbstractGraphicalEditPart implements IEventListener {
+
 	@Override
 	public ModelEditPart getParent() {
 		return (ModelEditPart) super.getParent();

@@ -55,9 +55,7 @@ public class DeleteProfileColorSchemeAction extends Action {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.jface.action.Action#run()
-	 *
-	 * this method removes the profile and saves the configuration
+	 * @see org.eclipse.jface.action.Action#run() this method removes the profile and saves the configuration
 	 */
 	@Override
 	public void run() {

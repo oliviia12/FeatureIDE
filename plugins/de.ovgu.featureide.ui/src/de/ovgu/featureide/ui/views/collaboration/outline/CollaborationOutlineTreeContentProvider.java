@@ -63,12 +63,10 @@ public class CollaborationOutlineTreeContentProvider implements ITreeContentProv
 
 	protected FSTModel model;
 
-	public CollaborationOutlineTreeContentProvider() {
-	}
+	public CollaborationOutlineTreeContentProvider() {}
 
 	@Override
-	public void dispose() {
-	}
+	public void dispose() {}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -233,17 +231,17 @@ public class CollaborationOutlineTreeContentProvider implements ITreeContentProv
 
 	private final Set<ICollaborationOutlineFilter> filters = new HashSet<>();
 
-	//add filter to filter set
+	// add filter to filter set
 	public void addFilter(ICollaborationOutlineFilter filter) {
 		filters.add(filter);
 	}
 
-	//remove filter from filter set
+	// remove filter from filter set
 	public void removeFilter(ICollaborationOutlineFilter filter) {
 		filters.remove(filter);
 	}
 
-	//apply all filters from filter set
+	// apply all filters from filter set
 	private Object[] filter(Object[] obj) {
 		for (final ICollaborationOutlineFilter filter : filters) {
 			obj = filter.filter(obj);

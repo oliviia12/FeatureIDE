@@ -41,6 +41,7 @@ import org.prop4j.Or;
  * @author Timo G&uuml;nther
  */
 public abstract class SatSolverTests extends SatProblemTests {
+
 	@Test
 	public void testSatisfiable() {
 		final SatSolver solver = getInstance();

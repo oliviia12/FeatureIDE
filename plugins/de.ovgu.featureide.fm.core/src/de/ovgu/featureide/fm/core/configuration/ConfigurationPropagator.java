@@ -54,6 +54,7 @@ import de.ovgu.featureide.fm.core.job.monitor.IMonitor;
 public class ConfigurationPropagator implements IConfigurationPropagator {
 
 	public class IsValidMethod implements LongRunningMethod<Boolean> {
+
 		private final boolean deselectUndefinedFeatures;
 		private final boolean includeHiddenFeatures;
 
@@ -86,6 +87,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	}
 
 	public class Resolve implements LongRunningMethod<Void> {
+
 		@Override
 		public Void execute(IMonitor workMonitor) throws Exception {
 			if (formula == null) {
@@ -152,6 +154,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	}
 
 	public class CountSolutionsMethod implements LongRunningMethod<Long> {
+
 		private final int timeout;
 
 		public CountSolutionsMethod(int timeout) {
@@ -259,6 +262,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	}
 
 	public class GetSolutionsMethod implements LongRunningMethod<List<List<String>>> {
+
 		private final int max;
 
 		public GetSolutionsMethod(int max) {
@@ -292,6 +296,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	 * @param selection true is the features should be selected, false otherwise.
 	 */
 	public class CoverFeatures implements LongRunningMethod<List<List<String>>> {
+
 		private final Collection<String> features;
 		private final boolean selection;
 
@@ -311,8 +316,8 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 			} else {
 				clausesWithoutHidden = formula.getElement(new NoAbstractNoHiddenCNFCreator());
 			}
-			final OneWiseConfigurationGenerator oneWiseConfigurationGenerator = new OneWiseConfigurationGenerator(
-					getSolverForCurrentConfiguration(false, false));
+			final OneWiseConfigurationGenerator oneWiseConfigurationGenerator =
+					new OneWiseConfigurationGenerator(getSolverForCurrentConfiguration(false, false));
 			oneWiseConfigurationGenerator.setCoverMode(selection ? 1 : 0);
 			final int[] featureArray = new int[features.size()];
 			int index = 0;
@@ -336,6 +341,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	}
 
 	public class UpdateMethod implements LongRunningMethod<Boolean> {
+
 		protected final boolean redundantManual;
 		protected final List<SelectableFeature> featureOrder;
 
@@ -345,7 +351,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 
 		public UpdateMethod(boolean redundantManual, List<SelectableFeature> featureOrder) {
 			this.redundantManual = redundantManual;
-			this.featureOrder = featureOrder != null ? featureOrder : Collections.<SelectableFeature> emptyList();
+			this.featureOrder = featureOrder != null ? featureOrder : Collections.<SelectableFeature>emptyList();
 		}
 
 		@Override
@@ -570,8 +576,7 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	}
 
 	/**
-	 * Ignores hidden features.
-	 * Use this, when propgate is disabled (hidden features are not updated).
+	 * Ignores hidden features. Use this, when propgate is disabled (hidden features are not updated).
 	 */
 	@Override
 	public IsValidMethod isValidNoHidden() {
@@ -582,8 +587,8 @@ public class ConfigurationPropagator implements IConfigurationPropagator {
 	 * Counts the number of possible solutions.
 	 *
 	 * @param timeout The timeout in milliseconds.
-	 * @return A positive value equal to the number of solutions (if the method terminated in time)</br>
-	 *         or a negative value (if a timeout occurred) that indicates that there are more solutions than the absolute value
+	 * @return A positive value equal to the number of solutions (if the method terminated in time)</br> or a negative value (if a timeout occurred) that
+	 *         indicates that there are more solutions than the absolute value
 	 */
 	@Override
 	public CountSolutionsMethod number(int timeout) {

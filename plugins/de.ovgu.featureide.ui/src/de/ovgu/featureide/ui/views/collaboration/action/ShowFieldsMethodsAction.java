@@ -29,8 +29,7 @@ import de.ovgu.featureide.ui.views.collaboration.CollaborationView;
 import de.ovgu.featureide.ui.views.collaboration.figures.RoleFigure;
 
 /**
- * Collaboration diagram context menu option
- * Filter methods and fields of roles
+ * Collaboration diagram context menu option Filter methods and fields of roles
  *
  * @author Steffen Schulze
  * @author Christian Lausberger

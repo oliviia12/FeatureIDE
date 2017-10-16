@@ -35,8 +35,7 @@ import de.ovgu.featureide.fm.core.configuration.Selection;
 import de.ovgu.featureide.fm.ui.FMUIPlugin;
 
 /**
- * Displays the tree for common configuration selection at the configuration
- * editor
+ * Displays the tree for common configuration selection at the configuration editor
  *
  * @author Jens Meinicke
  * @author Hannes Smurawsky
@@ -51,9 +50,9 @@ public class ConfigurationPage extends ConfigurationTreeEditorPage {
 	protected void createUITree(Composite parent) {
 		tree = new Tree(parent, SWT.CHECK);
 		tree.addSelectionListener(new SelectionListener() {
+
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+			public void widgetDefaultSelected(SelectionEvent e) {}
 
 			@Override
 			public void widgetSelected(SelectionEvent event) {

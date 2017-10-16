@@ -121,7 +121,7 @@ public abstract class AbstractXMLFeatureModelWriter<T> extends AbstractObjectWri
 
 	@Override
 	public String writeToString() {
-		//Create Empty DOM Document
+		// Create Empty DOM Document
 		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		dbf.setIgnoringComments(true);
@@ -135,10 +135,10 @@ public abstract class AbstractXMLFeatureModelWriter<T> extends AbstractObjectWri
 			Logger.logError(pce);
 		}
 		final Document doc = db.newDocument();
-		//Create the Xml Representation
+		// Create the Xml Representation
 		createXmlDoc(doc);
 
-		//Transform the Xml Representation into a String
+		// Transform the Xml Representation into a String
 		Transformer transfo = null;
 		try {
 			transfo = TransformerFactory.newInstance().newTransformer();

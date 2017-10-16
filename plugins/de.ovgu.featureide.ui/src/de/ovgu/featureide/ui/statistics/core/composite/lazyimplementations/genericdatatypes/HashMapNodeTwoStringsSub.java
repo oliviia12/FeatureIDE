@@ -25,8 +25,7 @@ import java.util.HashMap;
 import de.ovgu.featureide.ui.statistics.core.composite.Parent;
 
 /**
- * Node in the statistics view to show lines of code.<br>
- * Creates each entry for features resp. file extenstions.
+ * Node in the statistics view to show lines of code.<br> Creates each entry for features resp. file extenstions.
  *
  * @author Schleicher Miro
  */

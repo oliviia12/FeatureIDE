@@ -30,14 +30,14 @@ import org.eclipse.core.resources.IFile;
 import de.ovgu.featureide.core.fstmodel.preprocessor.FSTDirective;
 
 /**
- * A role is a implementation unit representing a class at a corresponding
- * feature.
+ * A role is a implementation unit representing a class at a corresponding feature.
  *
  * @author Jens Meinicke
  * @author Dominic Labsch
  * @author Daniel P�sche
  */
 public class FSTRole {
+
 	private final TreeSet<FSTDirective> directives = new TreeSet<FSTDirective>();
 	private final FSTClassFragment classFragment;
 
@@ -149,7 +149,7 @@ public class FSTRole {
 		}
 	}
 
-	//get list of all nested classes shared by multiple features
+	// get list of all nested classes shared by multiple features
 	public LinkedList<FSTClassFragment> getAllEqualFSTFragments(FSTClassFragment fragment) {
 		final LinkedList<FSTClassFragment> frag = new LinkedList<FSTClassFragment>();
 

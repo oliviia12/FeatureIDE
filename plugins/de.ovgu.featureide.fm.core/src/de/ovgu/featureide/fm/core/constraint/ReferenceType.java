@@ -21,8 +21,7 @@
 package de.ovgu.featureide.fm.core.constraint;
 
 /**
- * Different reference types.<br>
- * {FEATURE, ATTRIBUTE, ATTRIBUTE_SUM}
+ * Different reference types.<br> {FEATURE, ATTRIBUTE, ATTRIBUTE_SUM}
  *
  * @author Sebastian Henneberg
  */

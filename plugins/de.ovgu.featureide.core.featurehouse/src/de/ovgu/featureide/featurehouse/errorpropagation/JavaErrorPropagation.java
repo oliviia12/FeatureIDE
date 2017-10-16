@@ -199,8 +199,7 @@ public class JavaErrorPropagation extends ErrorPropagation {
 	protected boolean propagateMarker(IMarker m) {
 		try {
 			return !(TASK.equals(m.getType()));
-		} catch (final CoreException e) {
-		}
+		} catch (final CoreException e) {}
 		return super.propagateMarker(m);
 	}
 
@@ -221,10 +220,8 @@ public class JavaErrorPropagation extends ErrorPropagation {
 	/**
 	 * Checks if the given file contains a line with the given content.
 	 *
-	 * @param lineContent
-	 *            the content to look for
-	 * @return The line of the content or <code>-1</code> if the does not
-	 *         contain the content.
+	 * @param lineContent the content to look for
+	 * @return The line of the content or <code>-1</code> if the does not contain the content.
 	 */
 	private int getLine(IFile file, String lineContent) {
 		Scanner scanner = null;
@@ -251,8 +248,7 @@ public class JavaErrorPropagation extends ErrorPropagation {
 	}
 
 	/**
-	 * Corrects the given string to avoid changes by the
-	 * <code>FeatureHouse</code> composer.
+	 * Corrects the given string to avoid changes by the <code>FeatureHouse</code> composer.
 	 */
 	private String correctString(String string) {
 		while (string.contains("  ")) {
@@ -268,8 +264,7 @@ public class JavaErrorPropagation extends ErrorPropagation {
 	}
 
 	/**
-	 * @param file
-	 *            A composed file
+	 * @param file A composed file
 	 * @return A list containing all corresponding feature files
 	 */
 	private LinkedList<IFile> getFeatureFiles(IFile file) {
@@ -305,8 +300,7 @@ public class JavaErrorPropagation extends ErrorPropagation {
 
 	/**
 	 *
-	 * @param line
-	 *            The line to lock for
+	 * @param line The line to lock for
 	 * @return the content at the given line of the file
 	 */
 	private String getLineContent(IFile file, int line) {

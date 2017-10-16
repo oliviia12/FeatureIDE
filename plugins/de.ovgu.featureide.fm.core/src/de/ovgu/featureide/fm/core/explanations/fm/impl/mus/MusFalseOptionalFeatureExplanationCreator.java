@@ -36,6 +36,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.FalseOptionalFeatureExplanatio
  * @author Timo G&uuml;nther
  */
 public class MusFalseOptionalFeatureExplanationCreator extends MusFeatureModelExplanationCreator implements FalseOptionalFeatureExplanationCreator {
+
 	/** The false-optional feature in the feature model. */
 	private IFeature falseOptionalFeature;
 

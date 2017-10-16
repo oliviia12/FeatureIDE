@@ -30,12 +30,13 @@ import org.junit.Test;
  * @author Jens Meinicke
  */
 public class TAspectjFMComposerExtension {
+
 	private final AspectJFMCompserExtension fmComposerExtension = new AspectJFMCompserExtension();
 
-	private static final String CONTENT_1 = "public aspect Hello{\r\n" + "before(): call(void Main.print()) {\r\n" + "	System.out.print(\"Hello\");\r\n"
-			+ "	}\r\n" + "}";
-	private static final Object NEW_CONTENT_1 = "public aspect NewAspect{\r\n" + "before(): call(void Main.print()) {\r\n"
-			+ "	System.out.print(\"Hello\");\r\n" + "	}\r\n" + "}";
+	private static final String CONTENT_1 =
+			"public aspect Hello{\r\n" + "before(): call(void Main.print()) {\r\n" + "	System.out.print(\"Hello\");\r\n" + "	}\r\n" + "}";
+	private static final Object NEW_CONTENT_1 =
+			"public aspect NewAspect{\r\n" + "before(): call(void Main.print()) {\r\n" + "	System.out.print(\"Hello\");\r\n" + "	}\r\n" + "}";
 
 	private static final String OLD_NAME_1_1 = "Hello";
 	private static final String NEW_NAME_1 = "NewAspect";
@@ -108,8 +109,8 @@ public class TAspectjFMComposerExtension {
 
 	private static final String OLD_PACKAGE_CONTENT = "/* HEADER */\r\n" + "package P;\r\n" + "public aspect OLD {\r\n" + "public Main() {\r\n" + "}\r\n" + "}";
 
-	private static final String NEW_PACKAGE_CONTENT = "/* HEADER */\r\n" + "package P2;\r\n" + "public aspect NEW {\r\n" + "public Main() {\r\n" + "}\r\n"
-			+ "}";
+	private static final String NEW_PACKAGE_CONTENT =
+			"/* HEADER */\r\n" + "package P2;\r\n" + "public aspect NEW {\r\n" + "public Main() {\r\n" + "}\r\n" + "}";
 
 	private static final String OLD_NAME_PACKAGE = "OLD";
 	private static final String NEW_NAME_PACKAGE = "P2_NEW";

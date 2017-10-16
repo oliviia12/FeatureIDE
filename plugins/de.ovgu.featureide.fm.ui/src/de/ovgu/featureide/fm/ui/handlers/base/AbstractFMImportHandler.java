@@ -53,8 +53,7 @@ import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
 import de.ovgu.featureide.fm.ui.FMUIPlugin;
 
 /**
- * Abstract class with core functionality to import FeatureModels.</br>
- * Implementing classes mainly provide a specific FeatureModelReader.
+ * Abstract class with core functionality to import FeatureModels.</br> Implementing classes mainly provide a specific FeatureModelReader.
  *
  * @author Fabian Benduhn
  * @author Sebastian Krieter
@@ -117,8 +116,7 @@ public abstract class AbstractFMImportHandler extends AFileHandler {
 	}
 
 	/**
-	 * Opens the imported model in a new editor. If it is already open, the
-	 * editor will be closed first.
+	 * Opens the imported model in a new editor. If it is already open, the editor will be closed first.
 	 *
 	 * @throws PartInitException
 	 */

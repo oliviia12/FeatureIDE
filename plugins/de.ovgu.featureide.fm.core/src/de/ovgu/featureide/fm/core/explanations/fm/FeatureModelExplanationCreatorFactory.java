@@ -30,6 +30,7 @@ import de.ovgu.featureide.fm.core.explanations.fm.impl.mus.MusFeatureModelExplan
  * @author Timo G&uuml;nther
  */
 public abstract class FeatureModelExplanationCreatorFactory implements ExplanationCreatorFactory {
+
 	/**
 	 * Returns a default instance of this class.
 	 *

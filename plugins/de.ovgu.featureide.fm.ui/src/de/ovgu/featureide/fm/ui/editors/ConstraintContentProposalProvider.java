@@ -44,6 +44,7 @@ import de.ovgu.featureide.fm.core.Features;
  * @author Stefan Krueger
  */
 public class ConstraintContentProposalProvider implements IContentProposalProvider {
+
 	static final int CURRENT = 0;
 	static final int LAST = 1;
 	private final Set<String> features;
@@ -54,15 +55,11 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 	}
 
 	/**
-	 * Return an array of Objects s representing the valid content proposals for
-	 * a field.
+	 * Return an array of Objects s representing the valid content proposals for a field.
 	 *
-	 * @param contents
-	 *            the current contents of the field
-	 * @param position
-	 *            the current cursor position within the field
-	 * @return the array of Objects that represent valid proposals for the field
-	 *         given its current content.
+	 * @param contents the current contents of the field
+	 * @param position the current cursor position within the field
+	 * @return the array of Objects that represent valid proposals for the field given its current content.
 	 */
 	@Override
 	public IContentProposal[] getProposals(String contents, int position) {
@@ -77,10 +74,8 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 
 	/**
 	 * @return all possible feature names or junctors.
-	 * @param words
-	 *            current and previous word of edited string
-	 * @param contents
-	 *            complete string being edited
+	 * @param words current and previous word of edited string
+	 * @param contents complete string being edited
 	 *
 	 */
 	private List<ContentProposal> getProposalList(String[] words, String contents) {
@@ -100,15 +95,11 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 	}
 
 	/**
-	 * Returns the word that is being written and the word before it, given the
-	 * current content and cursor position
+	 * Returns the word that is being written and the word before it, given the current content and cursor position
 	 *
-	 * @param contents
-	 *            the content,i.e. the string which contains the text
-	 * @param position
-	 *            current position of the cursor, first position is 0
-	 * @return Array with two elements: current word and the word before, words
-	 *         can be empty String, index: CURRENT, LAST
+	 * @param contents the content,i.e. the string which contains the text
+	 * @param position current position of the cursor, first position is 0
+	 * @return Array with two elements: current word and the word before, words can be empty String, index: CURRENT, LAST
 	 */
 	static String[] getWords(String contents, int position) {
 
@@ -172,8 +163,7 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 	 *
 	 * @param wordBefore
 	 *
-	 * @param features
-	 *            set of features
+	 * @param features set of features
 	 * @return List of proposals, either operators or feature names
 	 */
 	private static List<ContentProposal> getProposalList(String wordBefore, Set<String> features) {
@@ -186,8 +176,8 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 
 		// TODO: Add binary operators only iff their appearance makes sense in content proposal
 		// Example:
-		//		Show "and" for "A |"
-		//		Hide "and" for "A and |"
+		// Show "and" for "A |"
+		// Hide "and" for "A and |"
 		proposals.add(new ContentProposal("and"));
 		proposals.add(new ContentProposal(IFF));
 		proposals.add(new ContentProposal(IMPLIES));
@@ -195,14 +185,14 @@ public class ConstraintContentProposalProvider implements IContentProposalProvid
 
 		// TODO: Add binary operators only iff their appearance makes sense in content proposal
 		// Example:
-		//		Show NOT for "A implies |"
-		//		Hide NOT for "A |"
+		// Show NOT for "A implies |"
+		// Hide NOT for "A |"
 		proposals.add(new ContentProposal(NOT));
 
 		// TODO: Add features only iff a feature name is valid in context
 		// Example:
-		//		Show feature for "A implies |"
-		//		Hide features for "A |"
+		// Show feature for "A implies |"
+		// Hide features for "A |"
 		for (final String s : featureList) {
 			proposals.add(new ContentProposal(s + (operatorNamesInFeatures.contains(s.trim()) ? " " + Features.FEATURE_SUFFIX : "")));
 		}

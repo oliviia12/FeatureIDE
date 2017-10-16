@@ -87,8 +87,7 @@ public class FeatureModelManager extends FileManager<IFeatureModel> {
 	}
 
 	/**
-	 * Listens to feature model changes.
-	 * Resets its formula if necessary.
+	 * Listens to feature model changes. Resets its formula if necessary.
 	 */
 	private class FeatureModelChangeListner implements IEventListener {
 
@@ -96,7 +95,7 @@ public class FeatureModelManager extends FileManager<IFeatureModel> {
 		public void propertyChange(FeatureIDEEvent evt) {
 			final EventType eventType = evt.getEventType();
 			switch (eventType) {
-			case ALL_FEATURES_CHANGED_NAME_TYPE: //Required because feature names are used as variable names.
+			case ALL_FEATURES_CHANGED_NAME_TYPE: // Required because feature names are used as variable names.
 			case CHILDREN_CHANGED:
 			case CONSTRAINT_ADD:
 			case CONSTRAINT_DELETE:
@@ -104,10 +103,10 @@ public class FeatureModelManager extends FileManager<IFeatureModel> {
 			case FEATURE_ADD:
 			case FEATURE_ADD_ABOVE:
 			case FEATURE_DELETE:
-			case FEATURE_MODIFY: //TODO If a formula reset is required for this event type, remove this comment. Otherwise, remove this case.
-			case FEATURE_NAME_CHANGED: //Required because feature names are used as variable names.
+			case FEATURE_MODIFY: // TODO If a formula reset is required for this event type, remove this comment. Otherwise, remove this case.
+			case FEATURE_NAME_CHANGED: // Required because feature names are used as variable names.
 			case GROUP_TYPE_CHANGED:
-			case HIDDEN_CHANGED: //TODO If a formula reset is required for this event type, remove this comment. Otherwise, remove this case.
+			case HIDDEN_CHANGED: // TODO If a formula reset is required for this event type, remove this comment. Otherwise, remove this case.
 			case MANDATORY_CHANGED:
 			case MODEL_DATA_CHANGED:
 			case MODEL_DATA_OVERRIDDEN:
@@ -121,6 +120,7 @@ public class FeatureModelManager extends FileManager<IFeatureModel> {
 	}
 
 	private static final ObjectCreator<IFeatureModel> objectCreator = new ObjectCreator<IFeatureModel>() {
+
 		private IFeatureModelFactory factory = null;
 
 		@Override

@@ -153,8 +153,7 @@ public class FSTMethod extends RoleElement<FSTMethod> {
 
 	/**
 	 *
-	 * @return <code>true</code> if an equivalent method exists in an other role
-	 *         of the same class.
+	 * @return <code>true</code> if an equivalent method exists in an other role of the same class.
 	 */
 	public boolean inRefinementGroup() {
 		for (final FSTRole role : getRole().getFSTClass().getRoles()) {
