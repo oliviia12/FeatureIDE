@@ -123,6 +123,7 @@ public class FeatureModelEditView extends ViewPart implements GUIDefaults {
 			};
 			job.setPriority(Job.SHORT);
 			job.schedule();
+
 		}
 	};
 

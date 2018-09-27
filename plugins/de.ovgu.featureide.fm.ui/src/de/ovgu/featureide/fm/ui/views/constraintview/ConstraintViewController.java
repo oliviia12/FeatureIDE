@@ -62,6 +62,7 @@ import de.ovgu.featureide.fm.ui.views.constraintview.actions.EditConstraintInVie
 import de.ovgu.featureide.fm.ui.views.constraintview.listener.ConstraintViewPartListener;
 import de.ovgu.featureide.fm.ui.views.constraintview.view.ConstraintView;
 import de.ovgu.featureide.fm.ui.views.constraintview.view.ConstraintViewContextMenu;
+import de.ovgu.featureide.fm.ui.views.constraintview.view.ConstraintViewSettingsMenu;
 
 /**
  * This class represents the controller (MVC) of the constraint view it creates all GUI elements and holds the logic that operates on the view.
@@ -106,6 +107,7 @@ public class ConstraintViewController extends ViewPart implements IEventListener
 			refreshView(currentModel);
 		}
 		new ConstraintViewContextMenu(this);
+		new ConstraintViewSettingsMenu(this);
 	}
 
 	/**
