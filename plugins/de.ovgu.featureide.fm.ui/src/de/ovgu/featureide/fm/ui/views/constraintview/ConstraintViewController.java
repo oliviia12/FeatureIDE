@@ -79,6 +79,7 @@ public class ConstraintViewController extends ViewPart implements IEventListener
 	private IFeatureModel currentModel;
 	private IGraphicalFeature graphfeature = null;
 	private IGraphicalFeatureModel graphmodel = null;
+	private ConstraintViewSettingsMenu settingsMenu;
 
 	boolean constraintsHidden = false;
 
@@ -101,13 +102,14 @@ public class ConstraintViewController extends ViewPart implements IEventListener
 		viewer.getSearchBox().addModifyListener(searchListener);
 		addListener();
 		getSite().getPage().addPartListener(new ConstraintViewPartListener(this));
+		settingsMenu = new ConstraintViewSettingsMenu(this);
 		if (FeatureModelUtil.getActiveFMEditor() != null) {
 			currentModel = FeatureModelUtil.getFeatureModel();
 			addPageChangeListener(FeatureModelUtil.getActiveFMEditor());
 			refreshView(currentModel);
 		}
 		new ConstraintViewContextMenu(this);
-		new ConstraintViewSettingsMenu(this);
+
 	}
 
 	/**
@@ -132,6 +134,7 @@ public class ConstraintViewController extends ViewPart implements IEventListener
 			this.currentModel = currentModel;
 			this.currentModel.addListener(this);
 			viewer.removeAll();
+			settingsMenu.update(this);
 			// no search text is entered:
 			if (searchText.equals("")) {
 				addConstraints(currentModel);

@@ -20,10 +20,8 @@
  */
 package de.ovgu.featureide.fm.ui.views.constraintview.view;
 
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 
-import de.ovgu.featureide.fm.ui.editors.FeatureDiagramViewer;
 import de.ovgu.featureide.fm.ui.editors.IGraphicalFeatureModel;
 import de.ovgu.featureide.fm.ui.editors.featuremodel.actions.ShowCollapsedConstraintsAction;
 import de.ovgu.featureide.fm.ui.utils.FeatureModelUtil;
@@ -34,41 +32,40 @@ import de.ovgu.featureide.fm.ui.views.constraintview.ConstraintViewController;
  *
  * @author Domenik Eichhorn
  */
+
+// TODO add Pfeil nach unten
+// TODO add more funktionen
+// TODO add schöne Checkboxen
+
 public class ConstraintViewSettingsMenu {
-
 	ConstraintViewController controller;
-
 	private final IToolBarManager manager;
-	private final IGraphicalFeatureModel graphicalModel; // active graphical FeatureModel
-	private final FeatureDiagramViewer viewer; 	// active FeatureDiagramViewer
+	private IGraphicalFeatureModel graphicalModel; // active graphical FeatureModel
+	private final ShowCollapsedConstraintsAction collapseAction;
 
-	/**
-	 * constructor:
-	 */
 	public ConstraintViewSettingsMenu(ConstraintViewController controller) {
 		this.controller = controller;
-
 		manager = controller.getViewSite().getActionBars().getToolBarManager();
-		graphicalModel = FeatureModelUtil.getActiveFMEditor().diagramEditor.getGraphicalFeatureModel();
-		viewer = FeatureModelUtil.getActiveFMEditor().diagramEditor.getViewer();
 
+		collapseAction = new ShowCollapsedConstraintsAction(null, graphicalModel); // Action that Shows/Hides Collapsed Constraints
+
+		update(controller);
 		createToolBarLayout();
 	}
 
-	/**
-	 * Action to show/hide collapsed constraints
-	 */
-	private IAction showCollapsedConstraints() {
-
-		final ShowCollapsedConstraintsAction collapseAction = new ShowCollapsedConstraintsAction(viewer, graphicalModel);
-		collapseAction.setToolTipText("Show Collapsed Constraints");
-		return collapseAction;
+	public void update(ConstraintViewController controller) {
+		this.controller = controller;
+		if (FeatureModelUtil.getActiveFMEditor() != null) {
+			graphicalModel = FeatureModelUtil.getActiveFMEditor().diagramEditor.getGraphicalFeatureModel();
+		}
+		collapseAction.update(graphicalModel);
 	}
 
 	/**
 	 * creates the Layout from the toolbar
 	 */
 	private void createToolBarLayout() {
-		manager.add(showCollapsedConstraints());
+		manager.add(collapseAction);
+
 	}
 }
